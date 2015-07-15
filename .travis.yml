@@ -1,0 +1,8 @@
+language: php
+install:
+    - composer install
+    - npm install
+before_script:
+    - composer test
+    - npm test
+script: npm run-script gulp

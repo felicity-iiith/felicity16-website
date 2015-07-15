@@ -1,0 +1,17 @@
+{
+    "name": "felicity-iiith/felicity16",
+    "description": "Felicity 2k16 website",
+    "license": "UNLICENSED",
+    "require": {},
+    "require-dev": {
+        "jakub-onderka/php-parallel-lint": "0.9.*"
+    },
+    "scripts": {
+        "lint": [
+            "parallel-lint src/"
+        ],
+        "test": [
+            "composer lint"
+        ]
+    }
+}

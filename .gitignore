@@ -1,0 +1,20 @@
+# Project files
+/build/
+/src/app/config.php
+
+# Editors
+*.swp
+*.geany
+*.komodo
+*.komodoproject
+\#*#
+
+# npm
+/node_modules/
+
+# composer
+/vendor/
+
+# stuff
+.DS_Store
+thumbs.db
