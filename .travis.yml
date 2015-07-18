@@ -2,6 +2,7 @@ language: php
 install:
     - composer install
     - npm install
+    - gem install scss-lint
 before_script:
     - composer test
     - npm test
