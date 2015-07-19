@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
@@ -14,13 +13,6 @@ var reportError = function(error) {
     // Prevent the 'watch' task from stopping
     this.emit('end');
 };
-
-gulp.task('lint', function() {
-    return gulp.src(['src/static/scripts/**/*.js', 'gulpfile.js', '!src/static/js/vendor'])
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'));
-});
 
 gulp.task('styles', function() {
     return gulp.src('src/static/styles/**/*.{scss,css}')

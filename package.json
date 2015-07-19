@@ -14,14 +14,14 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
-    "gulp-jshint": "^1.11.2",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-sass": "^2.0.3",
-    "jshint-stylish": "^2.0.1"
+    "jshint-stylish": "^2.0.1",
+    "jshint": "^2.8.0"
   },
   "scripts": {
-    "test": "gulp lint",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "test": "jshint src/static/scripts --reporter=node_modules/jshint-stylish && scss-lint src/static/styles/"
   }
 }
