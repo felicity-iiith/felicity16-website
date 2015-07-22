@@ -5,6 +5,9 @@ var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
 
 var reportError = function(error) {
+    if ('CI' in process.env && process.env.CI === 'true') {
+        process.exit(1);
+    }
     notify({
         title: error.plugin + ' failed!',
         message: 'See console.'
