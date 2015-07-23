@@ -3,6 +3,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
+var del = require('del');
 
 var reportError = function(error) {
     if ('CI' in process.env && process.env.CI === 'true') {
@@ -16,6 +17,10 @@ var reportError = function(error) {
     // Prevent the 'watch' task from stopping
     this.emit('end');
 };
+
+gulp.task('clean', function() {
+    del('build/');
+});
 
 gulp.task('styles', function() {
     return gulp.src('src/static/styles/**/*.{scss,css}')
