@@ -12,6 +12,7 @@
     "url": "https://github.com/felicity-iiith/felicity16/issues"
   },
   "devDependencies": {
+    "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-notify": "^2.2.0",
