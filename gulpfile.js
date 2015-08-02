@@ -52,4 +52,9 @@ gulp.task('stuff', function() {
         .pipe(gulp.dest('build/'));
 });
 
-gulp.task('default', ['styles', 'scripts', 'images', 'php', 'stuff']);
+gulp.task('vendor', function() {
+    return gulp.src('vendor/**/*', {dot: true})
+        .pipe(gulp.dest('build/vendor/'));
+})
+
+gulp.task('default', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
