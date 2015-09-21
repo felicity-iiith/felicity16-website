@@ -1,9 +1,11 @@
 # Install
 
-## Node
-In order to run the build process, you'll need [Node](https://nodejs.org/) and some npm modules.
+The following prerequisites are required to build and use the website along with a brief guide to quickly set it up.
 
-There are several ways to install node, and it might be best for you to Google about how to get the latest version of node for your system. This repo has been tested with node v0.12. (The version provided by the default package manager is generally old.)
+## Node.js
+In order to run the build process, you'll need [Node.js](https://nodejs.org/) and some npm modules.
+
+There are several ways to install node.js, and it might be best for you to Google about how to get the latest version of node.js for your system. This repo has been tested with node v0.12. (The version provided by the default package manager is generally old.)
 
 On Ubuntu (and Debian, Linux Mint, etc.), an easy way to get node is to run:
 ```sh
@@ -13,7 +15,7 @@ curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
 sudo apt-get install -y nodejs
 ```
 
-An easy way to get node (not sure if latest version) on Fedora (and other similar distributions) is to run:
+An easy way to get node.js (not sure if latest version) on Fedora (and other similar distributions) is to run:
 ```sh
 curl -sL https://rpm.nodesource.com/setup | sudo bash -
 
@@ -21,7 +23,7 @@ curl -sL https://rpm.nodesource.com/setup | sudo bash -
 yum -y install nodejs
 ```
 
-Common ways to keep an updated node installation are to use [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n).
+Common ways to keep an updated node.js installation are to use [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n).
 
 ## Composer
 You'll also need to get [composer](https://getcomposer.org), a PHP package manager.

@@ -2,9 +2,14 @@
 
 This is the repository for the Felicity '16 website.
 
+## Fork and Clone
+
+In order to clone this repository, you might need to use the `--recursive` flag with `git clone`.
+
 ## Install
 
-In order to install the prerequisites required to build and run the website, please refer to [INSTALL.md](INSTALL.md). [Node](https://nodejs.org) (and [npm](https://npmjs.org/)) and [composer](https://getcomposer.org) are required.
+The prerequisites required to build and run the website are [Node.js](https://nodejs.org/) with npm and [Composer](https://getcomposer.org). If you have those installed, you can skip this.
+If you need help installing these, please refer to [INSTALL.md](INSTALL.md).
 
 ## Build
 In order to build the development environment, `cd` into the root directory of this repo and run:
