@@ -3,7 +3,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
+var path = require('path');
 var del = require('del');
+var gutil = require('gulp-util');
 
 var reportError = function(error) {
     if ('CI' in process.env && process.env.CI === 'true') {
@@ -56,5 +58,46 @@ gulp.task('vendor', function() {
     return gulp.src('vendor/**/*', {dot: true})
         .pipe(gulp.dest('build/vendor/'));
 })
+
+gulp.task('watch', function() {
+    function deleter() {
+        var replaceFunc = null;
+        if (typeof arguments[0] === 'string') {
+            var before = arguments[0];
+            var after = arguments[1];
+            replaceFunc = function(file) {
+                return file.replace(before, after);
+            };
+        }
+        else if (typeof arguments[0] === 'function') {
+            replaceFunc = arguments[0];
+        }
+        return function(event) {
+            if (event.type == 'deleted') {
+                var file = path.relative('./', event.path);
+                if (typeof replaceFunc === 'function') {
+                    file = replaceFunc(file);
+                }
+                del(file);
+                gutil.log('Deleted file', '\'' + file + '\'');
+            }
+        };
+    }
+    gulp.watch('src/static/styles/**/*.{scss,css}', ['styles'])
+        .on('change', deleter(function(file) {
+            return file.replace('src/static/styles', 'build/static/css')
+                .replace(/\.scss$/, '.css');
+        }));
+    gulp.watch('src/static/scripts/**/*.js', ['scripts'])
+        .on('change', deleter('src/static/scripts', 'build/static/js'));
+    gulp.watch('src/static/images/*.{jpg,jpeg,png,svg}', ['images'])
+        .on('change', deleter('src/static/images', 'build/static/img'));
+    gulp.watch('src/**/*.php', ['php'])
+        .on('change', deleter('src/', 'build/'));
+    gulp.watch(['src/.htaccess', 'src/humans.txt', 'src/robots.txt'], ['stuff'])
+        .on('change', deleter('src/', 'build/'));
+    gulp.watch(['vendor/**/*'], {dot: true})
+        .on('change', deleter('vendor/', 'build/vendor/'));
+});
 
 gulp.task('default', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
