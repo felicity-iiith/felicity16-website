@@ -9,4 +9,6 @@ before_script:
 script: npm run-script gulp
 notifications:
   slack:
+    on_success: :change
+    on_failure: :change
     secure: K+BEhOZsFtnjGWgfhw5AUZs8l1JbQZdJWqbwV1B31aNeGN5UpcsFkHoqkyZZ5tipjDQsqRzF28N9+IpkKeriuU/rKp5Q7/nNplyT/klQBaF4iC5czmXHnA1G5VXYLx8rc1Z/YEPh3Ry9/F4KThzjNILFNFKHrNMSet9U4utz/a1+BJ7i1e2ghsKCSt5Q0KMT0cWgC7A0devgfukfr8cegWeZlQpkqjigBeeMJsBmfksf+NJq6W0qIbujjznG6GdJWlCtpJgxSDCt1jYc8Zm7v+jPJ6N/UaHh/B6nrFVunAdusX07XWy00yMGj52YPxDT/5vPJgoN3a3US7QgTrX+mgkHCncSzS7YCCAGBdIfpn8hQK5S7FI+uo65x/Gulk5R9Wit1o6s3hRuVhW7dNPbaoOfeRdE/5zn/ljQpUos2Ce37Z/WxspSL7PoUJ27/7LkL4CrKEGragWsFRoTg8EaLNzaYJJulUkGDh6sWeglZLVjrobult2X/ZMvmldhjc/o7WYxoFaMkLUAS77qtGNAnH8Qz1WVZzF/vdVkC6+A/UpZ+XLmaieK/UObSEMEPE5qKQvV1nY/+HX2B+dol/62zgHi2mrrDC5EmddUh+o9zf/tM5uUW4j0OTa+rPKg8iBDphST0I2mv2IoI+tMzJj+MLDfuX3bn+iNJxfcEZmGlLo=
