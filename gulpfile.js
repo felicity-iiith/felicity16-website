@@ -31,17 +31,17 @@ gulp.task('styles', function() {
         }))
         .pipe(sass().on('error', sass.logError))
         .on('error', reportError)
-        .pipe(gulp.dest('build/static/css'));
+        .pipe(gulp.dest('build/static/styles'));
 });
 
 gulp.task('scripts', function() {
     return gulp.src('src/static/scripts/**/*.js')
-        .pipe(gulp.dest('build/static/js'));
+        .pipe(gulp.dest('build/static/scripts'));
 });
 
 gulp.task('images', function() {
     return gulp.src('src/static/images/*.{jpg,jpeg,png,svg}')
-        .pipe(gulp.dest('build/static/img'));
+        .pipe(gulp.dest('build/static/images'));
 });
 
 gulp.task('php', function() {
@@ -85,13 +85,13 @@ gulp.task('watch', function() {
     }
     gulp.watch('src/static/styles/**/*.{scss,css}', ['styles'])
         .on('change', deleter(function(file) {
-            return file.replace('src/static/styles', 'build/static/css')
+            return file.replace('src/', 'build/')
                 .replace(/\.scss$/, '.css');
         }));
     gulp.watch('src/static/scripts/**/*.js', ['scripts'])
-        .on('change', deleter('src/static/scripts', 'build/static/js'));
+        .on('change', deleter('src/', 'build/'));
     gulp.watch('src/static/images/*.{jpg,jpeg,png,svg}', ['images'])
-        .on('change', deleter('src/static/images', 'build/static/img'));
+        .on('change', deleter('src/', 'build/'));
     gulp.watch('src/**/*.php', ['php'])
         .on('change', deleter('src/', 'build/'));
     gulp.watch(['src/.htaccess', 'src/humans.txt', 'src/robots.txt'], ['stuff'])
