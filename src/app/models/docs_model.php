@@ -4,9 +4,9 @@ class docs_model extends Model {
 
     function new_file($parent, $name, $slug, $type, $default_role, $user) {
         $db_error = false;
-        $this->DB->autocommit(false);
+        $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->prepare("INSERT INTO `files` (`name`, `slug`, `parent`, `type`, `default_role`) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`name`, `slug`, `parent`, `type`, `default_role`) VALUES (?, ?, ?, ?, ?)");
         if (!$stmt->bind_param("ssiss", $name, $slug, $parent, $type, $default_role)) {
             $db_error = true;
         }
@@ -16,7 +16,7 @@ class docs_model extends Model {
 
         $insert_id = $stmt->insert_id;
 
-        $stmt = $this->DB->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)");
         if (!$stmt->bind_param("is", $insert_id, $user)) {
             $db_error = true;
         }
@@ -25,12 +25,12 @@ class docs_model extends Model {
         }
 
         if ($db_error) {
-            $this->DB->rollback();
+            $this->DB->jugaad->rollback();
         } else {
-            $this->DB->commit();
+            $this->DB->jugaad->commit();
         }
 
-        $this->DB->autocommit(true);
+        $this->DB->jugaad->autocommit(true);
         return !$db_error;
     }
 
@@ -43,9 +43,9 @@ class docs_model extends Model {
             return false;
         }
         $db_error = false;
-        $this->DB->autocommit(false);
+        $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->prepare("UPDATE `files` SET `name`=?, `slug`=? WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `name`=?, `slug`=? WHERE `id`=?");
         if (!$stmt->bind_param("ssi", $name, $slug, $file_id)) {
             $db_error = true;
         }
@@ -54,7 +54,7 @@ class docs_model extends Model {
         }
 
         if ($file_type != 'directory') {
-            $stmt = $this->DB->prepare("INSERT INTO `file_data` (`file_id`, `data`, `action`, `created_by`) VALUES (?, ?, 'edit', ?)");
+            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `data`, `action`, `created_by`) VALUES (?, ?, 'edit', ?)");
             if (!$stmt->bind_param("iss", $file_id, $data, $user)) {
                 $db_error = true;
             }
@@ -64,12 +64,12 @@ class docs_model extends Model {
         }
 
         if ($db_error) {
-            $this->DB->rollback();
+            $this->DB->jugaad->rollback();
         } else {
-            $this->DB->commit();
+            $this->DB->jugaad->commit();
         }
 
-        $this->DB->autocommit(true);
+        $this->DB->jugaad->autocommit(true);
         return !$db_error;
     }
 
@@ -79,9 +79,9 @@ class docs_model extends Model {
         }
 
         $db_error = false;
-        $this->DB->autocommit(false);
+        $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->prepare("INSERT INTO `trash_files` (`file_id`, `name`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `name`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `trash_files` (`file_id`, `name`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `name`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("ss", $user, $file_id)) {
             $db_error = true;
         }
@@ -89,7 +89,7 @@ class docs_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->prepare("DELETE FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("DELETE FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             $db_error = true;
         }
@@ -97,7 +97,7 @@ class docs_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             $db_error = true;
         }
@@ -106,12 +106,12 @@ class docs_model extends Model {
         }
 
         if ($db_error) {
-            $this->DB->rollback();
+            $this->DB->jugaad->rollback();
         } else {
-            $this->DB->commit();
+            $this->DB->jugaad->commit();
         }
 
-        $this->DB->autocommit(true);
+        $this->DB->jugaad->autocommit(true);
         return !$db_error;
     }
 
@@ -121,9 +121,9 @@ class docs_model extends Model {
         }
 
         $db_error = false;
-        $this->DB->autocommit(false);
+        $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->prepare("INSERT INTO `files` (`id`, `name`, `slug`, `parent`, `type`) SELECT `file_id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`id`, `name`, `slug`, `parent`, `type`) SELECT `file_id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
         if (!$stmt->bind_param("s", $file_id)) {
             $db_error = true;
         }
@@ -131,7 +131,7 @@ class docs_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->prepare("DELETE FROM `trash_files` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("DELETE FROM `trash_files` WHERE `file_id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             $db_error = true;
         }
@@ -139,7 +139,7 @@ class docs_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             $db_error = true;
         }
@@ -148,17 +148,17 @@ class docs_model extends Model {
         }
 
         if ($db_error) {
-            $this->DB->rollback();
+            $this->DB->jugaad->rollback();
         } else {
-            $this->DB->commit();
+            $this->DB->jugaad->commit();
         }
 
-        $this->DB->autocommit(true);
+        $this->DB->jugaad->autocommit(true);
         return !$db_error;
     }
 
     function get_slug_id($parent, $slug) {
-        $stmt = $this->DB->prepare("SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?");
         if (!$stmt->bind_param("is", $parent, $slug)) {
             return false;
         }
@@ -203,7 +203,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `type` FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `type` FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -221,7 +221,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `id`, `name`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -237,7 +237,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `id`, `name`, `slug`, `parent`, `type`, `default_role` FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type`, `default_role` FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -258,7 +258,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `file_id` as `id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `file_id` as `id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -276,7 +276,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
+        $stmt = $this->DB->jugaad->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -294,7 +294,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
+        $stmt = $this->DB->jugaad->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
         if (!$stmt->bind_param("ii", $file_id, $version_id)) {
             return false;
         }
@@ -312,7 +312,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `id` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -330,7 +330,7 @@ class docs_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -345,7 +345,7 @@ class docs_model extends Model {
         if ($file_id === false || $edit_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `id`, `file_id`, `action`, `data`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `action`, `data`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`=?");
         if (!$stmt->bind_param("ii", $file_id, $edit_id)) {
             return false;
         }
@@ -361,7 +361,7 @@ class docs_model extends Model {
             return false;
         }
 
-        $stmt = $this->DB->prepare("SELECT `id`, `data`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 2");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `data`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 2");
         if (!$stmt->bind_param("ii", $file_id, $edit_id)) {
             return false;
         }
@@ -374,7 +374,7 @@ class docs_model extends Model {
 
     function get_trash_list() {
         // Get list of files in trash
-        $stmt = $this->DB->prepare("SELECT `id`, `file_id`, `name`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `name`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
         if (!$stmt->execute()) {
             return false;
         }

@@ -60,7 +60,7 @@ class perms_model extends Model {
         if ($file_id === false || !$user) {
             return false;
         }
-        $stmt = $this->DB->prepare("INSERT INTO `file_permissions` (`file_id`, `user`, `role`) VALUES (?, ?, ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_permissions` (`file_id`, `user`, `role`) VALUES (?, ?, ?)");
         if (!$stmt->bind_param("iss", $file_id, $user, $role)) {
             return false;
         }
@@ -75,7 +75,7 @@ class perms_model extends Model {
         if ($file_id === false || !$user) {
             return false;
         }
-        $stmt = $this->DB->prepare("DELETE FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
+        $stmt = $this->DB->jugaad->prepare("DELETE FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             return false;
         }
@@ -90,7 +90,7 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `default_role` FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `default_role` FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -108,7 +108,7 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("UPDATE `files` SET `default_role`=? WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `default_role`=? WHERE `id`=?");
         if (!$stmt->bind_param("si", $role, $file_id)) {
             return false;
         }
@@ -123,7 +123,7 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `role` FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `role` FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             return false;
         }
@@ -165,7 +165,7 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->prepare("SELECT `file_id`, `user`, `role` FROM `file_permissions` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `file_id`, `user`, `role` FROM `file_permissions` WHERE `file_id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
