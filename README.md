@@ -12,7 +12,7 @@ The prerequisites required to build and run the website are [Node.js](https://no
 If you need help installing these, please refer to [INSTALL.md](INSTALL.md).
 
 ## Build
-In order to build the development environment, `cd` into the root directory of this repo and run:
+In order to build the development environment, `cd` into the root directory of this repo, become root if neccessary and run:
 ```sh
 $ npm install # installs required npm packages
 $ composer install # installs required composer packages
