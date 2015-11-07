@@ -6,7 +6,7 @@ class ajax extends Controller {
         $this->load_library("http_lib", "http");
         $this->load_library("cas_lib", "cas");
 
-        $this->load_model("docs_model");
+        $this->load_model("jugaad_model");
         $this->load_model("perms_model");
         $this->load_model("auth_model");
 
@@ -26,7 +26,7 @@ class ajax extends Controller {
     function latest_version_id() {
         $file_id = $this->get_param("file_id");
 
-        $file = $this->docs_model->get_file($file_id);
+        $file = $this->jugaad_model->get_file($file_id);
 
         if ($file === false || $file["type"] != "file") {
             $this->http->response_code(404);
@@ -38,7 +38,7 @@ class ajax extends Controller {
             $this->http->response_code(403);
         }
 
-        $version_id = $this->docs_model->get_latest_version_id($file_id);
+        $version_id = $this->jugaad_model->get_latest_version_id($file_id);
 
         echo $version_id;
     }
@@ -46,7 +46,7 @@ class ajax extends Controller {
     function latest_version() {
         $file_id = $this->get_param("file_id");
 
-        $file = $this->docs_model->get_file($file_id);
+        $file = $this->jugaad_model->get_file($file_id);
 
         if ($file === false || $file["type"] != "file") {
             $this->http->response_code(404);
@@ -58,7 +58,7 @@ class ajax extends Controller {
             $this->http->response_code(403);
         }
 
-        $file["data"] = $this->docs_model->get_file_data($file_id);
+        $file["data"] = $this->jugaad_model->get_file_data($file_id);
 
         echo json_encode($file, false);
     }

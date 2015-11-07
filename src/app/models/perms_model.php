@@ -24,7 +24,7 @@ class perms_model extends Model {
     private $role_permissions = [];
 
     function __construct() {
-        $this->load_model("docs_model");
+        $this->load_model("jugaad_model");
         $this->load_model("auth_model");
 
         $this->default_rp["superadmin"] = $this->all_permissions;
@@ -148,7 +148,7 @@ class perms_model extends Model {
         $orig_file_id = $file_id;
         $role = false;
         do {
-            $file = $this->docs_model->get_file($file_id);
+            $file = $this->jugaad_model->get_file($file_id);
             if ($file === false) return false;
             $role = $this->file_get_user_role($file_id, $user);
             if ($role !== false) {
@@ -183,7 +183,7 @@ class perms_model extends Model {
         }
         $user_list = [];
         do {
-            $file = $this->docs_model->get_file($file_id);
+            $file = $this->jugaad_model->get_file($file_id);
             if ($file === false) return false;
             $file_users = $this->file_get_users($file_id);
             foreach ($file_users as $user) {
@@ -222,7 +222,7 @@ class perms_model extends Model {
         }
 
         // Return false if file does not exists
-        if (false === $this->docs_model->get_file_type($file_id)) {
+        if (false === $this->jugaad_model->get_file_type($file_id)) {
             return false;
         }
 

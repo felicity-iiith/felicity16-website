@@ -3,7 +3,7 @@
 class hello extends Controller {
 
     function index() {
-        $this->load_view('home');
+        echo "Under construction";
     }
 
 }

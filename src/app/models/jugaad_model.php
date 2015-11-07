@@ -1,6 +1,6 @@
 <?php
 
-class docs_model extends Model {
+class jugaad_model extends Model {
 
     function new_file($parent, $name, $slug, $type, $default_role, $user) {
         $db_error = false;

@@ -37,7 +37,7 @@
     <body>
         <div class="container">
             <nav>
-                <a class="btn btn-blue" href="."><i class="fa fa-arrow-left"></i> Go back to file</a>
+                <a class="btn btn-blue" href="?edit"><i class="fa fa-arrow-left"></i> Go back to file</a>
             </nav>
             <article class="file">
                 <h1 class="file_title"><?= $name ?></h1>
