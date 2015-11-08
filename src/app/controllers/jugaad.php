@@ -68,13 +68,14 @@ class jugaad extends Controller {
             $name = $_POST["name"];
             $slug = $_POST["slug"];
             $type = $_POST["type"];
+            $template = $_POST["template"];
             $default_role = $_POST["default_role"];
 
             if (!$this->is_slug_valid($slug)) {
                 return "Invalid slug";
             }
 
-            $add = $this->jugaad_model->new_file($parent_id, $name, $slug, $type, $default_role, $this->user);
+            $add = $this->jugaad_model->new_file($parent_id, $name, $slug, $type, $default_role, $template, $this->user);
             if ($add === false) {
                 return "Could not add file";
             }
@@ -200,6 +201,8 @@ class jugaad extends Controller {
             $file["user"] = $this->user;
             $file["user_can"] = $this->user_can;
             $file["version_id"] = $this->jugaad_model->get_latest_version_id($file_id);
+
+            $file["templates"] = $this->template_model->get_template_list();
 
             if ($file_type == "directory") {
                 $this->load_view("directory_edit", $file);

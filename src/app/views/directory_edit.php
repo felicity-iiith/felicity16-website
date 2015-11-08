@@ -33,6 +33,13 @@
                                 <option value="directory">Directory</option>
                             </select>
                         </label>
+                        <label for="template">Template:
+                            <select name="template" class="text-input">
+                                <?php foreach ($templates as $t): ?>
+                                    <option value="<?= $t ?>"><?= $t ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </label>
                         <label for="type">Default role:
                             <select class="text-input" name="default_role" required>
                                 <option value="none">None</option>

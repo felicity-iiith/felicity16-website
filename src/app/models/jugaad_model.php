@@ -2,12 +2,12 @@
 
 class jugaad_model extends Model {
 
-    function new_file($parent, $name, $slug, $type, $default_role, $user) {
+    function new_file($parent, $name, $slug, $type, $default_role, $template, $user) {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`name`, `slug`, `parent`, `type`, `default_role`) VALUES (?, ?, ?, ?, ?)");
-        if (!$stmt->bind_param("ssiss", $name, $slug, $parent, $type, $default_role)) {
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`name`, `slug`, `parent`, `type`, `default_role`, `template`) VALUES (?, ?, ?, ?, ?, ?)");
+        if (!$stmt->bind_param("ssisss", $name, $slug, $parent, $type, $default_role, $template)) {
             $db_error = true;
         }
         if (!$stmt->execute()) {
@@ -292,7 +292,7 @@ class jugaad_model extends Model {
 
     function get_file_data($file_id, $template_meta, $return_default = true) {
         // Get data for file based on template meta given
-        if ($file_id === false) {
+        if ($file_id === false || !is_array($template_meta)) {
             return false;
         }
         $data = [];
