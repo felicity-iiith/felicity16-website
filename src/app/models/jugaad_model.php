@@ -16,7 +16,7 @@ class jugaad_model extends Model {
 
         $insert_id = $stmt->insert_id;
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)");
         if (!$stmt->bind_param("is", $insert_id, $user)) {
             $db_error = true;
         }
@@ -54,12 +54,17 @@ class jugaad_model extends Model {
         }
 
         if ($file_type != 'directory') {
-            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `data`, `action`, `created_by`) VALUES (?, ?, 'edit', ?)");
-            if (!$stmt->bind_param("iss", $file_id, $data, $user)) {
+            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'edit', ?)");
+            if (!$stmt->bind_param("is", $file_id, $user)) {
                 $db_error = true;
             }
             if (!$stmt->execute()) {
                 $db_error = true;
+            }
+
+            if (!$db_error) {
+                $version_id = $stmt->insert_id;
+                $db_error = $this->update_file_data($file_id, $version_id, $data);
             }
         }
 
@@ -97,7 +102,7 @@ class jugaad_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             $db_error = true;
         }
@@ -139,7 +144,7 @@ class jugaad_model extends Model {
             $db_error = true;
         }
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)");
         if (!$stmt->bind_param("is", $file_id, $user)) {
             $db_error = true;
         }
@@ -237,7 +242,7 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type`, `default_role` FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type`, `default_role`, `template` FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -271,13 +276,9 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_data($file_id) {
-        // Get data for file
-        if ($file_id === false) {
-            return false;
-        }
-        $stmt = $this->DB->jugaad->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
-        if (!$stmt->bind_param("i", $file_id)) {
+    private function get_field_value($file_id, $name, $meta) {
+        $stmt = $this->DB->jugaad->prepare("SELECT `value` FROM `file_data` WHERE `file_id`=? AND `name`=? ORDER BY `id` DESC LIMIT 1");
+        if (!$stmt->bind_param("is", $file_id, $name)) {
             return false;
         }
         if (!$stmt->execute()) {
@@ -289,21 +290,44 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_data_version($file_id, $version_id) {
-        // Get data for file at specific version
+    function get_file_data($file_id, $template_meta, $return_default = true) {
+        // Get data for file based on template meta given
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `data` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 1");
-        if (!$stmt->bind_param("ii", $file_id, $version_id)) {
-            return false;
+        $data = [];
+        foreach ($template_meta as $name => $meta) {
+            $field = $this->get_field_value($file_id, $name, $meta);
+            if ($field === false) {
+                if ($return_default) {
+                    $data[$name] = @$meta['default'] ?: $meta['name'];
+                } else {
+                    $data[$name] = '';
+                }
+            } else {
+                $data[$name] = $field;
+            }
         }
-        if (!$stmt->execute()) {
-            return false;
+        return $data;
+    }
+
+    private function update_file_data($file_id, $version_id, $data) {
+        $db_error = false;
+        foreach ($data as $name => $value) {
+            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `version_id`, `name`, `value`) VALUES (?, ?, ?, ?)");
+            if (!$stmt->bind_param("iiss", $file_id, $version_id, $name, $value)) {
+                $db_error = true;
+            }
+            if (!$stmt->execute()) {
+                $db_error = true;
+            }
         }
-        if ($row = $stmt->get_result()->fetch_row()) {
-            return $row[0];
-        }
+        return $db_error;
+    }
+
+    function get_file_data_version($file_id, $version_id) {
+        // Get data for file at specific version
+        //TODO
         return false;
     }
 
@@ -312,7 +336,7 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -330,39 +354,8 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? ORDER BY `id` DESC");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC");
         if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
-            return false;
-        }
-        $history_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $history_list;
-    }
-
-    function get_history_item($file_id, $edit_id) {
-        if ($file_id === false || $edit_id === false) {
-            return false;
-        }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `action`, `data`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`=?");
-        if (!$stmt->bind_param("ii", $file_id, $edit_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
-            return false;
-        }
-        $history_item = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-        return $history_item ? $history_item[0] : false;
-    }
-
-    function get_history_diff($file_id, $edit_id) {
-        if ($file_id === false || $edit_id === false) {
-            return false;
-        }
-
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `data`, `action`, `timestamp`, `created_by` FROM `file_data` WHERE `file_id`=? AND `id`<=? AND `action`='edit' ORDER BY `id` DESC LIMIT 2");
-        if (!$stmt->bind_param("ii", $file_id, $edit_id)) {
             return false;
         }
         if (!$stmt->execute()) {

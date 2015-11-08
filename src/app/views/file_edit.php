@@ -35,21 +35,16 @@
                 <div class="file_title_edit">
                     <label for="filename">Name: </label><input type="text" name="name" id="editname" value="<?= isset($unsaved) ? $unsaved["name"] : $name ?>" required />
                     <label for="slug">Slug: </label><input type="text" name="slug" id="editslug" value="<?= isset($unsaved) ? $unsaved["slug"] : $slug ?>" required />
-                    <input type="submit" class="btn btn-green" name="save" value="Save page"/>
                 </div>
                 <div id="orig_file">
                     <div id="orig_file_name" hidden><?= $name ?></div>
                     <div id="orig_file_slug" hidden><?= $slug ?></div>
-                    <div id="orig_file_data" hidden><?= $data ?></div>
                 </div>
-                <div class="editor">
+                <div class="editor padded">
                     <div id="file_edit_contain">
-                        <textarea id="file_md_edit" class="file_content" name="data"
-                            placeholder="Write your markdown text here."
-                            ><?= isset($unsaved) ? $unsaved["data"] : $data ?></textarea>
-                        <textarea id="dummyTextarea"></textarea>
+                        <?php $this->load_fragment('template_edit'); ?>
                     </div>
-                    <section id="file_md" class="file_content"></section>
+                    <input type="submit" class="btn btn-green" name="save" value="Save page"/>
                 </div>
             </form>
             <?php

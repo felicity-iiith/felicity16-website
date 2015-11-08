@@ -45,7 +45,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('php', function() {
-    return gulp.src('src/**/*.php')
+    return gulp.src('src/**/*.{php,json}')
         .pipe(gulp.dest('build/'));
 });
 
@@ -92,7 +92,7 @@ gulp.task('watch', function() {
         .on('change', deleter('src/', 'build/'));
     gulp.watch('src/static/images/*.{jpg,jpeg,png,svg}', ['images'])
         .on('change', deleter('src/', 'build/'));
-    gulp.watch('src/**/*.php', ['php'])
+    gulp.watch('src/**/*.{php,json}', ['php'])
         .on('change', deleter('src/', 'build/'));
     gulp.watch(['src/.htaccess', 'src/humans.txt', 'src/robots.txt'], ['stuff'])
         .on('change', deleter('src/', 'build/'));

@@ -1,0 +1,17 @@
+{
+    "title": {
+        "name"      : "Page title",
+        "type"      : "text"
+    },
+    "tagline": {
+        "name"      : "Category tagline (if any)",
+        "type"      : "text",
+        "optional"  : true
+    },
+    "background_image": {
+        "name"  : "Background image",
+        "type"  : "text",
+        "default" : "bg1.jpg",
+        "optional" : true
+    }
+}

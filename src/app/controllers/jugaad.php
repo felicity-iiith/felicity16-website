@@ -8,8 +8,8 @@ class jugaad extends Controller {
         $this->cas->forceAuthentication();
 
         $this->load_model("jugaad_model");
+        $this->load_model("template_model");
         $this->load_model("perms_model");
-        $this->load_model("auth_model");
 
         $this->user = $this->cas->getUser();
     }
@@ -18,7 +18,7 @@ class jugaad extends Controller {
         return preg_match('/^[a-z0-9-_]+$/i', $slug);
     }
 
-    private function edit() {
+    private function edit($file) {
         if (!empty($_POST["save"]) && isset($_POST["file_id"])
             && !empty($_POST["name"])
             && (!empty($_POST["slug"]) || $_POST["file_id"] == 0)
@@ -26,7 +26,7 @@ class jugaad extends Controller {
             $file_id = $_POST["file_id"];
             $name = htmlspecialchars($_POST["name"]);
             $slug = htmlspecialchars(@$_POST["slug"] ?: "");
-            $data = htmlspecialchars(@$_POST["data"] ?: "");
+            $data = @$_POST["data"] ?: array();
             $version_id = @$_POST["version_id"] ?: 0;
 
             if ($slug && !$this->is_slug_valid($slug)) {
@@ -36,6 +36,20 @@ class jugaad extends Controller {
             $latest_version = $this->jugaad_model->get_latest_version_id($file_id);
             if ($latest_version > $version_id) {
                 return "Cannot save. Someone else also edited the file";
+            }
+
+            if ($file["type"] == "file") {
+                $template_meta = $this->template_model->get_meta($file["template"]);
+                $orig_data = $this->jugaad_model->get_file_data($file_id, $template_meta, false);
+
+                // Clean data
+                foreach ($data as $key => $value) {
+                    if (array_key_exists($key, $orig_data)) {
+                        if ($data[$key] == $orig_data[$key]) {
+                            unset($data[$key]);
+                        }
+                    }
+                }
             }
 
             $save = $this->jugaad_model->update_file($file_id, $name, $slug, $data, $this->user);
@@ -147,6 +161,13 @@ class jugaad extends Controller {
         }
     }
 
+    private function show_file_edit($file) {
+        $file["template_meta"] = $this->template_model->get_meta($file["template"]);
+        $file["data"] = $this->jugaad_model->get_file_data($file['id'], $file["template_meta"], false);
+
+        $this->load_view("file_edit", $file);
+    }
+
     function read() {
         $path = func_get_args();
 
@@ -172,7 +193,7 @@ class jugaad extends Controller {
                 $this->http->response_code(403);
             }
 
-            $error = $this->edit();
+            $error = $this->edit($file);
 
             $file["error"] = $error;
             $file["admins"] = $this->perms_model->get_user_list($file_id);
@@ -183,18 +204,7 @@ class jugaad extends Controller {
             if ($file_type == "directory") {
                 $this->load_view("directory_edit", $file);
             } else if ($file_type == "file") {
-                if ($file["error"] && isset($_POST["name"])) {
-                    $file["version_id"] = @$_POST["version_id"] ?: 0;
-                    $file["data"] = $this->jugaad_model->get_file_data_version($file_id, $file["version_id"]);
-                    $file["unsaved"] = [
-                        "name" => htmlspecialchars($_POST["name"]),
-                        "slug" => htmlspecialchars(@$_POST["slug"] ?: ""),
-                        "data" => htmlspecialchars(@$_POST["data"] ?: ""),
-                    ];
-                } else {
-                    $file["data"] = $this->jugaad_model->get_file_data($file_id);
-                }
-                $this->load_view("file_edit", $file);
+                $this->show_file_edit($file);
             } else {
                 $this->http->response_code(404);
             }
