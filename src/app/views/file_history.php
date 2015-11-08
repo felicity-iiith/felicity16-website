@@ -24,7 +24,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $name ?> - Felicity'16 Organise</title>
+        <title><?= $slug ?> - Felicity'16 Organise</title>
         <script src="<?= base_url() ?>static/scripts/vendor/marked.min.js"></script>
         <script src="<?= base_url() ?>static/scripts/common_edit.js"></script>
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
@@ -40,7 +40,7 @@
                 <a class="btn btn-blue" href="?edit"><i class="fa fa-arrow-left"></i> Go back to file</a>
             </nav>
             <article class="file">
-                <h1 class="file_title"><?= $name ?></h1>
+                <h1 class="file_title"><?= $slug ?></h1>
                 <?php
                     $initial = true;
                     if (isset($history_diff)):

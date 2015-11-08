@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $name ?> - Felicity'16 Organise</title>
+        <title><?= $slug ?> - Felicity'16 Organise</title>
         <script src="<?= base_url() ?>static/scripts/vendor/marked.min.js"></script>
         <script src="<?= base_url() ?>static/scripts/common.js"></script>
         <script src="<?= base_url() ?>static/scripts/common_edit.js"></script>
@@ -33,11 +33,16 @@
                 <input type="hidden" name="file_id" value="<?= $id ?>" id="file_id"/>
                 <input type="hidden" name="version_id" value="<?= $version_id ?>" id="version_id"/>
                 <div class="file_title_edit">
-                    <label for="filename">Name: </label><input type="text" name="name" id="editname" value="<?= isset($unsaved) ? $unsaved["name"] : $name ?>" required />
                     <label for="slug">Slug: </label><input type="text" name="slug" id="editslug" value="<?= isset($unsaved) ? $unsaved["slug"] : $slug ?>" required />
+                    <label for="template">Template:
+                        <select name="template" class="text-input">
+                            <?php foreach ($templates as $t): ?>
+                                <option value="<?= $t ?>" <?= ($t == $template) ? "selected" :"" ?>><?= $t ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
                 </div>
                 <div id="orig_file">
-                    <div id="orig_file_name" hidden><?= $name ?></div>
                     <div id="orig_file_slug" hidden><?= $slug ?></div>
                 </div>
                 <div class="editor padded">

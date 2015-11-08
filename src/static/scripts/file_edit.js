@@ -27,13 +27,6 @@ checkRemote = (function() {
         n.close();
     }
 
-    function pathChangedError() {
-        remoteWIP = true;
-        var notif = notify("Seems like the file's path is changed. Be careful when saving your data.")
-            .addButton("Okay", null, 'btn btn-small btn-green')
-            .show();
-    }
-
     function failingError() {
         if (failCount < 3) return;
         failCount = 0;

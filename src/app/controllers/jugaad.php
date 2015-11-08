@@ -20,13 +20,12 @@ class jugaad extends Controller {
 
     private function edit($file) {
         if (!empty($_POST["save"]) && isset($_POST["file_id"])
-            && !empty($_POST["name"])
             && (!empty($_POST["slug"]) || $_POST["file_id"] == 0)
         ) {
             $file_id = $_POST["file_id"];
-            $name = htmlspecialchars($_POST["name"]);
             $slug = htmlspecialchars(@$_POST["slug"] ?: "");
             $data = @$_POST["data"] ?: array();
+            $template = $_POST["template"];
             $version_id = @$_POST["version_id"] ?: 0;
 
             if ($slug && !$this->is_slug_valid($slug)) {
@@ -52,7 +51,7 @@ class jugaad extends Controller {
                 }
             }
 
-            $save = $this->jugaad_model->update_file($file_id, $name, $slug, $data, $this->user);
+            $save = $this->jugaad_model->update_file($file_id, $slug, $data, $template, $this->user);
             if ($save === false) {
                 return "Could not save file";
             }
@@ -62,10 +61,9 @@ class jugaad extends Controller {
         }
 
         if (!empty($_POST["add"]) && isset($_POST["parent_id"])
-            && !empty($_POST["name"]) && !empty($_POST["slug"])
+            && !empty($_POST["slug"])
         ) {
             $parent_id = $_POST["parent_id"];
-            $name = $_POST["name"];
             $slug = $_POST["slug"];
             $type = $_POST["type"];
             $template = $_POST["template"];
@@ -75,7 +73,7 @@ class jugaad extends Controller {
                 return "Invalid slug";
             }
 
-            $add = $this->jugaad_model->new_file($parent_id, $name, $slug, $type, $default_role, $template, $this->user);
+            $add = $this->jugaad_model->new_file($parent_id, $slug, $type, $default_role, $template, $this->user);
             if ($add === false) {
                 return "Could not add file";
             }
@@ -221,10 +219,10 @@ class jugaad extends Controller {
                 $file["user_can"] = $this->user_can;
                 if ($this->user_can["see_history_detail"] && isset($_GET["id"])) {
                     $edit_id = $_GET["id"];
-                    $file["history_item"] = $this->jugaad_model->get_history_item($file_id, $edit_id);
-                    if ($file["history_item"] !== false && $file["history_item"]["action"] == 'edit') {
-                        $file["history_diff"] = $this->jugaad_model->get_history_diff($file_id, $edit_id);
-                    }
+                    // $file["history_item"] = $this->jugaad_model->get_history_item($file_id, $edit_id);
+                    // if ($file["history_item"] !== false && $file["history_item"]["action"] == 'edit') {
+                    //     $file["history_diff"] = $this->jugaad_model->get_history_diff($file_id, $edit_id);
+                    // }
                 } else if (isset($_GET["id"])) {
                     $file["perm_error"] = true;
                 }

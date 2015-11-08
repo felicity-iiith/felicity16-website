@@ -2,12 +2,12 @@
 
 class jugaad_model extends Model {
 
-    function new_file($parent, $name, $slug, $type, $default_role, $template, $user) {
+    function new_file($parent, $slug, $type, $default_role, $template, $user) {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`name`, `slug`, `parent`, `type`, `default_role`, `template`) VALUES (?, ?, ?, ?, ?, ?)");
-        if (!$stmt->bind_param("ssisss", $name, $slug, $parent, $type, $default_role, $template)) {
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`slug`, `parent`, `type`, `default_role`, `template`) VALUES (?, ?, ?, ?, ?)");
+        if (!$stmt->bind_param("sisss", $slug, $parent, $type, $default_role, $template)) {
             $db_error = true;
         }
         if (!$stmt->execute()) {
@@ -34,7 +34,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function update_file($file_id, $name, $slug, $data, $user) {
+    function update_file($file_id, $slug, $data, $template, $user) {
         if ($file_id === false) {
             return false;
         }
@@ -45,8 +45,8 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `name`=?, `slug`=? WHERE `id`=?");
-        if (!$stmt->bind_param("ssi", $name, $slug, $file_id)) {
+        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `slug`=?, `template`=? WHERE `id`=?");
+        if (!$stmt->bind_param("ssi", $slug, $template, $file_id)) {
             $db_error = true;
         }
         if (!$stmt->execute()) {
@@ -86,7 +86,7 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `trash_files` (`file_id`, `name`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `name`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `trash_files` (`file_id`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("ss", $user, $file_id)) {
             $db_error = true;
         }
@@ -128,7 +128,7 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`id`, `name`, `slug`, `parent`, `type`) SELECT `file_id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`id`, `slug`, `parent`, `type`) SELECT `file_id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
         if (!$stmt->bind_param("s", $file_id)) {
             $db_error = true;
         }
@@ -226,7 +226,7 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -242,7 +242,7 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `name`, `slug`, `parent`, `type`, `default_role`, `template` FROM `files` WHERE `id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `slug`, `parent`, `type`, `default_role`, `template` FROM `files` WHERE `id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -263,7 +263,7 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `file_id` as `id`, `name`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
+        $stmt = $this->DB->jugaad->prepare("SELECT `file_id` as `id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
         if (!$stmt->bind_param("i", $file_id)) {
             return false;
         }
@@ -325,12 +325,6 @@ class jugaad_model extends Model {
         return $db_error;
     }
 
-    function get_file_data_version($file_id, $version_id) {
-        // Get data for file at specific version
-        //TODO
-        return false;
-    }
-
     function get_latest_version_id($file_id) {
         // Get latest version id
         if ($file_id === false) {
@@ -367,7 +361,7 @@ class jugaad_model extends Model {
 
     function get_trash_list() {
         // Get list of files in trash
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `name`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
+        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
         if (!$stmt->execute()) {
             return false;
         }

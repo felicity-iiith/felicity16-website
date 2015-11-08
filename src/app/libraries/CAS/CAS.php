@@ -20,7 +20,7 @@ require_once 'CASconfig.php';
 require_once $phpcas_path . '/CAS.php';
 
 // Uncomment to enable debugging
-// phpCAS::setDebug();
+// phpCAS::setDebug('/tmp/phpcas.log');
 
 // Initialize phpCAS
 phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);

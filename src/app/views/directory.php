@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $name ?> - Felicity'16 Organise</title>
+        <title><?= $slug ?> - Felicity'16 Organise</title>
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/common.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/directory.css">
@@ -11,7 +11,7 @@
     <body>
         <div class="container">
             <article class="dir">
-                <h1 class="dir_title"><?= $name ?></h1>
+                <h1 class="dir_title"><?= $slug ?></h1>
                 <div class="admin_panel padded text-right">
                     <?php if ($user_can['write_file']): ?>
                         <a href="?edit" id="edit-btn" class="btn btn-blue"><i class="fa fa-pencil"></i> Edit / Add file</a>
@@ -35,7 +35,7 @@
                                         <?php else: ?>
                                             <i class="fa fa-folder-o"></i>
                                         <?php endif; ?>
-                                        <?= $file['name'] ?>
+                                        <?= $file['slug'] ?>
                                     </a>
                                 </li>
                         <?php endforeach; ?>

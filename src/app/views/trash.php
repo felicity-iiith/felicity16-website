@@ -37,7 +37,7 @@
                                         <?php else: ?>
                                             <i class="fa fa-folder-o"></i>
                                         <?php endif; ?>
-                                        <?= $file['name'] ?>
+                                        <?= $file['slug'] ?>
                                         <span class="grey"><?= $file['path'] ?></span><br>
                                         <span class="grey">
                                             <?= explode('@', $file["created_by"])[0] ?>

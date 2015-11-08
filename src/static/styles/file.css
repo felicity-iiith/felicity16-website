@@ -18,10 +18,6 @@ html, body {
 .file_title_edit {
     padding: 5px;
     align-items: center;
-    display: flex;
-}
-.file_title_edit input[type="text"] {
-    flex: 1 1;
 }
 .file_title_edit input {
     margin: 0 5px;
