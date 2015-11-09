@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Trash - Felicity'16 Organise</title>
+        <title>Trash - Felicity'16 Jugaad</title>
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/common.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/common_edit.css">
