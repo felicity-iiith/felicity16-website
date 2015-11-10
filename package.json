@@ -24,6 +24,6 @@
   },
   "scripts": {
     "gulp": "gulp",
-    "test": "jshint src/static/scripts gulpfile.js --reporter=node_modules/jshint-stylish; scss-lint src/static/styles/"
+    "test": "scripts/lint.sh"
   }
 }
