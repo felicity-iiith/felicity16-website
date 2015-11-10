@@ -30,7 +30,8 @@ var reportError = function(error) {
 };
 
 gulp.task('clean', function() {
-    del('build/');
+    // Must be synchronous if we're going to use this task as a dependency
+    del.sync('build/');
 });
 
 gulp.task('styles', function() {
@@ -68,7 +69,7 @@ gulp.task('vendor', function() {
         .pipe(gulp.dest('build/vendor/'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     function deleter() {
         var replaceFunc = null;
         if (typeof arguments[0] === 'string') {
@@ -112,4 +113,8 @@ gulp.task('watch', function() {
         .on('change', deleter('vendor/', 'build/vendor/'));
 });
 
-gulp.task('default', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
+gulp.task('build', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
+
+gulp.task('default', ['clean'], function() {
+    gulp.run('build');
+});
