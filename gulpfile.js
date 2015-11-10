@@ -11,7 +11,7 @@ var paths = {
     styles: 'src/static/styles/**/*.{scss,css}',
     scripts: 'src/static/scripts/**/*.js',
     images: 'src/static/images/*.{jpg,jpeg,png,svg}',
-    php: 'src/**/*.php',
+    php: 'src/**/*.{php,pem}',
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
     vendor: ['vendor/**/*'],
 };
