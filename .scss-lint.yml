@@ -7,3 +7,5 @@ linters:
         enabled: false
     IdSelector:
         enabled: false
+    ColorKeyword:
+        enabled: false
