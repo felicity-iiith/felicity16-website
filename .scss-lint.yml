@@ -1,1 +1,5 @@
 exclude: 'src/static/styles/vendor/**'
+
+linters:
+    Indentation:
+        width: 4
