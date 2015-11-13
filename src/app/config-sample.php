@@ -19,3 +19,10 @@ $cfg = array(
 $admins = [
     // List of user ids of admins
 ];
+
+$cas_cfg = array(
+    'host'           => 'login.iiit.ac.in',
+    'context'        => '/cas',
+    'port'           => 443,
+    'server_ca_cert' => APPPATH . 'iiit.ac.in.pem', // Optional, Recommended.
+);

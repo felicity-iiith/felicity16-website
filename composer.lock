@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c30ee5d0c05421a5d9464a68964c60d",
-    "packages": [],
+    "hash": "946587ab8867a69ccbb0cff5ea6a8387",
+    "content-hash": "cf5ca1f967b70c5e146faa5a058ec437",
+    "packages": [
+        {
+            "name": "jasig/phpcas",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jasig/phpCAS.git",
+                "reference": "b6f5d484735d3b0e80b068a87bd1eabac04b2cbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jasig/phpCAS/zipball/b6f5d484735d3b0e80b068a87bd1eabac04b2cbe",
+                "reference": "b6f5d484735d3b0e80b068a87bd1eabac04b2cbe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "source/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Joachim Fritschi",
+                    "homepage": "https://wiki.jasig.org/display/~fritschi"
+                },
+                {
+                    "name": "Adam Franco",
+                    "homepage": "https://wiki.jasig.org/display/~adamfranco"
+                }
+            ],
+            "description": "Provides a simple API for authenticating users against a CAS server",
+            "homepage": "https://wiki.jasig.org/display/CASC/phpCAS",
+            "keywords": [
+                "cas",
+                "jasig"
+            ],
+            "time": "2014-07-24 20:29:29"
+        }
+    ],
     "packages-dev": [
         {
             "name": "jakub-onderka/php-parallel-lint",

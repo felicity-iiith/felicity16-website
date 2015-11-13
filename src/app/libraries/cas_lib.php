@@ -1,11 +1,32 @@
 <?php
+
+/**
+ * CAS Library
+ */
 class cas_lib extends Library {
 
+    private static $initialized = false;
+
     function __construct() {
-        $olddir = getcwd();
-        chdir(dirname(__FILE__));
-        require_once('CAS/CAS.php');
-        chdir($olddir);
+        if (! self::$initialized) {
+            global $cas_cfg;
+
+            phpCAS::client(
+                CAS_VERSION_2_0,
+                $cas_cfg['host'],
+                $cas_cfg['port'],
+                $cas_cfg['context']
+            );
+
+            // Perform SSL validation only if server_ca_cert path is provided.
+            if (isset($cas_cfg['server_ca_cert'])) {
+                phpCAS::setCasServerCACert($cas_cfg['server_ca_cert']);
+            }
+            else {
+                phpCAS::setNoCasServerValidation();
+            }
+            self::$initialized = true;
+        }
     }
 
     function forceAuthentication() {
@@ -21,7 +42,10 @@ class cas_lib extends Library {
     }
 
     function getUser() {
-        return phpCAS::getUser();
+        if (phpCAS::isAuthenticated()) {
+            return phpCAS::getUser();
+        }
+        return null;
     }
 
     function getNick() {

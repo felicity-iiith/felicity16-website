@@ -2,7 +2,9 @@
     "name": "felicity-iiith/felicity16",
     "description": "Felicity 2k16 website",
     "license": "UNLICENSED",
-    "require": {},
+    "require": {
+        "jasig/phpcas": "^1.3"
+    },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "0.9.*"
     },

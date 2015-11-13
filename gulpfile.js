@@ -7,6 +7,15 @@ var path = require('path');
 var del = require('del');
 var gutil = require('gulp-util');
 
+var paths = {
+    styles: 'src/static/styles/**/*.{scss,css}',
+    scripts: 'src/static/scripts/**/*.js',
+    images: 'src/static/images/*.{jpg,jpeg,png,svg}',
+    php: 'src/**/*.{php,json,pem}',
+    stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
+    vendor: ['vendor/**/*'],
+};
+
 var reportError = function(error) {
     if ('CI' in process.env && process.env.CI === 'true') {
         process.exit(1);
@@ -21,11 +30,12 @@ var reportError = function(error) {
 };
 
 gulp.task('clean', function() {
-    del('build/');
+    // Must be synchronous if we're going to use this task as a dependency
+    del.sync('build/');
 });
 
 gulp.task('styles', function() {
-    return gulp.src('src/static/styles/**/*.{scss,css}')
+    return gulp.src(paths.styles)
         .pipe(plumber({
             errorHandler: reportError
         }))
@@ -40,26 +50,26 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('images', function() {
-    return gulp.src('src/static/images/*.{jpg,jpeg,png,svg}')
+    return gulp.src(paths.images)
         .pipe(gulp.dest('build/static/images'));
 });
 
 gulp.task('php', function() {
-    return gulp.src('src/**/*.{php,json}')
+    return gulp.src(paths.php)
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('stuff', function() {
-    return gulp.src(['src/.htaccess', 'src/humans.txt', 'src/robots.txt'])
+    return gulp.src(paths.stuff)
         .pipe(gulp.dest('build/'));
 });
 
 gulp.task('vendor', function() {
-    return gulp.src('vendor/**/*', {dot: true})
+    return gulp.src(paths.vendor, {dot: true})
         .pipe(gulp.dest('build/vendor/'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', ['default'], function() {
     function deleter() {
         var replaceFunc = null;
         if (typeof arguments[0] === 'string') {
@@ -83,21 +93,28 @@ gulp.task('watch', function() {
             }
         };
     }
-    gulp.watch('src/static/styles/**/*.{scss,css}', ['styles'])
+
+    var srcToBuildDeleter = deleter('src/', 'build/');
+
+    gulp.watch(paths.styles, ['styles'])
         .on('change', deleter(function(file) {
             return file.replace('src/', 'build/')
                 .replace(/\.scss$/, '.css');
         }));
-    gulp.watch('src/static/scripts/**/*.js', ['scripts'])
-        .on('change', deleter('src/', 'build/'));
-    gulp.watch('src/static/images/*.{jpg,jpeg,png,svg}', ['images'])
-        .on('change', deleter('src/', 'build/'));
-    gulp.watch('src/**/*.{php,json}', ['php'])
-        .on('change', deleter('src/', 'build/'));
-    gulp.watch(['src/.htaccess', 'src/humans.txt', 'src/robots.txt'], ['stuff'])
-        .on('change', deleter('src/', 'build/'));
-    gulp.watch(['vendor/**/*'], {dot: true})
+    gulp.watch(paths.scripts, ['scripts'])
+        .on('change', srcToBuildDeleter);
+    gulp.watch(paths.images, ['images'])
+        .on('change', srcToBuildDeleter);
+    gulp.watch(paths.php, ['php'])
+        .on('change', srcToBuildDeleter);
+    gulp.watch(paths.stuff, ['stuff'])
+        .on('change', srcToBuildDeleter);
+    gulp.watch(paths.vendor, {dot: true})
         .on('change', deleter('vendor/', 'build/vendor/'));
 });
 
-gulp.task('default', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
+gulp.task('build', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
+
+gulp.task('default', ['clean'], function() {
+    gulp.run('build');
+});
