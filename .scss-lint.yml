@@ -1,1 +1,11 @@
 exclude: 'src/static/styles/vendor/**'
+
+linters:
+    Indentation:
+        width: 4
+    ColorVariable:
+        enabled: false
+    IdSelector:
+        enabled: false
+    ColorKeyword:
+        enabled: false
