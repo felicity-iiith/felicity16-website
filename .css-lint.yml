@@ -1,4 +1,4 @@
-scss_files: 'src/static/styles/**/*.scss'
+scss_files: 'src/static/styles/**/*.css'
 exclude: 'src/static/styles/vendor/**'
 
 linters:
@@ -13,4 +13,8 @@ linters:
     SelectorDepth:
         max_depth: 4
     PropertySortOrder:
+        enabled: false
+
+# CSS specific stuff
+    MergeableSelector:
         enabled: false
