@@ -29,10 +29,10 @@
         <div class="error" id="error_msg"><?= $error ?></div>
         <?php endif; ?>
         <article class="file">
-            <form action="" method="post" class="file_edit">
+            <form action="" method="post" class="file-edit">
                 <input type="hidden" name="file_id" value="<?= $id ?>" id="file_id"/>
                 <input type="hidden" name="version_id" value="<?= $version_id ?>" id="version_id"/>
-                <div class="file_title_edit">
+                <div class="file-title-edit">
                     <label for="slug">Slug: </label><input type="text" name="slug" id="editslug" value="<?= isset($unsaved) ? $unsaved["slug"] : $slug ?>" required />
                     <label for="template">Template:
                         <select name="template" class="text-input">
@@ -46,7 +46,7 @@
                     <div id="orig_file_slug" hidden><?= $slug ?></div>
                 </div>
                 <div class="editor padded">
-                    <div id="file_edit_contain">
+                    <div id="file-edit-contain">
                         <?php $this->load_fragment('template_edit'); ?>
                     </div>
                     <input type="submit" class="btn btn-green" name="save" value="Save page"/>

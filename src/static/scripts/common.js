@@ -52,7 +52,7 @@ function notify(msg) {
 
 var Notif = (function() {
     var notifArea = document.createElement('div');
-    notifArea.className = 'notifArea';
+    notifArea.className = 'notif-area';
 
     var notifAreaAppended = false;
 
@@ -65,7 +65,7 @@ var Notif = (function() {
         msgDiv.innerHTML = msg;
 
         var btnDiv = document.createElement('div');
-        btnDiv.className = 'notifBtn';
+        btnDiv.className = 'notif-btn';
 
         notifDiv.appendChild(msgDiv);
         notifDiv.appendChild(btnDiv);

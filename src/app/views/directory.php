@@ -11,8 +11,8 @@
     <body>
         <div class="container">
             <article class="dir">
-                <h1 class="dir_title"><?= $slug ?></h1>
-                <div class="admin_panel padded text-right">
+                <h1 class="dir-title"><?= $slug ?></h1>
+                <div class="admin-panel padded text-right">
                     <?php if ($user_can['write_file']): ?>
                         <a href="?edit" id="edit-btn" class="btn btn-blue"><i class="fa fa-pencil"></i> Edit / Add file</a>
                     <?php endif; ?>
@@ -26,7 +26,7 @@
                             echo '<a class="btn btn-blue" href="..">Go to parent <i class="fa fa-level-up"></i></a>';
                         }
                     ?>
-                    <ul class="item_list">
+                    <ul class="item-list">
                         <?php foreach ($data as $file): ?>
                                 <li>
                                     <a href="<?= $file['slug'] ?>">
@@ -44,7 +44,7 @@
             </article>
         </div>
         <script>
-        var links = document.querySelectorAll('.item_list a');
+        var links = document.querySelectorAll('.item-list a');
         for (i = 0; i < links.length; ++i) {
             links[i].addEventListener('mouseenter', function() {
                 var icon = this.querySelector('i');

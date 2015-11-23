@@ -34,7 +34,7 @@
         </select>
         <input type="submit" class="btn-green inline" name="add_user" value="Add user"/>
     </form>
-    <ul class="admin_list">
+    <ul class="admin-list">
         <?php
             foreach ($admins as $admin):
                 $inherited = ($admin["file_id"] != $id);

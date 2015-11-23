@@ -13,7 +13,7 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="file_title">Editing directory: <?= $slug ?></h1>
+            <h1 class="file-title">Editing directory: <?= $slug ?></h1>
             <nav>
                 <a class="btn btn-blue" href="."><i class="fa fa-arrow-left"></i> Go back to directory</a>
             </nav>

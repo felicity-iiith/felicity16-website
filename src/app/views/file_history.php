@@ -40,7 +40,7 @@
                 <a class="btn btn-blue" href="?edit"><i class="fa fa-arrow-left"></i> Go back to file</a>
             </nav>
             <article class="file">
-                <h1 class="file_title"><?= $slug ?></h1>
+                <h1 class="file-title"><?= $slug ?></h1>
                 <?php
                     $initial = true;
                     if (isset($history_diff)):
@@ -73,7 +73,7 @@
                 <?php
                     endif;
                 ?>
-                <ul class="item_list">
+                <ul class="item-list">
                 <?php
                     foreach ($history as $edit):
                         $username = explode('@', $edit["created_by"])[0];

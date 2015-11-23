@@ -12,8 +12,8 @@
     <body>
         <div class="container">
             <article class="dir">
-                <h1 class="dir_title">Trash</h1>
-                    <div class="admin_panel padded text-right">
+                <h1 class="dir-title">Trash</h1>
+                    <div class="admin-panel padded text-right">
                         <a href="<?= base_url() ?>jugaad/" class="btn btn-green"><i class="fa fa-file"></i> Go to jugaad</a>
                     </div>
                     <?php if ($error): ?>
@@ -23,7 +23,7 @@
                         <div class="msg"><?= $msg ?></div>
                     <?php endif; ?>
                     <div class="list-interface">
-                        <ul class="admin_list">
+                        <ul class="admin-list">
                             <?php
                                 if (!count($files)) {
                                     echo "Nothing in trash!";

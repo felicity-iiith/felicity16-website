@@ -1,19 +1,22 @@
-.dir_title,
-.file_title {
+.dir-title,
+.file-title {
     border-bottom: 1px solid black;
     display: inline-block;
 }
 
-.admin_panel {
+.admin-panel {
     display: inline-block;
 }
+
 .error {
     padding: 5px;
     color: red;
 }
+
 .msg {
     padding: 5px;
 }
+
 nav {
     padding: 5px;
 }
@@ -22,26 +25,26 @@ nav {
     color: #777;
 }
 
-.item_list {
+.item-list {
     width: 100%;
     list-style: none;
     padding: 0;
 }
 
-.item_list li a {
+.item-list li a {
     padding: .6em;
     background-color: #f6f6f6;
     border: 1px solid #ddd;
-    border-bottom: none;
+    border-bottom: 0;
     display: block;
     transition: none;
 }
 
-.item_list li a:last-child {
+.item-list li a:last-child {
     border-bottom: 1px solid #ddd;
 }
 
-.item_list li a:hover {
+.item-list li a:hover {
     border-color: #aaa;
 }
 
@@ -49,26 +52,23 @@ li {
     line-height: 1.45em;
 }
 
-.notifArea {
+.notif-area {
     position: fixed;
     top: 1em;
     right: 1em;
 }
 
-.notifArea .notif {
-    margin-top: 0.5em;
+.notif-area .notif {
+    margin-top: .5em;
     background: #eee;
-    padding: 0.7em;
+    padding: .7em;
 }
 
-.notifArea .notif .notifMsg {
+.notif-area .notif .notif-btn button {
+    margin-top: .5em;
+    margin-left: .5em;
 }
 
-.notifArea .notif .notifBtn button {
-    margin-top: 0.5em;
-    margin-left: 0.5em;
-}
-
-.notifArea .notif .notifBtn button:first-of-type {
-    margin-left: 0em;
+.notif-area .notif .notif-btn button:first-of-type {
+    margin-left: 0;
 }
