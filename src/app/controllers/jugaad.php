@@ -182,20 +182,89 @@ class jugaad extends Controller {
         }
     }
 
-    private function edit($file) {
-        return $this->handle_save_file($file)
-                || $this->handle_add_file($file)
-                || $this->handle_update_default_role($file)
-                || $this->handle_add_user($file)
-                || $this->handle_revoke_user($file)
-                || $this->handle_delete_file($file);
-    }
-
     private function show_file_edit($file) {
         $file["template_meta"] = $this->template_model->get_meta($file["template"]);
         $file["data"] = $this->jugaad_model->get_file_data($file['id'], $file["template_meta"], false);
 
         $this->load_view("file_edit", $file);
+    }
+
+    private function handle_edit($file_id, $file) {
+        if (!$this->user_can['write_file']) {
+            $this->http->response_code(403);
+        }
+
+        $file_type = $file ? $file['type'] : false;
+
+        $error = $this->handle_save_file($file)
+                || $this->handle_add_file($file)
+                || $this->handle_update_default_role($file)
+                || $this->handle_add_user($file)
+                || $this->handle_revoke_user($file)
+                || $this->handle_delete_file($file);
+
+        $file["error"] = $error;
+        $file["admins"] = $this->perms_model->get_user_list($file_id);
+        $file["user"] = $this->user;
+        $file["user_can"] = $this->user_can;
+        $file["version_id"] = $this->jugaad_model->get_latest_version_id($file_id);
+
+        $file["templates"] = $this->template_model->get_template_list();
+
+        if ($file_type == "directory") {
+            $this->load_view("directory_edit", $file);
+        } elseif ($file_type == "file") {
+            $this->show_file_edit($file);
+        } else {
+            $this->http->response_code(404);
+        }
+    }
+
+    private function handle_history($file_id, $file) {
+        if (!$this->user_can['read_file']) {
+            $this->http->response_code(403);
+        }
+
+        $file_type = $file ? $file['type'] : false;
+
+        if ($file_type == "file") {
+            $file["history"] = $this->jugaad_model->get_history($file_id);
+
+            $file["user_can"] = $this->user_can;
+            if ($this->user_can["see_history_detail"] && isset($_GET["id"])) {
+                $edit_id = $_GET["id"];
+                foreach ($file["history"] as $value) {
+                    if ($value["id"] == $edit_id) {
+                        $file["history_item"] = $value;
+                        break;
+                    }
+                }
+            } elseif (isset($_GET["id"])) {
+                $file["perm_error"] = true;
+            }
+
+            $this->load_view("file_history", $file);
+        } else {
+            $this->http->response_code(404);
+        }
+    }
+
+    private function handle_read($file_id, $file) {
+        if (!$this->user_can['read_file']) {
+            $this->http->response_code(403);
+        }
+
+        $file_type = $file ? $file['type'] : false;
+
+        if ($file_type == "directory") {
+            $file["data"] = $this->jugaad_model->get_directory($file_id);
+            $file["user_can"] = $this->user_can;
+            $this->load_view("directory", $file);
+        } elseif ($file_type == "file") {
+            $this->http->redirect('?edit');
+        } else {
+            $this->http->response_code(404);
+        }
     }
 
     function read() {
@@ -214,69 +283,15 @@ class jugaad extends Controller {
         }
 
         $file = $this->jugaad_model->get_file($file_id);
-        $file_type = $file ? $file['type'] : false;
 
         $this->user_can = $this->perms_model->get_permissions($file_id, $this->user);
 
         if ($action == 'edit') {
-            if (!$this->user_can['write_file']) {
-                $this->http->response_code(403);
-            }
-
-            $error = $this->edit($file);
-
-            $file["error"] = $error;
-            $file["admins"] = $this->perms_model->get_user_list($file_id);
-            $file["user"] = $this->user;
-            $file["user_can"] = $this->user_can;
-            $file["version_id"] = $this->jugaad_model->get_latest_version_id($file_id);
-
-            $file["templates"] = $this->template_model->get_template_list();
-
-            if ($file_type == "directory") {
-                $this->load_view("directory_edit", $file);
-            } elseif ($file_type == "file") {
-                $this->show_file_edit($file);
-            } else {
-                $this->http->response_code(404);
-            }
+            $this->handle_edit($file_id, $file);
         } elseif ($action == 'history') {
-            if (!$this->user_can['read_file']) {
-                $this->http->response_code(403);
-            }
-            if ($file_type == "file") {
-                $file["history"] = $this->jugaad_model->get_history($file_id);
-
-                $file["user_can"] = $this->user_can;
-                if ($this->user_can["see_history_detail"] && isset($_GET["id"])) {
-                    $edit_id = $_GET["id"];
-                    foreach ($file["history"] as $value) {
-                        if ($value["id"] == $edit_id) {
-                            $file["history_item"] = $value;
-                            break;
-                        }
-                    }
-                } elseif (isset($_GET["id"])) {
-                    $file["perm_error"] = true;
-                }
-
-                $this->load_view("file_history", $file);
-            } else {
-                $this->http->response_code(404);
-            }
+            $this->handle_history($file_id, $file);
         } else {
-            if (!$this->user_can['read_file']) {
-                $this->http->response_code(403);
-            }
-            if ($file_type == "directory") {
-                $file["data"] = $this->jugaad_model->get_directory($file_id);
-                $file["user_can"] = $this->user_can;
-                $this->load_view("directory", $file);
-            } elseif ($file_type == "file") {
-                $this->http->redirect('?edit');
-            } else {
-                $this->http->response_code(404);
-            }
+            $this->handle_read($file_id, $file);
         }
     }
 
