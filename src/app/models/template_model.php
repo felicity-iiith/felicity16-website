@@ -9,7 +9,7 @@ class template_model extends Model {
     /**
      * Load template meta
      * @param string $template_name Name of template
-     * @return array containing meta of template
+     * @return array|false containing meta of template
      */
     function get_meta($template_name) {
         if (empty($template_name)) {
@@ -32,13 +32,12 @@ class template_model extends Model {
 
     function get_template_list() {
         $file_list = scandir(APPPATH . 'views/templates/');
-        foreach ($file_list as $i=>$file){
+        foreach ($file_list as $i=>$file) {
             if (!is_dir(APPPATH . "views/templates/$file")
                 || strpos($file, '.') === 0
             ) {
                 unset($file_list[$i]);
-            }
-            else {
+            } else {
                 $file_list[$i] = pathinfo($file)['filename'];
             }
         }

@@ -37,7 +37,7 @@
                     <label for="template">Template:
                         <select name="template" class="text-input">
                             <?php foreach ($templates as $t): ?>
-                                <option value="<?= $t ?>" <?= ($t == $template) ? "selected" :"" ?>><?= $t ?></option>
+                                <option value="<?= $t ?>" <?= ($t == $template) ? "selected" : "" ?>><?= $t ?></option>
                             <?php endforeach; ?>
                         </select>
                     </label>

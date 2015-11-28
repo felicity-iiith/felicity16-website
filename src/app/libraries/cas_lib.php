@@ -8,7 +8,7 @@ class cas_lib extends Library {
     private static $initialized = false;
 
     function __construct() {
-        if (! self::$initialized) {
+        if (!self::$initialized) {
             global $cas_cfg;
 
             phpCAS::client(
@@ -21,8 +21,7 @@ class cas_lib extends Library {
             // Perform SSL validation only if server_ca_cert path is provided.
             if (isset($cas_cfg['server_ca_cert'])) {
                 phpCAS::setCasServerCACert($cas_cfg['server_ca_cert']);
-            }
-            else {
+            } else {
                 phpCAS::setNoCasServerValidation();
             }
             self::$initialized = true;

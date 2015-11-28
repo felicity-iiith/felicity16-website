@@ -200,7 +200,7 @@ class jugaad_model extends Model {
             $file = $this->get_file($file_id, $include_trash);
             $file_id = $file['parent'];
             $path = '/' . $file['slug'] . $path;
-        } while($file_id !== 0);
+        } while ($file_id !== 0);
         return $path;
     }
 
@@ -251,7 +251,7 @@ class jugaad_model extends Model {
         }
         if ($row = $stmt->get_result()->fetch_assoc()) {
             return $row;
-        } else if($include_trash && $row = $this->get_file_trashed($file_id)) {
+        } elseif ($include_trash && $row = $this->get_file_trashed($file_id)) {
             $row['trashed'] = true;
             return $row;
         }
@@ -374,7 +374,7 @@ class jugaad_model extends Model {
             if ($parent === false) {
                 $page_list[$key]['recoverable'] = false;
                 $page_list[$key]['reason'] = "Cannot find parent, the file is orphan. :/";
-            } else if (array_key_exists('trashed', $parent) && $parent['trashed']) {
+            } elseif (array_key_exists('trashed', $parent) && $parent['trashed']) {
                 $page_list[$key]['recoverable'] = false;
                 $page_list[$key]['reason'] = "Parent directory also in trash. Recover parent first.";
             } else {

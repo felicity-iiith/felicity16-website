@@ -8,7 +8,7 @@
         switch ($meta['type']) {
             case 'text':
                 default:
-                    $out .= "<input type='text' name='data[$name]' id='$name' value='".htmlentities($data, ENT_QUOTES)."' $opt/>";
+                    $out .= "<input type='text' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "' $opt/>";
         }
         return $out . "</label>";
     }

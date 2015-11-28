@@ -16,9 +16,13 @@ class ajax extends Controller {
         }
     }
 
+    /**
+     * @param string $param Get GET parameter called $param
+     * @return mixed GET parameter or false if not found
+     */
     private function get_param($param) {
-        if (isset($_GET["file_id"])) {
-            return $_GET["file_id"];
+        if (isset($_GET[$param])) {
+            return $_GET[$param];
         }
         return false;
     }

@@ -146,16 +146,17 @@ class perms_model extends Model {
             return false;
         }
         $orig_file_id = $file_id;
-        $role = false;
         do {
             $file = $this->jugaad_model->get_file($file_id);
-            if ($file === false) return false;
+            if ($file === false) {
+                return false;
+            }
             $role = $this->file_get_user_role($file_id, $user);
             if ($role !== false) {
                 return $role;
             }
             $file_id = $file['parent'];
-        } while($file_id >= 0);
+        } while ($file_id >= 0);
 
         return $this->get_default_role($orig_file_id);
     }
@@ -184,7 +185,9 @@ class perms_model extends Model {
         $user_list = [];
         do {
             $file = $this->jugaad_model->get_file($file_id);
-            if ($file === false) return false;
+            if ($file === false) {
+                return false;
+            }
             $file_users = $this->file_get_users($file_id);
             foreach ($file_users as $user) {
                 if (!isset($user_list[$user['user']])) {
@@ -192,7 +195,7 @@ class perms_model extends Model {
                 }
             }
             $file_id = $file['parent'];
-        } while($file_id >= 0);
+        } while ($file_id >= 0);
 
         return $user_list;
     }

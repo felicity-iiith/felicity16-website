@@ -58,9 +58,7 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit");
-        }
-
-        if (!empty($_POST["add"]) && isset($_POST["parent_id"])
+        } elseif (!empty($_POST["add"]) && isset($_POST["parent_id"])
             && !empty($_POST["slug"])
         ) {
             $parent_id = $_POST["parent_id"];
@@ -80,9 +78,7 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($parent_id) . $slug . "/";
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit");
-        }
-
-        if (!empty($_POST["update_default_role"]) && isset($_POST["file_id"])) {
+        } elseif (!empty($_POST["update_default_role"]) && isset($_POST["file_id"])) {
             if (!$this->user_can['manage_user']) {
                 $this->http->response_code(403);
             }
@@ -96,9 +92,7 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        }
-
-        if (!empty($_POST["add_user"]) && isset($_POST["file_id"])
+        } elseif (!empty($_POST["add_user"]) && isset($_POST["file_id"])
             && !empty($_POST["username"])
         ) {
             if (!$this->user_can['manage_user']) {
@@ -116,9 +110,7 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        }
-
-        if (!empty($_POST["revoke_user"]) && isset($_POST["file_id"])
+        } elseif (!empty($_POST["revoke_user"]) && isset($_POST["file_id"])
             && !empty($_POST["username"])
         ) {
             if (!$this->user_can['manage_user']) {
@@ -135,9 +127,7 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        }
-
-        if (!empty($_POST["delete_file"]) && isset($_POST["file_id"])) {
+        } elseif (!empty($_POST["delete_file"]) && isset($_POST["file_id"])) {
             $file_id = $_POST["file_id"];
             $file = $this->jugaad_model->get_file($file_id);
             $parent_id = @$file['parent'] ?: 0;
@@ -173,7 +163,7 @@ class jugaad extends Controller {
         $action = false;
         if (isset($_GET["edit"])) {
             $action = "edit";
-        } else if (isset($_GET["history"])) {
+        } elseif (isset($_GET["history"])) {
             $action = "history";
         }
 
@@ -204,12 +194,12 @@ class jugaad extends Controller {
 
             if ($file_type == "directory") {
                 $this->load_view("directory_edit", $file);
-            } else if ($file_type == "file") {
+            } elseif ($file_type == "file") {
                 $this->show_file_edit($file);
             } else {
                 $this->http->response_code(404);
             }
-        } else if ($action == 'history'){
+        } elseif ($action == 'history') {
             if (!$this->user_can['read_file']) {
                 $this->http->response_code(403);
             }
@@ -219,11 +209,13 @@ class jugaad extends Controller {
                 $file["user_can"] = $this->user_can;
                 if ($this->user_can["see_history_detail"] && isset($_GET["id"])) {
                     $edit_id = $_GET["id"];
-                    // $file["history_item"] = $this->jugaad_model->get_history_item($file_id, $edit_id);
-                    // if ($file["history_item"] !== false && $file["history_item"]["action"] == 'edit') {
-                    //     $file["history_diff"] = $this->jugaad_model->get_history_diff($file_id, $edit_id);
-                    // }
-                } else if (isset($_GET["id"])) {
+                    foreach ($file["history"] as $value) {
+                        if ($value["id"] == $edit_id) {
+                            $file["history_item"] = $value;
+                            break;
+                        }
+                    }
+                } elseif (isset($_GET["id"])) {
                     $file["perm_error"] = true;
                 }
 
@@ -239,7 +231,7 @@ class jugaad extends Controller {
                 $file["data"] = $this->jugaad_model->get_directory($file_id);
                 $file["user_can"] = $this->user_can;
                 $this->load_view("directory", $file);
-            } else if ($file_type == "file") {
+            } elseif ($file_type == "file") {
                 $this->http->redirect('?edit');
             } else {
                 $this->http->response_code(404);
