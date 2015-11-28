@@ -18,7 +18,7 @@ class jugaad extends Controller {
         return preg_match('/^[a-z0-9-_]+$/i', $slug);
     }
 
-    private function edit($file) {
+    private function handle_save_file($file) {
         if (!empty($_POST["save"]) && isset($_POST["file_id"])
             && (!empty($_POST["slug"]) || $_POST["file_id"] == 0)
         ) {
@@ -58,7 +58,13 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit");
-        } elseif (!empty($_POST["add"]) && isset($_POST["parent_id"])
+        } else {
+            return false;
+        }
+    }
+
+    private function handle_add_file($file) {
+        if (!empty($_POST["add"]) && isset($_POST["parent_id"])
             && !empty($_POST["slug"])
         ) {
             $parent_id = $_POST["parent_id"];
@@ -78,7 +84,13 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($parent_id) . $slug . "/";
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit");
-        } elseif (!empty($_POST["update_default_role"]) && isset($_POST["file_id"])) {
+        } else {
+            return false;
+        }
+    }
+
+    private function handle_update_default_role($file) {
+        if (!empty($_POST["update_default_role"]) && isset($_POST["file_id"])) {
             if (!$this->user_can['manage_user']) {
                 $this->http->response_code(403);
             }
@@ -92,7 +104,13 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        } elseif (!empty($_POST["add_user"]) && isset($_POST["file_id"])
+        } else {
+            return false;
+        }
+    }
+
+    private function handle_add_user($file) {
+        if (!empty($_POST["add_user"]) && isset($_POST["file_id"])
             && !empty($_POST["username"])
         ) {
             if (!$this->user_can['manage_user']) {
@@ -110,7 +128,13 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        } elseif (!empty($_POST["revoke_user"]) && isset($_POST["file_id"])
+        } else {
+            return false;
+        }
+    }
+
+    private function handle_revoke_user($file) {
+        if (!empty($_POST["revoke_user"]) && isset($_POST["file_id"])
             && !empty($_POST["username"])
         ) {
             if (!$this->user_can['manage_user']) {
@@ -127,7 +151,13 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($file_id);
             $this->http->redirect(base_url() . "jugaad" . $path . "?edit#useredit");
-        } elseif (!empty($_POST["delete_file"]) && isset($_POST["file_id"])) {
+        } else {
+            return false;
+        }
+    }
+
+    private function handle_delete_file($file) {
+        if (!empty($_POST["delete_file"]) && isset($_POST["file_id"])) {
             $file_id = $_POST["file_id"];
             $file = $this->jugaad_model->get_file($file_id);
             $parent_id = @$file['parent'] ?: 0;
@@ -147,7 +177,18 @@ class jugaad extends Controller {
 
             $path = $this->jugaad_model->get_file_path($parent_id);
             $this->http->redirect(base_url() . "jugaad" . $path);
+        } else {
+            return false;
         }
+    }
+
+    private function edit($file) {
+        return $this->handle_save_file($file)
+                || $this->handle_add_file($file)
+                || $this->handle_update_default_role($file)
+                || $this->handle_add_user($file)
+                || $this->handle_revoke_user($file)
+                || $this->handle_delete_file($file);
     }
 
     private function show_file_edit($file) {
