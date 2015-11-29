@@ -51,7 +51,7 @@
                 if (icon.classList.contains('fa-folder-o')) {
                     icon.classList.remove('fa-folder-o');
                     icon.classList.add('fa-folder');
-                } elseif (icon.classList.contains('fa-file-text-o')) {
+                } else if (icon.classList.contains('fa-file-text-o')) {
                     icon.classList.remove('fa-file-text-o');
                     icon.classList.add('fa-file-text');
                 }
@@ -61,7 +61,7 @@
                 if (icon.classList.contains('fa-folder')) {
                     icon.classList.remove('fa-folder');
                     icon.classList.add('fa-folder-o');
-                } elseif (icon.classList.contains('fa-file-text')) {
+                } else if (icon.classList.contains('fa-file-text')) {
                     icon.classList.remove('fa-file-text');
                     icon.classList.add('fa-file-text-o');
                 }
