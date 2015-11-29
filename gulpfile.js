@@ -41,6 +41,7 @@ gulp.task('styles', function() {
         }))
         .pipe(sass().on('error', sass.logError))
         .on('error', reportError)
+        .pipe(autoprefixer())
         .pipe(gulp.dest('build/static/styles'));
 });
 
