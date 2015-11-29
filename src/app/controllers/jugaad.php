@@ -189,6 +189,15 @@ class jugaad extends Controller {
         $this->load_view("file_edit", $file);
     }
 
+    private function handle_edit_action($file) {
+        return $this->handle_save_file($file)
+            ?: $this->handle_add_file($file)
+            ?: $this->handle_update_default_role($file)
+            ?: $this->handle_add_user($file)
+            ?: $this->handle_revoke_user($file)
+            ?: $this->handle_delete_file($file);
+    }
+
     private function handle_edit($file_id, $file) {
         if (!$this->user_can['write_file']) {
             $this->http->response_code(403);
@@ -196,12 +205,7 @@ class jugaad extends Controller {
 
         $file_type = $file ? $file['type'] : false;
 
-        $error = $this->handle_save_file($file)
-                || $this->handle_add_file($file)
-                || $this->handle_update_default_role($file)
-                || $this->handle_add_user($file)
-                || $this->handle_revoke_user($file)
-                || $this->handle_delete_file($file);
+        $error = $this->handle_edit_action($file);
 
         $file["error"] = $error;
         $file["admins"] = $this->perms_model->get_user_list($file_id);

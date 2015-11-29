@@ -2,26 +2,36 @@
 
 class jugaad_model extends Model {
 
+    function __construct() {
+        $this->load_library("db_lib");
+    }
+
     function new_file($parent, $slug, $type, $default_role, $template, $user) {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`slug`, `parent`, `type`, `default_role`, `template`) VALUES (?, ?, ?, ?, ?)");
-        if (!$stmt->bind_param("sisss", $slug, $parent, $type, $default_role, $template)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `files` (`slug`, `parent`, `type`, `default_role`, `template`) VALUES (?, ?, ?, ?, ?)",
+            "sisss",
+            [$slug, $parent, $type, $default_role, $template]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
-        $insert_id = $stmt->insert_id;
+        if (!$db_error) {
+            $insert_id = $stmt->insert_id;
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)");
-        if (!$stmt->bind_param("is", $insert_id, $user)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
-            $db_error = true;
+            $stmt = $this->db_lib->prepared_execute(
+                $this->DB->jugaad,
+                "INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'create', ?)",
+                "is",
+                [$insert_id, $user]
+            );
+            if (!$stmt) {
+                $db_error = true;
+            }
         }
 
         if ($db_error) {
@@ -45,20 +55,24 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `slug`=?, `template`=? WHERE `id`=?");
-        if (!$stmt->bind_param("ssi", $slug, $template, $file_id)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "UPDATE `files` SET `slug`=?, `template`=? WHERE `id`=?",
+            "ssi",
+            [$slug, $template, $file_id]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
         if ($file_type != 'directory') {
-            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'edit', ?)");
-            if (!$stmt->bind_param("is", $file_id, $user)) {
-                $db_error = true;
-            }
-            if (!$stmt->execute()) {
+            $stmt = $this->db_lib->prepared_execute(
+                $this->DB->jugaad,
+                "INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'edit', ?)",
+                "is",
+                [$file_id, $user]
+            );
+            if (!$stmt) {
                 $db_error = true;
             }
 
@@ -86,27 +100,33 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `trash_files` (`file_id`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?");
-        if (!$stmt->bind_param("ss", $user, $file_id)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
-            $db_error = true;
-        }
-
-        $stmt = $this->DB->jugaad->prepare("DELETE FROM `files` WHERE `id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `trash_files` (`file_id`, `slug`, `parent`, `type`, `created_by`) SELECT `id`, `slug`, `parent`, `type`, ? FROM `files` WHERE `id`=?",
+            "si",
+            [$user, $file_id]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)");
-        if (!$stmt->bind_param("is", $file_id, $user)) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "DELETE FROM `files` WHERE `id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
-        if (!$stmt->execute()) {
+
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'delete', ?)",
+            "is",
+            [$file_id, $user]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
@@ -128,27 +148,33 @@ class jugaad_model extends Model {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `files` (`id`, `slug`, `parent`, `type`) SELECT `file_id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
-        if (!$stmt->bind_param("s", $file_id)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
-            $db_error = true;
-        }
-
-        $stmt = $this->DB->jugaad->prepare("DELETE FROM `trash_files` WHERE `file_id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            $db_error = true;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `files` (`id`, `slug`, `parent`, `type`) SELECT `file_id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)");
-        if (!$stmt->bind_param("is", $file_id, $user)) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "DELETE FROM `trash_files` WHERE `file_id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
-        if (!$stmt->execute()) {
+
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `file_versions` (`file_id`, `action`, `created_by`) VALUES (?, 'recover', ?)",
+            "is",
+            [$file_id, $user]
+        );
+        if (!$stmt) {
             $db_error = true;
         }
 
@@ -163,13 +189,16 @@ class jugaad_model extends Model {
     }
 
     function get_slug_id($parent, $slug) {
-        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?");
-        if (!$stmt->bind_param("is", $parent, $slug)) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?",
+            "is",
+            [$parent, $slug]
+        );
+        if (!$stmt) {
             return false;
         }
-        if (!$stmt->execute()) {
-            return false;
-        }
+
         if ($row = $stmt->get_result()->fetch_row()) {
             return $row[0];
         }
@@ -208,11 +237,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `type` FROM `files` WHERE `id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `type` FROM `files` WHERE `id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
@@ -226,11 +257,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `id`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         $page_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -242,11 +275,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `slug`, `parent`, `type`, `default_role`, `template` FROM `files` WHERE `id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `id`, `slug`, `parent`, `type`, `default_role`, `template` FROM `files` WHERE `id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_assoc()) {
@@ -263,11 +298,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `file_id` as `id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `file_id` as `id`, `slug`, `parent`, `type` FROM `trash_files` WHERE `file_id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_assoc()) {
@@ -277,11 +314,13 @@ class jugaad_model extends Model {
     }
 
     private function get_field_value($file_id, $name, $meta) {
-        $stmt = $this->DB->jugaad->prepare("SELECT `value` FROM `file_data` WHERE `file_id`=? AND `name`=? ORDER BY `id` DESC LIMIT 1");
-        if (!$stmt->bind_param("is", $file_id, $name)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `value` FROM `file_data` WHERE `file_id`=? AND `name`=? ORDER BY `id` DESC LIMIT 1",
+            "is",
+            [$file_id, $name]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
@@ -313,11 +352,13 @@ class jugaad_model extends Model {
 
     private function update_file_data($file_id, $version_id, $data) {
         $db_error = false;
+        $name = "";
+        $value = "";
+        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `version_id`, `name`, `value`) VALUES (?, ?, ?, ?)");
+        if (!$stmt->bind_param("iiss", $file_id, $version_id, $name, $value)) {
+            $db_error = true;
+        }
         foreach ($data as $name => $value) {
-            $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_data` (`file_id`, `version_id`, `name`, `value`) VALUES (?, ?, ?, ?)");
-            if (!$stmt->bind_param("iiss", $file_id, $version_id, $name, $value)) {
-                $db_error = true;
-            }
             if (!$stmt->execute()) {
                 $db_error = true;
             }
@@ -330,11 +371,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `id` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC LIMIT 1",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
@@ -348,11 +391,13 @@ class jugaad_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `id`, `action`, `timestamp`, `created_by` FROM `file_versions` WHERE `file_id`=? ORDER BY `id` DESC",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         $history_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
