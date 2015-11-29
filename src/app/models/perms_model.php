@@ -27,6 +27,8 @@ class perms_model extends Model {
         $this->load_model("jugaad_model");
         $this->load_model("auth_model");
 
+        $this->load_library("db_lib");
+
         $this->default_rp["superadmin"] = $this->all_permissions;
 
         $this->role_permissions = $this->get_role_info();
@@ -60,14 +62,13 @@ class perms_model extends Model {
         if ($file_id === false || !$user) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("INSERT INTO `file_permissions` (`file_id`, `user`, `role`) VALUES (?, ?, ?)");
-        if (!$stmt->bind_param("iss", $file_id, $user, $role)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
-            return false;
-        }
-        return true;
+        return $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "INSERT INTO `file_permissions` (`file_id`, `user`, `role`) VALUES (?, ?, ?)",
+            "iss",
+            [$file_id, $user, $role],
+            false
+        );
     }
 
     function remove_user_role($file_id, $user) {
@@ -75,14 +76,13 @@ class perms_model extends Model {
         if ($file_id === false || !$user) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("DELETE FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
-        if (!$stmt->bind_param("is", $file_id, $user)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
-            return false;
-        }
-        return true;
+        return $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "DELETE FROM `file_permissions` WHERE `file_id`=? AND `user`=?",
+            "is",
+            [$file_id, $user],
+            false
+        );
     }
 
     function get_default_role($file_id) {
@@ -90,11 +90,13 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `default_role` FROM `files` WHERE `id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `default_role` FROM `files` WHERE `id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
@@ -108,14 +110,13 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("UPDATE `files` SET `default_role`=? WHERE `id`=?");
-        if (!$stmt->bind_param("si", $role, $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
-            return false;
-        }
-        return true;
+        return $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "UPDATE `files` SET `default_role`=? WHERE `id`=?",
+            "si",
+            [$role, $file_id],
+            false
+        );
     }
 
     private function file_get_user_role($file_id, $user) {
@@ -123,11 +124,13 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `role` FROM `file_permissions` WHERE `file_id`=? AND `user`=?");
-        if (!$stmt->bind_param("is", $file_id, $user)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `role` FROM `file_permissions` WHERE `file_id`=? AND `user`=?",
+            "is",
+            [$file_id, $user]
+        );
+        if (!$stmt) {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
@@ -166,11 +169,13 @@ class perms_model extends Model {
         if ($file_id === false) {
             return false;
         }
-        $stmt = $this->DB->jugaad->prepare("SELECT `file_id`, `user`, `role` FROM `file_permissions` WHERE `file_id`=?");
-        if (!$stmt->bind_param("i", $file_id)) {
-            return false;
-        }
-        if (!$stmt->execute()) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->jugaad,
+            "SELECT `file_id`, `user`, `role` FROM `file_permissions` WHERE `file_id`=?",
+            "i",
+            [$file_id]
+        );
+        if (!$stmt) {
             return false;
         }
         $user_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
