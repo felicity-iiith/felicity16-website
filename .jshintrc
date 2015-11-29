@@ -1,0 +1,8 @@
+{
+    // Environments
+    "browser": true,
+    "node": true,
+
+    "undef": true, // Report undefined variables
+    "unused": true // Report unused variables
+}
