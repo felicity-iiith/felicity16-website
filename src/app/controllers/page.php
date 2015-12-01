@@ -10,7 +10,7 @@ class page extends Controller {
         $this->load_model("template_model");
         $this->load_model("perms_model");
 
-        $this->user = $this->cas->isAuthenticated() ? $this->cas->getUser() : '';
+        $this->user = $this->cas->getUser() ?: "";
     }
 
     function show() {

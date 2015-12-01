@@ -10,10 +10,7 @@ class ajax extends Controller {
         $this->load_model("perms_model");
         $this->load_model("auth_model");
 
-        $this->user = "";
-        if ($this->cas->isAuthenticated()) {
-            $this->user = $this->cas->getUser();
-        }
+        $this->user = $this->cas->getUser() ?: "";
     }
 
     /**
