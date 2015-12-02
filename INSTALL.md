@@ -2,6 +2,22 @@
 
 The following prerequisites are required to build and use the website along with a brief guide to quickly set it up.
 
+## Apache+MySQL server
+
+There are great tutorials available for this online, so we won't duplicate them here.
+
+## mysqlnd driver
+
+On Ubuntu (and Debian, Linux Mint, etc.), an easy way to get node is to run:
+```sh
+sudo apt-get install php5-mysqlnd
+```
+
+On Fedora (and other similar distributions):
+```sh
+yum install php-mysqlnd
+```
+
 ## Node.js
 In order to run the build process, you'll need [Node.js](https://nodejs.org/) and some npm modules.
 
@@ -12,7 +28,7 @@ On Ubuntu (and Debian, Linux Mint, etc.), an easy way to get node is to run:
 curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
 
 # Then install with:
-sudo apt-get install -y nodejs
+sudo apt-get install nodejs
 ```
 
 An easy way to get node.js (not sure if latest version) on Fedora (and other similar distributions) is to run:
@@ -20,7 +36,7 @@ An easy way to get node.js (not sure if latest version) on Fedora (and other sim
 curl -sL https://rpm.nodesource.com/setup | sudo bash -
 
 # Then install with:
-yum -y install nodejs
+yum install nodejs
 ```
 
 Common ways to keep an updated node.js installation are to use [nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n).
