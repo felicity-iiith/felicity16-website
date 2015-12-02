@@ -30,6 +30,6 @@ After running these commands, you'll have a built copy of the site in a `build/`
 
 Also,
 - Copy `src/app/config.sample.php` to `src/app/config.php` and edit values (at least the database configuration).
-- Import the `database.sql` file into your database
+- Import the `database.sql` file into your database, you can do this by 'mysql -u username -p password DBNAME < database.sql'
 
 Please contribute!

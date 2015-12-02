@@ -9,8 +9,8 @@ $cfg = array(
     'databases' => array(
         'jugaad' => array(
             'db_host'   => 'localhost',
-            'db_user'   => 'user',
-            'db_pass'   => 'password',
+	    'db_user'   => 'user',
+	    'db_pass'   => 'password',
             'db_name'   => 'dbname',
         )
     ),
