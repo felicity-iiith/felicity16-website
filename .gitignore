@@ -1,6 +1,7 @@
 # Project files
 /build/
 /src/app/config.php
+/src/.htaccess
 
 # Editors
 *.swp

@@ -1,0 +1,11 @@
+RewriteEngine on
+RewriteBase /
+
+# this adds trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ $1/ [R=301,L]
+
+# remove index.php and redirect, conditionally
+RewriteCond $1 !^(index\.php|static|favicon\.ico|robots\.txt|humans\.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]

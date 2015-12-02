@@ -4,13 +4,21 @@ $cfg = array(
     'default_controller'    => 'hello',
     'default_method'        => 'index',
 
-    'base_url'              => '',
+    'base_url'  => '',
 
-    'db_host'               => '',
-    'db_user'               => '',
-    'db_pass'               => '',
-    'db_name'               => '',
+    'databases' => array(
+        'jugaad' => array(
+            'db_host'   => 'localhost',
+            'db_user'   => 'user',
+            'db_pass'   => 'password',
+            'db_name'   => 'dbname',
+        )
+    ),
 );
+
+$admins = [
+    // List of user ids of admins
+];
 
 $cas_cfg = array(
     'host'           => 'login.iiit.ac.in',

@@ -1,0 +1,38 @@
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.file {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+.file .file-edit {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1;
+}
+
+.file-title-edit {
+    padding: 5px;
+    align-items: center;
+}
+
+.file-title-edit input {
+    margin: 0 5px;
+}
+
+.editor {
+    margin-top: 5px;
+    min-height: 10em;
+}
+
+#file-edit-contain label {
+    display: block;
+    margin: .4em 0;
+}

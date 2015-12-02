@@ -1,0 +1,25 @@
+.admin-list {
+    width: 100%;
+    list-style: none;
+}
+
+.admin-list li {
+    padding: .6em;
+    background-color: #f6f6f6;
+    border: 1px solid #ddd;
+    display: block;
+    transition: none;
+}
+
+#useredit,
+#filedelete {
+    box-sizing: content-box;
+}
+
+#delete-button {
+    display: block;
+}
+
+#delete-confirm {
+    display: none;
+}
