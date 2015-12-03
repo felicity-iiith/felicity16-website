@@ -1,3 +1,5 @@
+/* exported getSlug, escapeHtml, unescapeHtml, notify, ajax */
+
 /**
  * Get slug for given string
  *

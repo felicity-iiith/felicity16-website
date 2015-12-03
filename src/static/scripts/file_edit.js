@@ -1,3 +1,8 @@
+/* global diff_match_patch,base_url,ajax,notify */
+/* exported setupEdit */
+
+var origFile;
+
 function setupEdit() {
     origFile = {
         file_id: document.getElementById('file_id').value,
@@ -10,13 +15,12 @@ function setupEdit() {
 /*
  * Manage remote updates
  */
-checkRemote = (function() {
+var checkRemote = (function() {
     var dmp;
     var failCount = 0;
     var remoteWIP = false;
     var newVersionId;
-
-    function getDiff(olddata, newdata) {
+    function getDiff(olddata, newdata) { // jshint ignore:line
         dmp = new diff_match_patch();
         var patches = dmp.patch_make(olddata, newdata);
         return patches;
@@ -31,14 +35,14 @@ checkRemote = (function() {
         if (failCount < 3) return;
         failCount = 0;
         remoteWIP = true;
-        var notif = notify("The server is acting weirdly. Be careful when saving your data.")
+        notify("The server is acting weirdly. Be careful when saving your data.")
             .addButton("Okay", closeError, 'btn btn-small btn-green')
             .addButton("Don't bother me", null, 'btn btn-small btn-red')
             .show();
     }
 
     function alertRemoteChanged() {
-        var notif = notify("Remote version of the file is changed.")
+        notify("Remote version of the file is changed.")
             .addButton("Okay", null, 'btn btn-small btn-red')
             .show();
     }
