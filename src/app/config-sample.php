@@ -12,6 +12,12 @@ $cfg = array(
             'db_user'   => 'user',
             'db_pass'   => 'password',
             'db_name'   => 'dbname',
+        ),
+        'sap' => array(
+            'db_host'   => 'localhost',
+            'db_user'   => 'user',
+            'db_pass'   => 'password',
+            'db_name'   => 'dbname',
         )
     ),
 );

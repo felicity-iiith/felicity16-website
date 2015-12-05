@@ -9,5 +9,6 @@ $routes = [
     "/jugaad/" => "/jugaad/read/",
     "/ajax/" => "/ajax/",
     "/auth/" => "/auth/",
+    "/sap/" => "/sap/",
     "/" => "/page/show/"
 ];
