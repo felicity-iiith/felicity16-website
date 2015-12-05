@@ -1,0 +1,13 @@
+label, input {
+	font-family: Courier New, Courier, monospace;
+	display: block;
+	word-wrap: break-word;
+}
+
+textarea {
+	width: 242px;
+}
+
+.smalltable{
+	width:40%;
+}
