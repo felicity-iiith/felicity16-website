@@ -100,6 +100,7 @@
             <textarea id="organised-event" name="organised-event"></textarea>
 
             <div class="text-center">
+                <input type="hidden" value="<?= $csrf_token ?>" name="csrf_token">
                 <input type="submit" value="Apply!" class="text-right btn-green btn-large">
             </div>
         </form>
