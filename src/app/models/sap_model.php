@@ -13,7 +13,7 @@ class sap_model extends Model {
                 `name`, `email`, `phone_number`, `college`, `program_of_study`, `year_of_study`,
                 `facebook_profile_link`, `why_apply`, `about_you`, `organised_event`
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            "sssssssss", [
+            "ssssssssss", [
                 $data['name'], $data['email'], $data['phone-number'], $data['college'], $data['program-of-study'],
                 $data['year-of-study'], $data['facebook-profile-link'], $data['why-apply'],
                 $data['about-you'], $organisedEvent
