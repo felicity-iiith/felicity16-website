@@ -1,0 +1,55 @@
+::selection {
+    background-color: #2094cf;
+    color: white;
+}
+
+::moz-selection {
+    background-color: #2094cf;
+    color: white;
+}
+
+::webkit-selection {
+    background-color: #2094cf;
+    color: white;
+}
+
+body {
+    background-color: #f2f2f2;
+    margin: 40px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 24px;
+}
+
+h1,
+h2 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #999;
+}
+
+.messages p {
+    color: #666;
+}
+
+#container {
+    margin: auto;
+    text-align: center;
+}
+
+a {
+    color: #08c;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+}
