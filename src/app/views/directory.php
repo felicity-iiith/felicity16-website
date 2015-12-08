@@ -20,6 +20,11 @@
                         <a href="<?= base_url() ?>trash/" class="btn btn-green"><i class="fa fa-trash"></i> Go to trash</a>
                     <?php endif; ?>
                 </div>
+                <?php 
+                    if (empty($data)) {
+                        echo "<p>No files/directories are currently present.</p>";
+                    }
+                ?>
                 <div class="list-interface">
                     <?php
                         if ($parent != -1) {
