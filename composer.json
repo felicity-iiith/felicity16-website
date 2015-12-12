@@ -3,7 +3,8 @@
     "description": "Felicity 2k16 website",
     "license": "UNLICENSED",
     "require": {
-        "jasig/phpcas": "^1.3"
+        "jasig/phpcas": "^1.3",
+        "phpmailer/phpmailer": "^5.2"
     },
     "require-dev": {
         "jakub-onderka/php-parallel-lint": "0.9.*"
