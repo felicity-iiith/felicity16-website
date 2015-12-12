@@ -55,6 +55,36 @@ class sap extends Controller {
                 $this->load_model('sap_model');
                 $success = $this->sap_model->registerEntry($posted_data);
 
+                if ($success) {
+                    $this->load_library('email_lib', 'email');
+                    $subject = "Felicity '16 Student Ambassador Program";
+
+                    ob_start();
+                    $this->load_view('sap/register_success_email_html', [
+                        'subject' => $subject,
+                        'name' => $posted_data['name'],
+                    ]);
+                    $email_body_html = ob_get_contents();
+                    ob_end_clean();
+
+                    ob_start();
+                    $this->load_view('sap/register_success_email_text', [
+                        'name' => $posted_data['name'],
+                    ]);
+                    $email_body_text = ob_get_contents();
+                    ob_end_clean();
+
+                    $this->email->send_mail([
+                        'from_email'=> 'noreply@felicity.iiit.ac.in',
+                        'from_name' => 'Team Felicity',
+                        'to_email'  => $posted_data['email'],
+                        'to_name'   => $posted_data['name'],
+                        'subject'   => $subject,
+                        'html_body' => $email_body_html,
+                        'alt_body'  => $email_body_text,
+                    ]);
+                }
+
                 // View handles if success is false.
                 $this->load_view('sap/register', [
                     'success' => $success,
