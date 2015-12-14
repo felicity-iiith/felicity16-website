@@ -12,6 +12,7 @@ class sap extends Controller {
                 $recvd_token = NULL;
             }
             $this->csrf_lib->check_csrf_token($recvd_token);
+            $this->csrf_lib->reset_csrf_token();
 
             $errors = [];
             $posted_data = [];
