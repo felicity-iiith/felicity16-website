@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Student Ambassador Program · Felicity ʼ16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?= base_url() ?>css/vendor/thoda.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>css/sap_register.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/sap_register.css">
     <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" type="text/css">
 </head>
 <body>
