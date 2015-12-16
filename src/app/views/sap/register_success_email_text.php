@@ -7,4 +7,4 @@ With love,
 Team Felicity
 
 ---------------------------------------------------------------
-Visit https://felicity.iiit.ac.in for more fun stuff!
+Visit <?= base_url() ?> for more fun stuff!

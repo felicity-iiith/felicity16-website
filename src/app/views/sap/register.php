@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <title>Student Ambassador Program · Felicity ʼ16</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://felicity.iiit.ac.in/css/vendor/thoda.min.css">
-    <link rel="stylesheet" href="https://felicity.iiit.ac.in/css/sap_register.css">
+    <link rel="stylesheet" href="<?= base_url() ?>css/vendor/thoda.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>css/sap_register.css">
     <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="navbar collapsed" style="position:static;">
         <a class="navbar-title" href="javascript:void(0)">Felicity ʼ16</a>
         <ul class="pull-right">
-            <li><a href="https://felicity.iiit.ac.in/">Home</a></li>
+            <li><a href="<?= base_url() ?>">Home</a></li>
         </ul>
         <a href="javascript:void(0)" class="menu-toggle-button">&equiv;</a>
         </a>
