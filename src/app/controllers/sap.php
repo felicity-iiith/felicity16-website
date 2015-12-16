@@ -61,7 +61,7 @@ class sap extends Controller {
                 $required_unfilled = true;
             }
         }
-        if ($required_unfilled == true) {
+        if ($required_unfilled === true) {
             // No additional details, because the HTML5 required attribute is set to true
             // and this is in case it gets bypassed.
             $errors[] = "Please fill in the required fields.";
