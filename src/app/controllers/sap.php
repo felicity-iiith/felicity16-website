@@ -38,6 +38,35 @@ class sap extends Controller {
         }
     }
 
+    public function login() {
+        $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->load_library('http_lib');
+
+        if ($this->sap_auth->is_authenticated()) {
+            $this->http_lib->redirect(base_url() . 'sap/portal/');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $success = $this->sap_auth->login($_POST['username'], $_POST['password']);
+            if ($success) {
+                $this->http_lib->redirect(base_url() . 'sap/portal/');
+            } else {
+                $this->load_view('sap/login', [
+                    'error' => true
+                ]);
+            }
+        } else {
+            $this->load_view('sap/login');
+        }
+    }
+
+    public function logout() {
+        $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->load_library('http_lib');
+
+        $this->sap_auth->logout();
+    }
+
     private function validateData($posted_data) {
         $errors = [];
 
