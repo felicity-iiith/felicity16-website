@@ -20,7 +20,7 @@ class csrf_lib extends Library {
      * @return string The token
      */
     public function new_csrf_token() {
-        if ( ! isset($_SESSION['csrf_token'])) {
+        if (! isset($_SESSION['csrf_token'])) {
             $_SESSION['csrf_token'] = self::generate_token();
         }
         return $_SESSION['csrf_token'];
@@ -29,9 +29,9 @@ class csrf_lib extends Library {
     /**
      * Resets the CSRF token saved in session
      */
-     public function reset_csrf_token() {
-         unset($_SESSION['csrf_token']);
-     }
+    public function reset_csrf_token() {
+        unset($_SESSION['csrf_token']);
+    }
 
     /**
      * Checks whether CSRF is set and whether the current CSRF token from
