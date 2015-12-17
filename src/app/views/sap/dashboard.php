@@ -12,7 +12,9 @@
         <h1>Dashboard</h1>
         <p>Welcome to the SAP portal, <?= $username ?>. :)</p>
         <?php if ($is_admin): ?>
-            <p>You are an admin!</p>
+            <a class="btn btn-green" href="<?= base_url() ?>sap/portal/mission/create">
+                Create new mission
+            </a>
         <?php endif; ?>
         <?php
             $level = 0;

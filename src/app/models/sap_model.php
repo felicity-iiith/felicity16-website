@@ -76,6 +76,20 @@ class sap_model extends Model {
         return false;
     }
 
+    public function create_mission($title, $level, $points, $description) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'INSERT INTO `sap_missions` (`title`, `level`, `points`, `description`) ' .
+            'VALUES (?, ?, ?, ?)',
+            'ssss',
+            [$title, $level, $points, $description]
+        );
+        if (! $stmt) {
+            return false;
+        }
+        return $stmt->insert_id;
+    }
+
     public function get_tasks($mission_id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
