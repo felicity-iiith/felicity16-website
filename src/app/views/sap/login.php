@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
 </head>
 <body>
+    <?php $this->load_fragment('sap/navbar_fragment'); ?>
     <div class="container">
         <h1>Login</h1>
         <?php if (isset($error) && $error): ?>

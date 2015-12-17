@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
 </head>
 <body>
+    <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => true]); ?>
     <div class="container">
         <h1>Mission <?= $mission['id'] ?> · Level <?= $mission['level'] ?></h1>
         <h2><?= $mission['title'] ?></h2>

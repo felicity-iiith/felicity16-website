@@ -4,6 +4,7 @@ class sap extends Controller {
 
     function index() {
         $this->load_library('csrf_lib');
+        $this->load_library('sap_auth_lib', 'sap_auth');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['csrf_token'])) {
@@ -26,6 +27,7 @@ class sap extends Controller {
                 $this->load_view('sap/register', [
                     'errors' => $errors,
                     'csrf_token' => $this->csrf_lib->new_csrf_token(),
+                    'logged_in' => $this->sap_auth->is_authenticated(),
                 ]);
             } else {
                 $this->handleRegistration($posted_data);
@@ -34,6 +36,7 @@ class sap extends Controller {
         } else {
             $this->load_view('sap/register', [
                 'csrf_token' => $this->csrf_lib->new_csrf_token(),
+                'logged_in' => $this->sap_auth->is_authenticated(),
             ]);
         }
     }
@@ -101,6 +104,7 @@ class sap extends Controller {
 
     private function handleRegistration($posted_data) {
         $this->load_model('sap_model');
+        $this->load_library('sap_auth_lib', 'sap_auth');
         $success = $this->sap_model->registerEntry($posted_data);
 
         if ($success) {
@@ -137,6 +141,7 @@ class sap extends Controller {
         $this->load_view('sap/register', [
             'success' => $success,
             'csrf_token' => $this->csrf_lib->new_csrf_token(),
+            'logged_in' => $this->sap_auth->is_authenticated(),
         ]);
     }
 }

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php $this->load_fragment('sap/navbar_fragment'); ?>
+    <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => $logged_in]); ?>
     <div class="container">
         <h1 class="text-center">Student Ambassador Program</h1>
         <div class="description">
