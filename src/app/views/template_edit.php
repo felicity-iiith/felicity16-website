@@ -6,9 +6,12 @@
         $out = "<label for='$name'>$meta[name] $required_notice: ";
 
         switch ($meta['type']) {
+            case 'longtext':
+                $out .= "<br><textarea name='data[$name]' id='$name' $opt>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
+                break;
             case 'text':
-                default:
-                    $out .= "<input type='text' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "' $opt/>";
+            default:
+                $out .= "<input type='text' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "' $opt/>";
         }
         return $out . "</label>";
     }
