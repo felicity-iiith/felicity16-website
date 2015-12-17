@@ -9,14 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <div class="navbar collapsed" style="position:static;">
-        <a class="navbar-title" href="javascript:void(0)">Felicity ʼ16</a>
-        <ul class="pull-right">
-            <li><a href="<?= base_url() ?>">Home</a></li>
-        </ul>
-        <a href="javascript:void(0)" class="menu-toggle-button">&equiv;</a>
-        </a>
-    </div>
+    <?php $this->load_fragment('sap/navbar_fragment'); ?>
     <div class="container">
         <h1 class="text-center">Student Ambassador Program</h1>
         <div class="description">
