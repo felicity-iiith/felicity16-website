@@ -16,9 +16,9 @@ CREATE TABLE IF NOT EXISTS `sap_ambassadors` (
   `program_of_study` varchar(128) COLLATE utf8_bin NOT NULL,
   `year_of_study` char(8) COLLATE utf8_bin NOT NULL,
   `facebook_profile_link` varchar(64) COLLATE utf8_bin NOT NULL,
-  `why_apply` mediumtext COLLATE utf8_bin NOT NULL,
-  `about_you` mediumtext COLLATE utf8_bin NOT NULL,
-  `organised_event` mediumtext COLLATE utf8_bin,
+  `why_apply` text COLLATE utf8_bin NOT NULL,
+  `about_you` text COLLATE utf8_bin NOT NULL,
+  `organised_event` text COLLATE utf8_bin,
   `registration_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
