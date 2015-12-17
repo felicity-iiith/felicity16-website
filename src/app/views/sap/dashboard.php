@@ -14,6 +14,26 @@
         <?php if ($is_admin): ?>
             <p>You are an admin!</p>
         <?php endif; ?>
+        <?php
+            $level = 0;
+            foreach ($missions as $mission) {
+                if ($mission['level'] > $level) {
+                    $level++;
+                    if ($level > 1) {
+                        echo '</ul>';
+                    }
+                    echo "<h2>Level $level</h2>";
+                    echo '<ul>';
+                }
+        ?>
+            <li>
+                <a href="<?= base_url() ?>sap/portal/mission/<?= $mission['id'] ?>">
+                    <?= $mission['title'] ?>
+                </a>
+            </li>
+        <?php
+            }
+        ?>
     </div>
 </body>
 </html>

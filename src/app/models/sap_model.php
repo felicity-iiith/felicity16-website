@@ -52,6 +52,15 @@ class sap_model extends Model {
         return boolval($row[0]);
     }
 
+    public function get_missions() {
+        $result = $this->DB->sap->query(
+            'SELECT `id`, `level`, `title`, `description` FROM `sap_missions` ' .
+            'ORDER BY level ASC, id ASC'
+        );
+        $missions = $result->fetch_all(MYSQLI_ASSOC);
+        return $missions;
+    }
+
     public function get_mission($id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,

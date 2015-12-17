@@ -13,9 +13,12 @@ class sap_portal extends Controller {
     }
 
     public function dashboard() {
+        $this->load_model('sap_model');
+        $missions = $this->sap_model->get_missions();
         $this->load_view('sap/dashboard', [
             'username' => $this->username,
             'is_admin' => $this->sap_auth->is_current_user_admin(),
+            'missions' => $missions,
         ]);
     }
 
