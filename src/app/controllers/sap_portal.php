@@ -18,4 +18,21 @@ class sap_portal extends Controller {
             'is_admin' => $this->sap_auth->is_current_user_admin(),
         ]);
     }
+
+    public function mission($id) {
+        if (isset($id) && ctype_digit($id)) {
+            $this->load_model('sap_model');
+            $mission = $this->sap_model->get_mission($id);
+            if ($mission) {
+                $tasks = $this->sap_model->get_tasks($id);
+                $this->load_view('sap/mission', [
+                    'mission' => $mission,
+                    'tasks' => $tasks,
+                ]);
+                return;
+            }
+        }
+        $this->load_library('http_lib');
+        $this->http_lib->response_code(404);
+    }
 }

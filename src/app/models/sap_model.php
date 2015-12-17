@@ -51,4 +51,30 @@ class sap_model extends Model {
         }
         return boolval($row[0]);
     }
+
+    public function get_mission($id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT `level`, `title`, `description` FROM `sap_missions` WHERE `id`=?',
+            'i',
+            [$id]
+        );
+        $row = $stmt->get_result()->fetch_assoc();
+        if ($row) {
+            $row['id'] = $id;
+            return $row;
+        }
+        return false;
+    }
+
+    public function get_tasks($mission_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT `id`, `description` FROM `sap_tasks` WHERE `mission_id`=? ORDER BY id ASC',
+            'i',
+            [$mission_id]
+        );
+        $tasks = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $tasks;
+    }
 }
