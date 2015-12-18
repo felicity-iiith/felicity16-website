@@ -23,6 +23,9 @@
                 ?>.
             </strong>
         </p>
+        <?php if ($is_admin): ?>
+            <a href="./createtask/" class="btn btn-green">Create new task</a>
+        <?php endif; ?>
         <hr>
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>

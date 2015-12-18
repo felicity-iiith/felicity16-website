@@ -100,4 +100,15 @@ class sap_model extends Model {
         $tasks = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $tasks;
     }
+
+    public function create_task($mission_id, $description, $has_text_answer) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'INSERT INTO `sap_tasks` (`mission_id`, `description`, `has_text_answer`) ' .
+            'VALUES (?, ?, ?)',
+            'isi',
+            [$mission_id, $description, $has_text_answer]
+        );
+        return boolval($stmt);
+    }
 }

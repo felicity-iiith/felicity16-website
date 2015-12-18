@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `sap_tasks` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `mission_id` smallint(5) UNSIGNED NOT NULL,
   `description` text COLLATE utf8_bin,
-  `text_answer` tinyint(1) NOT NULL DEFAULT '0',
+  `has_text_answer` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mission_id` (`mission_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
