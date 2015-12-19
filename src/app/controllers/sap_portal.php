@@ -7,6 +7,7 @@ class sap_portal extends Controller {
         $this->username = $this->sap_auth->get_current_username();
         $this->load_library('http_lib');
         $this->load_model('sap_model');
+        $this->load_library('session_lib');
     }
 
     public function index() {
@@ -49,6 +50,7 @@ class sap_portal extends Controller {
                         'mission' => $mission,
                         'tasks' => $tasks,
                         'is_admin' => $this->sap_auth->is_current_user_admin(),
+                        'errors' => $this->session_lib->flash_get('errors'),
                     ]);
                 }
                 return;
@@ -102,7 +104,6 @@ class sap_portal extends Controller {
     }
 
     private function submit_task($mission, $tasks) {
-        // TODO: Refactor after flash data library is made
         $mission_id = $mission['id'];
         if (isset($_POST['submit-task'])) {
             $user_id = $this->sap_auth->get_current_user_id();
@@ -111,19 +112,11 @@ class sap_portal extends Controller {
                 $text_answer = $_POST['text-answer'];
             }
             $success = $this->sap_model->submit_task($_POST['submit-task'], $user_id, $text_answer);
-            if ($success) {
-                $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
-            } else {
-                $this->load_view('sap/mission', [
-                    'mission' => $mission,
-                    'tasks' => $tasks,
-                    'is_admin' => $this->sap_auth->is_current_user_admin(),
-                    'error' => 'Could not submit task. :/',
-                ]);
+            if (!$success) {
+                $this->session_lib->flash_set('errors', ['Sorry, could not submit task. :/']);
             }
-        } else {
-            $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
         }
+        $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
     }
 
     public function create_mission() {

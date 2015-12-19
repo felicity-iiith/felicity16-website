@@ -26,9 +26,12 @@
         <?php if ($is_admin): ?>
             <a href="./createtask/" class="btn btn-green">Create new task</a>
         <?php endif; ?>
-        <?php if (isset($error)): ?>
-            <p style="color:red"><?= $error ?></p>
-        <?php endif; ?>
+        <?php if (isset($errors)) {
+                foreach ($errors as $error) {
+                    echo "<p style=\"color:red\">$error</p>";
+                }
+            }
+        ?>
         <hr>
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>
