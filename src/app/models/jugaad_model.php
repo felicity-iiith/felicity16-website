@@ -252,20 +252,44 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_directory($file_id) {
+    function get_directory($file_id, $regex = false, $type = false, $template = false) {
         // Get list of files in directory
         if ($file_id === false) {
             return false;
         }
+
+        $query = "SELECT `id`, `slug`, `parent`, `type`, `template` FROM `files` WHERE `parent`=?";
+        $param_types = "i";
+        $params = [$file_id];
+
+        if ($regex !== false) {
+            $query .= " AND `slug` RLIKE ?";
+            $param_types .= "s";
+            $params[] = $regex;
+        }
+
+        if ($type !== false) {
+            $query .= " AND `type`=?";
+            $param_types .= "s";
+            $params[] = $type;
+
+            if ($type == 'file' && $template !== false) {
+                $query .= " AND `template` RLIKE ?";
+                $param_types .= "s";
+                $params[] = $template;
+            }
+        }
+
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
-            "SELECT `id`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?",
-            "i",
-            [$file_id]
+            $query,
+            $param_types,
+            $params
         );
         if (!$stmt) {
             return false;
         }
+
         $page_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $page_list;
     }
@@ -313,7 +337,138 @@ class jugaad_model extends Model {
         return false;
     }
 
+    /**
+     * Recursively get files
+     * @param  Array  $parent_dir Assosiative array containing atleast `id` and `path`
+     * @param  string $type       Type (e.g. 'directory' or 'file')
+     * @param  string $template   Regex for template name
+     * @return array              Array of files
+     */
+    function get_files_recursive($parent_dir, $type = false, $template = false) {
+        $files = $this->get_directory(
+            $parent_dir["id"],
+            false,
+            ($type == 'directory') ? 'directory' : false,
+            $template
+        );
+
+        $return_files = [];
+
+        if ($files) {
+            foreach ($files as $file) {
+                $file["path"] = $parent_dir["path"] . $file["slug"] . "/";
+
+                if ($type === false || $type == $file["type"]) {
+                    $return_files[] = $file;
+                }
+
+                if ($file["type"] == "directory") {
+                    $return_files = array_merge(
+                        $return_files,
+                        $this->get_files_recursive($file, $type, $template)
+                    );
+                }
+            }
+        }
+
+        return $return_files;
+    }
+
+    /**
+     * Get all files satisfying regex path
+     * @param  string $path     Path string
+     * @param  string $template Template regex
+     * @return array            Array of files
+     */
+    function expand_regex_paths($path, $template = false) {
+        $path = array_values(array_filter(explode("/", $path)));
+        if (is_string($template)) {
+            $template = "^" . $template . "$";
+        }
+
+        // Directories still satisfying the regex
+        // Start with root
+        $directories = [
+            [
+                "id" => 0,
+                "path" => "/"
+            ]
+        ];
+
+        $len = count($path);
+        $last_segment = false;
+
+        $files = [];
+
+        for ($i = 0; $i < $len; $i++) {
+            // Check if it is the last segment
+            if ($i == $len - 1) {
+                $last_segment = true;
+            }
+
+            $files = [];
+
+            foreach ($directories as $parent) {
+                $query_type = $last_segment ? "file" : "directory";
+                $query_template = $last_segment ? $template : false;
+
+                if ($path[$i] == "**") {
+                    $new_files = $this->get_files_recursive(
+                        $parent,
+                        $query_type,
+                        $query_template
+                    );
+                } else {
+                    $new_files = $this->get_directory(
+                        $parent["id"],
+                        "^" . $path[$i] . "$",
+                        $query_type,
+                        $query_template
+                    );
+                }
+
+                if (!$new_files) {
+                    continue;
+                }
+
+                foreach ($new_files as $file) {
+                    if (!isset($file["path"])) {
+                        $file["path"] = $parent["path"] . $file["slug"] . "/";
+                    }
+                    array_push($files, $file);
+                }
+            }
+
+            if (!$last_segment) {
+                $directories = $files;
+            }
+        }
+
+        return $files;
+    }
+
+    private function get_external_data($meta) {
+        if (empty($meta["path"]) || empty($meta["data"])) {
+            return false;
+        }
+
+        $path = $meta["path"];
+        $data = $meta["data"];
+        $template = isset($meta["template"]) ? $meta["template"] : false;
+
+        // Get external files
+        $files = $this->expand_regex_paths($path, $template);
+
+        // Get data for external files, TODO
+        // WARNING: WIP
+    }
+
     private function get_field_value($file_id, $name, $meta) {
+        if (!empty($meta) && $meta["name"] == "external") {
+            return $this->get_external_data($meta);
+        }
+
+        // Else, it is normal data, get it from database
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
             "SELECT `value` FROM `file_data` WHERE `file_id`=? AND `name`=? ORDER BY `id` DESC LIMIT 1",
