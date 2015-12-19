@@ -27,24 +27,15 @@ class sap_portal extends Controller {
         if (isset($id) && ctype_digit($id)) {
             $mission = $this->sap_model->get_mission($id);
             if ($mission) {
-                $tasks = $this->sap_model->get_tasks($id);
-                $submissions = $this->sap_model->get_task_submissions(
+                $tasks = $this->sap_model->get_tasks_with_submissions(
                     $this->sap_auth->get_current_user_id(),
                     $id
                 );
-                // TODO: Make this faster than O(n^2)?
-                foreach ($submissions as $submission) {
-                    foreach ($tasks as &$task) {
-                        if ($submission['task_id'] == $task['id']) {
-                            $task['submission'] = $submission;
-                        }
-                    }
-                }
                 if ($action == 'createtask') {
                     $this->create_task($mission);
                     return;
                 } elseif ($action == 'submittask') {
-                    $this->submit_task($mission, $tasks, $submissions);
+                    $this->submit_task($mission, $tasks);
                     return;
                 } else {
                     $this->load_view('sap/mission', [

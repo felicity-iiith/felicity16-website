@@ -136,6 +136,24 @@ class sap_model extends Model {
         return boolval($stmt);
     }
 
+    public function get_tasks_with_submissions($user_id, $mission_id) {
+        $tasks = $this->get_tasks($mission_id);
+        $submissions = $this->get_task_submissions(
+            $user_id,
+            $mission_id
+        );
+        // TODO: Refactor this to make it faster than O(n^2)
+        foreach ($submissions as $submission) {
+            foreach ($tasks as &$task) {
+                if ($submission['task_id'] == $task['id']) {
+                    $task['submission'] = $submission;
+                    break;
+                }
+            }
+        }
+        return $tasks;
+    }
+
     public function get_task_submissions($user_id, $mission_id) {
         $query = <<<SQL
 SELECT `task_id`, `done`, `answer`
