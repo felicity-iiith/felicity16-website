@@ -136,7 +136,7 @@ class sap_model extends Model {
         return boolval($stmt);
     }
 
-    public function get_tasks_with_submissions($user_id, $mission_id) {
+    public function get_tasks_with_submissions($user_id, $mission_id, $delete_rejected = false) {
         $tasks = $this->get_tasks($mission_id);
         $submissions = $this->get_task_submissions(
             $user_id,
@@ -151,7 +151,61 @@ class sap_model extends Model {
                 }
             }
         }
+
+        if ($delete_rejected) {
+            // TODO: Do something with return value :/
+            $this->delete_rejected_submissions($user_id, $mission_id);
+        }
+
         return $tasks;
+    }
+
+    public function delete_rejected_submissions($user_id, $mission_id) {
+        $query = <<<SQL
+DELETE `sap_task_submissions`
+FROM `sap_task_submissions`
+INNER JOIN `sap_tasks`
+ON `sap_tasks`.`id` = `sap_task_submissions`.`task_id`
+WHERE `sap_task_submissions`.`done` = 2 AND `sap_task_submissions`.`user_id`=? AND `sap_tasks`.`mission_id`=?
+SQL;
+        return $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            $query,
+            'ii',
+            [$user_id, $mission_id],
+            false
+        );
+    }
+
+    public function get_task_submissions_for_review($mission_id) {
+        // TODO: Figure out a way to make this enormous query cleaner.
+        // Changing the schema to use duplicates and foreign keys and ON UPDATE CASCADE is an idea
+        $query = <<<SQL
+SELECT `ambassadors`.`name` AS `users_name`
+    , `tasks`.`description` AS `task_description`
+    , `task_submissions`.`answer`
+    , `tasks`.`mission_id`
+    , `task_submissions`.`id`
+    , `missions`.`title` AS `mission_title`
+FROM `sap_task_submissions` AS `task_submissions`
+INNER JOIN `sap_tasks` AS `tasks`
+ON `tasks`.`id` = `task_submissions`.`task_id`
+INNER JOIN `sap_missions` as `missions`
+ON `missions`.`id` = `tasks`.`mission_id`
+INNER JOIN `sap_users` AS `users`
+ON `users`.`id` = `task_submissions`.`user_id`
+INNER JOIN `sap_ambassadors` AS `ambassadors`
+ON `ambassadors`.`id` = `users`.`registration_id`
+WHERE `tasks`.`mission_id`=? and `task_submissions`.`done` = 0
+SQL;
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            $query,
+            'i',
+            [$mission_id]
+        );
+        $submissions = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $submissions;
     }
 
     public function get_task_submissions($user_id, $mission_id) {
@@ -170,5 +224,20 @@ SQL;
         );
         $submissions = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $submissions;
+    }
+
+    public function submit_review($submission_id, $approved) {
+        if ($approved) {
+            $status = 1;
+        } else {
+            $status = 2;
+        }
+        return $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'UPDATE `sap_task_submissions` SET `done`=? WHERE `id`=?',
+            'ii',
+            [$status, $submission_id],
+            false
+        );
     }
 }

@@ -25,6 +25,9 @@
         </p>
         <?php if ($is_admin): ?>
             <a href="./createtask/" class="btn btn-green">Create new task</a>
+            <a href="../../review/mission/<?= $mission['id'] ?>/" class="btn btn-blue">
+                Review submissions for this mission
+            </a>
         <?php endif; ?>
         <?php if (isset($errors)) {
                 foreach ($errors as $error) {
@@ -35,15 +38,22 @@
         <hr>
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>
-            <?php if (isset($task['submission'])): ?>
+            <?php if (isset($task['submission']) && $task['submission']['done'] !== 2): ?>
                 <p><?= $task['description'] ?></p>
                 <?php if ($task['has_text_answer']): ?>
                     <textarea disabled><?= $task['submission']['answer'] ?></textarea>
                 <?php endif; ?>
-                <p><strong>Submitted for review</strong></p>
+                <?php if ($task['submission']['done'] == 0): ?>
+                    <p><strong>Submitted for review</strong></p>
+                <?php elseif ($task['submission']['done'] == 1): ?>
+                    <p style="color:green"><strong>Done! :)</strong></p>
+                <?php endif; ?>
             <?php else: ?>
                 <form class="block" method="post" action="./submittask/">
                     <p><?= $task['description'] ?></p>
+                    <?php if (isset($task['submission']) && $task['submission']['done'] == 2): ?>
+                        <p style="color:red">Your submission for this task was rejected. :/</p>
+                    <?php endif; ?>
                     <?php if ($task['has_text_answer']): ?>
                         <textarea name="text-answer" required></textarea>
                     <?php endif; ?>

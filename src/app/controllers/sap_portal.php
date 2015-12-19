@@ -29,7 +29,8 @@ class sap_portal extends Controller {
             if ($mission) {
                 $tasks = $this->sap_model->get_tasks_with_submissions(
                     $this->sap_auth->get_current_user_id(),
-                    $id
+                    $id,
+                    true // Deletes rejected task submissions
                 );
                 if ($action == 'createtask') {
                     $this->create_task($mission);
@@ -145,6 +146,37 @@ class sap_portal extends Controller {
         } else {
             $this->load_view('sap/create_mission');
         }
+    }
+
+    public function review_mission($mission_id) {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        $submissions = $this->sap_model->get_task_submissions_for_review($mission_id);
+        $this->load_view('sap/review_mission', [
+            'submissions' => $submissions,
+            'mission_id' => $mission_id,
+            'result' => $this->session_lib->flash_get('result'),
+            'success' => $this->session_lib->flash_get('success'),
+        ]);
+    }
+
+    public function review_submission($submission_id) {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        $action = $_POST['action'];
+        $success = $this->sap_model->submit_review($submission_id, ($_POST['action'] == 'approve'));
+        // TODO: Check if all tasks have been completed and if so, award points!
+        $mission_id = $_POST['mission-id'];
+        if ($success) {
+            $this->session_lib->flash_set('result', "Action \"$action\" successful!");
+            $this->session_lib->flash_set('success', true);
+        } else {
+            $this->session_lib->flash_set('result', "Failed to $action submission! :/");
+            $this->session_lib->flash_set('success', false);
+        }
+        $this->http_lib->redirect(base_url() . "sap/portal/review/mission/$mission_id/");
     }
 
     private function validate_data($posted_data, $rules) {
