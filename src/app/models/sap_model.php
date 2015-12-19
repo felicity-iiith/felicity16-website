@@ -136,13 +136,19 @@ class sap_model extends Model {
         return boolval($stmt);
     }
 
-    // TODO: join on tasks for smaller result for a particular task
-    public function get_task_submissions($user_id) {
+    public function get_task_submissions($user_id, $mission_id) {
+        $query = <<<SQL
+SELECT `task_id`, `done`, `answer`
+FROM `sap_task_submissions`
+INNER JOIN `sap_tasks`
+ON `sap_tasks`.`id` = `sap_task_submissions`.`task_id`
+WHERE `user_id`=? AND `sap_tasks`.`mission_id`=?
+SQL;
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `task_id`, `done`, `answer` FROM `sap_task_submissions` WHERE `user_id`=?',
-            'i',
-            [$user_id]
+            $query,
+            'ii',
+            [$user_id, $mission_id]
         );
         $submissions = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $submissions;

@@ -29,7 +29,8 @@ class sap_portal extends Controller {
             if ($mission) {
                 $tasks = $this->sap_model->get_tasks($id);
                 $submissions = $this->sap_model->get_task_submissions(
-                    $this->sap_auth->get_current_user_id()
+                    $this->sap_auth->get_current_user_id(),
+                    $id
                 );
                 // TODO: Make this faster than O(n^2)?
                 foreach ($submissions as $submission) {
