@@ -27,8 +27,22 @@ class sap_portal extends Controller {
             $mission = $this->sap_model->get_mission($id);
             if ($mission) {
                 $tasks = $this->sap_model->get_tasks($id);
+                $submissions = $this->sap_model->get_task_submissions(
+                    $this->sap_auth->get_current_user_id()
+                );
+                // TODO: Make this faster than O(n^2)?
+                foreach ($submissions as $submission) {
+                    foreach ($tasks as &$task) {
+                        if ($submission['task_id'] == $task['id']) {
+                            $task['submission'] = $submission;
+                        }
+                    }
+                }
                 if ($action == 'createtask') {
                     $this->create_task($mission);
+                    return;
+                } elseif ($action == 'submittask') {
+                    $this->submit_task($mission, $tasks, $submissions);
                     return;
                 } else {
                     $this->load_view('sap/mission', [
@@ -84,6 +98,31 @@ class sap_portal extends Controller {
             $this->load_view('sap/create_task', [
                 'mission_title' => $mission_title,
             ]);
+        }
+    }
+
+    private function submit_task($mission, $tasks) {
+        // TODO: Refactor after flash data library is made
+        $mission_id = $mission['id'];
+        if (isset($_POST['submit-task'])) {
+            $user_id = $this->sap_auth->get_current_user_id();
+            $text_answer = null;
+            if (isset($_POST['text-answer'])) {
+                $text_answer = $_POST['text-answer'];
+            }
+            $success = $this->sap_model->submit_task($_POST['submit-task'], $user_id, $text_answer);
+            if ($success) {
+                $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
+            } else {
+                $this->load_view('sap/mission', [
+                    'mission' => $mission,
+                    'tasks' => $tasks,
+                    'is_admin' => $this->sap_auth->is_current_user_admin(),
+                    'error' => 'Could not submit task. :/',
+                ]);
+            }
+        } else {
+            $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
         }
     }
 

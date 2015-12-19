@@ -27,7 +27,7 @@ class sap_model extends Model {
     public function check_credentials($username, $password) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `password_hash` FROM `sap_users` WHERE `username`=?',
+            'SELECT `id`, `password_hash` FROM `sap_users` WHERE `username`=?',
             's',
             [$username]
         );
@@ -35,7 +35,10 @@ class sap_model extends Model {
         if (! $row) {
             return false;
         }
-        return password_verify($password, $row[0]);
+        if(password_verify($password, $row[1])) {
+            return $row[0];
+        }
+        return false;
     }
 
     public function is_admin($username) {
@@ -93,7 +96,7 @@ class sap_model extends Model {
     public function get_tasks($mission_id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `id`, `description` FROM `sap_tasks` WHERE `mission_id`=? ORDER BY id ASC',
+            'SELECT `id`, `description`, `has_text_answer` FROM `sap_tasks` WHERE `mission_id`=? ORDER BY id ASC',
             'i',
             [$mission_id]
         );
@@ -110,5 +113,38 @@ class sap_model extends Model {
             [$mission_id, $description, $has_text_answer]
         );
         return boolval($stmt);
+    }
+
+    public function submit_task($task_id, $user_id, $text_answer) {
+        if ($text_answer) {
+            $stmt = $this->db_lib->prepared_execute(
+                $this->DB->sap,
+                'INSERT INTO `sap_task_submissions` (`task_id`, `user_id`, `answer`) ' .
+                'VALUES (?, ?, ?)',
+                'iis',
+                [$task_id, $user_id, $text_answer]
+            );
+        } else {
+            $stmt = $this->db_lib->prepared_execute(
+                $this->DB->sap,
+                'INSERT INTO `sap_task_submissions` (`task_id`, `user_id`) ' .
+                'VALUES (?, ?)',
+                'ii',
+                [$task_id, $user_id]
+            );
+        }
+        return boolval($stmt);
+    }
+
+    // TODO: join on tasks for smaller result for a particular task
+    public function get_task_submissions($user_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT `task_id`, `done`, `answer` FROM `sap_task_submissions` WHERE `user_id`=?',
+            'i',
+            [$user_id]
+        );
+        $submissions = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $submissions;
     }
 }

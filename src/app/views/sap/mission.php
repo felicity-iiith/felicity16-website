@@ -26,10 +26,29 @@
         <?php if ($is_admin): ?>
             <a href="./createtask/" class="btn btn-green">Create new task</a>
         <?php endif; ?>
+        <?php if (isset($error)): ?>
+            <p style="color:red"><?= $error ?></p>
+        <?php endif; ?>
         <hr>
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>
-            <p><?= $task['description'] ?></p>
+            <?php if(isset($task['submission'])): ?>
+                <p><?= $task['description'] ?></p>
+                <?php if ($task['has_text_answer']): ?>
+                    <textarea disabled><?= $task['submission']['answer'] ?></textarea>
+                <?php endif; ?>
+                <p><strong>Submitted for review</strong></p>
+            <?php else: ?>
+                <form class="block" method="post" action="./submittask/">
+                    <p><?= $task['description'] ?></p>
+                    <?php if ($task['has_text_answer']): ?>
+                        <textarea name="text-answer" required></textarea>
+                    <?php endif; ?>
+                    <button class="btn btn-blue" type="submit" name="submit-task" value="<?= $task['id'] ?>">
+                        Submit task for review
+                    </button>
+                </form>
+            <?php endif; ?>
             <hr>
         <?php endforeach; ?>
     </div>
