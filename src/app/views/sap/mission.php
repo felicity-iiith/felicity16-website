@@ -35,7 +35,7 @@
         <hr>
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>
-            <?php if(isset($task['submission'])): ?>
+            <?php if (isset($task['submission'])): ?>
                 <p><?= $task['description'] ?></p>
                 <?php if ($task['has_text_answer']): ?>
                     <textarea disabled><?= $task['submission']['answer'] ?></textarea>

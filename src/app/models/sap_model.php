@@ -35,7 +35,7 @@ class sap_model extends Model {
         if (! $row) {
             return false;
         }
-        if(password_verify($password, $row[1])) {
+        if (password_verify($password, $row[1])) {
             return $row[0];
         }
         return false;
