@@ -6,7 +6,7 @@ This is the repository for the Felicity '16 website.
 
 ## Fork and Clone
 
-In order to clone this repository, you will need to use the `--recursive` flag with `git clone` (or you could initialize the submodule later with `git submodule update --init --recursive`).
+In order to clone this repository, you will need to use the `--recursive` flag with `git clone` (or you could
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ $ npm install # installs required npm packages
 $ composer install # installs required composer packages
 $ npm install -g gulp # globall install gulp, a task runner
 # build the site and then watch for changes, rebuilding when updated
-$ gulp watch
+$ gulp && gulp watch
 ```
 
 After running these commands, you'll have a built copy of the site in a `build/` folder in the root of the project. You work in `src/` and the built site goes to `build/`.
@@ -31,6 +31,5 @@ After running these commands, you'll have a built copy of the site in a `build/`
 Also,
 - Copy `src/app/config.sample.php` to `src/app/config.php` and edit values (at least the database configuration).
 - Import the `database.sql` file into your database, you can do this by `mysql -u username -p password DBNAME < database.sql`
-- There are additional SQL files to import in `/sql/` and if you already have a particular version of the database and want to upgrade, look at `/sql/migrations/`.
 
 Please contribute!
