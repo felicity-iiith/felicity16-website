@@ -17,13 +17,11 @@
                     foreach ($errors as $error) {
                         echo "<p style=\"color:red\">$error</p>";
                     }
-                } else if (isset($result)) {
-                    if ($result === false) {
-                        echo "<p style=\"color:red\">Something went wrong. :/</p>";
-                    }
+                } else if (isset($result) && $result === false) {
+                    echo "<p style=\"color:red\">Something went wrong. :/</p>";
                 }
                 ?>
-                <?php if (isset($result) && is_int($result)): ?>
+                <?php if (isset($result) && is_int($result)): // $result is mission ID ?>
                     <p>Mission created!</p>
                     <a class="btn btn-blue" href="<?= base_url() ?>sap/portal/mission/<?= $result ?>">
                         Go to mission

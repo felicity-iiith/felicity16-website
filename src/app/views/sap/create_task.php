@@ -18,8 +18,6 @@
                     foreach ($errors as $error) {
                         echo "<p style=\"color:red\">$error</p>";
                     }
-                } else if (isset($result) && $result === false) {
-                    echo "<p style=\"color:red\">Something went wrong. :/</p>";
                 }
                 ?>
                 <form class="block full-width" method="post">

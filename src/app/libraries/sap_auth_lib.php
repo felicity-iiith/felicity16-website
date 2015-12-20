@@ -6,7 +6,10 @@ class sap_auth_lib extends Library {
             session_start();
         }
     }
-
+    /**
+     * Ensures that the user is logged in.
+     * If already logged in, it does nothing. Else, it redirects to the login page.
+     */
     public function force_authentication() {
         if (empty($_SESSION['sap_username'])) {
             $this->load_library('http_lib');
@@ -21,6 +24,10 @@ class sap_auth_lib extends Library {
         return true;
     }
 
+    /**
+     * Gets username of current logged in user.
+     * @return string|bool Username as a string, or false if not logged in
+     */
     public function get_current_username() {
         if ($this->is_authenticated()) {
             return $_SESSION['sap_username'];
@@ -28,6 +35,10 @@ class sap_auth_lib extends Library {
         return false;
     }
 
+    /**
+     * Gets user ID (DB field) of current logged in user.
+     * @return int|bool User ID as an int, or false if not logged in
+     */
     public function get_current_user_id() {
         if ($this->is_authenticated()) {
             return $_SESSION['sap_user_id'];
@@ -35,6 +46,12 @@ class sap_auth_lib extends Library {
         return false;
     }
 
+    /**
+     * Checks credentials and if valid, logs user in by setting $_SESSION variables
+     * @param  string $username
+     * @param  string $password
+     * @return bool Whether login was successful
+     */
     public function login($username, $password) {
         $this->load_model('sap_model');
         $user_id = $this->sap_model->check_credentials($username, $password);
@@ -55,6 +72,9 @@ class sap_auth_lib extends Library {
         return false;
     }
 
+    /**
+     * Logs the user out by unsetting $_SESSION variables and then redirects to the /sap/ page
+     */
     public function logout() {
         $this->load_library('http_lib');
 

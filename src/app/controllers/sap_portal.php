@@ -78,14 +78,15 @@ class sap_portal extends Controller {
                 $result = $this->sap_model->create_task(
                     $mission_id,
                     $posted_data['description'],
-                    isset($posted_data['has-text-answer'])
+                    isset($posted_data['has-text-answer']) // sends just the boolean
                 );
                 if ($result) {
                     $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
                 }
-                // View handles $result = false case
+
+                // If we reach here, an error has occurred.
                 $this->load_view('sap/create_task', [
-                    'result' => $result,
+                    'errors' => ['Something went wrong. :/'],
                     'mission_title' => $mission_title,
                 ]);
             }
@@ -132,6 +133,7 @@ class sap_portal extends Controller {
                     'errors' => $errors,
                 ]);
             } else {
+                // Returns mission ID if successful, else false
                 $result = $this->sap_model->create_mission(
                     $posted_data['title'],
                     $posted_data['level'],
@@ -166,7 +168,10 @@ class sap_portal extends Controller {
             $this->http_lib->response_code(403);
         }
         $action = $_POST['action'];
-        $success = $this->sap_model->submit_review($submission_id, ($_POST['action'] == 'approve'));
+        $success = $this->sap_model->submit_review(
+            $submission_id,
+            ($_POST['action'] == 'approve') // boolean indicating approved or not
+        );
         // TODO: Check if all tasks have been completed and if so, award points!
         $mission_id = $_POST['mission-id'];
         if ($success) {
