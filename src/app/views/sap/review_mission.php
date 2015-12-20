@@ -25,12 +25,12 @@
         ?>
         <?php foreach ($submissions as $submission): ?>
             <p>
-                <?= $submission['users_name'] ?> submitted a task from mission
-                "<a href="<?= base_url() ?>sap/portal/mission/<?= $submission['mission_id'] ?>" target="_blank"><?= $submission['mission_title'] ?></a>"
+                <?= htmlspecialchars($submission['users_name']) ?> submitted a task from mission
+                "<a href="<?= base_url() ?>sap/portal/mission/<?= $submission['mission_id'] ?>" target="_blank"><?= htmlspecialchars($submission['mission_title']) ?></a>"
             </p>
-            <p><strong>Task description: </strong><?= $submission['task_description'] ?></p>
+            <p><strong>Task description: </strong><?= htmlspecialchars($submission['task_description']) ?></p>
             <?php if (isset($submission['answer'])): ?>
-                <p><strong>Their answer: </strong><?= $submission['answer'] ?></p>
+                <p><strong>Their answer: </strong><?= htmlspecialchars($submission['answer']) ?></p>
             <?php endif; ?>
             <p>
             <form method="post" action="../../submission/<?= $submission['id'] ?>/">

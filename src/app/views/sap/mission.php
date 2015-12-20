@@ -10,9 +10,9 @@
     <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => true]); ?>
     <div class="container">
         <h1>Mission <?= $mission['id'] ?> · Level <?= $mission['level'] ?></h1>
-        <h2><?= $mission['title'] ?></h2>
+        <h2><?= htmlspecialchars($mission['title']) ?></h2>
         <?php if (isset($mission['description'])): ?>
-            <p><?= $mission['description'] ?></p>
+            <p><?= htmlspecialchars($mission['description']) ?></p>
         <?php endif; ?>
         <p>
             <strong>
@@ -39,9 +39,9 @@
         <?php foreach ($tasks as $i=>$task): ?>
             <h3>Task <?= $i + 1 ?></h3>
             <?php if (isset($task['submission']) && $task['submission']['done'] !== 2): ?>
-                <p><?= $task['description'] ?></p>
+                <p><?= htmlspecialchars($task['description']) ?></p>
                 <?php if ($task['has_text_answer']): ?>
-                    <textarea disabled><?= $task['submission']['answer'] ?></textarea>
+                    <textarea disabled><?= htmlspecialchars($task['submission']['answer']) ?></textarea>
                 <?php endif; ?>
                 <?php if ($task['submission']['done'] == 0): ?>
                     <p><strong>Submitted for review</strong></p>
@@ -50,7 +50,7 @@
                 <?php endif; ?>
             <?php else: ?>
                 <form class="block" method="post" action="./submittask/">
-                    <p><?= $task['description'] ?></p>
+                    <p><?= htmlspecialchars($task['description']) ?></p>
                     <?php if (isset($task['submission']) && $task['submission']['done'] == 2): ?>
                         <p style="color:red">Your submission for this task was rejected. :/</p>
                     <?php endif; ?>

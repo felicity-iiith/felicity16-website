@@ -10,7 +10,7 @@
     <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => true]); ?>
     <div class="container">
         <h1>Dashboard</h1>
-        <p>Welcome to the SAP portal, <?= $username ?>. :)</p>
+        <p>Welcome to the SAP portal, <?= htmlspecialchars($username) ?>. :)</p>
         <?php if ($is_admin): ?>
             <a class="btn btn-green" href="<?= base_url() ?>sap/portal/mission/create">
                 Create new mission
@@ -30,7 +30,7 @@
         ?>
             <li>
                 <a href="<?= base_url() ?>sap/portal/mission/<?= $mission['id'] ?>">
-                    <?= $mission['title'] ?>
+                    <?= htmlspecialchars($mission['title']) ?>
                 </a>
             </li>
         <?php

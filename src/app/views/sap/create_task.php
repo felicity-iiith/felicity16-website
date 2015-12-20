@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-6-12 col-offset-3-12">
                 <h1>Create new task</h1>
-                <p>for mission "<a href="../"><?= $mission_title; ?></a>"</p>
+                <p>for mission "<a href="../"><?= htmlspecialchars($mission_title) ?></a>"</p>
                 <?php
                 if (isset($errors) && count($errors) !== 0) {
                     foreach ($errors as $error) {
