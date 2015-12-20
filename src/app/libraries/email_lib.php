@@ -19,13 +19,14 @@ class email_lib extends Library {
         $this->mailer->Username   = $email_cfg['username'];
         $this->mailer->Password   = $email_cfg['password'];
         $this->mailer->isHTML(true);
-        $this->mailer->Encoding = 'quoted-printable';
+        $this->mailer->Encoding   = 'quoted-printable';
+        $this->mailer->CharSet    = 'UTF-8';
     }
 
     public function send_mail($email_data) {
 
         $this->mailer->ClearAddresses();
-        
+
         $this->mailer->setFrom($email_data['from_email'], $email_data['from_name']);
         $this->mailer->addAddress($email_data['to_email'], $email_data['to_name']);
         $this->mailer->Subject = $email_data['subject'];
