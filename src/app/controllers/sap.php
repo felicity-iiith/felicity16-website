@@ -4,6 +4,7 @@ class sap extends Controller {
 
     function index() {
         $this->load_library('csrf_lib');
+        $this->load_library('sap_auth_lib', 'sap_auth');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['csrf_token'])) {
@@ -26,6 +27,7 @@ class sap extends Controller {
                 $this->load_view('sap/register', [
                     'errors' => $errors,
                     'csrf_token' => $this->csrf_lib->new_csrf_token(),
+                    'logged_in' => $this->sap_auth->is_authenticated(),
                 ]);
             } else {
                 $this->handleRegistration($posted_data);
@@ -34,8 +36,36 @@ class sap extends Controller {
         } else {
             $this->load_view('sap/register', [
                 'csrf_token' => $this->csrf_lib->new_csrf_token(),
+                'logged_in' => $this->sap_auth->is_authenticated(),
             ]);
         }
+    }
+
+    public function login() {
+        $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->load_library('http_lib');
+
+        if ($this->sap_auth->is_authenticated()) {
+            $this->http_lib->redirect(base_url() . 'sap/portal/');
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $success = $this->sap_auth->login($_POST['email'], $_POST['password']);
+            if ($success) {
+                $this->http_lib->redirect(base_url() . 'sap/portal/');
+            } else {
+                $this->load_view('sap/login', [
+                    'error' => true
+                ]);
+            }
+        } else {
+            $this->load_view('sap/login');
+        }
+    }
+
+    public function logout() {
+        $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->sap_auth->logout();
     }
 
     private function validateData($posted_data) {
@@ -72,6 +102,7 @@ class sap extends Controller {
 
     private function handleRegistration($posted_data) {
         $this->load_model('sap_model');
+        $this->load_library('sap_auth_lib', 'sap_auth');
         $success = $this->sap_model->registerEntry($posted_data);
 
         if ($success) {
@@ -108,6 +139,7 @@ class sap extends Controller {
         $this->load_view('sap/register', [
             'success' => $success,
             'csrf_token' => $this->csrf_lib->new_csrf_token(),
+            'logged_in' => $this->sap_auth->is_authenticated(),
         ]);
     }
 }
