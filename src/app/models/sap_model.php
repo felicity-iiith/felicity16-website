@@ -7,7 +7,7 @@ class sap_model extends Model {
 
     public function registerEntry($data) {
         // Optional form field
-        $organisedEvent = isset($data['organised-event']) ? $data['organised-event'] : NULL;
+        $organisedEvent = isset($data['organised-event']) ? $data['organised-event'] : null;
 
         return $this->db_lib->prepared_execute(
             $this->DB->sap,
