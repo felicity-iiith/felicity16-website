@@ -4,7 +4,7 @@ class sap_portal extends Controller {
     public function __construct() {
         $this->load_library('sap_auth_lib', 'sap_auth');
         $this->sap_auth->force_authentication();
-        $this->username = $this->sap_auth->get_current_username();
+        $this->email = $this->sap_auth->get_current_email();
         $this->load_library('http_lib');
         $this->load_model('sap_model');
         $this->load_library('session_lib');
@@ -17,7 +17,7 @@ class sap_portal extends Controller {
     public function dashboard() {
         $missions = $this->sap_model->get_missions();
         $this->load_view('sap/dashboard', [
-            'username' => $this->username,
+            'email' => $this->email,
             'is_admin' => $this->sap_auth->is_current_user_admin(),
             'missions' => $missions,
         ]);

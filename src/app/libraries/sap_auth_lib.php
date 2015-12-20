@@ -11,26 +11,26 @@ class sap_auth_lib extends Library {
      * If already logged in, it does nothing. Else, it redirects to the login page.
      */
     public function force_authentication() {
-        if (empty($_SESSION['sap_username'])) {
+        if (empty($_SESSION['sap_email'])) {
             $this->load_library('http_lib');
             $this->http_lib->redirect(base_url() . 'sap/login/');
         }
     }
 
     public function is_authenticated() {
-        if (empty($_SESSION['sap_username'])) {
+        if (empty($_SESSION['sap_email'])) {
             return false;
         }
         return true;
     }
 
     /**
-     * Gets username of current logged in user.
-     * @return string|bool Username as a string, or false if not logged in
+     * Gets email of current logged in user.
+     * @return string|bool email as a string, or false if not logged in
      */
-    public function get_current_username() {
+    public function get_current_email() {
         if ($this->is_authenticated()) {
-            return $_SESSION['sap_username'];
+            return $_SESSION['sap_email'];
         }
         return false;
     }
@@ -48,17 +48,17 @@ class sap_auth_lib extends Library {
 
     /**
      * Checks credentials and if valid, logs user in by setting $_SESSION variables
-     * @param  string $username
+     * @param  string $email
      * @param  string $password
      * @return bool Whether login was successful
      */
-    public function login($username, $password) {
+    public function login($email, $password) {
         $this->load_model('sap_model');
-        $user_id = $this->sap_model->check_credentials($username, $password);
+        $user_id = $this->sap_model->check_credentials($email, $password);
         if ($user_id) {
-            $_SESSION['sap_username'] = $username;
+            $_SESSION['sap_email'] = $email;
             $_SESSION['sap_user_id'] = $user_id;
-            $is_admin = $this->sap_model->is_admin($username);
+            $is_admin = $this->sap_model->is_admin($email);
             $_SESSION['sap_is_admin'] = $is_admin;
             return true;
         }
@@ -79,7 +79,7 @@ class sap_auth_lib extends Library {
         $this->load_library('http_lib');
 
         if ($this->is_authenticated()) {
-            unset($_SESSION['sap_username']);
+            unset($_SESSION['sap_email']);
             unset($_SESSION['sap_user_id']);
             unset($_SESSION['sap_is_admin']);
         }

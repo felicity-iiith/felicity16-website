@@ -24,12 +24,12 @@ class sap_model extends Model {
         );
     }
 
-    public function check_credentials($username, $password) {
+    public function check_credentials($email, $password) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `id`, `password_hash` FROM `sap_users` WHERE `username`=?',
+            'SELECT `id`, `password_hash` FROM `sap_users` WHERE `email`=?',
             's',
-            [$username]
+            [$email]
         );
         $row = $stmt->get_result()->fetch_row();
         if (! $row) {
@@ -41,12 +41,12 @@ class sap_model extends Model {
         return false;
     }
 
-    public function is_admin($username) {
+    public function is_admin($email) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `is_admin` FROM `sap_users` WHERE `username`=?',
+            'SELECT `is_admin` FROM `sap_users` WHERE `email`=?',
             's',
-            [$username]
+            [$email]
         );
         $row = $stmt->get_result()->fetch_row();
         if (! $row) {

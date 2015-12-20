@@ -50,7 +50,7 @@ class sap extends Controller {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $success = $this->sap_auth->login($_POST['username'], $_POST['password']);
+            $success = $this->sap_auth->login($_POST['email'], $_POST['password']);
             if ($success) {
                 $this->http_lib->redirect(base_url() . 'sap/portal/');
             } else {

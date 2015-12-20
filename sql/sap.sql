@@ -23,17 +23,6 @@ CREATE TABLE IF NOT EXISTS `sap_ambassadors` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
-CREATE TABLE IF NOT EXISTS `sap_users` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `username` varchar(64) COLLATE utf8_bin NOT NULL,
-  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
-  `registration_id` int(10) UNSIGNED NOT NULL,
-  `password_hash` char(60) COLLATE utf8_bin NOT NULL,
-  `score` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
 CREATE TABLE IF NOT EXISTS `sap_missions` (
   `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `level` smallint(5) UNSIGNED NOT NULL,
@@ -63,11 +52,23 @@ CREATE TABLE IF NOT EXISTS `sap_task_submissions` (
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+CREATE TABLE IF NOT EXISTS `sap_users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` varchar(64) COLLATE utf8_bin NOT NULL,
+  `is_admin` tinyint(1) NOT NULL DEFAULT '0',
+  `registration_id` int(10) UNSIGNED NOT NULL,
+  `password_hash` char(60) COLLATE utf8_bin NOT NULL,
+  `score` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
 ALTER TABLE `sap_tasks`
   ADD CONSTRAINT `sap_tasks_ibfk_1` FOREIGN KEY (`mission_id`) REFERENCES `sap_missions` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-  ALTER TABLE `sap_task_submissions`
-    ADD CONSTRAINT `sap_task_submissions_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `sap_tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `sap_task_submissions`
+  ADD CONSTRAINT `sap_task_submissions_ibfk_1` FOREIGN KEY (`task_id`) REFERENCES `sap_tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

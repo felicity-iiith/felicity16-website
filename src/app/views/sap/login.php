@@ -11,10 +11,10 @@
     <div class="container">
         <h1>Login</h1>
         <?php if (isset($error) && $error): ?>
-            <p style="color:red">Invalid username or password.</p>
+            <p style="color:red">Invalid email or password.</p>
         <?php endif; ?>
         <form method="post" class="block">
-            <label>Username: <input name="username" type="text"></label>
+            <label>Email: <input name="email" type="email"></label>
             <label>Password: <input name="password" type="password"></label>
             <input type="submit">
         </form>
