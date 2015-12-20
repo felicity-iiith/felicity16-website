@@ -23,7 +23,7 @@ class sap_portal extends Controller {
         ]);
     }
 
-    public function mission($id, $action = '') {
+    public function mission($id = null, $action = '') {
         if (isset($id) && ctype_digit($id)) {
             $mission = $this->sap_model->get_mission($id);
             if ($mission) {
