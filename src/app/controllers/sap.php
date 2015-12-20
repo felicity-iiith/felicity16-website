@@ -65,8 +65,6 @@ class sap extends Controller {
 
     public function logout() {
         $this->load_library('sap_auth_lib', 'sap_auth');
-        $this->load_library('http_lib');
-
         $this->sap_auth->logout();
     }
 
