@@ -1,0 +1,2 @@
+ALTER TABLE `sap_ambassadors` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+ALTER TABLE `sap_ambassadors` CONVERT TO CHARACTER SET utf8 COLLATE utf8_bin;

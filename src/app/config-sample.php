@@ -20,6 +20,8 @@ $cfg = [
             'db_name'   => 'dbname',
         ],
     ],
+    '404_view' => 'http_error',
+    '404_data' => ['error_code' => 404],
 ];
 
 $admins = [

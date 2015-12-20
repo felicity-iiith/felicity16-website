@@ -8,6 +8,15 @@
         "type"      : "text",
         "optional"  : true
     },
+    "description": {
+        "name"      : "Description",
+        "type"      : "longtext"
+    },
+    "bgcolor": {
+        "name"      : "Background color",
+        "type"      : "color",
+        "default"   : "transparent"
+    },
     "background_image": {
         "name"  : "Background image",
         "type"  : "text",

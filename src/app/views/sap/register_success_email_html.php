@@ -21,7 +21,7 @@
         <div style="padding:0.4em 0;font-size:0.8em;margin-top:1em;border-top:1px solid #ccc;box-sizing:border-box;color:#666;">
             <p style="margin:0;line-height:1.5em;">
                 Visit
-                <a  style="color:#006EFF;"  href="https://felicity.iiit.ac.in" target="_blank">felicity.iiit.ac.in</a>
+                <a  style="color:#006EFF;"  href="<?= base_url() ?>" target="_blank">felicity.iiit.ac.in</a>
                 for more fun stuff!
             </p>
         </div>
