@@ -159,10 +159,11 @@ class sap_portal extends Controller {
         if (! $this->sap_auth->is_current_user_admin()) {
             $this->http_lib->response_code(403);
         }
+        $mission = $this->sap_model->get_mission($mission_id);
         $submissions = $this->sap_model->get_task_submissions_for_review($mission_id);
         $this->load_view('sap/review_mission', [
             'submissions' => $submissions,
-            'mission_id' => $mission_id,
+            'mission' => $mission,
             'result' => $this->session_lib->flash_get('result'),
             'success' => $this->session_lib->flash_get('success'),
         ]);
