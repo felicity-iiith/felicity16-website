@@ -63,13 +63,13 @@
             <?php
             if (isset($errors) && count($errors) !== 0) {
                 foreach ($errors as $error) {
-                    echo "<p class=\"error\">$error</p>";
+                    echo "<p class=\"text-error\">$error</p>";
                 }
             } else if (isset($success)) {
                 if ($success) {
-                    echo "<p class=\"success\">You have applied successfully. We shall review your application and get back to you.</p>";
+                    echo "<p class=\"text-success\">You have applied successfully. We shall review your application and get back to you.</p>";
                 } else {
-                    echo '<p class=\"error\">Sorry! Something went wrong. Please email ',
+                    echo '<p class=\"text-error\">Sorry! Something went wrong. Please email ',
                     '<a href=\"mailto:help@felicity.iiit.ac.in\">help@felicity.iiit.ac.in</a> ',
                     'with details about this error.</p>';
                 }

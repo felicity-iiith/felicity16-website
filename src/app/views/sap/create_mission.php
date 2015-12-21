@@ -15,10 +15,10 @@
                 <?php
                 if (isset($errors) && count($errors) !== 0) {
                     foreach ($errors as $error) {
-                        echo "<p style=\"color:red\">$error</p>";
+                        echo "<p class=\"text-error\">$error</p>";
                     }
                 } else if (isset($result) && $result === false) {
-                    echo "<p style=\"color:red\">Something went wrong. :/</p>";
+                    echo "<p class=\"text-error\">Something went wrong. :/</p>";
                 }
                 ?>
                 <?php if (isset($result) && is_int($result)): // $result is mission ID ?>

@@ -14,9 +14,9 @@
         <?php
         if (isset($success)) {
             if ($success) {
-                echo "<p style=\"color:green\">$result</p>";
+                echo "<p class=\"text-success\">$result</p>";
             } else {
-                echo "<p style=\"color:red\">$result</p>";
+                echo "<p class=\"text-error\">$result</p>";
             }
         }
         ?>
