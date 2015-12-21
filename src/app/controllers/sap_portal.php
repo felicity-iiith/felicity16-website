@@ -125,7 +125,7 @@ class sap_portal extends Controller {
             }
 
             $errors = $this->validate_data($posted_data, [
-                'required_fields' => ['title', 'points', 'level', 'description'],
+                'required_fields' => ['title', 'points', 'level'],
             ]);
 
             if (count($errors) != 0) {
@@ -138,7 +138,7 @@ class sap_portal extends Controller {
                     $posted_data['title'],
                     $posted_data['level'],
                     $posted_data['points'],
-                    $posted_data['description']
+                    isset($posted_data['description']) ? $posted_data['description'] : null
                 );
                 // View handles $result = false case
                 $this->load_view('sap/create_mission', [

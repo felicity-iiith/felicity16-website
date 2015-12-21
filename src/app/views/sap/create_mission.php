@@ -32,7 +32,7 @@
                     <label>Level: <input name="level" class="text-input" type="number" min="1" required></label>
                     <label>Points: <input name="points" class="text-input" type="number" min="0" step="5" required></label>
                     <label for="description">Description:</label>
-                    <textarea name="description" required></textarea>
+                    <textarea name="description"></textarea>
                     <input class="btn btn-green" type="submit">
                 </form>
             </div>
