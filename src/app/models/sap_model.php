@@ -100,11 +100,12 @@ class sap_model extends Model {
         $tasks = $this->get_tasks_with_submissions($user_id, $mission_id);
         $mission_complete = true;
         foreach ($tasks as $task) {
-            if (isset($task["submission"]) && isset($task["submission"]["done"])) {
-                if ($task["submission"]["done"] !== 1) {
-                    $mission_complete = false;
-                    break;
-                }
+            if (!isset($task["submission"])
+                || !isset($task["submission"]["done"])
+                || $task["submission"]["done"] !== 1
+            ) {
+                $mission_complete = false;
+                break;
             }
         }
         if ($mission_complete === true) {

@@ -179,7 +179,6 @@ class sap_portal extends Controller {
         );
 
         $submission = $this->sap_model->get_submission_details($submission_id);
-        var_dump($submission);
         $user_id = $submission['user_id'];
         $mission_id = $submission['mission_id'];
         $this->sap_model->handle_mission_complete($user_id, $mission_id);
