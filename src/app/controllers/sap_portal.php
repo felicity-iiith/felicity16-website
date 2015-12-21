@@ -15,7 +15,9 @@ class sap_portal extends Controller {
     }
 
     public function dashboard() {
-        $missions = $this->sap_model->get_missions();
+        $missions = $this->sap_model->get_missions(
+            $this->sap_auth->is_current_user_admin() // if true, returns unpublished missions
+        );
         $this->load_view('sap/dashboard', [
             'email' => $this->email,
             'is_admin' => $this->sap_auth->is_current_user_admin(),
@@ -27,6 +29,9 @@ class sap_portal extends Controller {
         if (isset($id) && ctype_digit($id)) {
             $mission = $this->sap_model->get_mission($id);
             if ($mission) {
+                if (!$mission['published'] && !$this->sap_auth->is_current_user_admin()) {
+                    $this->http_lib->response_code(404);
+                }
                 $tasks = $this->sap_model->get_tasks_with_submissions(
                     $this->sap_auth->get_current_user_id(),
                     $id,
@@ -38,6 +43,8 @@ class sap_portal extends Controller {
                 } elseif ($action == 'submittask') {
                     $this->submit_task($mission, $tasks);
                     return;
+                } elseif ($action == 'publish') {
+                    $this->publish_mission($id);
                 } else {
                     $this->load_view('sap/mission', [
                         'mission' => $mission,
@@ -53,9 +60,20 @@ class sap_portal extends Controller {
         $this->http_lib->response_code(404);
     }
 
+    private function publish_mission($mission_id) {
+        $success = $this->sap_model->publish_mission($mission_id);
+        if (!$success) {
+            $this->session_lib->flash_set('errors', ['Mission could not be published. :/']);
+        }
+        $this->http_lib->redirect(base_url() . "sap/portal/mission/$mission_id/");
+    }
+
     private function create_task($mission) {
         if ($this->sap_auth->is_current_user_admin() === false) {
             $this->http_lib->response_code(403);
+        }
+        if ($mission['published']) {
+            $this->http_lib->response_code(400);
         }
         $mission_title = $mission['title'];
         $mission_id = $mission['id'];

@@ -14,6 +14,15 @@
         <?php if (isset($mission['description'])): ?>
             <p><?= htmlspecialchars($mission['description']) ?></p>
         <?php endif; ?>
+        <?php if(!$mission['published']): ?>
+            <p>This mission is unpublished.</p>
+            <form method="post" action="./publish">
+                <button type="submit" class="btn btn-red">Publish mission</button>
+            </form>
+            <p class="text-error">
+                <small>If you publish the mission, you will no longer be able to add any tasks.</small>
+            </p>
+        <?php endif; ?>
         <p>
             <strong>
                 This mission has <?= count($tasks) ?> task<?php
@@ -24,7 +33,9 @@
             </strong>
         </p>
         <?php if ($is_admin): ?>
-            <a href="./createtask/" class="btn btn-green">Create new task</a>
+            <?php if(!$mission['published']): ?>
+                <a href="./createtask/" class="btn btn-green">Create new task</a>
+            <?php endif; ?>
             <a href="../../review/mission/<?= $mission['id'] ?>/" class="btn btn-blue">
                 Review submissions for this mission
             </a>

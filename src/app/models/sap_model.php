@@ -55,10 +55,12 @@ class sap_model extends Model {
         return boolval($row[0]);
     }
 
-    public function get_missions() {
+    public function get_missions($get_unpublished = false) {
+        $where_clause = $get_unpublished ? "" : "WHERE `published` IS TRUE";
         $result = $this->DB->sap->query(
-            'SELECT `id`, `level`, `title`, `description` FROM `sap_missions` ' .
-            'ORDER BY level ASC, id ASC'
+        "SELECT `id`, `level`, `title`, `description` FROM `sap_missions`
+         $where_clause
+         ORDER BY level ASC, id ASC"
         );
         $missions = $result->fetch_all(MYSQLI_ASSOC);
         return $missions;
@@ -67,7 +69,9 @@ class sap_model extends Model {
     public function get_mission($id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `level`, `points`, `title`, `description` FROM `sap_missions` WHERE `id`=?',
+            'SELECT `level`, `published`, `points`, `title`, `description`
+             FROM `sap_missions`
+             WHERE `id`=?',
             'i',
             [$id]
         );
@@ -135,6 +139,17 @@ class sap_model extends Model {
             return false;
         }
         return $stmt->insert_id;
+    }
+
+    public function publish_mission($mission_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'UPDATE `sap_missions` SET `published`=TRUE WHERE `id`=?',
+            'i',
+            [$mission_id],
+            false
+        );
+        return $stmt;
     }
 
     public function get_tasks($mission_id) {

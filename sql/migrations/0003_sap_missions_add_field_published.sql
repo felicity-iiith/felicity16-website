@@ -1,0 +1,1 @@
+ALTER TABLE `sap_missions` ADD `published` BOOLEAN NOT NULL DEFAULT FALSE AFTER `id`;
