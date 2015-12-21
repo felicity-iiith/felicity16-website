@@ -67,7 +67,7 @@ class sap_model extends Model {
     public function get_mission($id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'SELECT `level`, `title`, `description` FROM `sap_missions` WHERE `id`=?',
+            'SELECT `level`, `points`, `title`, `description` FROM `sap_missions` WHERE `id`=?',
             'i',
             [$id]
         );
@@ -77,6 +77,49 @@ class sap_model extends Model {
             return $row;
         }
         return false;
+    }
+
+    public function get_submission_details($submission_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            "SELECT s.`user_id`, s.`task_id`, t.`mission_id`
+            FROM `sap_task_submissions` s
+            JOIN `sap_tasks` t ON s.`task_id` = t.`id`
+            WHERE s.`id`=?",
+            "i",
+            [$submission_id]
+        );
+        if (!$stmt) {
+            return false;
+        };
+        $row = $stmt->get_result()->fetch_assoc();
+        return $row;
+    }
+
+    public function handle_mission_complete($user_id, $mission_id) {
+        $tasks = $this->get_tasks_with_submissions($user_id, $mission_id);
+        $mission_complete = true;
+        foreach ($tasks as $task) {
+            if (isset($task["submission"]) && isset($task["submission"]["done"])) {
+                if ($task["submission"]["done"] !== 1) {
+                    $mission_complete = false;
+                    break;
+                }
+            }
+        }
+        if ($mission_complete === true) {
+            $mission = $this->get_mission($mission_id);
+            $points = $mission["points"];
+
+            return $this->db_lib->prepared_execute(
+                $this->DB->sap,
+                'UPDATE `sap_users` SET `score`=`score`+? WHERE `id`=?',
+                'ii',
+                [$points, $user_id],
+                false
+            );
+        }
+        return true;
     }
 
     public function create_mission($title, $level, $points, $description) {
@@ -136,7 +179,7 @@ class sap_model extends Model {
         return boolval($stmt);
     }
 
-    public function get_tasks_with_submissions($user_id, $mission_id, $delete_rejected = false) {
+    public function get_tasks_with_submissions($user_id, $mission_id) {
         $tasks = $this->get_tasks($mission_id);
         $submissions = $this->get_task_submissions(
             $user_id,
