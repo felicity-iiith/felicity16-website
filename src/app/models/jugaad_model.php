@@ -448,7 +448,7 @@ class jugaad_model extends Model {
     }
 
     private function get_external_data($meta) {
-        if (empty($meta["path"]) || empty($meta["data"])) {
+        if (empty($meta["path"])) {
             return false;
         }
 
@@ -459,12 +459,31 @@ class jugaad_model extends Model {
         // Get external files
         $files = $this->expand_regex_paths($path, $template);
 
-        // Get data for external files, TODO
-        // WARNING: WIP
+        // TODO: Check file permissions
+
+        // Get data for external files
+        $ext_data = [];
+        foreach ($files as $file) {
+            $ext_file = [];
+            $ext_file["slug"] = $file["slug"];
+            $ext_file["path"] = $file["path"];
+            $ext_file["template"] = $file["template"];
+            // TODO: $ext_file["url"] to acount for cannonical paths, e.g. index
+            $ext_file["data"] = [];
+
+            foreach ($data as $name => $ext_name) {
+                $ext_file["data"][$name] =
+                    $this->get_field_value($file["id"], $ext_name, false);
+            }
+
+            $ext_data[] = $ext_file;
+        }
+
+        return $ext_data;
     }
 
-    private function get_field_value($file_id, $name, $meta) {
-        if (!empty($meta) && $meta["name"] == "external") {
+    private function get_field_value($file_id, $name, $meta = false) {
+        if (!empty($meta) && $meta["type"] == "external") {
             return $this->get_external_data($meta);
         }
 

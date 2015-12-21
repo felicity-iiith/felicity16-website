@@ -18,9 +18,18 @@
         "default"   : "transparent"
     },
     "background_image": {
-        "name"  : "Background image",
-        "type"  : "text",
-        "default" : "bg1.jpg",
-        "optional" : true
+        "name"      : "Background image",
+        "type"      : "text",
+        "default"   : "bg1.jpg",
+        "optional"  : true
+    },
+    "ext_data": {
+        "name"      : "External",
+        "type"      : "external",
+        "path"      : "**",
+        "template"  : "dump",
+        "data"      : {
+            "title"     : "title"
+        }
     }
 }

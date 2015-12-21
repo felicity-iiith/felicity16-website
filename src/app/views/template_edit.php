@@ -6,6 +6,12 @@
         $out = "<label for='$name'>$meta[name] $required_notice: ";
 
         switch ($meta['type']) {
+            case 'external':
+                $out .= "<a onclick='foldNext(this)' href='javascript:void(0)'>Hide</a>"
+                    . "<pre>"
+                    . htmlentities(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), ENT_QUOTES)
+                    . "</pre>";
+                break;
             case 'color':
                 if (!$data) {
                     $data = 'rgb(0, 0, 0)';
@@ -30,6 +36,19 @@
     endif;
 ?>
 <script>
+    /* exported foldNext */
+    function foldNext(elem) {
+        var nextElem = elem.nextElementSibling;
+        var display = nextElem.style.display;
+        if (display == "none") {
+            nextElem.style.display = "";
+            elem.innerHTML = "Hide";
+        } else {
+            nextElem.style.display = "none";
+            elem.innerHTML = "Show";
+        }
+    }
+
     /* global $ */
     $('input[data-type=color]').spectrum({
         showInput: true,
