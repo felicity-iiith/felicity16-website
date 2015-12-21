@@ -158,6 +158,25 @@ class sap_model extends Model {
         return boolval($stmt);
     }
 
+    public function is_submission_allowed($user_id, $task_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            "SELECT `done` FROM `sap_task_submissions`
+            WHERE `task_id`=? AND `user_id`=?
+            ORDER BY `id` DESC LIMIT 1",
+            'ii',
+            [$task_id, $user_id]
+        );
+        if (!$stmt) {
+            return false;
+        }
+        $row = $stmt->get_result()->fetch_row();
+        if (!$row) {
+            return true;
+        }
+        return $row[0] === 2;
+    }
+
     public function submit_task($task_id, $user_id, $text_answer) {
         if ($text_answer) {
             $stmt = $this->db_lib->prepared_execute(

@@ -101,6 +101,11 @@ class sap_portal extends Controller {
         $mission_id = $mission['id'];
         if (isset($_POST['submit-task'])) {
             $user_id = $this->sap_auth->get_current_user_id();
+
+            if (!$this->sap_model->is_submission_allowed($user_id, $_POST['submit-task'])) {
+                $this->http_lib->response_code(400);
+            }
+
             $text_answer = null;
             if (isset($_POST['text-answer'])) {
                 $text_answer = $_POST['text-answer'];
