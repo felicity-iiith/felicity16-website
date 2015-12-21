@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Login</h1>
         <?php if (isset($error) && $error): ?>
-            <p style="color:red">Invalid email or password.</p>
+            <p class="text-error">Invalid email or password.</p>
         <?php endif; ?>
         <form method="post" class="block">
             <label>Email: <input name="email" type="email"></label>

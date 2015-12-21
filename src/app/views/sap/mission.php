@@ -31,7 +31,7 @@
         <?php endif; ?>
         <?php if (isset($errors)) {
                 foreach ($errors as $error) {
-                    echo "<p style=\"color:red\">$error</p>";
+                    echo "<p class=\"text-error\">$error</p>";
                 }
             }
         ?>
@@ -46,13 +46,13 @@
                 <?php if ($task['submission']['done'] == 0): ?>
                     <p><strong>Submitted for review</strong></p>
                 <?php elseif ($task['submission']['done'] == 1): ?>
-                    <p style="color:green"><strong>Done! :)</strong></p>
+                    <p class="text-success"><strong>Done! :)</strong></p>
                 <?php endif; ?>
             <?php else: ?>
                 <form class="block" method="post" action="./submittask/">
                     <p><?= htmlspecialchars($task['description']) ?></p>
                     <?php if (isset($task['submission']) && $task['submission']['done'] == 2): ?>
-                        <p style="color:red">Your submission for this task was rejected. :/</p>
+                        <p class="text-error">Your submission for this task was rejected. :/</p>
                     <?php endif; ?>
                     <?php if ($task['has_text_answer']): ?>
                         <textarea name="text-answer" required></textarea>

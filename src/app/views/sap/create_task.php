@@ -16,7 +16,7 @@
                 <?php
                 if (isset($errors) && count($errors) !== 0) {
                     foreach ($errors as $error) {
-                        echo "<p style=\"color:red\">$error</p>";
+                        echo "<p class=\"text-error\">$error</p>";
                     }
                 }
                 ?>
