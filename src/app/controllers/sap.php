@@ -43,6 +43,7 @@ class sap extends Controller {
 
     public function login() {
         $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->load_library('csrf_lib');
         $this->load_library('http_lib');
 
         if ($this->sap_auth->is_authenticated()) {
@@ -50,16 +51,26 @@ class sap extends Controller {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['csrf_token'])) {
+                $recvd_token = $_POST['csrf_token'];
+            } else {
+                $recvd_token = NULL;
+            }
+            $this->csrf_lib->check_csrf_token($recvd_token);
+            $this->csrf_lib->reset_csrf_token();
             $success = $this->sap_auth->login($_POST['email'], $_POST['password']);
             if ($success) {
                 $this->http_lib->redirect(base_url() . 'sap/portal/');
             } else {
                 $this->load_view('sap/login', [
-                    'error' => true
+                    'error' => true,
+                    'csrf_token' => $this->csrf_lib->new_csrf_token(),
                 ]);
             }
         } else {
-            $this->load_view('sap/login');
+            $this->load_view('sap/login', [
+                'csrf_token' => $this->csrf_lib->new_csrf_token(),
+            ]);
         }
     }
 
