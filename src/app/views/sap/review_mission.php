@@ -9,6 +9,8 @@
 <body>
     <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => true]); ?>
     <div class="container">
+        <h1>Review submissions</h1>
+        <h2>Mission "<?= $mission['title'] ?>"</h2>
         <?php
         if (isset($success)) {
             if ($success) {
@@ -18,15 +20,14 @@
             }
         }
         ?>
-        <?php
-        if (count($submissions) === 0) {
-            echo "Nothing to review here. :)";
-        }
-        ?>
+        <?php if (count($submissions) === 0): ?>
+            <p>Nothing to review here. :)</p>
+        <?php endif?>
+        <p><a href="<?= base_url() ?>sap/portal/mission/<?= $mission['id'] ?>" class="btn">&lt; Back to mission</a></p>
+        <hr>
         <?php foreach ($submissions as $submission): ?>
             <p>
-                <?= htmlspecialchars($submission['users_name']) ?> submitted a task from mission
-                "<a href="<?= base_url() ?>sap/portal/mission/<?= $submission['mission_id'] ?>" target="_blank"><?= htmlspecialchars($submission['mission_title']) ?></a>"
+                <?= htmlspecialchars($submission['users_name']) ?> submitted a task.
             </p>
             <p><strong>Task description: </strong><?= htmlspecialchars($submission['task_description']) ?></p>
             <?php if (isset($submission['answer'])): ?>
