@@ -143,6 +143,7 @@ class sap_model extends Model {
             $mission_id
         );
         // TODO: Refactor this to make it faster than O(n^2)
+        // Get latest submission for each task
         foreach ($submissions as $submission) {
             foreach ($tasks as &$task) {
                 if ($submission['task_id'] == $task['id']) {
@@ -152,29 +153,7 @@ class sap_model extends Model {
             }
         }
 
-        if ($delete_rejected) {
-            // TODO: Do something with return value :/
-            $this->delete_rejected_submissions($user_id, $mission_id);
-        }
-
         return $tasks;
-    }
-
-    public function delete_rejected_submissions($user_id, $mission_id) {
-        $query = <<<SQL
-DELETE `sap_task_submissions`
-FROM `sap_task_submissions`
-INNER JOIN `sap_tasks`
-ON `sap_tasks`.`id` = `sap_task_submissions`.`task_id`
-WHERE `sap_task_submissions`.`done` = 2 AND `sap_task_submissions`.`user_id`=? AND `sap_tasks`.`mission_id`=?
-SQL;
-        return $this->db_lib->prepared_execute(
-            $this->DB->sap,
-            $query,
-            'ii',
-            [$user_id, $mission_id],
-            false
-        );
     }
 
     public function get_task_submissions_for_review($mission_id) {
@@ -208,13 +187,15 @@ SQL;
         return $submissions;
     }
 
+    /* Returns all the submissions for all the tasks in the mission by the user */
     public function get_task_submissions($user_id, $mission_id) {
         $query = <<<SQL
 SELECT `task_id`, `done`, `answer`
-FROM `sap_task_submissions`
+FROM `sap_task_submissions` submissions
 INNER JOIN `sap_tasks`
-ON `sap_tasks`.`id` = `sap_task_submissions`.`task_id`
+ON `sap_tasks`.`id` = submissions.`task_id`
 WHERE `user_id`=? AND `sap_tasks`.`mission_id`=?
+ORDER BY submissions.`id`
 SQL;
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
