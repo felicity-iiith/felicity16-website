@@ -101,6 +101,11 @@ class sap_portal extends Controller {
         $mission_id = $mission['id'];
         if (isset($_POST['submit-task'])) {
             $user_id = $this->sap_auth->get_current_user_id();
+
+            if (!$this->sap_model->is_submission_allowed($user_id, $_POST['submit-task'])) {
+                $this->http_lib->response_code(400);
+            }
+
             $text_answer = null;
             if (isset($_POST['text-answer'])) {
                 $text_answer = $_POST['text-answer'];
@@ -172,8 +177,12 @@ class sap_portal extends Controller {
             $submission_id,
             ($_POST['action'] == 'approve') // boolean indicating approved or not
         );
-        // TODO: Check if all tasks have been completed and if so, award points!
-        $mission_id = $_POST['mission-id'];
+
+        $submission = $this->sap_model->get_submission_details($submission_id);
+        $user_id = $submission['user_id'];
+        $mission_id = $submission['mission_id'];
+        $this->sap_model->handle_mission_complete($user_id, $mission_id);
+
         if ($success) {
             $this->session_lib->flash_set('result', "Action \"$action\" successful!");
             $this->session_lib->flash_set('success', true);
