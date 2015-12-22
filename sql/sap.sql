@@ -20,6 +20,9 @@ CREATE TABLE IF NOT EXISTS `sap_ambassadors` (
   `about_you` text COLLATE utf8_bin NOT NULL,
   `organised_event` text COLLATE utf8_bin,
   `registration_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hash_for_ceating_password` CHAR(42) NULL DEFAULT NULL UNIQUE,
+  `has_activated` BOOLEAN NOT NULL DEFAULT FALSE,
+  `is_removed` BOOLEAN NOT NULL DEFAULT FALSE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 

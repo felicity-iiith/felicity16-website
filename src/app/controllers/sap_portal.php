@@ -214,4 +214,87 @@ class sap_portal extends Controller {
 
         return $errors;
     }
+
+    public function confirm_users() {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        $users = $this->sap_model->get_users_list();
+        $this->load_view('sap/confirm_users', [
+            'users' => $users,
+            'error' => $this->session_lib->flash_get('error'),
+        ]);
+    }
+
+    public function approve_user($id = "") {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        if (! ctype_digit($id)) {
+            $this->http_lib->response_code(400);
+        }
+
+        $user = $this->sap_model->get_user($id, false);
+        if (! $user) {
+            $this->http_lib->response_code(400);
+        }
+        do {
+            $password_hash = bin2hex(openssl_random_pseudo_bytes(21));
+        }
+        while (! $this->sap_model->approve_user($id, $password_hash));
+
+        $link = base_url() . 'sap/verify/' . $password_hash . '/';
+
+        // Send user email with link for creating password
+        $this->load_library('email_lib', 'email');
+        $subject = "Felicity '16 Student Ambassador Program";
+
+        ob_start();
+        $this->load_view('sap/create_password_email_html', [
+            'subject' => $subject,
+            'name' => $user['name'],
+            'link' => $link
+        ]);
+        $email_body_html = ob_get_contents();
+        ob_end_clean();
+
+        ob_start();
+        $this->load_view('sap/create_password_email_text', [
+            'subject' => $subject,
+            'name' => $user['name'],
+            'link' => $link
+        ]);
+        $email_body_text = ob_get_contents();
+        ob_end_clean();
+
+        $this->email->send_mail([
+            'from_email'=> 'noreply@felicity.iiit.ac.in',
+            'from_name' => 'Team Felicity',
+            'to_email'  => $user['email'],
+            'to_name'   => $user['name'],
+            'subject'   => $subject,
+            'html_body' => $email_body_html,
+            'alt_body'  => $email_body_text,
+        ]);
+        $this->http_lib->redirect(base_url() . 'sap/portal/users/');
+    }
+
+    public function remove_user($id = "") {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        if (! ctype_digit($id)) {
+            $this->http_lib->response_code(400);
+        }
+
+        $user = $this->sap_model->get_user($id, false);
+        if (! $user) {
+            $this->http_lib->response_code(400);
+        }
+        $success = $this->sap_model->remove_user($id);
+        if (! $success) {
+            $this->session_lib->flash_set('error', 'Could not remove user. :/');
+        }
+        $this->http_lib->redirect(base_url() . 'sap/portal/users/');
+    }
 }

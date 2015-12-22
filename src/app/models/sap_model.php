@@ -284,4 +284,88 @@ SQL;
             false
         );
     }
+
+    public function get_users_list() {
+        $result = $this->DB->sap->query('SELECT * FROM `sap_ambassadors` WHERE `is_removed` = 0');
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function get_user($id, $activated = true) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT * FROM `sap_ambassadors` WHERE `id`=? AND `has_activated`=?',
+            'ii',
+            [$id, $activated],
+            true
+        );
+        return $stmt->get_result()->fetch_assoc();
+    }
+
+    public function approve_user($id, $password_hash) {
+        return $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'UPDATE `sap_ambassadors` SET `hash_for_ceating_password`=? WHERE `id`=?',
+            'si',
+            [$password_hash, $id],
+            false
+        );
+    }
+
+    public function remove_user($id) {
+        return $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'UPDATE `sap_ambassadors` SET `is_removed`=1 WHERE `id`=?',
+            'i',
+            [$id],
+            false
+        );
+    }
+
+    public function verify_hash($hash) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT * FROM `sap_ambassadors` WHERE `hash_for_ceating_password`=?',
+            's',
+            [$hash],
+            true
+        );
+        return $stmt->get_result()->fetch_assoc();
+    }
+
+    public function create_user_password($user, $password) {
+        $db_error = false;
+        $this->DB->sap->autocommit(false);
+
+        $stmt = $this->db_lib->prepared_execute(
+                $this->DB->sap,
+                'UPDATE `sap_ambassadors` SET `hash_for_ceating_password`=?, `has_activated`=1 WHERE `id`=?',
+                'ss',
+                [null, $user['id']],
+                false
+            );
+        if (! $stmt) {
+            $db_error = true;
+        }
+
+        if (! $db_error) {
+            $stmt = $this->db_lib->prepared_execute(
+                $this->DB->sap,
+                'INSERT INTO `sap_users` (`email`, `registration_id`, `password_hash`) VALUES (?, ?, ?)',
+                'sss',
+                [$user['email'], $user['id'], password_hash($password, PASSWORD_DEFAULT)],
+                false
+            );
+            if (! $stmt) {
+                $db_error = true;
+            }
+        }
+
+        if ($db_error) {
+            $this->DB->sap->rollback();
+        } else {
+            $this->DB->sap->commit();
+        }
+        $this->DB->sap->autocommit(true);
+        return !$db_error;
+    }
 }
