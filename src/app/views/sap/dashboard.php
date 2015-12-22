@@ -22,7 +22,7 @@
             $level = 0;
             foreach ($missions as $mission) {
                 if ($mission['level'] > $level) {
-                    $level++;
+                    $level = $mission['level'];
                     if ($level > 1) {
                         echo '</ul>';
                     }
