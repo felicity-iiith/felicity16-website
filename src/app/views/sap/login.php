@@ -16,6 +16,7 @@
         <form method="post" class="block">
             <label>Email: <input name="email" type="email"></label>
             <label>Password: <input name="password" type="password"></label>
+            <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
             <input type="submit">
         </form>
     </div>
