@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS `sap_ambassadors` (
 
 CREATE TABLE IF NOT EXISTS `sap_missions` (
   `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `published` BOOLEAN NOT NULL DEFAULT FALSE,
   `level` smallint(5) UNSIGNED NOT NULL,
   `points` smallint(5) UNSIGNED NOT NULL,
   `title` varchar(128) COLLATE utf8_bin NOT NULL,
