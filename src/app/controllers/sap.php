@@ -68,6 +68,53 @@ class sap extends Controller {
         $this->sap_auth->logout();
     }
 
+    public function verify($hash = "") {
+        $this->load_library('http_lib');
+        if ($hash == "") {
+            $this->http_lib->response_code(404);
+        }
+        $this->load_model('sap_model');
+        $user = $this->sap_model->verify_hash($hash);
+        if (! $user) {
+            $this->http_lib->response_code(404);
+        }
+        $this->load_library('csrf_lib');
+        $this->load_library('session_lib');
+        $this->load_view('sap/create_password', [
+            'csrf_token' => $this->csrf_lib->new_csrf_token(),
+            'hash' => $hash,
+            'error' => $this->session_lib->flash_get('error'),
+        ]);
+    }
+
+    public function confirm() {
+        $this->load_library('http_lib');
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            $this->http_lib->response_code(400);
+        }
+        foreach (['hash', 'password', 'csrf_token'] as $name) {
+            if (! isset($_POST[$name])) {
+                $this->http_lib->response_code(400);
+            }
+        }
+        $this->load_library('csrf_lib');
+        $this->csrf_lib->check_csrf_token($_POST['csrf_token']);
+        $this->csrf_lib->reset_csrf_token();
+        $this->load_model('sap_model');
+        $user = $this->sap_model->verify_hash($_POST['hash']);
+        if (! $user) {
+            $this->http_lib->response_code(400);
+        }
+        $success = $this->sap_model->create_user_password($user, $_POST['password']);
+        if ($success) {
+            $this->http_lib->redirect(base_url() . 'sap/login/');
+        } else {
+            $this->load_library('session_lib');
+            $this->session_lib->flash_set('error', true);
+            $this->http_lib->redirect(base_url() . 'sap/verify/' . $_POST['hash']);
+        }
+    }
+
     private function validateData($posted_data) {
         $errors = [];
 

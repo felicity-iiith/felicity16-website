@@ -14,6 +14,9 @@
             <a class="btn btn-green" href="<?= base_url() ?>sap/portal/mission/create">
                 Create new mission
             </a>
+            <a class="btn btn-blue" href="<?= base_url() ?>sap/portal/users/">
+                Review users
+            </a>
         <?php endif; ?>
         <?php
             $level = 0;
