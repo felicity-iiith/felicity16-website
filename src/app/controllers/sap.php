@@ -2,10 +2,14 @@
 
 class sap extends Controller {
 
-    function index() {
-        $this->load_library('csrf_lib');
+    public function __construct() {
         $this->load_library('sap_auth_lib', 'sap_auth');
+        $this->load_library('csrf_lib');
+        $this->load_library('http_lib');
+        $this->load_library('session_lib');
+    }
 
+    public function index() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['csrf_token'])) {
                 $recvd_token = $_POST['csrf_token'];
@@ -24,11 +28,8 @@ class sap extends Controller {
             $errors = $this->validateData($posted_data);
 
             if (count($errors) != 0) {
-                $this->load_view('sap/register', [
-                    'errors' => $errors,
-                    'csrf_token' => $this->csrf_lib->new_csrf_token(),
-                    'logged_in' => $this->sap_auth->is_authenticated(),
-                ]);
+                $this->session_lib->flash_set('errors', $errors);
+                $this->http_lib->redirect(base_url() . 'sap/');
             } else {
                 $this->handleRegistration($posted_data);
             }
@@ -37,15 +38,13 @@ class sap extends Controller {
             $this->load_view('sap/register', [
                 'csrf_token' => $this->csrf_lib->new_csrf_token(),
                 'logged_in' => $this->sap_auth->is_authenticated(),
+                'errors' => $this->session_lib->flash_get('errors'),
+                'success' => $this->session_lib->flash_get('success'),
             ]);
         }
     }
 
     public function login() {
-        $this->load_library('sap_auth_lib', 'sap_auth');
-        $this->load_library('csrf_lib');
-        $this->load_library('http_lib');
-
         if ($this->sap_auth->is_authenticated()) {
             $this->http_lib->redirect(base_url() . 'sap/portal/');
         }
@@ -62,20 +61,18 @@ class sap extends Controller {
             if ($success) {
                 $this->http_lib->redirect(base_url() . 'sap/portal/');
             } else {
-                $this->load_view('sap/login', [
-                    'error' => true,
-                    'csrf_token' => $this->csrf_lib->new_csrf_token(),
-                ]);
+                $this->session_lib->flash_set('error', true);
+                $this->http_lib->redirect(base_url() . 'sap/login/');
             }
         } else {
             $this->load_view('sap/login', [
                 'csrf_token' => $this->csrf_lib->new_csrf_token(),
+                'error' => $this->session_lib->flash_get('error'),
             ]);
         }
     }
 
     public function logout() {
-        $this->load_library('sap_auth_lib', 'sap_auth');
         $this->sap_auth->logout();
     }
 
@@ -160,7 +157,6 @@ class sap extends Controller {
 
     private function handleRegistration($posted_data) {
         $this->load_model('sap_model');
-        $this->load_library('sap_auth_lib', 'sap_auth');
         $success = $this->sap_model->registerEntry($posted_data);
 
         if ($success) {
@@ -194,10 +190,7 @@ class sap extends Controller {
         }
 
         // View handles if success is false.
-        $this->load_view('sap/register', [
-            'success' => $success,
-            'csrf_token' => $this->csrf_lib->new_csrf_token(),
-            'logged_in' => $this->sap_auth->is_authenticated(),
-        ]);
+        $this->session_lib->flash_set('success', $success);
+        $this->http_lib->redirect(base_url() . 'sap/');
     }
 }
