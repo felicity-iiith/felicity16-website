@@ -1,5 +1,11 @@
 <?php
 
+/*
+ This file is too big. Can be broken in multiple modals.
+ One containing all the file operations,
+ another with all the operations related to templating and data.
+ */
+
 class jugaad_model extends Model {
 
     function __construct() {
@@ -447,7 +453,7 @@ class jugaad_model extends Model {
         return $files;
     }
 
-    private function get_external_data($meta) {
+    private function get_external_data($meta, $user) {
         if (empty($meta["path"])) {
             return false;
         }
@@ -459,11 +465,17 @@ class jugaad_model extends Model {
         // Get external files
         $files = $this->expand_regex_paths($path, $template);
 
-        // TODO: Check file permissions
+        $this->load_model("perms_model");
 
         // Get data for external files
         $ext_data = [];
         foreach ($files as $file) {
+            // Check file permission and discard if user does not have enough permissions
+            $user_can = $this->perms_model->get_permissions($file["id"], $user);
+            if (!$user_can['read_file']) {
+                continue;
+            }
+
             $ext_file = [];
             $ext_file["slug"] = $file["slug"];
             $ext_file["path"] = $file["path"];
@@ -473,7 +485,7 @@ class jugaad_model extends Model {
 
             foreach ($data as $name => $ext_name) {
                 $ext_file["data"][$name] =
-                    $this->get_field_value($file["id"], $ext_name, false);
+                    $this->get_field_value($file["id"], $ext_name, false, false);
             }
 
             $ext_data[] = $ext_file;
@@ -482,9 +494,9 @@ class jugaad_model extends Model {
         return $ext_data;
     }
 
-    private function get_field_value($file_id, $name, $meta = false) {
+    private function get_field_value($file_id, $name, $meta = false, $user = false) {
         if (!empty($meta) && $meta["type"] == "external") {
-            return $this->get_external_data($meta);
+            return $this->get_external_data($meta, $user);
         }
 
         // Else, it is normal data, get it from database
@@ -503,14 +515,14 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_data($file_id, $template_meta, $return_default = true) {
+    function get_file_data($file_id, $template_meta, $user, $return_default = true) {
         // Get data for file based on template meta given
         if ($file_id === false || !is_array($template_meta)) {
             return false;
         }
         $data = [];
         foreach ($template_meta as $name => $meta) {
-            $field = $this->get_field_value($file_id, $name, $meta);
+            $field = $this->get_field_value($file_id, $name, $meta, $user);
             if ($field === false) {
                 if ($return_default) {
                     $data[$name] = @$meta['default'] ?: $meta['name'];

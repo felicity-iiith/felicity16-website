@@ -41,7 +41,7 @@ class page extends Controller {
             $this->http->response_code(404);
         }
 
-        $data = $this->jugaad_model->get_file_data($file_id, $template_meta, true);
+        $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
 
         $view_name = $this->template_model->get_view_name($file["template"]);
 

@@ -39,7 +39,7 @@ class jugaad extends Controller {
 
             if ($file["type"] == "file") {
                 $template_meta = $this->template_model->get_meta($file["template"]);
-                $orig_data = $this->jugaad_model->get_file_data($file_id, $template_meta, false);
+                $orig_data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, false);
 
                 // Clean data
                 foreach ($data as $key => $value) {
@@ -184,7 +184,7 @@ class jugaad extends Controller {
 
     private function show_file_edit($file) {
         $file["template_meta"] = $this->template_model->get_meta($file["template"]);
-        $file["data"] = $this->jugaad_model->get_file_data($file['id'], $file["template_meta"], false);
+        $file["data"] = $this->jugaad_model->get_file_data($file['id'], $file["template_meta"], $this->user, false);
 
         $this->load_view("file_edit", $file);
     }
