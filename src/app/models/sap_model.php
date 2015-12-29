@@ -100,6 +100,15 @@ class sap_model extends Model {
         return $row;
     }
 
+    public function get_user_scores(){
+        $rows = $this->DB->sap->query('
+                SELECT u.`email`, u.`score`, a.`name`
+                FROM `sap_users` u
+                JOIN `sap_ambassadors` a ON u.`email` = a.`email`
+                ORDER BY u.`score` DESC');
+        return $rows;
+    }
+
     public function handle_mission_complete($user_id, $mission_id) {
         $tasks = $this->get_tasks_with_submissions($user_id, $mission_id);
         $mission_complete = true;

@@ -25,6 +25,15 @@ class sap_portal extends Controller {
         ]);
     }
 
+    public function leaderboard() {
+        $user_scores = $this->sap_model->get_user_scores();
+        $this->load_view('sap/leaderboard', [
+            'email' => $this->email,
+            'is_admin' => $this->sap_auth->is_current_user_admin(),
+            'user_scores' => $user_scores,
+        ]);
+    }
+
     public function mission($id = null, $action = '') {
         if (isset($id) && ctype_digit($id)) {
             $mission = $this->sap_model->get_mission($id);
