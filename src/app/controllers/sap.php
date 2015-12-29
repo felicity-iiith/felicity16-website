@@ -14,7 +14,7 @@ class sap extends Controller {
             if (isset($_POST['csrf_token'])) {
                 $recvd_token = $_POST['csrf_token'];
             } else {
-                $recvd_token = NULL;
+                $recvd_token = null;
             }
             $this->csrf_lib->check_csrf_token($recvd_token);
             $this->csrf_lib->reset_csrf_token();
@@ -53,7 +53,7 @@ class sap extends Controller {
             if (isset($_POST['csrf_token'])) {
                 $recvd_token = $_POST['csrf_token'];
             } else {
-                $recvd_token = NULL;
+                $recvd_token = null;
             }
             $this->csrf_lib->check_csrf_token($recvd_token);
             $this->csrf_lib->reset_csrf_token();
