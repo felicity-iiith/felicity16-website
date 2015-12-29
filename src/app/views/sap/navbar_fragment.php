@@ -4,6 +4,7 @@
         <li><a href="<?= base_url() ?>">Felicity Home</a></li>
         <?php if (isset($logged_in) && $logged_in): ?>
             <li><a href="<?= base_url() ?>sap/portal/">Dashboard</a></li>
+            <li><a href="<?= base_url() ?>sap/portal/leaderboard">Leaderboard</a></li>
             <li><a href="<?= base_url() ?>sap/logout/">Logout</a></li>
         <?php else: ?>
             <li><a href="<?= base_url() ?>sap/login/">Login</a></li>
