@@ -100,12 +100,12 @@ class sap_model extends Model {
         return $row;
     }
 
-    public function get_user_scores(){
+    public function get_user_scores() {
         $rows = $this->DB->sap->query('
                 SELECT u.`email`, u.`score`, a.`name`
                 FROM `sap_users` u
                 JOIN `sap_ambassadors` a ON u.`email` = a.`email`
-                ORDER BY u.`score` DESC');
+                ORDER BY u.`score` DESC, a.`name` ASC');
         return $rows;
     }
 
