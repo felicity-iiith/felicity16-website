@@ -106,7 +106,7 @@ class sap_model extends Model {
                 FROM `sap_users` u
                 JOIN `sap_ambassadors` a ON u.`email` = a.`email`
                 ORDER BY u.`score` DESC, a.`name` ASC');
-        return $rows;
+        return $rows->fetch_all(MYSQLI_ASSOC);
     }
 
     public function handle_mission_complete($user_id, $mission_id) {

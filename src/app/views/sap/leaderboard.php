@@ -18,15 +18,19 @@
         </tr>
         <?php
             $rank = 1;
+            $score_prev = $user_scores[0]['score'];
             foreach ($user_scores as $user_score) {
                 $name = $user_score['name'];
                 $score = $user_score['score'];
+                if ($score_prev > $score){
+                    $score_prev = $score;
+                    $rank += 1;
+                }
                 echo "<tr>";
                 echo "<td>$rank</td>";
                 echo "<td>$name</td>";
                 echo "<td>$score</td>";
                 echo "</tr>";
-                $rank += 1;
             }
         ?>
         </table>
