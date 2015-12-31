@@ -453,7 +453,74 @@ class jugaad_model extends Model {
         return $files;
     }
 
-    private function get_external_data($meta, $user) {
+    private function eval_regex_preprocessor($preprocessor, $file_info) {
+        $pre_data = [];
+        $pre_data["path"] = array_filter(explode("/", $file_info["path"]));
+        $pre_data["template"] = $file_info["template"];
+
+        // Remove `{{` and `}}`
+        $location = substr($preprocessor, 2, -2);
+
+        // Get variable name and offsets
+        if (preg_match('/^([a-z0-9_]+)(\[(-?\d+)?(?:([:])(-?\d+)?)?\])?$/i', $location, $matches)) {
+            $identifier = (count($matches) >= 2) ? $matches[1] : false;
+
+            $is_array_access = (count($matches) >= 3 && $matches[2]) ? true : false;
+            $start_index = (count($matches) >= 4) ? intval($matches[3]) : 0;
+            $is_array_range = (count($matches) >= 5 && $matches[4]) ? true : false;
+            $end_index = (count($matches) >= 6) ? intval($matches[5]) : null;
+
+            if (!array_key_exists($identifier, $pre_data)) {
+                // Something wrong
+                return "";
+            }
+
+            $ret_value = $pre_data[$identifier];
+            $is_ret_array = is_array($ret_value);
+
+            if (!$is_ret_array) {
+                $ret_value = str_split($ret_value);
+            }
+
+            if ($is_array_access) {
+                if ($is_array_range) {
+                    if ($end_index !== null && $end_index < 0) {
+                        $array_length = count($ret_value);
+                        $end_index = $array_length + $end_index - 1;
+                    }
+                    $length = ($end_index === null) ? null : ($end_index - $start_index + 1);
+                    if ($length < 0) {
+                        $length = 0;
+                    }
+                } else {
+                    $length = 1;
+                }
+
+                $ret_value = array_slice($ret_value, $start_index, $length);
+            }
+
+            if ($is_ret_array) {
+                $ret_value = implode("/", $ret_value);
+            } else {
+                $ret_value = implode("", $ret_value);
+            }
+
+            return $ret_value;
+        }
+
+        return "";
+    }
+
+    private function preprocess_regex($regex, $file_info) {
+        while (preg_match('/\{\{.*\}\}/i', $regex, $matches)) {
+            $replacement = $this->eval_regex_preprocessor($matches[0], $file_info);
+            $regex = str_replace($matches[0], $replacement, $regex);
+        }
+
+        return $regex;
+    }
+
+    private function get_external_data($file_id, $meta, $user) {
         if (empty($meta["path"])) {
             return false;
         }
@@ -461,6 +528,11 @@ class jugaad_model extends Model {
         $path = $meta["path"];
         $data = $meta["data"];
         $template = isset($meta["template"]) ? $meta["template"] : false;
+
+        $current_file = $this->get_file($file_id);
+        $current_file["path"] = $this->get_file_path($file_id);
+        $path = $this->preprocess_regex($path, $current_file);
+        $template = $this->preprocess_regex($template, $current_file);
 
         // Get external files
         $files = $this->expand_regex_paths($path, $template);
@@ -496,7 +568,7 @@ class jugaad_model extends Model {
 
     private function get_field_value($file_id, $name, $meta = false, $user = false) {
         if (!empty($meta) && $meta["type"] == "external") {
-            return $this->get_external_data($meta, $user);
+            return $this->get_external_data($file_id, $meta, $user);
         }
 
         // Else, it is normal data, get it from database

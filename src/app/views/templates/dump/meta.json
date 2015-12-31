@@ -26,7 +26,7 @@
     "ext_data": {
         "name"      : "External",
         "type"      : "external",
-        "path"      : "**",
+        "path"      : "**/hello.*",
         "template"  : "dump",
         "data"      : {
             "title"     : "title"
