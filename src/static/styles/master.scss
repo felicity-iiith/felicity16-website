@@ -1,0 +1,189 @@
+$ball-radius: 6em;
+$stripe-height: 10px;
+$no-of-stripes: 4;
+
+$nav-link-image-height: 436; // Image size
+$nav-link-image-width: 510;  //Image size
+
+$nav-link-width: 6em;
+$nav-link-height: $nav-link-width * $nav-link-image-height / $nav-link-image-width;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: scroll;
+}
+
+nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 101;
+}
+
+ul.primary-nav  {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: calc(50% - #{$ball-radius});
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: $stripe-height * $no-of-stripes;
+
+    &.left {
+        left:0;
+    }
+
+    &.right {
+        right:0;
+    }
+
+    li {
+        width: $nav-link-width;
+        height: $nav-link-height;
+        line-height: $nav-link-height;
+        animation: 2s infinite float;
+        @for $i from 1 through 2{
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i/5}s;
+            }
+        }
+        a {
+            display: block;
+            width:100%;
+            position: relative;
+            background-image: url('../images/pumpkin.png');
+            background-size: contain;
+            text-align: center;
+            color: white;
+            top:0;
+            text-decoration: none;
+            cursor: pointer;
+            vertical-align: middle;
+            font-weight: 600;
+            transform: scale(1);
+        }
+        a.open {
+            transition: top 1s;
+            top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+        }
+        a.disappear {
+            animation-fill-mode: forwards;
+            animation: 1s 1 teleport;
+        }
+    }
+}
+
+@keyframes teleport {
+    0% {
+        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+        transform: scale(1);
+    }
+    49% {
+        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+        transform: scale(0);
+    }
+    50% {
+        top: 0;
+        transform: scale(0);
+    }
+    51% {
+        top: 0;
+        transform: scale(0);
+    }
+    100% {
+        top: 0;
+        transform: scale(1);
+    }
+}
+
+.stripes {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+
+    .stripe {
+        height: $stripe-height;
+        border-top: 1px solid white;
+    }
+}
+
+.ball {
+    height: 2 * $ball-radius;
+    width: 2 * $ball-radius;
+    border-radius: 50%;
+    background-color: white;
+    margin: auto;
+}
+
+
+.bg-blue {
+    background-color: #0AC2D2;
+}
+
+.bg-green{
+    background-color: #60d7a9;
+}
+
+.bg-red {
+    background-color: #FD6A62;
+}
+
+.bg-orange{
+    background-color: #FF8C00;
+}
+
+.landing {
+    background-color: #A8FC50;
+    min-height: 100vh;
+}
+
+.page {
+    position: absolute;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    top: calc(100vh - #{$no-of-stripes * $stripe-height});
+    transition: top 1s;
+    z-index: 0;
+}
+
+.page.open {
+    top: $nav-link-height;
+    min-height: calc(100vh - #{$nav-link-height} - #{$no-of-stripes * $stripe-height});
+    height: auto;
+}
+@keyframes float {
+    0% {
+        transform: translate(0px, 1px);
+    }
+    12.5% {
+        transform: translate(1px, 2px);
+    }
+    25% {
+        transform: translate(2px, 1px);
+    }
+    37.5% {
+        transform: translate(1px, 0px);
+    }
+    50% {
+        transform: translate(0px, -1px);
+    }
+    62.5% {
+        transform: translate(-1px, -2px);
+    }
+    75% {
+        transform: translate(-2px, -1px);
+    }
+    87.5% {
+        transform: translate(-1px, 0px);
+    }
+    100% {
+        transform: translate(0px, 1px);
+    }
+}
