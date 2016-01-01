@@ -5,7 +5,7 @@ $no-of-stripes: 4;
 $nav-link-image-height: 436; // Image size
 $nav-link-image-width: 510;  //Image size
 
-$nav-link-width: 6em;
+$nav-link-width: 6.5em;
 $nav-link-height: $nav-link-width * $nav-link-image-height / $nav-link-image-width;
 
 * {
@@ -23,7 +23,7 @@ nav {
     z-index: 101;
 }
 
-ul.primary-nav  {
+.primary-nav {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -35,11 +35,11 @@ ul.primary-nav  {
     padding-bottom: $stripe-height * $no-of-stripes;
 
     &.left {
-        left:0;
+        left: 0;
     }
 
     &.right {
-        right:0;
+        right: 0;
     }
 
     li {
@@ -47,57 +47,39 @@ ul.primary-nav  {
         height: $nav-link-height;
         line-height: $nav-link-height;
         animation: 2s infinite float;
-        @for $i from 1 through 2{
+
+        @for $i from 1 through 2 {
             &:nth-child(#{$i}) {
-                animation-delay: #{$i/5}s;
+                animation-delay: #{$i / 5}s;
             }
         }
+
         a {
             display: block;
-            width:100%;
+            width: 100%;
             position: relative;
             background-image: url('../images/pumpkin.png');
             background-size: contain;
             text-align: center;
             color: white;
-            top:0;
+            top: 0;
             text-decoration: none;
             cursor: pointer;
+            white-space: nowrap;
             vertical-align: middle;
             font-weight: 600;
             transform: scale(1);
-        }
-        a.open {
-            transition: top 1s;
-            top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
-        }
-        a.disappear {
-            animation-fill-mode: forwards;
-            animation: 1s 1 teleport;
-        }
-    }
-}
 
-@keyframes teleport {
-    0% {
-        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
-        transform: scale(1);
-    }
-    49% {
-        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
-        transform: scale(0);
-    }
-    50% {
-        top: 0;
-        transform: scale(0);
-    }
-    51% {
-        top: 0;
-        transform: scale(0);
-    }
-    100% {
-        top: 0;
-        transform: scale(1);
+            &.open {
+                transition: top 1s;
+                top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+            }
+
+            &.disappear {
+                animation-fill-mode: forwards;
+                animation: 1s 1 teleport;
+            }
+        }
     }
 }
 
@@ -123,23 +105,23 @@ ul.primary-nav  {
 
 
 .bg-blue {
-    background-color: #0AC2D2;
+    background-color: #0ac2d2;
 }
 
-.bg-green{
+.bg-green {
     background-color: #60d7a9;
 }
 
 .bg-red {
-    background-color: #FD6A62;
+    background-color: #fd6a62;
 }
 
-.bg-orange{
-    background-color: #FF8C00;
+.bg-orange {
+    background-color: #ff8c00;
 }
 
 .landing {
-    background-color: #A8FC50;
+    background-color: #a8fc50;
     min-height: 100vh;
 }
 
@@ -151,39 +133,75 @@ ul.primary-nav  {
     top: calc(100vh - #{$no-of-stripes * $stripe-height});
     transition: top 1s;
     z-index: 0;
+
+    &.open {
+        top: $nav-link-height;
+        min-height: calc(100vh - #{$nav-link-height} - #{$no-of-stripes * $stripe-height});
+        height: auto;
+    }
 }
 
-.page.open {
-    top: $nav-link-height;
-    min-height: calc(100vh - #{$nav-link-height} - #{$no-of-stripes * $stripe-height});
-    height: auto;
-}
 @keyframes float {
     0% {
-        transform: translate(0px, 1px);
+        transform: translate(0, 1px);
     }
+
     12.5% {
         transform: translate(1px, 2px);
     }
+
     25% {
         transform: translate(2px, 1px);
     }
+
     37.5% {
-        transform: translate(1px, 0px);
+        transform: translate(1px, 0);
     }
+
     50% {
-        transform: translate(0px, -1px);
+        transform: translate(0, -1px);
     }
+
     62.5% {
         transform: translate(-1px, -2px);
     }
+
     75% {
         transform: translate(-2px, -1px);
     }
+
     87.5% {
-        transform: translate(-1px, 0px);
+        transform: translate(-1px, 0);
     }
+
     100% {
-        transform: translate(0px, 1px);
+        transform: translate(0, 1px);
+    }
+}
+
+@keyframes teleport {
+    0% {
+        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+        transform: scale(1);
+    }
+
+    49% {
+        top: calc(-100vh + #{$nav-link-height} + #{$no-of-stripes * $stripe-height});
+        transform: scale(0);
+    }
+
+    50% {
+        top: 0;
+        transform: scale(0);
+    }
+
+    51% {
+        top: 0;
+        transform: scale(0);
+    }
+
+    100% {
+        top: 0;
+        transform: scale(1);
     }
 }

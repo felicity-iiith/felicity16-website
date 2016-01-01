@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Felcity ʼ16</title>
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" href="<?= base_url() ?>static/styles/master.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css" media="screen" title="no title" charset="utf-8">
     </head>
     <body>
         <article class="landing">

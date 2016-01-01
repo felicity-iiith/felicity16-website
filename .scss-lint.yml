@@ -16,3 +16,7 @@ linters:
         enabled: false
     PseudoElement:
         enabled: false
+
+# SCSS specific stuff
+    NestingDepth:
+        max_depth: 4
