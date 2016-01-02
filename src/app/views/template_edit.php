@@ -16,7 +16,7 @@
                 if (!$data) {
                     $data = 'rgb(0, 0, 0)';
                 }
-                $out .= "<input type='text' data-type='color' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "' $opt/>";
+                $out .= "<input type='text' data-type='color' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "'/>";
                 break;
             case 'longtext':
                 $out .= "<br><textarea name='data[$name]' id='$name' $opt>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
