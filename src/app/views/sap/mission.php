@@ -10,7 +10,7 @@
     <?php $this->load_fragment('sap/navbar_fragment', ['logged_in' => true]); ?>
     <div class="container">
         <h1>Mission <?= $mission['id'] ?> · Level <?= $mission['level'] ?></h1>
-        <h2><?= htmlspecialchars($mission['title']) ?></h2>
+        <h2><?= htmlspecialchars($mission['title']) ?> · <?= $mission['points'] ?> points</h2>
         <?php if (isset($mission['description'])): ?>
             <p><?= htmlspecialchars($mission['description']) ?></p>
         <?php endif; ?>
