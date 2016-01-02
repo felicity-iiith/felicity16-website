@@ -7,6 +7,9 @@
 
         switch ($meta['type']) {
             case 'color':
+                if (!$data) {
+                    $data = 'rgb(0, 0, 0)';
+                }
                 $out .= "<input type='text' data-type='color' name='data[$name]' id='$name' value='" . htmlentities($data, ENT_QUOTES) . "' $opt/>";
                 break;
             case 'longtext':
