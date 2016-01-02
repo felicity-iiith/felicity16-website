@@ -1,12 +1,18 @@
 <?php
 
+/*
+ This file is too big. Can be broken in multiple modals.
+ One containing all the file operations,
+ another with all the operations related to templating and data.
+ */
+
 class jugaad_model extends Model {
 
-    function __construct() {
+    public function __construct() {
         $this->load_library("db_lib");
     }
 
-    function new_file($parent, $slug, $type, $default_role, $template, $user) {
+    public function new_file($parent, $slug, $type, $default_role, $template, $user) {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
@@ -44,7 +50,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function update_file($file_id, $slug, $data, $template, $user) {
+    public function update_file($file_id, $slug, $data, $template, $user) {
         if ($file_id === false) {
             return false;
         }
@@ -92,7 +98,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function delete_file($file_id, $user) {
+    public function delete_file($file_id, $user) {
         if ($file_id === false || $file_id <= 0) {
             return false;
         }
@@ -140,7 +146,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function recover_file($file_id, $user) {
+    public function recover_file($file_id, $user) {
         if ($file_id === false || $file_id <= 0) {
             return false;
         }
@@ -188,7 +194,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function get_slug_id($parent, $slug) {
+    public function get_slug_id($parent, $slug) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
             "SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?",
@@ -205,7 +211,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_path_id($path) {
+    public function get_path_id($path) {
         $path = array_filter($path);
         $parent = 0;
         foreach ($path as $component) {
@@ -217,7 +223,7 @@ class jugaad_model extends Model {
         return $parent;
     }
 
-    function get_file_path($file_id, $include_trash = false) {
+    public function get_file_path($file_id, $include_trash = false) {
         if ($file_id === false) {
             return false;
         }
@@ -233,7 +239,7 @@ class jugaad_model extends Model {
         return $path;
     }
 
-    function get_file_type($file_id) {
+    public function get_file_type($file_id) {
         if ($file_id === false) {
             return false;
         }
@@ -252,25 +258,53 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_directory($file_id) {
+    public function get_directory($file_id, $regex = false, $type = false, $template = false) {
         // Get list of files in directory
         if ($file_id === false) {
             return false;
         }
+
+        $query = "SELECT `id`, `slug`, `parent`, `type`, `template` FROM `files` WHERE `parent`=?";
+        $param_types = "i";
+        $params = [$file_id];
+
+        if ($regex !== false) {
+            $query .= " AND `slug` RLIKE ?";
+            $param_types .= "s";
+            $params[] = $regex;
+        }
+
+        if ($type !== false) {
+            $query .= " AND `type`=?";
+            $param_types .= "s";
+            $params[] = $type;
+
+            if ($type == 'file' && $template !== false) {
+                $query .= " AND `template` RLIKE ?";
+                $param_types .= "s";
+                $params[] = $template;
+            }
+        } elseif ($template !== false) {
+            $query .= " AND ((`type`='file' AND `template` RLIKE ?) OR `type`!='file')";
+            $param_types .= "s";
+            $params[] = $template;
+        }
+
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
-            "SELECT `id`, `slug`, `parent`, `type` FROM `files` WHERE `parent`=?",
-            "i",
-            [$file_id]
+            $query,
+            $param_types,
+            $params
         );
         if (!$stmt) {
             return false;
         }
+
         $page_list = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $page_list;
     }
 
-    function get_file($file_id, $include_trash = false) {
+    public function get_file($file_id, $include_trash = false) {
         // Get details of file
         if ($file_id === false) {
             return false;
@@ -293,7 +327,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_trashed($file_id) {
+    public function get_file_trashed($file_id) {
         // Get details of a trashed file
         if ($file_id === false) {
             return false;
@@ -313,7 +347,235 @@ class jugaad_model extends Model {
         return false;
     }
 
-    private function get_field_value($file_id, $name, $meta) {
+    /**
+     * Recursively get files
+     * @param  Array  $parent_dir Assosiative array containing atleast `id` and `path`
+     * @param  string $type       Type (e.g. 'directory' or 'file')
+     * @param  string $template   Regex for template name
+     * @return array              Array of files
+     */
+    private function get_files_recursive($parent_dir, $type = false, $template = false) {
+        $files = $this->get_directory(
+            $parent_dir["id"],
+            false,
+            ($type == 'directory') ? 'directory' : false,
+            $template
+        );
+
+        $return_files = [];
+
+        if ($files) {
+            foreach ($files as $file) {
+                $file["path"] = $parent_dir["path"] . $file["slug"] . "/";
+
+                if ($type === false || $type == $file["type"]) {
+                    $return_files[] = $file;
+                }
+
+                if ($file["type"] == "directory") {
+                    $return_files = array_merge(
+                        $return_files,
+                        $this->get_files_recursive($file, $type, $template)
+                    );
+                }
+            }
+        }
+
+        return $return_files;
+    }
+
+    /**
+     * Get all files satisfying regex path
+     * @param  string $path     Path string
+     * @param  string $template Template regex
+     * @return array            Array of files
+     */
+    private function expand_regex_paths($path, $template = false) {
+        $path = array_values(array_filter(explode("/", $path)));
+        if (is_string($template)) {
+            $template = "^" . $template . "$";
+        }
+
+        // Directories still satisfying the regex
+        // Start with root
+        $directories = [
+            [
+                "id" => 0,
+                "path" => "/"
+            ]
+        ];
+
+        $len = count($path);
+        $last_segment = false;
+
+        $files = [];
+
+        for ($i = 0; $i < $len; $i++) {
+            // Check if it is the last segment
+            if ($i == $len - 1) {
+                $last_segment = true;
+            }
+
+            $files = [];
+
+            foreach ($directories as $parent) {
+                $query_type = $last_segment ? "file" : "directory";
+                $query_template = $last_segment ? $template : false;
+
+                if ($path[$i] == "**") {
+                    $new_files = $this->get_files_recursive(
+                        $parent,
+                        $query_type,
+                        $query_template
+                    );
+                } else {
+                    $new_files = $this->get_directory(
+                        $parent["id"],
+                        "^" . $path[$i] . "$",
+                        $query_type,
+                        $query_template
+                    );
+                }
+
+                if (!$new_files) {
+                    continue;
+                }
+
+                foreach ($new_files as $file) {
+                    if (!isset($file["path"])) {
+                        $file["path"] = $parent["path"] . $file["slug"] . "/";
+                    }
+                    array_push($files, $file);
+                }
+            }
+
+            if (!$last_segment) {
+                $directories = $files;
+            }
+        }
+
+        return $files;
+    }
+
+    private function eval_regex_preprocessor($preprocessor, $file_info) {
+        $pre_data = [];
+        $pre_data["path"] = array_filter(explode("/", $file_info["path"]));
+        $pre_data["template"] = $file_info["template"];
+
+        // Remove `{{` and `}}`
+        $location = substr($preprocessor, 2, -2);
+
+        // Get variable name and offsets
+        if (preg_match('/^([a-z0-9_]+)(\[(-?\d+)?(?:([:])(-?\d+)?)?\])?$/i', $location, $matches)) {
+            $identifier = (count($matches) >= 2) ? $matches[1] : false;
+
+            $is_array_access = (count($matches) >= 3 && $matches[2]) ? true : false;
+            $start_index = (count($matches) >= 4) ? intval($matches[3]) : 0;
+            $is_array_range = (count($matches) >= 5 && $matches[4]) ? true : false;
+            $end_index = (count($matches) >= 6) ? intval($matches[5]) : null;
+
+            if (!array_key_exists($identifier, $pre_data)) {
+                // Something wrong
+                return "";
+            }
+
+            $ret_value = $pre_data[$identifier];
+            $is_ret_array = is_array($ret_value);
+
+            if (!$is_ret_array) {
+                $ret_value = str_split($ret_value);
+            }
+
+            if ($is_array_access) {
+                if ($is_array_range) {
+                    if ($end_index !== null && $end_index < 0) {
+                        $array_length = count($ret_value);
+                        $end_index = $array_length + $end_index - 1;
+                    }
+                    $length = ($end_index === null) ? null : ($end_index - $start_index + 1);
+                    if ($length < 0) {
+                        $length = 0;
+                    }
+                } else {
+                    $length = 1;
+                }
+
+                $ret_value = array_slice($ret_value, $start_index, $length);
+            }
+
+            if ($is_ret_array) {
+                $ret_value = implode("/", $ret_value);
+            } else {
+                $ret_value = implode("", $ret_value);
+            }
+
+            return $ret_value;
+        }
+
+        return "";
+    }
+
+    private function preprocess_regex($regex, $file_info) {
+        while (preg_match('/\{\{.*\}\}/i', $regex, $matches)) {
+            $replacement = $this->eval_regex_preprocessor($matches[0], $file_info);
+            $regex = str_replace($matches[0], $replacement, $regex);
+        }
+
+        return $regex;
+    }
+
+    private function get_external_data($file_id, $meta, $user) {
+        if (empty($meta["path"])) {
+            return false;
+        }
+
+        $path = $meta["path"];
+        $data = $meta["data"];
+        $template = isset($meta["template"]) ? $meta["template"] : false;
+
+        $current_file = $this->get_file($file_id);
+        $current_file["path"] = $this->get_file_path($file_id);
+        $path = $this->preprocess_regex($path, $current_file);
+        $template = $this->preprocess_regex($template, $current_file);
+
+        // Get external files
+        $files = $this->expand_regex_paths($path, $template);
+
+        $this->load_model("perms_model");
+
+        // Get data for external files
+        $ext_data = [];
+        foreach ($files as $file) {
+            // Check file permission and discard if user does not have enough permissions
+            $user_can = $this->perms_model->get_permissions($file["id"], $user);
+            if (!$user_can['read_file']) {
+                continue;
+            }
+
+            $ext_file = [];
+            $ext_file["slug"] = $file["slug"];
+            $ext_file["path"] = $file["path"];
+            $ext_file["template"] = $file["template"];
+            // TODO: $ext_file["url"] to acount for cannonical paths, e.g. index
+            $ext_file["data"] = [];
+
+            foreach ($data as $name => $ext_name) {
+                $ext_file["data"][$name] =
+                    $this->get_field_value($file["id"], $ext_name, false, false);
+            }
+
+            $ext_data[] = $ext_file;
+        }
+
+        return $ext_data;
+    }
+
+    private function get_field_value($file_id, $name, $meta = false, $user = false) {
+        if (!empty($meta) && $meta["type"] == "external") {
+            return $this->get_external_data($file_id, $meta, $user);
+        }
+
+        // Else, it is normal data, get it from database
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
             "SELECT `value` FROM `file_data` WHERE `file_id`=? AND `name`=? ORDER BY `id` DESC LIMIT 1",
@@ -329,14 +591,14 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_data($file_id, $template_meta, $return_default = true) {
+    public function get_file_data($file_id, $template_meta, $user, $return_default = true) {
         // Get data for file based on template meta given
         if ($file_id === false || !is_array($template_meta)) {
             return false;
         }
         $data = [];
         foreach ($template_meta as $name => $meta) {
-            $field = $this->get_field_value($file_id, $name, $meta);
+            $field = $this->get_field_value($file_id, $name, $meta, $user);
             if ($field === false) {
                 if ($return_default) {
                     $data[$name] = @$meta['default'] ?: $meta['name'];
@@ -366,7 +628,7 @@ class jugaad_model extends Model {
         return $db_error;
     }
 
-    function get_latest_version_id($file_id) {
+    public function get_latest_version_id($file_id) {
         // Get latest version id
         if ($file_id === false) {
             return false;
@@ -386,7 +648,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_history($file_id) {
+    public function get_history($file_id) {
         // Get list of edits for file
         if ($file_id === false) {
             return false;
@@ -404,7 +666,7 @@ class jugaad_model extends Model {
         return $history_list;
     }
 
-    function get_trash_list() {
+    public function get_trash_list() {
         // Get list of files in trash
         $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
         if (!$stmt->execute()) {
