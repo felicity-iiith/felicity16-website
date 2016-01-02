@@ -8,11 +8,11 @@
 
 class jugaad_model extends Model {
 
-    function __construct() {
+    public function __construct() {
         $this->load_library("db_lib");
     }
 
-    function new_file($parent, $slug, $type, $default_role, $template, $user) {
+    public function new_file($parent, $slug, $type, $default_role, $template, $user) {
         $db_error = false;
         $this->DB->jugaad->autocommit(false);
 
@@ -50,7 +50,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function update_file($file_id, $slug, $data, $template, $user) {
+    public function update_file($file_id, $slug, $data, $template, $user) {
         if ($file_id === false) {
             return false;
         }
@@ -98,7 +98,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function delete_file($file_id, $user) {
+    public function delete_file($file_id, $user) {
         if ($file_id === false || $file_id <= 0) {
             return false;
         }
@@ -146,7 +146,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function recover_file($file_id, $user) {
+    public function recover_file($file_id, $user) {
         if ($file_id === false || $file_id <= 0) {
             return false;
         }
@@ -194,7 +194,7 @@ class jugaad_model extends Model {
         return !$db_error;
     }
 
-    function get_slug_id($parent, $slug) {
+    public function get_slug_id($parent, $slug) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->jugaad,
             "SELECT `id` FROM `files` WHERE `parent`=? AND `slug`=?",
@@ -211,7 +211,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_path_id($path) {
+    public function get_path_id($path) {
         $path = array_filter($path);
         $parent = 0;
         foreach ($path as $component) {
@@ -223,7 +223,7 @@ class jugaad_model extends Model {
         return $parent;
     }
 
-    function get_file_path($file_id, $include_trash = false) {
+    public function get_file_path($file_id, $include_trash = false) {
         if ($file_id === false) {
             return false;
         }
@@ -239,7 +239,7 @@ class jugaad_model extends Model {
         return $path;
     }
 
-    function get_file_type($file_id) {
+    public function get_file_type($file_id) {
         if ($file_id === false) {
             return false;
         }
@@ -258,7 +258,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_directory($file_id, $regex = false, $type = false, $template = false) {
+    public function get_directory($file_id, $regex = false, $type = false, $template = false) {
         // Get list of files in directory
         if ($file_id === false) {
             return false;
@@ -304,7 +304,7 @@ class jugaad_model extends Model {
         return $page_list;
     }
 
-    function get_file($file_id, $include_trash = false) {
+    public function get_file($file_id, $include_trash = false) {
         // Get details of file
         if ($file_id === false) {
             return false;
@@ -327,7 +327,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_trashed($file_id) {
+    public function get_file_trashed($file_id) {
         // Get details of a trashed file
         if ($file_id === false) {
             return false;
@@ -354,7 +354,7 @@ class jugaad_model extends Model {
      * @param  string $template   Regex for template name
      * @return array              Array of files
      */
-    function get_files_recursive($parent_dir, $type = false, $template = false) {
+    private function get_files_recursive($parent_dir, $type = false, $template = false) {
         $files = $this->get_directory(
             $parent_dir["id"],
             false,
@@ -390,7 +390,7 @@ class jugaad_model extends Model {
      * @param  string $template Template regex
      * @return array            Array of files
      */
-    function expand_regex_paths($path, $template = false) {
+    private function expand_regex_paths($path, $template = false) {
         $path = array_values(array_filter(explode("/", $path)));
         if (is_string($template)) {
             $template = "^" . $template . "$";
@@ -591,7 +591,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_file_data($file_id, $template_meta, $user, $return_default = true) {
+    public function get_file_data($file_id, $template_meta, $user, $return_default = true) {
         // Get data for file based on template meta given
         if ($file_id === false || !is_array($template_meta)) {
             return false;
@@ -628,7 +628,7 @@ class jugaad_model extends Model {
         return $db_error;
     }
 
-    function get_latest_version_id($file_id) {
+    public function get_latest_version_id($file_id) {
         // Get latest version id
         if ($file_id === false) {
             return false;
@@ -648,7 +648,7 @@ class jugaad_model extends Model {
         return false;
     }
 
-    function get_history($file_id) {
+    public function get_history($file_id) {
         // Get list of edits for file
         if ($file_id === false) {
             return false;
@@ -666,7 +666,7 @@ class jugaad_model extends Model {
         return $history_list;
     }
 
-    function get_trash_list() {
+    public function get_trash_list() {
         // Get list of files in trash
         $stmt = $this->DB->jugaad->prepare("SELECT `id`, `file_id`, `slug`, `parent`, `type`, `timestamp`, `created_by` FROM `trash_files` ORDER BY `timestamp` DESC");
         if (!$stmt->execute()) {
