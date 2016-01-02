@@ -58,7 +58,7 @@ class sap_model extends Model {
     public function get_missions($get_unpublished = false) {
         $where_clause = $get_unpublished ? "" : "WHERE `published` IS TRUE";
         $result = $this->DB->sap->query(
-        "SELECT `id`, `level`, `title`, `description` FROM `sap_missions`
+        "SELECT `id`, `level`, `points`, `title`, `description` FROM `sap_missions`
          $where_clause
          ORDER BY level ASC, id ASC"
         );
