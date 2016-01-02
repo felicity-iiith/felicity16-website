@@ -284,6 +284,10 @@ class jugaad_model extends Model {
                 $param_types .= "s";
                 $params[] = $template;
             }
+        } elseif ($template !== false) {
+            $query .= " AND ((`type`='file' AND `template` RLIKE ?) OR `type`!='file')";
+            $param_types .= "s";
+            $params[] = $template;
         }
 
         $stmt = $this->db_lib->prepared_execute(

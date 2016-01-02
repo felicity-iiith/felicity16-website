@@ -26,8 +26,8 @@
     "ext_data": {
         "name"      : "External",
         "type"      : "external",
-        "path"      : "**/hello.*",
-        "template"  : "dump",
+        "path"      : "**/",
+        "template"  : "{{template}}[[:digit:]]",
         "data"      : {
             "title"     : "title"
         }
