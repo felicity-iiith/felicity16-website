@@ -34,6 +34,7 @@
                 <a href="<?= base_url() ?>sap/portal/mission/<?= $mission['id'] ?>">
                     <?= htmlspecialchars($mission['title']) ?>
                 </a>
+                <span class="muted">(<?= $mission['points']?> points)</span>
             </li>
         <?php
             }
