@@ -52,6 +52,8 @@
             <div class="stripe bg-orange"></div>
         </div>
         <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js" charset="utf-8"></script>
+        <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
+        <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
         <script type="text/javascript">
             var baseUrl = '<?= base_url() ?>';
             $(function () {

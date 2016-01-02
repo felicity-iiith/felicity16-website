@@ -43,6 +43,13 @@ class page extends Controller {
 
         $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
 
+        $header = getallheaders();
+        if (isset($header["X-Ajax-Request"]) && $header["X-Ajax-Request"]) {
+            $data["is_ajax"] = true;
+        } else {
+            $data["is_ajax"] = false;
+        }
+
         $view_name = $this->template_model->get_view_name($file["template"]);
 
         $this->load_view($view_name, $data);
