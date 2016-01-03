@@ -11,6 +11,7 @@ var paths = {
     styles: 'src/static/styles/**/*.{scss,css}',
     scripts: 'src/static/scripts/**/*.js',
     images: 'src/static/images/*.{jpg,jpeg,png,svg}',
+    fonts: 'src/static/fonts/*',
     php: 'src/**/*.{php,json,pem}',
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
     vendor: ['vendor/**/*'],
@@ -53,6 +54,11 @@ gulp.task('scripts', function() {
 gulp.task('images', function() {
     return gulp.src(paths.images)
         .pipe(gulp.dest('build/static/images'));
+});
+
+gulp.task('fonts', function() {
+    return gulp.src(paths.fonts)
+        .pipe(gulp.dest('build/static/fonts'));
 });
 
 gulp.task('php', function() {
@@ -106,6 +112,8 @@ gulp.task('watch', ['default'], function() {
         .on('change', srcToBuildDeleter);
     gulp.watch(paths.images, ['images'])
         .on('change', srcToBuildDeleter);
+    gulp.watch(paths.fonts, ['fonts'])
+        .on('change', srcToBuildDeleter);
     gulp.watch(paths.php, ['php'])
         .on('change', srcToBuildDeleter);
     gulp.watch(paths.stuff, ['stuff'])
@@ -114,7 +122,7 @@ gulp.task('watch', ['default'], function() {
         .on('change', deleter('vendor/', 'build/vendor/'));
 });
 
-gulp.task('build', ['styles', 'scripts', 'images', 'php', 'stuff', 'vendor']);
+gulp.task('build', ['styles', 'scripts', 'images', 'fonts', 'php', 'stuff', 'vendor']);
 
 gulp.task('default', ['clean'], function() {
     gulp.run('build');

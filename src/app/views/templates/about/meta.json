@@ -1,0 +1,7 @@
+{
+    "about_us": {
+        "name"      : "About us",
+        "type"      : "longtext",
+        "default"   : "Felicity is the annual techno-cultural fest of IIIT-H."
+    }
+}

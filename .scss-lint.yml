@@ -20,3 +20,5 @@ linters:
 # SCSS specific stuff
     NestingDepth:
         max_depth: 4
+    PlaceholderInExtend:
+        enabled: false

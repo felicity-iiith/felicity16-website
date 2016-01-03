@@ -1,0 +1,7 @@
+{
+    "contact_us": {
+        "name"      : "Contact Us",
+        "type"      : "longtext",
+        "default"   : "Contact Us"
+    }
+}
