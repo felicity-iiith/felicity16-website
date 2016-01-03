@@ -12,6 +12,9 @@
             <a href="<?= $link ?>">this link</a>.
         </p>
         <p>
+            The SAP has a total of 4 levels and a few educational sessions. Each level has various missions comprising various tasks. The program has started and Level 1 is already live on the portal! Please start working on your missions. Good luck!
+        </p>
+        <p>
             Regards,<br>
             Team Felicity
         </p>
