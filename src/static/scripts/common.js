@@ -169,6 +169,10 @@ AjaxRequest.prototype = {
         this.req.addEventListener('loadend', callback);
         return this;
     },
+    progress: function(callback) {
+        this.req.addEventListener('progress', callback);
+        return this;
+    },
     type: function(responseType) {
         this.req.responseType = responseType;
         return this;
@@ -183,6 +187,13 @@ AjaxRequest.prototype = {
         if (this.req.readyState === 0) {
             this.req.open(method, this.url, this.doAsync);
         }
+        return this;
+    },
+    requestHeader: function(header, value) {
+        if (this.req.readyState === 0) {
+            this.open();
+        }
+        this.req.setRequestHeader(header, value);
         return this;
     },
     send: function() {
