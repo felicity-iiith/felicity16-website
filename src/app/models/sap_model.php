@@ -104,7 +104,7 @@ class sap_model extends Model {
         $rows = $this->DB->sap->query('
                 SELECT u.`email`, u.`score`, a.`name`
                 FROM `sap_users` u
-                JOIN `sap_ambassadors` a ON u.`email` = a.`email`
+                JOIN `sap_ambassadors` a ON u.`registration_id` = a.`id`
                 ORDER BY u.`score` DESC, a.`name` ASC');
         return $rows->fetch_all(MYSQLI_ASSOC);
     }
