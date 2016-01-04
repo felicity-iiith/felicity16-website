@@ -27,22 +27,27 @@
 
         switch ($meta["type"]) {
             case "list":
+                $item_actions = " <a onclick='removeListItem(this)' href='javascript:void(0)'><i class='fa fa-trash'></i> Remove</a>"
+                    . " <a onclick='moveUpListItem(this)' href='javascript:void(0)'><i class='fa fa-angle-up'></i> Move Up</a>"
+                    . " <a onclick='moveDownListItem(this)' href='javascript:void(0)'><i class='fa fa-angle-down'></i> Move Down</a>";
+
                 $out .= "<div class='jugaad-list' data-type='$meta[listType]'>"
                     . "<div class='example-input' style='display:none'>"
                     . get_primitive_field($meta["listType"], $name, "", true, "disabled")
-                    . " <a onclick='removeListItem(this)' href='javascript:void(0)'>Remove</a>"
-                    . "</div><div class='input-list'>"
-                    . "<input type='hidden' name='data[$name]' value='' />";
+                    . $item_actions
+                    . "</div><input type='hidden' name='data[$name]' value='' />"
+                    . "<br><div class='input-list'>";
+
                 if (!is_array($data)) {
                     $data = [];
                 }
                 foreach ($data as $list_elem) {
                     $out .= "<div>"
                         . get_primitive_field($meta["listType"], $name, $list_elem, true, "")
-                        . " <a onclick='removeListItem(this)' href='javascript:void(0)'>Remove</a>"
+                        . $item_actions
                         . "</div>";
                 }
-                $out .= "</div><a onclick='addListItem(this)' href='javascript:void(0)'>Add item</a></div>";
+                $out .= "</div><br><a onclick='addListItem(this)' href='javascript:void(0)'><i class='fa fa-plus'></i> Add item</a></div>";
                 break;
             case 'external':
                 $out .= "<a onclick='foldNext(this)' href='javascript:void(0)'>Hide</a>"
@@ -78,7 +83,7 @@
         }
     }
 
-    /*exported addListItem */
+    /* exported addListItem, moveUpListItem, moveDownListItem */
     function addListItem(elem) {
         var jugaadList = elem.parentNode;
         var exampleListItem = jugaadList.getElementsByClassName("example-input")[0];
@@ -104,6 +109,22 @@
 
         }
         jugaadList.getElementsByClassName("input-list")[0].appendChild(listItem);
+    }
+
+    function moveUpListItem(elem) {
+        var listItem = elem.parentNode;
+        var prevItem = listItem.previousElementSibling;
+        if (prevItem) {
+            prevItem.parentNode.insertBefore(listItem, prevItem);
+        }
+    }
+
+    function moveDownListItem(elem) {
+        var listItem = elem.parentNode;
+        var nextItem = listItem.nextElementSibling;
+        if (nextItem) {
+            nextItem.parentNode.insertBefore(listItem, nextItem.nextSibling);
+        }
     }
 
     /* exported removeListItem */
