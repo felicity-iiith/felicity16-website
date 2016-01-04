@@ -23,6 +23,11 @@
         "default"   : "bg1.jpg",
         "optional"  : true
     },
+    "list": {
+        "name"      : "List",
+        "type"      : "list",
+        "listType"  : "longtext"
+    },
     "ext_data": {
         "name"      : "External",
         "type"      : "external",
