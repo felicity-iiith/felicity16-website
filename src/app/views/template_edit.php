@@ -12,6 +12,11 @@
             case 'longtext':
                 $out .= "<br><textarea name='$field_name' $extras>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
                 break;
+            case 'time':
+            case 'date':
+            case 'datetime':
+                $out .= "<input type='text' data-type='$type' name='$field_name' value='" . htmlentities($data, ENT_QUOTES) . "' $extras/>";
+                break;
             case 'text':
             default:
                 $out .= "<input type='text' name='$field_name' value='" . htmlentities($data, ENT_QUOTES) . "' $extras/>";
@@ -105,6 +110,13 @@
                 inputElem = listItem.getElementsByTagName('textarea')[0];
                 inputElem.disabled = false;
                 break;
+            case "time":
+            case "date":
+            case "datetime":
+                inputElem = listItem.getElementsByTagName('input')[0];
+                inputElem.disabled = false;
+                setupDateTime($(inputElem));
+                break;
             default:
 
         }
@@ -154,5 +166,25 @@
         });
     }
 
+    function setupDateTime($elem) {
+        $elem.each(function() {
+            var $this = $(this);
+            var pickerType = $this.data('type');
+            var datepicker = (pickerType == 'date' || pickerType == 'datetime');
+            var timepicker = (pickerType == 'time' || pickerType == 'datetime');
+            var format = ((datepicker ? "Y-m-d" : "") + " " + (timepicker ? "H:i": "")).trim();
+            $this.datetimepicker({
+                datepicker: datepicker,
+                timepicker: timepicker,
+                format: format,
+                defaultTime: "8:00",
+                step: 15
+            });
+        });
+    }
+
     setupColorInput($('input[data-type=color]:enabled'));
+    setupDateTime(
+        $('input[data-type=time]:enabled, input[data-type=date]:enabled, input[data-type=datetime]:enabled')
+    );
 </script>

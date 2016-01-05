@@ -23,10 +23,22 @@
         "default"   : "bg1.jpg",
         "optional"  : true
     },
+    "time": {
+        "name"      : "Time",
+        "type"      : "time"
+    },
+    "date": {
+        "name"      : "Date",
+        "type"      : "date"
+    },
+    "datetime": {
+        "name"      : "Date Time",
+        "type"      : "datetime"
+    },
     "list": {
         "name"      : "List",
         "type"      : "list",
-        "listType"  : "longtext"
+        "listType"  : "date"
     },
     "ext_data": {
         "name"      : "External",
