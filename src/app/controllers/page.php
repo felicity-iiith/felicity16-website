@@ -19,6 +19,12 @@ class page extends Controller {
         $file_id = $this->jugaad_model->get_path_id($path);
         $file_type = $this->jugaad_model->get_file_type($path);
 
+        if (end($path) == 'index') {
+            $this->http->redirect(
+                base_url() . implode("/", array_slice($path, 0, -1)) . "/"
+            );
+        }
+
         // Check if index exists
         if ($file_type == 'directory') {
             $file_id = $this->jugaad_model->get_slug_id($file_id, 'index');
