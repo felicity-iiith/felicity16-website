@@ -243,7 +243,7 @@ class sap_model extends Model {
         return $tasks;
     }
 
-    public function get_task_submissions_for_review($mission_id) {
+    public function get_task_submissions_for_review($mission_id, $approved = false) {
         // TODO: Figure out a way to make this enormous query cleaner.
         // Changing the schema to use duplicates and foreign keys and ON UPDATE CASCADE is an idea
         $query = <<<SQL
@@ -262,8 +262,14 @@ INNER JOIN `sap_users` AS `users`
 ON `users`.`id` = `task_submissions`.`user_id`
 INNER JOIN `sap_ambassadors` AS `ambassadors`
 ON `ambassadors`.`id` = `users`.`registration_id`
-WHERE `tasks`.`mission_id`=? and `task_submissions`.`done` = 0
+WHERE `tasks`.`mission_id`=?
 SQL;
+        if (!$approved) {
+            $query .=  " AND `task_submissions`.`done` = 0";
+        } else {
+            $query .=  " AND `task_submissions`.`done` = 1";
+        }
+
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
             $query,

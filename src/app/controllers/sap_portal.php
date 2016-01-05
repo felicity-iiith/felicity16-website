@@ -182,13 +182,17 @@ class sap_portal extends Controller {
         }
     }
 
-    public function review_mission($mission_id) {
+    /* $approved specifies whether the approved or unapproved missions have to be shown */
+    public function review_mission($mission_id, $approved = false) {
         if (! $this->sap_auth->is_current_user_admin()) {
             $this->http_lib->response_code(403);
         }
         $mission = $this->sap_model->get_mission($mission_id);
-        $submissions = $this->sap_model->get_task_submissions_for_review($mission_id);
-        $this->load_view('sap/review_mission', [
+        $submissions = $this->sap_model->get_task_submissions_for_review($mission_id, $approved);
+
+        $view = $approved ? 'sap/view_approved_submissions' : 'sap/review_mission';
+
+        $this->load_view($view, [
             'submissions' => $submissions,
             'mission' => $mission,
             'result' => $this->session_lib->flash_get('result'),
