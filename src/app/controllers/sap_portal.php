@@ -203,7 +203,8 @@ class sap_portal extends Controller {
         $action = $_POST['action'];
         $success = $this->sap_model->submit_review(
             $submission_id,
-            ($_POST['action'] == 'approve') // boolean indicating approved or not
+            ($_POST['action'] == 'approve'), // boolean indicating approved or not
+            (empty($_POST['reason'])) ? null : $_POST['reason']
         );
 
         $submission = $this->sap_model->get_submission_details($submission_id);

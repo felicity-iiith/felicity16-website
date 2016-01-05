@@ -277,7 +277,7 @@ SQL;
     /* Returns all the submissions for all the tasks in the mission by the user */
     public function get_task_submissions($user_id, $mission_id) {
         $query = <<<SQL
-SELECT `task_id`, `done`, `answer`
+SELECT `task_id`, `done`, `answer`, `reason`
 FROM `sap_task_submissions` submissions
 INNER JOIN `sap_tasks`
 ON `sap_tasks`.`id` = submissions.`task_id`
@@ -294,17 +294,18 @@ SQL;
         return $submissions;
     }
 
-    public function submit_review($submission_id, $approved) {
+    public function submit_review($submission_id, $approved, $reason) {
         if ($approved) {
             $status = 1;
         } else {
             $status = 2;
         }
+
         return $this->db_lib->prepared_execute(
             $this->DB->sap,
-            'UPDATE `sap_task_submissions` SET `done`=? WHERE `id`=?',
-            'ii',
-            [$status, $submission_id],
+            'UPDATE `sap_task_submissions` SET `done`=?, `reason`=? WHERE `id`=?',
+            'isi',
+            [$status, $reason, $submission_id],
             false
         );
     }

@@ -64,6 +64,12 @@
                     <p><?= nl2br(htmlspecialchars($task['description'])) ?></p>
                     <?php if (isset($task['submission']) && $task['submission']['done'] == 2): ?>
                         <p class="text-error">Your submission for this task was rejected. :/</p>
+                        <?php if (isset($task['submission']['reason'])): ?>
+                            <p>
+                                <strong>Reason given</strong>:<br>
+                                <?= nl2br(htmlspecialchars($task['submission']['reason'])) ?>
+                            </p>
+                        <?php endif; ?>
                     <?php endif; ?>
                     <?php if ($task['has_text_answer']): ?>
                         <textarea name="text-answer" required></textarea>

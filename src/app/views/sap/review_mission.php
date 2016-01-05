@@ -34,10 +34,12 @@
                 <p><strong>Their answer: </strong><?= htmlspecialchars($submission['answer']) ?></p>
             <?php endif; ?>
             <p>
-            <form method="post" action="../../submission/<?= $submission['id'] ?>/">
+            <form method="post" action="../../submission/<?= $submission['id'] ?>/" class="block">
                 <input type="hidden" name="mission-id" value="<?= $submission['mission_id'] ?>">
                 <button type="submit" name="action" value="approve" class="btn btn-green">Approve</button>
                 <button type="submit" name="action" value="reject" class="btn btn-red">Reject</button>
+                <label for="reason">If rejecting, reason?</label>
+                <textarea id="reason" name="reason"></textarea>
             </form>
         <hr>
         <?php endforeach; ?>
