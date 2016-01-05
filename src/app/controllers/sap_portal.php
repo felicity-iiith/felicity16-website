@@ -55,6 +55,7 @@ class sap_portal extends Controller {
                 } elseif ($action == 'publish') {
                     $this->publish_mission($id);
                 } else {
+                    load_helper('linkify');
                     $this->load_view('sap/mission', [
                         'mission' => $mission,
                         'tasks' => $tasks,
@@ -192,6 +193,7 @@ class sap_portal extends Controller {
 
         $view = $approved ? 'sap/view_approved_submissions' : 'sap/review_mission';
 
+        load_helper('linkify');
         $this->load_view($view, [
             'submissions' => $submissions,
             'mission' => $mission,
