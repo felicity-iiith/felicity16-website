@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS `sap_task_submissions` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `answer` text COLLATE utf8_bin,
   `done` tinyint(1) NOT NULL DEFAULT '0',
+  `reason` text COLLATE utf8_bin,
   PRIMARY KEY (`id`),
   KEY `task_id` (`task_id`),
   KEY `user_id` (`user_id`)
