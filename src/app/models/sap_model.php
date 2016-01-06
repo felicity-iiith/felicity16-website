@@ -83,6 +83,25 @@ class sap_model extends Model {
         return false;
     }
 
+    public function get_submission_with_task($submission_id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            "SELECT s.`answer`,
+            t.`description` AS task_description,
+            t.`has_text_answer`
+            FROM `sap_task_submissions` s
+            JOIN `sap_tasks` t ON s.`task_id` = t.`id`
+            WHERE s.`id`=?",
+            "i",
+            [$submission_id]
+        );
+        if (!$stmt) {
+            return false;
+        };
+        $row = $stmt->get_result()->fetch_assoc();
+        return $row;
+    }
+
     public function get_submission_details($submission_id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->sap,
