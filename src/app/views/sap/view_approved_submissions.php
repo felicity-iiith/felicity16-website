@@ -23,9 +23,9 @@
             <p>
                 <?= htmlspecialchars($submission['users_name']) ?> submitted a task.
             </p>
-            <p><strong>Task description: </strong><?= htmlspecialchars($submission['task_description']) ?></p>
+            <p><strong>Task description: </strong><?= linkify(nl2br(htmlspecialchars($submission['task_description']))) ?></p>
             <?php if (isset($submission['answer'])): ?>
-                <p><strong>Their answer: </strong><?= htmlspecialchars($submission['answer']) ?></p>
+                <p><strong>Their answer: </strong><?= linkify(nl2br(htmlspecialchars($submission['answer']))) ?></p>
             <?php endif; ?>
             <p>
         <hr>
