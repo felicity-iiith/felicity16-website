@@ -17,8 +17,6 @@ class email_lib extends Library {
     public function compose_mail($from_account, $from_name = null) {
         global $email_cfg;
 
-        $mailer = new PHPMailer();
-
         if (!isset($email_cfg['server_host'])
             || !isset($email_cfg['server_domain'])
             || !isset($email_cfg['server_port'])
@@ -31,26 +29,28 @@ class email_lib extends Library {
             return false;
         }
 
+        $mail = new PHPMailer();
+
         $from = $email_cfg['accounts'][$from_account];
         if (!empty($from_name)) {
             $from['from_name'] = $from_name;
         }
 
-        $mailer->isSMTP();
-        $mailer->Host       = $email_cfg['server_host'];
-        $mailer->Hostname   = $email_cfg['server_domain'];
-        $mailer->SMTPAuth   = true;
-        $mailer->SMTPSecure = "tls";
-        $mailer->Port       = $email_cfg['server_port'];
-        $mailer->Username   = $from['username'];
-        $mailer->Password   = $from['password'];
-        $mailer->isHTML(true);
-        $mailer->Encoding   = 'quoted-printable';
-        $mailer->CharSet    = 'UTF-8';
+        $mail->isSMTP();
+        $mail->Host       = $email_cfg['server_host'];
+        $mail->Hostname   = $email_cfg['server_domain'];
+        $mail->SMTPAuth   = true;
+        $mail->SMTPSecure = "tls";
+        $mail->Port       = $email_cfg['server_port'];
+        $mail->Username   = $from['username'];
+        $mail->Password   = $from['password'];
+        $mail->isHTML(true);
+        $mail->Encoding   = 'quoted-printable';
+        $mail->CharSet    = 'UTF-8';
 
-        $mailer->setFrom($from['email'], $from['from_name']);
+        $mail->setFrom($from['email'], $from['from_name']);
 
-        return $mailer;
+        return $mail;
     }
 
     public function set_html_view($mail, $html_view, $data) {
@@ -65,7 +65,7 @@ class email_lib extends Library {
         $mail->addAddress($email_data['to_email'], $email_data['to_name']);
         $mail->Subject = $email_data['subject'];
         if (isset($email_data['html_body'])) {
-            $mail->Body    = $email_data['html_body'];
+            $mail->Body = $email_data['html_body'];
         }
         if (isset($email_data['alt_body'])) {
             $mail->AltBody = $email_data['alt_body'];
