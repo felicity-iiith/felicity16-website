@@ -39,6 +39,12 @@ $email_cfg = [
     'server_host'   => 'email_server_host_ip',
     'server_domain' => 'email.server.domain.name',
     'server_port'   => 25,
-    'username'      => 'email_user',
-    'password'      => 'email_user_pass',
+    'accounts'      => [
+        'noreply'   => [
+            'username'  => 'email_user',
+            'password'  => 'email_user_pass',
+            'email'     => 'email_address',
+            'from_name' => 'Team Felicity'
+        ]
+    ]
 ];
