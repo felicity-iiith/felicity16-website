@@ -292,12 +292,12 @@ class sap_portal extends Controller {
 
         $mail = $this->email_lib->compose_mail("noreply");
 
-        $this->email_lib->set_html_view($mail, 'sap/create_password_email_html', [
+        $this->email_lib->set_html_view($mail, 'sap/emails/create_password_email_html', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link
         ]);
-        $this->email_lib->set_text_view($mail, 'sap/create_password_email_text', [
+        $this->email_lib->set_text_view($mail, 'sap/emails/create_password_email_text', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link
