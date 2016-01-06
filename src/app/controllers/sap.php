@@ -160,32 +160,23 @@ class sap extends Controller {
         $success = $this->sap_model->registerEntry($posted_data);
 
         if ($success) {
-            $this->load_library('email_lib', 'email');
+            $this->load_library('email_lib');
             $subject = "Felicity '16 Student Ambassador Program";
 
-            ob_start();
-            $this->load_view('sap/register_success_email_html', [
+            $mail = $this->email_lib->compose_mail("noreply");
+
+            $this->email_lib->set_html_view($mail, 'sap/register_success_email_html', [
                 'subject' => $subject,
                 'name' => $posted_data['name'],
             ]);
-            $email_body_html = ob_get_contents();
-            ob_end_clean();
-
-            ob_start();
-            $this->load_view('sap/register_success_email_text', [
+            $this->email_lib->set_text_view($mail, 'sap/register_success_email_text', [
                 'name' => $posted_data['name'],
             ]);
-            $email_body_text = ob_get_contents();
-            ob_end_clean();
 
-            $this->email->send_mail([
-                'from_email'=> 'noreply@felicity.iiit.ac.in',
-                'from_name' => 'Team Felicity',
+            $this->email_lib->send_mail($mail, [
                 'to_email'  => $posted_data['email'],
                 'to_name'   => $posted_data['name'],
                 'subject'   => $subject,
-                'html_body' => $email_body_html,
-                'alt_body'  => $email_body_text,
             ]);
         }
 
