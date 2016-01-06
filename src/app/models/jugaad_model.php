@@ -1,7 +1,7 @@
 <?php
 
 /*
- This file is too big. Can be broken in multiple modals.
+ This file is too big. Can be broken in multiple models.
  One containing all the file operations,
  another with all the operations related to templating and data.
  */
@@ -586,7 +586,7 @@ class jugaad_model extends Model {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
-            return $row[0];
+            return $row[0] ? unserialize($row[0]) : $row[0];
         }
         return false;
     }
@@ -620,7 +620,8 @@ class jugaad_model extends Model {
         if (!$stmt->bind_param("iiss", $file_id, $version_id, $name, $value)) {
             $db_error = true;
         }
-        foreach ($data as $name => $value) {
+        foreach ($data as $name => $val) {
+            $value = serialize($val);
             if (!$stmt->execute()) {
                 $db_error = true;
             }

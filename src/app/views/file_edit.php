@@ -12,12 +12,16 @@
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/common_edit.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/file.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <?php //Color picker, used in template_edit.php ?>
-        <!-- Color picker -->
+        <?php // Libraries used in template_edit.php ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <!-- Color picker -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
         <!-- End color picker -->
+        <!-- Datetime picker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.4.5/jquery.datetimepicker.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.4.5/jquery.datetimepicker.min.css">
+        <!-- End Datetime picker -->
         <script>
             var base_url = "<?= base_url() ?>";
         </script>
