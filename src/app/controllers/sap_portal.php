@@ -287,35 +287,27 @@ class sap_portal extends Controller {
         $link = base_url() . 'sap/verify/' . $password_hash . '/';
 
         // Send user email with link for creating password
-        $this->load_library('email_lib', 'email');
+        $this->load_library('email_lib');
         $subject = "Felicity '16 Student Ambassador Program";
 
-        ob_start();
-        $this->load_view('sap/create_password_email_html', [
+        $mail = $this->email_lib->compose_mail("noreply");
+
+        $this->email_lib->set_html_view($mail, 'sap/create_password_email_html', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link
         ]);
-        $email_body_html = ob_get_contents();
-        ob_end_clean();
-
-        ob_start();
-        $this->load_view('sap/create_password_email_text', [
+        $this->email_lib->set_text_view($mail, 'sap/create_password_email_text', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link
         ]);
-        $email_body_text = ob_get_contents();
-        ob_end_clean();
 
-        $this->email->send_mail([
-            'from_email'=> 'noreply@felicity.iiit.ac.in',
+        $this->email_lib->send_mail($mail, [
             'from_name' => 'Team Felicity',
             'to_email'  => $user['email'],
             'to_name'   => $user['name'],
             'subject'   => $subject,
-            'html_body' => $email_body_html,
-            'alt_body'  => $email_body_text,
         ]);
         $this->http_lib->redirect(base_url() . 'sap/portal/users/');
     }
