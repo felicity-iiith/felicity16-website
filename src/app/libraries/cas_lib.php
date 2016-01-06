@@ -47,7 +47,10 @@ class cas_lib extends Library {
         return null;
     }
 
-    function getNick() {
-        return phpCAS::getAttribute('displayName') ?: explode('@', phpCAS::getUser())[0];
+    function getAttributes() {
+        if (phpCAS::isAuthenticated()) {
+            return phpCAS::getAttributes();
+        }
+        return null;
     }
 }

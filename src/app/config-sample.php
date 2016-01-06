@@ -13,6 +13,12 @@ $cfg = [
             'db_pass'   => 'password',
             'db_name'   => 'dbname',
         ],
+        'users' => [
+            'db_host'   => 'localhost',
+            'db_user'   => 'user',
+            'db_pass'   => 'password',
+            'db_name'   => 'dbname',
+        ],
         'sap' => [
             'db_host'   => 'localhost',
             'db_user'   => 'user',
