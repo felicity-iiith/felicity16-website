@@ -118,9 +118,7 @@ class auth extends Controller {
         // Send email verification mail
     }
 
-    private function handle_user_update($action) {
-        $user = $this->auth_lib->get_user_details();
-
+    private function handle_user_update($action, $user) {
         if ($user === false) {
             return;
         }
@@ -199,9 +197,9 @@ class auth extends Controller {
     }
 
     function register($action = false) {
-        $this->handle_user_update($action);
-
         $user = $this->auth_lib->get_user_details();
+
+        $this->handle_user_update($action, $user);
 
         if ($user === false) {
             $this->load_library("cas_lib");
