@@ -114,8 +114,97 @@ class auth extends Controller {
         return $user_data;
     }
 
-    private function mail_updated($mail, $user) {
-        // Send email verification mail
+    public function verify($hash=null) {
+        if (!$hash) {
+            $this->http->response_code(400);
+        }
+        $verified = $this->auth_model->verify_mail($hash);
+        if (!$verified) {
+            $this->http->response_code(400);
+        }
+
+        $email = $verified["email"];
+        $action = $verified["action"];
+
+        if ($action == "verify_email") {
+            $success = false;
+            $user = $this->auth_model->get_user_by_mail($email);
+            if ($user) {
+                var_dump($user);
+                $updated = $this->auth_model->update_user($user["id"], [
+                    "email_verified" => "1"
+                ]);
+                if ($updated) {
+                    $success = true;
+                }
+            }
+            if (!$success) {
+                echo "failed";
+            } else {
+                echo "done";
+            }
+        } elseif ($action == "reset_password") {
+        }
+    }
+
+    public function resend_mail() {
+        $user = $this->auth_lib->get_user_details();
+
+        if ($user !== false) {
+            $email = $user["mail"];
+            $action = "verify_email";
+        } else{
+            if (!empty($_POST["mail"])) {
+                $email = $_POST["mail"];
+                $action = $_POST["action"];
+            } else {
+                $this->http->response_code(400);
+            }
+        }
+
+        $sent = $this->send_verification_mail($email, $action);
+        var_dump($sent);
+    }
+
+    private function send_verification_mail($email, $action) {
+        if (!in_array($action, ["reset_password", "verify_email"])) {
+            // Something wrong, go away
+            return false;
+        }
+
+        $already_sent = $this->auth_model->get_mail_verification($email);
+
+        if ($already_sent) {
+            $hash = $already_sent["hash"];
+            $action = $already_sent["action"];
+        } else {
+            $hash = sha1(rand(169, 93367) . $email . $action . strrev($email)[0] . rand(109, 93267));
+            $success = $this->auth_model->set_mail_verification($email, $hash, $action);
+
+            if (!$success) {
+                return false;
+            }
+        }
+
+        $verify_link = base_url() . "auth/verify/$hash";
+
+        $mail_data = [
+            "verify_link" => $verify_link
+        ];
+        if ($action == "reset_password") {
+            $subject = "Password reset link - Felicity";
+        } elseif ($action == "verify_email") {
+            $subject = "Verify email link - Felicity";
+        }
+
+        $this->load_library("email_lib");
+        $mail = $this->email_lib->compose_mail("noreply");
+        $this->email_lib->set_html_view($mail, "auth/mail/html_$action", $mail_data);
+        $this->email_lib->set_text_view($mail, "auth/mail/text_$action", $mail_data);
+        return $this->email_lib->send_mail($mail, [
+            "to_email"  => $email,
+            "subject"   => $subject
+        ]);
     }
 
     private function handle_user_update($action, $user) {
@@ -125,6 +214,7 @@ class auth extends Controller {
 
         if ($action == "update_mail" && isset($_POST["mail"])) {
             $mail = $_POST["mail"];
+            $error = [];
 
             if ($mail != $user["mail"]) {
                 $updated = $this->auth_model->update_user($user["id"], [
@@ -133,7 +223,10 @@ class auth extends Controller {
                     "resitration_status" => "incomplete"
                 ]);
                 if ($updated) {
-                    $this->mail_updated($mail, $user);
+                    $sent = $this->send_verification_mail($mail, "verify_email");
+                    if (!$sent) {
+                        $error[] = "Could not send mail";
+                    }
                 }
             } else {
                 $updated = $this->auth_model->update_user($user["id"], [
@@ -142,8 +235,10 @@ class auth extends Controller {
             }
 
             if (!$updated) {
-                $this->session_lib->flash_set("auth_last_error", "Could not update email");
+                $error[] = "Could not update email";
             }
+
+            $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
 
             $this->http->redirect(base_url() . "auth/register");
         } elseif ($action == "update_profile") {

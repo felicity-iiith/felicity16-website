@@ -89,7 +89,6 @@ class auth_model extends Model {
             "sssssssssss",
             [$nick, $mail, $name, $gender, $location, $country, $dob, $organization, $raw_attributes, $email_verified, $resitration_status]
         );
-        var_dump($this->DB->users->error);
         if (!$stmt) {
             $db_error = true;
         }
@@ -157,5 +156,41 @@ class auth_model extends Model {
             return false;
         }
         return true;
+    }
+
+    function set_mail_verification($email, $hash, $action) {
+        return $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "INSERT INTO `mail_verify` (`email`, `hash`, `action`) VALUES (?, ?, ?)",
+            "sss",
+            [$email, $hash, $action],
+            false
+        );
+    }
+
+    function get_mail_verification($email) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "SELECT `email`, `hash`, `action` FROM `mail_verify` WHERE `email`=?",
+            "s",
+            [$email]
+        );
+        if ($stmt && $data = $stmt->get_result()->fetch_assoc()) {
+            return $data;
+        }
+        return false;
+    }
+
+    function verify_mail($hash) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "SELECT `email`, `hash`, `action` FROM `mail_verify` WHERE `hash`=?",
+            "s",
+            [$hash]
+        );
+        if ($stmt && $data = $stmt->get_result()->fetch_assoc()) {
+            return $data;
+        }
+        return false;
     }
 }
