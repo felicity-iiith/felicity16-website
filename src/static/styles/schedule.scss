@@ -1,39 +1,45 @@
 .cal-month-name {
-	font-weight:700;
-	font-size:1.3em;
-	text-align:right
+    font-weight: 700;
+    font-size: 1.3em;
+    text-align: right;
 }
+
 .cal-table {
-	text-align:center;
-	border-collapse:separate;
-	border-spacing:6px
-}
-.cal-table th {
-	width:2.5em;
-	font-weight:400
-}
-.cal-table td {
-	vertical-align:middle;
-	border-radius:500px;
-	border:3px solid #756A81;
-	height:2.5em;
-	width:2.5em
-}
-.cal-table td.empty {
-	border:none
-}
-.cal-table td.has-event {
-	background-color:#373348;
-	cursor:pointer
-}
-.cal-table td.has-event:hover {
-	background-color:#111A29;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 6px;
+
+    th {
+        width: 2.5em;
+        font-weight: 400;
+    }
+
+    td {
+        vertical-align: middle;
+        border-radius: 500;
+        border: 3px solid #756a81;
+        height: 2.5em;
+        width: 2.5em;
+
+        &.empty {
+            border: 0;
+        }
+
+        &.has-event {
+            background-color: #373348;
+            cursor: pointer;
+
+            :hover {
+                background-color: #111a29;
+            }
+        }
+    }
 }
 
 .eventslist {
     td {
         position: relative;
-        padding: 0.5em;
+        padding: .5em;
         vertical-align: middle;
     }
 
@@ -43,45 +49,49 @@
     }
 
     .event-container {
-        border-left: 0.2em solid white;
+        border-left: .2em solid white;
         padding-left: 1em;
     }
 
     .event {
+        display: block;
         position: relative;
         background-color: blue;
-        border-radius: 0.2em;
+        border-radius: .2em;
         width: 10em;
-        padding: 0.5em;
+        padding: .5em;
     }
 
     .circle {
         position: absolute;
-        top: 0px;
-        bottom: 0px;
+        top: 0;
+        bottom: 0;
         margin: auto;
         left: -1.6em;
-        background-color: #FFF;
+        background-color: #fff;
         width: 1em;
         height: 1em;
-        border-radius: 0.5em;
+        border-radius: .5em;
     }
 
     .innercircle {
         display: none;
         position: relative;
-        top: 0.25em;
-        left: 0.25em;
-        width: 0.5em;
-        height: 0.5em;
-        border-radius: 0.25em;
+        top: .25em;
+        left: .25em;
+        width: .5em;
+        height: .5em;
+        border-radius: .25em;
     }
 
     .timeline:hover .innercircle {
         display: block;
     }
 
-    .category1:hover {
-        .innercircle, .event { background-color: #3C93B0; }
+    .threads:hover {
+        .innercircle,
+        .event {
+            background-color: #3c93b0;
+        }
     }
 }
