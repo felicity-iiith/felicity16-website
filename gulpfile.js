@@ -10,7 +10,7 @@ var gutil = require('gulp-util');
 var paths = {
     styles: 'src/static/styles/**/*.{scss,css}',
     scripts: 'src/static/scripts/**/*.js',
-    images: 'src/static/images/*.{jpg,jpeg,png,svg}',
+    images: 'src/static/images/**/*.{jpg,jpeg,png,svg}',
     fonts: 'src/static/fonts/*',
     php: 'src/**/*.{php,json,pem}',
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
@@ -23,7 +23,7 @@ var reportError = function(error) {
     }
     notify({
         title: error.plugin + ' failed!',
-        message: 'See console.'
+        message: error.message
     }).write(error);
 
     // Prevent the 'watch' task from stopping
@@ -40,7 +40,7 @@ gulp.task('styles', function() {
         .pipe(plumber({
             errorHandler: reportError
         }))
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass())
         .on('error', reportError)
         .pipe(autoprefixer())
         .pipe(gulp.dest('build/static/styles'));
