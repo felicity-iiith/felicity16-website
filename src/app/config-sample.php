@@ -54,3 +54,9 @@ $email_cfg = [
         ]
     ]
 ];
+
+$ldap_cfg = [
+    "host"          => "ldap://192.168.0.1",
+    "bind_dn"       => "...",
+    "bind_password" => "...",
+];

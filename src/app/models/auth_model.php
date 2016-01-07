@@ -64,6 +64,69 @@ class auth_model extends Model {
         return false;
     }
 
+    function get_user_old_ldap($email) {
+        $attributes = [
+            "uid" => "uid",
+            "mail" => "mail",
+            "givenName" => "firstname",
+            "sn" => "lastname",
+            "displayName" => "nick",
+            "gender" => "gender",
+            "birthdate" => "dob",
+            "o" => "organization",
+            "c" => "country",
+            "l" => "location"
+        ];
+
+
+        $this->load_library("ldap_lib", "ldap");
+        $ds = $this->ldap->get_link();
+        $dn = "dc=felicity,dc=iiit,dc=ac,dc=in";
+        $filter = '(&(mail='.$email.'))';
+        $sr = ldap_search($ds, $dn, $filter, array_keys($attributes));
+        $entry = ldap_first_entry($ds, $sr);
+
+        if (!$entry) {
+            return false;
+        }
+
+        $entry_data = ldap_get_attributes($ds, $entry);
+        $user_data = [];
+
+        foreach ($attributes as $key => $value) {
+            if (isset($entry_data[$key]) &&  isset($entry_data[$key][0])) {
+                $user_data[$value] = $entry_data[$key][0];
+            }
+        }
+
+        if (isset($user_data["dob"])) {
+            $date = date_create_from_format('d/m/Y', $user_data["dob"]);
+            if ($date) {
+                $user_data["dob"] = date_format($date, "Y-m-d");
+            }
+        }
+        if (isset($user_data["firstname"]) && isset($user_data["lastname"])) {
+            $user_data["name"] = implode(" ", [$user_data["firstname"], $user_data["lastname"]]);
+            unset($user_data["firstname"]);
+            unset($user_data["lastname"]);
+        }
+        if (isset($user_data["gender"])) {
+            $user_data["gender"] = strtolower($user_data["gender"]);
+        }
+
+        return $user_data;
+    }
+
+    function link_oauth_account($oauth_id, $user_id) {
+        return $stmt = $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "INSERT INTO `oauth_users` (`oauth_id`, `user_id`) VALUES (?, ?)",
+            "si",
+            [$oauth_id, $user_id],
+            false
+        );
+    }
+
     function create_user($oauth_id, $user_data) {
         $db_error = false;
         $this->DB->users->autocommit(false);
@@ -96,12 +159,7 @@ class auth_model extends Model {
         if (!$db_error) {
             $insert_id = $stmt->insert_id;
 
-            $stmt = $this->db_lib->prepared_execute(
-                $this->DB->users,
-                "INSERT INTO `oauth_users` (`oauth_id`, `user_id`) VALUES (?, ?)",
-                "si",
-                [$oauth_id, $insert_id]
-            );
+            $stmt = $this->link_oauth_account($oauth_id, $insert_id);
             if (!$stmt) {
                 $db_error = true;
             }
@@ -115,6 +173,22 @@ class auth_model extends Model {
 
         $this->DB->users->autocommit(true);
         return !$db_error;
+    }
+
+    function remove_user($user_id) {
+        return $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "DELETE FROM `users` WHERE `id`=?",
+            "i",
+            [$user_id],
+            false
+        ) && $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "DELETE FROM `oauth_users` WHERE `user_id`=?",
+            "i",
+            [$user_id],
+            false
+        );
     }
 
     function update_user($user_id, $user_data) {
@@ -188,9 +262,16 @@ class auth_model extends Model {
             "s",
             [$hash]
         );
-        if ($stmt && $data = $stmt->get_result()->fetch_assoc()) {
-            return $data;
+        if ($stmt) {
+            $data = $stmt->get_result()->fetch_assoc();
         }
-        return false;
+        $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "DELETE FROM `mail_verify` WHERE `hash`=?",
+            "s",
+            [$hash],
+            false
+        );
+        return $data ?: false;
     }
 }

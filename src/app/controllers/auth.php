@@ -106,11 +106,6 @@ class auth extends Controller {
             }
         }
 
-        if (isset($user_data["nick"])
-            && $this->auth_model->get_user_by_nick($user_data["nick"])
-        ) {
-            unset($user_data["nick"]);
-        }
         return $user_data;
     }
 
@@ -152,18 +147,24 @@ class auth extends Controller {
 
         if ($user !== false) {
             $email = $user["mail"];
-            $action = "verify_email";
         } else{
             if (!empty($_POST["mail"])) {
                 $email = $_POST["mail"];
-                $action = $_POST["action"];
             } else {
                 $this->http->response_code(400);
             }
         }
 
+        $already_sent = $this->auth_model->get_mail_verification($email);
+        if ($already_sent) {
+            $action = $already_sent["action"];
+        } else {
+            $this->http->response_code(400);
+        }
+
         $sent = $this->send_verification_mail($email, $action);
-        var_dump($sent);
+
+        $this->load_view("auth/mail_resent");
     }
 
     private function send_verification_mail($email, $action) {
@@ -217,15 +218,19 @@ class auth extends Controller {
             $error = [];
 
             if ($mail != $user["mail"]) {
-                $updated = $this->auth_model->update_user($user["id"], [
-                    "mail" => $mail,
-                    "email_verified" => "0",
-                    "resitration_status" => "incomplete"
-                ]);
-                if ($updated) {
-                    $sent = $this->send_verification_mail($mail, "verify_email");
-                    if (!$sent) {
-                        $error[] = "Could not send mail";
+                if ($this->auth_model->get_user_by_mail($mail)) {
+                    $error[] = "The email id you gave is already registered";
+                } else {
+                    $updated = $this->auth_model->update_user($user["id"], [
+                        "mail" => $mail,
+                        "email_verified" => "0",
+                        "resitration_status" => "incomplete"
+                    ]);
+                    if ($updated) {
+                        $sent = $this->send_verification_mail($mail, "verify_email");
+                        if (!$sent) {
+                            $error[] = "Could not send mail";
+                        }
                     }
                 }
             } else {
@@ -303,8 +308,50 @@ class auth extends Controller {
 
             $user_data = $this->extract_user_info_oauth($oauth_id, $oauth_attr);
 
-            $created = $this->auth_model->create_user($oauth_id, $user_data);
+            if (isset($user_data["mail"])) {
+                $old_user_data = $this->auth_model->get_user_old_ldap($user_data["mail"]);
+                if (is_array($old_user_data)) {
+                    foreach ($old_user_data as $key => $value) {
+                        if ($key == "uid") {
+                            continue;
+                        }
+                        if (!isset($user_data[$key])) {
+                            $user_data[$key] = $value;
+                        }
+                    }
+                }
+            }
+
+            $create_user = true;
+
+            if (isset($user_data["mail"])){
+                $already_registered = $this->auth_model->get_user_by_mail($user_data["mail"]);
+                if ($already_registered) {
+                    if ($already_registered["email_verified"]) {
+                        $this->auth_model->link_oauth_account($oauth_id, $already_registered["id"]);
+                        $create_user = false;
+                    } else {
+                        // Discard old user
+                        $this->auth_model->remove_user($already_registered["id"]);
+                    }
+                }
+            }
+
+            if ($create_user) {
+                if (isset($user_data["nick"])
+                    && $this->auth_model->get_user_by_nick($user_data["nick"])
+                ) {
+                    unset($user_data["nick"]);
+                }
+
+                $created = $this->auth_model->create_user($oauth_id, $user_data);
+            }
+
             $user = $this->auth_lib->get_user_details();
+
+            if (isset($old_user_data["uid"])) {
+                $this->auth_model->link_oauth_account($old_user_data["uid"], $user["id"]);
+            }
         }
 
         $reg_status = $user["resitration_status"];
