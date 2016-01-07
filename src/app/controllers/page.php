@@ -58,7 +58,7 @@ class page extends Controller {
 
         $view_name = $this->template_model->get_view_name($file["template"]);
 
-        $data["path"] = $path;
+        $data["page_slug"] = implode('__', $path);
 
         $this->load_view($view_name, $data);
     }
