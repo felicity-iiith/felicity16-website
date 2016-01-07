@@ -1,0 +1,27 @@
+{
+    "title": {
+        "name"      : "Title of the page",
+        "type"      : "text",
+        "default"   : "Title"
+    },
+    "events_list": {
+        "name"      : "Events List",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "event",
+        "data"      : {
+            "name"       : "name",
+            "start_time" : "start_time",
+            "end_time"   : "end_time"
+        }
+    },
+    "navbar_categories": {
+        "name"      : "Navbar Categories",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"     : "name"
+        }
+    }
+}
