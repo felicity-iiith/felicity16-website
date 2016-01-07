@@ -113,7 +113,7 @@ class auth extends Controller {
         if (!$hash) {
             $this->http->response_code(400);
         }
-        $verified = $this->auth_model->verify_mail($hash);
+        $verified = $this->auth_model->verify_mail($hash, false);
         if (!$verified) {
             $this->http->response_code(400);
         }
@@ -137,8 +137,18 @@ class auth extends Controller {
                 echo "failed";
             } else {
                 echo "done";
+                $this->auth_model->remove_verify_hash($hash);
             }
         } elseif ($action == "reset_password") {
+            $this->load_view("auth/password_reset", [
+                "hash" => $hash,
+                "error" => ""
+            ]);
+        } elseif ($action == "create_user") {
+            $this->load_view("auth/password_reset", [
+                "hash" => $hash,
+                "error" => ""
+            ]);
         }
     }
 
@@ -168,7 +178,7 @@ class auth extends Controller {
     }
 
     private function send_verification_mail($email, $action) {
-        if (!in_array($action, ["reset_password", "verify_email"])) {
+        if (!in_array($action, ["reset_password", "verify_email", "create_user"])) {
             // Something wrong, go away
             return false;
         }
@@ -196,6 +206,8 @@ class auth extends Controller {
             $subject = "Password reset link - Felicity";
         } elseif ($action == "verify_email") {
             $subject = "Verify email link - Felicity";
+        } elseif ($action == "create_user") {
+            $subject = "Verify email link - Felicity";
         }
 
         $this->load_library("email_lib");
@@ -217,7 +229,10 @@ class auth extends Controller {
             $mail = $_POST["mail"];
             $error = [];
 
-            if ($mail != $user["mail"]) {
+            if (!$mail) {
+                // TODO: email verification
+                $error[] = "Please enter a valid email address";
+            } elseif ($mail != $user["mail"]) {
                 if ($this->auth_model->get_user_by_mail($mail)) {
                     $error[] = "The email id you gave is already registered";
                 } else {
@@ -232,15 +247,17 @@ class auth extends Controller {
                             $error[] = "Could not send mail";
                         }
                     }
+                    if (!$updated) {
+                        $error[] = "Could not update email";
+                    }
                 }
             } else {
                 $updated = $this->auth_model->update_user($user["id"], [
                     "resitration_status" => "incomplete"
                 ]);
-            }
-
-            if (!$updated) {
-                $error[] = "Could not update email";
+                if (!$updated) {
+                    $error[] = "Could not update email";
+                }
             }
 
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
@@ -296,15 +313,95 @@ class auth extends Controller {
         }
     }
 
+    private function handle_registration_by_email($action) {
+        $error = [];
+        if ($action == "register_email") {
+            if (isset($_POST["email"])) {
+                $email = $_POST["email"];
+                if ($this->auth_model->get_user_by_mail($email)
+                    || $this->auth_model->get_user_old_ldap($email)
+                ) {
+                    $error[] = "The email id you gave is already registered";
+                } else {
+                    $sent = $this->send_verification_mail($email, "create_user");
+                    if (!$sent) {
+                        $error[] = "Could not send mail";
+                    } else {
+                        $this->session_lib->flash_set("auth_last_action", "email_sent");
+                    }
+                }
+            } else {
+                $error[] = "Invalid request";
+            }
+            $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
+            $this->http->redirect(base_url() . "auth/register");
+        } elseif ($action == "password_reset") {
+            $hash = $_POST["hash"];
+            if (!empty($_POST["password"]) && !empty($_POST["confirm_password"])
+                && $_POST["password"] == $_POST["confirm_password"]
+            ) {
+                // TODO: password verification
+                $password = $_POST["password"];
+
+                $verified = $this->auth_model->verify_mail($hash, false);
+                if (!$verified) {
+                    $error[] = "Invalid request";
+                } else {
+                    $email = $verified["email"];
+                    $action = $verified["action"];
+
+                    if ($action == "reset_password") {
+                        $updated = $this->auth_model->reset_ldap_password($email, $password);
+                        if ($updated) {
+                            $this->auth_model->remove_verify_hash($hash);
+                        } else {
+                            $error[] = "Could not update";
+                        }
+                    } elseif ($action == "create_user") {
+                        $updated = $this->auth_model->create_ldap_user($email, $password);
+                        if ($updated) {
+                            $this->auth_model->remove_verify_hash($hash);
+                        } else {
+                            $error[] = "Could not create user";
+                        }
+                    } else {
+                        $error[] = "Invalid request";
+                    }
+                }
+            } else {
+                $error[] = "Passwords does not match";
+            }
+            $this->load_view("auth/password_reset", [
+                "error" => implode("\n", $error),
+                "hash" => $hash
+            ]);
+            exit();
+        }
+    }
+
+    private function register_by_email() {
+        $this->load_view("auth/register_by_email", [
+            "sent"  => ($this->session_lib->flash_get("auth_last_action") == "email_sent"),
+            "error" => $this->session_lib->flash_get("auth_last_error")
+        ]);
+    }
+
     function register($action = false) {
         $user = $this->auth_lib->get_user_details();
 
+        $this->handle_registration_by_email($action);
         $this->handle_user_update($action, $user);
 
         if ($user === false) {
             $this->load_library("cas_lib");
             $oauth_id = $this->cas_lib->getUser();
             $oauth_attr = $this->cas_lib->getAttributes();
+
+            if (!$oauth_id) {
+                // Actually a new user, without login
+                $this->register_by_email();
+                return;
+            }
 
             $user_data = $this->extract_user_info_oauth($oauth_id, $oauth_attr);
 

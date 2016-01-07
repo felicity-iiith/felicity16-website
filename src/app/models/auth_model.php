@@ -131,8 +131,8 @@ class auth_model extends Model {
         $db_error = false;
         $this->DB->users->autocommit(false);
 
-        $nick = isset($user_data["nick"]) ? $user_data["nick"] : "";
-        $mail = isset($user_data["mail"]) ? $user_data["mail"] : "";
+        $nick = isset($user_data["nick"]) ? $user_data["nick"] : NULL;
+        $mail = isset($user_data["mail"]) ? $user_data["mail"] : NULL;
         $name = isset($user_data["name"]) ? $user_data["name"] : "";
         $gender = isset($user_data["gender"]) ? $user_data["gender"] : "";
         $location = isset($user_data["location"]) ? $user_data["location"] : "";
@@ -255,7 +255,7 @@ class auth_model extends Model {
         return false;
     }
 
-    function verify_mail($hash) {
+    function verify_mail($hash, $remove=true) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->users,
             "SELECT `email`, `hash`, `action` FROM `mail_verify` WHERE `hash`=?",
@@ -265,13 +265,41 @@ class auth_model extends Model {
         if ($stmt) {
             $data = $stmt->get_result()->fetch_assoc();
         }
-        $this->db_lib->prepared_execute(
+        if ($remove) {
+            $this->remove_verify_hash($hash);
+        }
+        return $data ?: false;
+    }
+
+    function remove_verify_hash($hash) {
+        return $this->db_lib->prepared_execute(
             $this->DB->users,
             "DELETE FROM `mail_verify` WHERE `hash`=?",
             "s",
             [$hash],
             false
         );
-        return $data ?: false;
+    }
+
+    function create_ldap_user($email, $password) {
+        $this->load_library("ldap_lib", "ldap");
+        $ds = $this->ldap->get_link();
+        return ldap_add($ds, "uid=".addcslashes($email, '+').",ou=users,dc=felicity,dc=iiit,dc=ac,dc=in", [
+            "userPassword"  => "{SHA}" . base64_encode(pack("H*", sha1($password))),
+            "objectClass"   => [
+                "account",
+                "simpleSecurityObject",
+                "extensibleObject"
+            ],
+            "mail"          => $email
+        ]);
+    }
+
+    function reset_ldap_password($email, $password) {
+        $this->load_library("ldap_lib", "ldap");
+        $ds = $this->ldap->get_link();
+        return ldap_mod_replace($ds, "uid=".addcslashes($email, '+').",ou=users,dc=felicity,dc=iiit,dc=ac,dc=in", [
+            "userPassword" => "{SHA}" . base64_encode(pack("H*", sha1($password)))
+        ]);
     }
 }
