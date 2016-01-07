@@ -603,7 +603,7 @@ class jugaad_model extends Model {
                 if ($return_default) {
                     $data[$name] = @$meta['default'] ?: $meta['name'];
                 } else {
-                    $data[$name] = '';
+                    $data[$name] = null;
                 }
             } else {
                 $data[$name] = $field;

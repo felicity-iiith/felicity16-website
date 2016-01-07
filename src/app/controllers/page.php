@@ -47,7 +47,7 @@ class page extends Controller {
             $this->http->response_code(404);
         }
 
-        $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
+        $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, false);
 
         $header = getallheaders();
         if (isset($header["X-Ajax-Request"]) && $header["X-Ajax-Request"]) {
