@@ -17,7 +17,7 @@ class page extends Controller {
         $path = func_get_args();
 
         $file_id = $this->jugaad_model->get_path_id($path);
-        $file_type = $this->jugaad_model->get_file_type($path);
+        $file_type = $this->jugaad_model->get_file_type($file_id);
 
         if (end($path) == 'index') {
             $this->http->redirect(
