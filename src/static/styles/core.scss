@@ -666,12 +666,22 @@ article {
             font-size: 3em;
         }
 
+        h2 {
+            margin-top: 0;
+        }
+
         .event-list {
             display: inline-block;
+            text-align: left;
 
-            a.event {
+            .event {
                 display: block;
-                margin: 10px auto;
+                margin-bottom: 10px;
+            }
+
+            .lead {
+                margin-bottom: .25em;
+                font-size: 1.5em;
             }
         }
     }
