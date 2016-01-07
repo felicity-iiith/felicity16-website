@@ -214,10 +214,14 @@ class sap_portal extends Controller {
             $this->http_lib->response_code(403);
         }
         $action = $_POST['action'];
+
+        $approved = ($_POST['action'] == 'approve'); // boolean indicating approved or not
+        $reason = (empty($_POST['reason'])) ? null : $_POST['reason'];
+
         $success = $this->sap_model->submit_review(
             $submission_id,
-            ($_POST['action'] == 'approve'), // boolean indicating approved or not
-            (empty($_POST['reason'])) ? null : $_POST['reason']
+            $approved,
+            $reason
         );
 
         $submission = $this->sap_model->get_submission_details($submission_id);
@@ -232,6 +236,31 @@ class sap_portal extends Controller {
             $this->session_lib->flash_set('result', "Failed to $action submission! :/");
             $this->session_lib->flash_set('success', false);
         }
+
+        // Send user email notifying about review
+        $this->load_library('email_lib', 'email');
+        $subject = "[Felicity SAP] Submission for mission $mission_id reviewed!";
+
+        $user = $this->sap_model->get_user($user_id);
+        $data = $this->sap_model->get_submission_with_task($submission_id);
+        $data['subject'] = $subject;
+        $data['name'] = $user['name'];
+        $data['approved'] = $approved;
+        $data['reason'] = $reason;
+        $data['mission_url'] = base_url() . "sap/portal/mission/$mission_id/";
+
+        $mail = $this->email_lib->compose_mail('noreply');
+
+        $this->email_lib->set_html_view($mail, 'sap/emails/submission_reviewed_email_html', $data);
+
+        $this->email_lib->set_text_view($mail, 'sap/emails/submission_reviewed_email_text', $data);
+
+        $this->email->send_mail($mail, [
+            'to_email'  => $user['email'],
+            'to_name'   => $user['name'],
+            'subject'   => $subject,
+        ]);
+
         $this->http_lib->redirect(base_url() . "sap/portal/review/mission/$mission_id/");
     }
 
@@ -292,12 +321,12 @@ class sap_portal extends Controller {
 
         $mail = $this->email_lib->compose_mail("noreply");
 
-        $this->email_lib->set_html_view($mail, 'sap/create_password_email_html', [
+        $this->email_lib->set_html_view($mail, 'sap/emails/create_password_email_html', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link
         ]);
-        $this->email_lib->set_text_view($mail, 'sap/create_password_email_text', [
+        $this->email_lib->set_text_view($mail, 'sap/emails/create_password_email_text', [
             'subject' => $subject,
             'name' => $user['name'],
             'link' => $link

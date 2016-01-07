@@ -165,11 +165,11 @@ class sap extends Controller {
 
             $mail = $this->email_lib->compose_mail("noreply");
 
-            $this->email_lib->set_html_view($mail, 'sap/register_success_email_html', [
+            $this->email_lib->set_html_view($mail, 'sap/emails/register_success_email_html', [
                 'subject' => $subject,
                 'name' => $posted_data['name'],
             ]);
-            $this->email_lib->set_text_view($mail, 'sap/register_success_email_text', [
+            $this->email_lib->set_text_view($mail, 'sap/emails/register_success_email_text', [
                 'name' => $posted_data['name'],
             ]);
 
