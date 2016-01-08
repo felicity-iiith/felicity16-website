@@ -586,7 +586,7 @@ class jugaad_model extends Model {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
-            return $row[0] ? unserialize($row[0]) : $row[0];
+            return $row[0] ? json_decode($row[0], true) : $row[0];
         }
         return false;
     }
@@ -601,7 +601,11 @@ class jugaad_model extends Model {
             $field = $this->get_field_value($file_id, $name, $meta, $user);
             if ($field === false) {
                 if ($return_default) {
-                    $data[$name] = @$meta['default'] ?: $meta['name'];
+                    if (isset($meta['optional']) && $meta['optional']) {
+                        $data[$name] = @$meta['default'] ?: '';
+                    } else {
+                        $data[$name] = @$meta['default'] ?: $meta['name'];
+                    }
                 } else {
                     $data[$name] = '';
                 }
@@ -621,7 +625,7 @@ class jugaad_model extends Model {
             $db_error = true;
         }
         foreach ($data as $name => $val) {
-            $value = serialize($val);
+            $value = json_encode($val);
             if (!$stmt->execute()) {
                 $db_error = true;
             }
