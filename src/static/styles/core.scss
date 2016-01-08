@@ -441,6 +441,7 @@ article {
     padding-top: 1em;
     color: #021a24;
     width: 100%;
+    z-index: 1;
 
     .landing-content {
         display: inline-block;
@@ -472,6 +473,7 @@ article {
         text-transform: lowercase;
         text-align: center;
         margin: 0;
+        text-shadow: 0 0 2px #000;
 
         a {
             color: inherit;
@@ -484,6 +486,7 @@ article {
         text-align: right;
         font-weight: bold;
         margin-top: 0;
+        text-shadow: 0 0 2px #000;
     }
 
     .tagline {
@@ -520,7 +523,7 @@ article {
 
     .title,
     .year {
-        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout;
+        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout, text-shadow $page-open-animation-timeout;
     }
 
     .page-open & {
@@ -529,7 +532,7 @@ article {
         .title,
         .year {
             color: white;
-
+            text-shadow: 0 0 2px #000;
         }
 
         .iiit-h,
@@ -552,6 +555,7 @@ article {
     color: white;
     background-color: rgba(26, 27, 45, .6);
     transition: all $page-open-animation-timeout;
+    z-index: 2;
 
     &:before {
         content: ' ';
