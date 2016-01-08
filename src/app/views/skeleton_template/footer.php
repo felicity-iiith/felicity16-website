@@ -63,12 +63,12 @@ if (!$is_ajax):
         for(var i in eventsData) {
             eventsData[i].sort(function (e1, e2) {
                 if (e1.template == 'category') {
-                    return false;
+                    return -1;
                 }
                 if (e2.template == 'category') {
-                    return true;
+                    return 1;
                 }
-                return e1.data.name > e2.data.name;
+                return e1.data.name.localeCompare(e2.data.name);
             });
         }
     </script>
