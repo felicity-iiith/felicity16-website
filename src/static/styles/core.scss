@@ -69,10 +69,11 @@ a {
 
     [class*=col] {
         float: left;
+    }
 
-        .padded & {
-            padding: 10px;
-        }
+    &.padded > [class*=col],
+    [class*=col].padded {
+        padding: 5px 10px;
     }
 
     @for $i from 1 through 11 {
