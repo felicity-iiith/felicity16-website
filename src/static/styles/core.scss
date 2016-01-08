@@ -473,7 +473,7 @@ article {
         text-transform: lowercase;
         text-align: center;
         margin: 0;
-        text-shadow: 0 0 2px #000;
+        text-shadow: 0 0 0 #000;
 
         a {
             color: inherit;
@@ -486,7 +486,7 @@ article {
         text-align: right;
         font-weight: bold;
         margin-top: 0;
-        text-shadow: 0 0 2px #000;
+        text-shadow: 0 0 0 #000;
     }
 
     .tagline {
@@ -523,7 +523,7 @@ article {
 
     .title,
     .year {
-        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout;
+        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout, text-shadow $page-open-animation-timeout;
     }
 
     .page-open & {
