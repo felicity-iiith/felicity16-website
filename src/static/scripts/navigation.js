@@ -1,4 +1,4 @@
-/* global $, loadContent, baseUrl, eventsData */
+/* global $, loadContent, baseUrl, eventsData, ga */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
     animationEnd  = 'webkitAnimationEnd animationend msAnimationEnd oAnimationEnd';
@@ -84,6 +84,7 @@ $(function () {
             history.pushState(newUrl, null, newUrl);
             openLink(pageName);
         }
+        ga('send', 'pageview');
     };
     $(window).on('popstate', function() {
         if (!history.state) return;
@@ -102,6 +103,7 @@ $(function () {
         e.preventDefault();
         showLanding();
         history.pushState(baseUrl, null, baseUrl);
+        ga('send', 'pageview');
     });
 });
 

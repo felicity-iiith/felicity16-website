@@ -50,7 +50,7 @@
     "venue": {
         "name"      : "Venue",
         "type"      : "text",
-        "default"   : "online",
+        "default"   : "Online",
         "optional"  : true
     },
     "contact_email": {
@@ -65,8 +65,8 @@
         "path"      : ".*/.*",
         "template"  : "(category|event)",
         "data"      : {
-            "name"          : "name",
-            "icon"          : "nav_icon"
+            "name" : "name",
+            "icon" : "nav_icon"
         }
     }
 }
