@@ -523,7 +523,7 @@ article {
 
     .title,
     .year {
-        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout, text-shadow $page-open-animation-timeout;
+        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout;
     }
 
     .page-open & {
@@ -550,7 +550,6 @@ article {
     width: 100%;
     top: 100vh;
     padding-top: 5.5em;
-    z-index: 0;
     opacity: 1;
     color: white;
     background-color: rgba(26, 27, 45, .6);
