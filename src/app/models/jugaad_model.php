@@ -601,7 +601,11 @@ class jugaad_model extends Model {
             $field = $this->get_field_value($file_id, $name, $meta, $user);
             if ($field === false) {
                 if ($return_default) {
-                    $data[$name] = @$meta['default'] ?: $meta['name'];
+                    if (isset($meta['optional']) && $meta['optional']) {
+                        $data[$name] = @$meta['default'] ?: '';
+                    } else {
+                        $data[$name] = @$meta['default'] ?: $meta['name'];
+                    }
                 } else {
                     $data[$name] = '';
                 }
