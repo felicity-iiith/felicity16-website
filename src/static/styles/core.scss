@@ -364,7 +364,7 @@ nav {
     }
 
     .triangle-front {
-        border-top: 9px solid #fff;
+        border-top: 9px solid #ffa500;
         bottom: -9px;
     }
 
@@ -373,9 +373,13 @@ nav {
     }
 
     .nav-title {
+        font-weight: bold;
         padding: 10px 15px;
         z-index: 10;
         position: relative;
+        border-radius: 5px 5px 0 0;
+        background-color: #ffa500;
+        color: white;
     }
 
     .fire1 {
