@@ -60,6 +60,17 @@ if (!$is_ajax):
     </nav>
     <script type="text/javascript">
         var eventsData = <?= json_encode($categorised_event, JSON_UNESCAPED_SLASHES) ?>;
+        for(var i in eventsData) {
+            eventsData[i].sort(function (e1, e2) {
+                if (e1.template == 'category') {
+                    return false;
+                }
+                if (e2.template == 'category') {
+                    return true;
+                }
+                return e1.data.name > e2.data.name;
+            });
+        }
     </script>
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
