@@ -1,4 +1,4 @@
-/* global $, loadContent, baseUrl, eventsData */
+/* global $, loadContent, baseUrl, eventsData, ga */
 /* jshint -W057 */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
@@ -85,6 +85,7 @@ $(function () {
             history.pushState(newUrl, null, newUrl);
             openLink(pageName);
         }
+        ga('send', 'pageview');
     };
     $(window).on('popstate', function() {
         var pageName = urlHelper.getPageName(window.location.href);
@@ -102,6 +103,7 @@ $(function () {
         e.preventDefault();
         showLanding();
         history.pushState(baseUrl, null, baseUrl);
+        ga('send', 'pageview');
     });
 });
 

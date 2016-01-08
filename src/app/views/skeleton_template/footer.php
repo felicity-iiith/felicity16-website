@@ -64,6 +64,7 @@ if (!$is_ajax):
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/navigation.js" charset="utf-8"></script>
+    <?php $this->load_fragment('google_analytics'); ?>
 </body>
 </html>
 <?php endif;
