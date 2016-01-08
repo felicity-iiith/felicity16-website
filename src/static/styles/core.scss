@@ -54,6 +54,14 @@ a {
     text-decoration: none;
     cursor: pointer;
     color: #fff;
+
+    &.underlined {
+        border-bottom: 1px solid;
+
+        &:hover {
+            border-bottom-style: dashed;
+        }
+    }
 }
 
 .row {
@@ -636,6 +644,15 @@ article {
             display: block;
             width: 100%;
             background-color: #fff;
+        }
+    }
+
+    &.contact {
+        font-size: 1.3em;
+
+        .social-icon {
+            max-height: 1em;
+            vertical-align: baseline;
         }
     }
 
