@@ -1,6 +1,6 @@
 <?php $this->load_fragment('skeleton_template/header'); ?>
 <?php if (!$is_ajax): ?>
-<article class="page gallery open">
+<article class="page open gallery">
 <?php endif; ?>
 
 <div class="thumbnail-wrapper">

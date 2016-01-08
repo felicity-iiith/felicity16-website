@@ -22,7 +22,7 @@
         "name"      : "Navbar Icon",
         "type"      : "type"
     },
-    "events_list": {
+    "events_data": {
         "name"      : "Events list",
         "type"      : "external",
         "path"      : ".*/.*",
@@ -30,7 +30,8 @@
         "data"      : {
             "name"          : "name",
             "start_time"    : "start_time",
-            "tagline"       : "tagline"
+            "tagline"       : "tagline",
+            "icon"          : "nav_icon"
         }
     }
 }

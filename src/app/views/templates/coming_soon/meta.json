@@ -1,7 +1,12 @@
 {
-    "contact_us": {
-        "name"      : "Contact Us",
-        "type"      : "longtext",
-        "default"   : "Contact Us"
+    "events_data": {
+        "name"      : "Events list",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
     }
 }

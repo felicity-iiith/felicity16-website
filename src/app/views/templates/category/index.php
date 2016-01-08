@@ -1,12 +1,12 @@
 <?php $this->load_fragment('skeleton_template/header'); ?>
 <?php if (!$is_ajax): ?>
-<article class="page open full category">
+<article class="page open full category <?= $page_slug ?>">
 <?php endif; ?>
 <?php
 $path = str_replace('__', '/', $page_slug);
 $len = strlen($path);
 $events_to_display = [];
-foreach ($events_list as $event) {
+foreach ($events_data as $event) {
     if ( substr($event['path'], 1, $len) == $page_slug && $event['template'] == 'event' ) {
         $events_to_display[] = $event;
     }
