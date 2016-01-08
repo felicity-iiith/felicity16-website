@@ -56,7 +56,7 @@
     .event {
         display: block;
         position: relative;
-        background-color: blue;
+        background-color: #756a81;
         border-radius: .2em;
         width: 10em;
         padding: .5em;
@@ -84,14 +84,23 @@
         border-radius: .25em;
     }
 
-    .timeline:hover .innercircle {
-        display: block;
-    }
+    .timeline:hover {
+        .innercircle {
+            display: block;
+        }
 
-    .threads:hover {
-        .innercircle,
-        .event {
-            background-color: #3c93b0;
+        :hover {
+            .innercircle,
+            .event {
+                background-color: #505a89;
+            }
+        }
+
+        &.threads:hover {
+            .innercircle,
+            .event {
+                background-color: #3c93b0;
+            }
         }
     }
 }
