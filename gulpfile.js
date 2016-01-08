@@ -17,7 +17,7 @@ var paths = {
     images: 'src/static/images/**/*.{jpg,jpeg,png,svg}',
     fonts: 'src/static/fonts/*',
     php: 'src/**/*.{php,json,pem}',
-    stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
+    stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt', 'src/favicon.ico'],
     vendor: ['vendor/**/*'],
 };
 

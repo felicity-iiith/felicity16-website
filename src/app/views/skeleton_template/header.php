@@ -6,6 +6,7 @@ if (!$is_ajax):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <title>Felicity · IIIT Hyderabad</title>
+    <link rel="icon" href="<?= base_url() ?>favicon.ico">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
