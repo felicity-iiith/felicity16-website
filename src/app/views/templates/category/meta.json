@@ -20,7 +20,8 @@
     },
     "nav_icon"      : {
         "name"      : "Navbar Icon",
-        "type"      : "type"
+        "type"      : "type",
+        "default"   : "icon-doc"
     },
     "events_data": {
         "name"      : "Events list",
