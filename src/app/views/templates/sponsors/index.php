@@ -1,6 +1,6 @@
 <?php $this->load_fragment('skeleton_template/header'); ?>
 <?php if (!$is_ajax): ?>
-<article class="page sponsors open">
+<article class="page open sponsors">
 <?php endif; ?>
 <?php
 $sponsors2015 = [

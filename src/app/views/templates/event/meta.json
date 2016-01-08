@@ -58,5 +58,15 @@
         "type"      : "text",
         "default"   : "contact@felicity.iiit.ac.in",
         "optional"  : true
+    },
+    "events_data": {
+        "name"      : "Events list",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
     }
 }

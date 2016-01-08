@@ -1,59 +1,38 @@
 <?php
 if (!$is_ajax):
-$primary_nav_link = function ($name, $image) use ($page_slug) {
+    $categorised_event = [];
+    foreach ($events_data as $event) {
+        $category = trim( str_replace($event['slug'], '', $event['path']), '/' );
+        if ($event['template'] == 'category') {
+            if (!isset($categorised_event[$category])) {
+                $categorised_event[$category] = [];
+            }
+            array_unshift($categorised_event[$category], $event);
+        } else {
+            $categorised_event[$category][] = $event;
+        }
+    }
+    $primary_nav_link = function ($name, $image) use ($page_slug) {
 ?>
-    <a href="<?= base_url() . $name ?>/" data-href="<?= $name ?>" class="primary-nav-link <?= $name ?><?= $name == $page_slug ? ' open' : '' ?>">
-        <img src="<?= base_url() ?>static/images/<?= $image ?>">
-        <div class="title"><?= ucfirst($name) ?></div>
-    </a>
+        <a href="<?= base_url() . $name ?>/" data-href="<?= $name ?>" class="primary-nav-link <?= $name ?><?= $name == $page_slug ? ' open' : '' ?>">
+            <img src="<?= base_url() ?>static/images/<?= $image ?>">
+            <div class="title"><?= ucfirst($name) ?></div>
+        </a>
 <?php
-}
+    }
 ?>
     </div>
     <nav>
         <div class="crystal-ball">
             <div class="ball-title">Events</div>
             <ul class="events-nav">
-                <li>
-                    <div class="events-nav-button testing" href="#" data-href="threads">
-                        <i class="icon-code"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button testing" href="#" data-href="nights">
-                        <i class="icon-music"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button testing" href="#" data-href="futsal">
-                        <i class="icon-soccer-ball"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button testing" href="#" data-href="stomp-the-yard">
-                        <i class="icon-child"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button" href="#" title="Paper presentation" rel="tooltip">
-                        <i class="icon-doc"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button" href="#" title="Lit Cafe" rel="tooltip">
-                        <i class="icon-pencil"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button" href="#" title="Futsal" rel="tooltip">
-                        <i class="icon-soccer-ball"></i>
-                    </div>
-                </li>
-                <li>
-                    <div class="events-nav-button" href="#" title="Stomp the yard" rel="tooltip">
-                        <i class="icon-child"></i>
-                    </div>
-                </li>
+                <?php foreach ($categorised_event as $category => $events): ?>
+                    <li>
+                        <a class="events-nav-button" href="#" data-href="<?= $category ?>">
+                            <i class="<?= $events[0]['data']['icon'] ?>"></i>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
         <ul class="primary-nav left">
@@ -79,6 +58,9 @@ $primary_nav_link = function ($name, $image) use ($page_slug) {
             </li>
         </ul>
     </nav>
+    <script type="text/javascript">
+        var eventsData = <?= json_encode($categorised_event, JSON_UNESCAPED_SLASHES) ?>;
+    </script>
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/navigation.js" charset="utf-8"></script>

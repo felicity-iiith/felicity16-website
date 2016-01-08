@@ -1,1 +1,12 @@
-{}
+{
+    "events_data": {
+        "name"      : "Events list",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
+    }
+}
