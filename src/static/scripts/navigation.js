@@ -203,9 +203,15 @@ $(function () {
     var updateNavbarLinks = function (pageName) {
         var events = eventsData[pageName], $li;
         $navbar.empty();
+        try {
+            events[0].path = events[0].path.replace('index/', '');
+            events[0].data.name = "Home";
+        } catch (e) {
+
+        }
         for(var i = 0; i < events.length ; i++) {
             var event = events[i];
-            $li = getLI( baseUrl + event.path.substr(1).replace('index/', ''), event.data.name );
+            $li = getLI( baseUrl + event.path.substr(1), event.data.name );
             $navbar.append( $li );
         }
         return $li.height() * events.length;
@@ -225,12 +231,12 @@ $(function () {
         $navCumTooltipTitle.text(pageHelper.getPageTitle(pageName));
         $navbar.height(0);
 
-        var offset  = $target.offset();
+        var offset  = $target[0].getBoundingClientRect();
         $dummyTarget.css({
             top: offset.top,
             left: offset.left,
-            width: $target.width(),
-            height: $target.height(),
+            width: offset.width,
+            height: offset.height,
         });
 
         $navCumTooltip.animate({'opacity': 1, 'margin-bottom': 0}, 50, (typeof cb) == "function" ? cb.bind(this) : undefined);
