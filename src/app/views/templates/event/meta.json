@@ -38,22 +38,25 @@
     "start_time": {
         "name"      : "Start_time",
         "type"      : "datetime",
-        "default"   : "To be announced"
+        "default"   : "To be announced",
+        "optional"  : true
     },
     "end_time": {
         "name"      : "End_time",
         "type"      : "datetime",
-        "default"   : "To be announced"
+        "default"   : "To be announced",
+        "optional"  : true
     },
     "venue": {
-        "name"      :"Venue",
-        "type"      :"text",
-        "default"   :"online",
-        "optional"    : true
+        "name"      : "Venue",
+        "type"      : "text",
+        "default"   : "online",
+        "optional"  : true
     },
     "contact_email": {
         "name"      : "Contact email",
         "type"      : "text",
-        "default"   : "contact@felicity.iiit.ac.in"
+        "default"   : "contact@felicity.iiit.ac.in",
+        "optional"  : true
     }
 }

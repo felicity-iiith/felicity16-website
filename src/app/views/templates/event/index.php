@@ -2,7 +2,6 @@
 <?php if (!$is_ajax): ?>
 <article class="page open full event <?= $page_slug ?>">
 <?php endif; ?>
-    <a href="#">Threads</a>
     <div class="container">
     <h1><?= $name ?></h1>
         <p class="lead"><?= $tagline ?></p>
@@ -12,13 +11,15 @@
                 <?php if ($button_text): ?>
                     <a class="btn" href="<?= base_url() . $button_link ?>"><?= $button_text ?></a>
                 <?php endif; ?>
-                <p class="lead some-top-margin"><?= $description ?></p>
-                <h2 class="text-left">Rules</h2>
-                <ul class="text-justify">
-                    <?php foreach ($rules as $rule): ?>
-                        <li><?= $rule ?></li>
-                    <?php endforeach; ?>
-                </ul>
+                <div class="lead text-left some-top-margin"><?= $description ?></div>
+                <?php if (is_array($rules) && count($rules)): ?>
+                    <h2 class="text-left">Rules</h2>
+                    <ul class="text-justify">
+                        <?php foreach ($rules as $rule): ?>
+                            <li><?= $rule ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
             <div class="col6">
                 <h2>Event Details</h2>
