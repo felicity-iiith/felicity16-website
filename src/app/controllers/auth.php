@@ -141,11 +141,13 @@ class auth extends Controller {
             }
         } elseif ($action == "reset_password") {
             $this->load_view("auth/password_reset", [
+                "success" => false,
                 "hash" => $hash,
                 "error" => ""
             ]);
         } elseif ($action == "create_user") {
             $this->load_view("auth/password_reset", [
+                "success" => false,
                 "hash" => $hash,
                 "error" => ""
             ]);
@@ -336,7 +338,8 @@ class auth extends Controller {
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
             $this->http->redirect(base_url() . "auth/register");
         } elseif ($action == "password_reset") {
-            $hash = $_POST["hash"];
+            $hash = isset($_POST["hash"]) ? $_POST["hash"] : null;
+            $success = false;
             if (!empty($_POST["password"]) && !empty($_POST["confirm_password"])
                 && $_POST["password"] == $_POST["confirm_password"]
             ) {
@@ -354,6 +357,7 @@ class auth extends Controller {
                         $updated = $this->auth_model->reset_ldap_password($email, $password);
                         if ($updated) {
                             $this->auth_model->remove_verify_hash($hash);
+                            $success = true;
                         } else {
                             $error[] = "Could not update";
                         }
@@ -361,6 +365,7 @@ class auth extends Controller {
                         $updated = $this->auth_model->create_ldap_user($email, $password);
                         if ($updated) {
                             $this->auth_model->remove_verify_hash($hash);
+                            $success = true;
                         } else {
                             $error[] = "Could not create user";
                         }
@@ -371,7 +376,11 @@ class auth extends Controller {
             } else {
                 $error[] = "Passwords does not match";
             }
+            if (!isset($hash) || !$hash) {
+                $this->http->response_code(400);
+            }
             $this->load_view("auth/password_reset", [
+                "success" => $success,
                 "error" => implode("\n", $error),
                 "hash" => $hash
             ]);
@@ -381,6 +390,33 @@ class auth extends Controller {
 
     private function register_by_email() {
         $this->load_view("auth/register_by_email", [
+            "sent"  => ($this->session_lib->flash_get("auth_last_action") == "email_sent"),
+            "error" => $this->session_lib->flash_get("auth_last_error")
+        ]);
+    }
+
+    public function forgot_password() {
+        if (isset($_POST["email"])) {
+            $email = $_POST["email"];
+            $user = $this->auth_model->get_user_old_ldap($email);
+            $error = [];
+
+            if (!$user) {
+                if ($this->auth_model->get_user_by_mail($email)) {
+                    $error[] = "You didn't registered with email, maybe you used Google, GitHub or Facebook to login?";
+                } else {
+                    $error[] = "This email id is not registred";
+                }
+            } else {
+                if ($this->send_verification_mail($email, "reset_password")) {
+                    $this->session_lib->flash_set("auth_last_action", "email_sent");
+                } else {
+                    $error[] = "Could not send mail";
+                }
+            }
+            $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
+        }
+        $this->load_view("auth/forgot_password", [
             "sent"  => ($this->session_lib->flash_get("auth_last_action") == "email_sent"),
             "error" => $this->session_lib->flash_get("auth_last_error")
         ]);
