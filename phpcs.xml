@@ -43,4 +43,7 @@
     <rule ref="Squiz.WhiteSpace.ScopeClosingBrace">
         <exclude-pattern>*/views/*</exclude-pattern>
     </rule>
+    <rule ref="Internal.NoCodeFound">
+        <severity>0</severity>
+    </rule>
 </ruleset>
