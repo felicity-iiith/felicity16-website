@@ -5,12 +5,18 @@ if (!$is_ajax):
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Felicity ʼ16</title>
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css" media="screen" title="no title" charset="utf-8">
-    <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Flamenco|Noto+Sans' rel='stylesheet' type='text/css'>
+    <title>Felicity · IIIT Hyderabad</title>
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/schedule.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nothing+You+Could+Do|Flamenco|Noto+Sans">
+    <script type="text/javascript">
+        var baseUrl = '<?= base_url() ?>';
+    </script>
+    <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js" type="text/javascript"></script>
 </head>
-<body<?= empty($path) ? '' : ' class="page-open"' ?>>
+<body<?= empty($page_slug) ? '' : ' class="page-open"' ?>>
     <article class="landing">
         <div class="landing-content">
             <p class="iiit-h">

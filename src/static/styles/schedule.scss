@@ -1,0 +1,106 @@
+.cal-month-name {
+    font-weight: 700;
+    font-size: 1.3em;
+    text-align: right;
+}
+
+.cal-table {
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 6px;
+
+    th {
+        width: 2.5em;
+        font-weight: 400;
+    }
+
+    td {
+        vertical-align: middle;
+        border-radius: 500;
+        border: 3px solid #756a81;
+        height: 2.5em;
+        width: 2.5em;
+
+        &.empty {
+            border: 0;
+        }
+
+        &.has-event {
+            background-color: #373348;
+            cursor: pointer;
+
+            :hover {
+                background-color: #111a29;
+            }
+        }
+    }
+}
+
+.eventslist {
+    td {
+        position: relative;
+        padding: .5em;
+        vertical-align: middle;
+    }
+
+    .day {
+        font-size: 1.3em;
+        padding-right: 1em;
+    }
+
+    .event-container {
+        border-left: .2em solid white;
+        padding-left: 1em;
+    }
+
+    .event {
+        display: block;
+        position: relative;
+        background-color: #756a81;
+        border-radius: .2em;
+        width: 10em;
+        padding: .5em;
+    }
+
+    .circle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: -1.6em;
+        background-color: #fff;
+        width: 1em;
+        height: 1em;
+        border-radius: .5em;
+    }
+
+    .innercircle {
+        display: none;
+        position: relative;
+        top: .25em;
+        left: .25em;
+        width: .5em;
+        height: .5em;
+        border-radius: .25em;
+    }
+
+    .timeline:hover {
+        .innercircle {
+            display: block;
+        }
+
+        :hover {
+            .innercircle,
+            .event {
+                background-color: #505a89;
+            }
+        }
+
+        &.threads:hover {
+            .innercircle,
+            .event {
+                background-color: #3c93b0;
+            }
+        }
+    }
+}
