@@ -10,7 +10,7 @@ if (!$is_ajax):
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/schedule.css">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do|Flamenco|Noto+Sans'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nothing+You+Could+Do|Flamenco|Noto+Sans">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
     </script>
