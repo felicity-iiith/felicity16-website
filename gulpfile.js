@@ -6,6 +6,10 @@ var notify = require('gulp-notify');
 var path = require('path');
 var del = require('del');
 var gutil = require('gulp-util');
+var args = require('yargs').argv;
+var gulpif = require('gulp-if');
+var minifyCss = require('gulp-minify-css');
+var uglifyjs = require('gulp-uglify');
 
 var paths = {
     styles: 'src/static/styles/**/*.{scss,css}',
@@ -16,6 +20,8 @@ var paths = {
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt'],
     vendor: ['vendor/**/*'],
 };
+
+var destination = args.deploy ? 'deploy' : 'build';
 
 var reportError = function(error) {
     if ('CI' in process.env && process.env.CI === 'true') {
@@ -32,7 +38,7 @@ var reportError = function(error) {
 
 gulp.task('clean', function() {
     // Must be synchronous if we're going to use this task as a dependency
-    del.sync('build/');
+    del.sync(destination + '/');
 });
 
 gulp.task('styles', function() {
@@ -43,37 +49,39 @@ gulp.task('styles', function() {
         .pipe(sass())
         .on('error', reportError)
         .pipe(autoprefixer())
-        .pipe(gulp.dest('build/static/styles'));
+        .pipe(gulpif(args.deploy, minifyCss()))
+        .pipe(gulp.dest(destination + '/static/styles'));
 });
 
 gulp.task('scripts', function() {
     return gulp.src('src/static/scripts/**/*.js')
-        .pipe(gulp.dest('build/static/scripts'));
+        .pipe(gulpif(args.deploy, uglifyjs()))
+        .pipe(gulp.dest(destination + '/static/scripts'));
 });
 
 gulp.task('images', function() {
     return gulp.src(paths.images)
-        .pipe(gulp.dest('build/static/images'));
+        .pipe(gulp.dest(destination + '/static/images'));
 });
 
 gulp.task('fonts', function() {
     return gulp.src(paths.fonts)
-        .pipe(gulp.dest('build/static/fonts'));
+        .pipe(gulp.dest(destination + '/static/fonts'));
 });
 
 gulp.task('php', function() {
     return gulp.src(paths.php)
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(destination + '/'));
 });
 
 gulp.task('stuff', function() {
     return gulp.src(paths.stuff)
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest(destination + '/'));
 });
 
 gulp.task('vendor', function() {
     return gulp.src(paths.vendor, {dot: true})
-        .pipe(gulp.dest('build/vendor/'));
+        .pipe(gulp.dest(destination + '/vendor/'));
 });
 
 gulp.task('watch', ['default'], function() {
@@ -101,11 +109,11 @@ gulp.task('watch', ['default'], function() {
         };
     }
 
-    var srcToBuildDeleter = deleter('src/', 'build/');
+    var srcToBuildDeleter = deleter('src/', destination + '/');
 
     gulp.watch(paths.styles, ['styles'])
         .on('change', deleter(function(file) {
-            return file.replace('src/', 'build/')
+            return file.replace('src/', destination + '/')
                 .replace(/\.scss$/, '.css');
         }));
     gulp.watch(paths.scripts, ['scripts'])
@@ -119,7 +127,7 @@ gulp.task('watch', ['default'], function() {
     gulp.watch(paths.stuff, ['stuff'])
         .on('change', srcToBuildDeleter);
     gulp.watch(paths.vendor, {dot: true})
-        .on('change', deleter('vendor/', 'build/vendor/'));
+        .on('change', deleter('vendor/', destination + '/vendor/'));
 });
 
 gulp.task('build', ['styles', 'scripts', 'images', 'fonts', 'php', 'stuff', 'vendor']);
