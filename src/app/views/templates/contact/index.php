@@ -12,9 +12,9 @@
         </p>
         <p>
             Or find us on
-            <a target="_blank" href="https://www.facebook.com/felicity.iiith"><img class="social-icon" src="https://felicity.iiit.ac.in/img/fb-icon.png"> facebook</a>
+            <a target="_blank" href="https://www.facebook.com/felicity.iiith"><img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png"> facebook</a>
             or
-            <a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="https://felicity.iiit.ac.in/img/twitter-icon.png"> twitter</a>.
+            <a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="<?= base_url() ?>static/images/twitter-icon.png"> twitter</a>.
         </p>
         <p>
             Or bug our coordinators
@@ -24,7 +24,7 @@
                 <p>
                     Jeevan Chowdary
                     <a target="_blank" href="https://www.facebook.com/g1.8.jeevan">
-                        <img class="social-icon" src="https://felicity.iiit.ac.in/img/fb-icon.png">
+                        <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
@@ -36,7 +36,7 @@
                 <p>
                     Sanatan Mishra
                     <a target="_blank" href="https://www.facebook.com/sanatan.mishra.7">
-                        <img class="social-icon" src="https://felicity.iiit.ac.in/img/fb-icon.png">
+                        <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
@@ -48,7 +48,7 @@
                 <p>
                     Vivek Ghaisas
                     <a target="_blank" href="https://www.facebook.com/vghaisas">
-                        <img class="social-icon" src="https://felicity.iiit.ac.in/img/fb-icon.png">
+                        <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
