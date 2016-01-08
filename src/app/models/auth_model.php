@@ -78,7 +78,6 @@ class auth_model extends Model {
             "l" => "location"
         ];
 
-
         $this->load_library("ldap_lib", "ldap");
         $ds = $this->ldap->get_link();
         $dn = "dc=felicity,dc=iiit,dc=ac,dc=in";
@@ -131,8 +130,8 @@ class auth_model extends Model {
         $db_error = false;
         $this->DB->users->autocommit(false);
 
-        $nick = isset($user_data["nick"]) ? $user_data["nick"] : NULL;
-        $mail = isset($user_data["mail"]) ? $user_data["mail"] : NULL;
+        $nick = isset($user_data["nick"]) ? $user_data["nick"] : null;
+        $mail = isset($user_data["mail"]) ? $user_data["mail"] : null;
         $name = isset($user_data["name"]) ? $user_data["name"] : "";
         $gender = isset($user_data["gender"]) ? $user_data["gender"] : "";
         $location = isset($user_data["location"]) ? $user_data["location"] : "";
