@@ -1,5 +1,4 @@
 /* global $, loadContent, baseUrl, eventsData */
-/* jshint -W057 */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
     animationEnd  = 'webkitAnimationEnd animationend msAnimationEnd oAnimationEnd';
@@ -87,6 +86,7 @@ $(function () {
         }
     };
     $(window).on('popstate', function() {
+        if (!history.state) return;
         var pageName = urlHelper.getPageName(window.location.href);
         if (pageName === '') {
             showLanding();
