@@ -332,6 +332,7 @@ nav {
     bottom: calc(100% + 10px);
     margin-bottom: 10px;
     left: 50%;
+    min-width: 150px;
     transform: translateX(-50%);
     background-color: #fff;
     white-space: nowrap;
