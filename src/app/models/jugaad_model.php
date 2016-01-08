@@ -601,9 +601,9 @@ class jugaad_model extends Model {
             $field = $this->get_field_value($file_id, $name, $meta, $user);
             if ($field === false) {
                 if ($return_default) {
-                    $data[$name] = @$meta['default'] ?: $meta['name'];
+                    $data[$name] = @$meta['default'] ?: null;
                 } else {
-                    $data[$name] = '';
+                    $data[$name] = null;
                 }
             } else {
                 $data[$name] = $field;
