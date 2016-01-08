@@ -1,0 +1,72 @@
+{
+    "name": {
+        "name"      : "Event name",
+        "type"      : "text",
+        "default"   : "Event name"
+    },
+    "tagline": {
+        "name"      : "Tagline",
+        "type"      : "text",
+        "default"   : "Event's Tagline"
+    },
+    "description": {
+        "name"      : "Description",
+        "type"      : "longtext",
+        "default"   : "Event details coming soon."
+    },
+    "rules": {
+        "name"      : "Rules",
+        "type"      : "list",
+        "listType"  : "text"
+    },
+    "status": {
+        "name"      : "Status",
+        "type"      : "text",
+        "optional"  : true
+    },
+    "button_link": {
+        "name"      : "Button link (Base url is prefixed. Just provide path)",
+        "type"      : "text",
+        "optional"  : true
+    },
+    "button_text": {
+        "name"      : "Button text",
+        "type"      : "text",
+        "default"   : "",
+        "optional"  : true
+    },
+    "start_time": {
+        "name"      : "Start_time",
+        "type"      : "datetime",
+        "default"   : "To be announced",
+        "optional"  : true
+    },
+    "end_time": {
+        "name"      : "End_time",
+        "type"      : "datetime",
+        "default"   : "To be announced",
+        "optional"  : true
+    },
+    "venue": {
+        "name"      : "Venue",
+        "type"      : "text",
+        "default"   : "online",
+        "optional"  : true
+    },
+    "contact_email": {
+        "name"      : "Contact email",
+        "type"      : "text",
+        "default"   : "contact@felicity.iiit.ac.in",
+        "optional"  : true
+    },
+    "events_data": {
+        "name"      : "Events list",
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
+    }
+}

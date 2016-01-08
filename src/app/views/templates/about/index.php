@@ -1,6 +1,6 @@
 <?php $this->load_fragment('skeleton_template/header'); ?>
 <?php if (!$is_ajax): ?>
-<article class="page about open">
+<article class="page open about">
 <?php endif; ?>
     <p>
         <?= $about_us ?>
