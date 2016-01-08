@@ -545,12 +545,12 @@ article {
     height: 0;
     width: 100%;
     top: 100vh;
-    transition: all $page-open-animation-timeout;
     padding-top: 5.5em;
     z-index: 0;
     opacity: 1;
     color: white;
     background-color: rgba(26, 27, 45, .6);
+    transition: all $page-open-animation-timeout;
 
     &:before {
         content: ' ';
@@ -574,6 +574,10 @@ article {
 
     &.full {
         padding-top: 0;
+    }
+
+    &.to-be-deleted {
+        opacity: 0;
     }
 
     &.about {
