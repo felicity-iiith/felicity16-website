@@ -586,7 +586,7 @@ class jugaad_model extends Model {
             return false;
         }
         if ($row = $stmt->get_result()->fetch_row()) {
-            return $row[0] ? unserialize($row[0]) : $row[0];
+            return $row[0] ? json_decode($row[0], true) : $row[0];
         }
         return false;
     }
@@ -621,7 +621,7 @@ class jugaad_model extends Model {
             $db_error = true;
         }
         foreach ($data as $name => $val) {
-            $value = serialize($val);
+            $value = json_encode($val);
             if (!$stmt->execute()) {
                 $db_error = true;
             }
