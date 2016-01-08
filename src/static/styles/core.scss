@@ -249,9 +249,11 @@ nav {
     height: 2 * $ball-radius;
     width: 2 * $ball-radius;
     margin: auto;
-    border-radius: 50%;
+    border-radius: $ball-radius;
     background-color: rgba(255, 255, 255, .95);
-    animation: glow 2s infinite linear;
+    box-shadow: 0 0 10px 10px white, 0 0 10px 3px white, 0 0 10px 10px white inset, 0 0 1em #fff, 0 0 2em .5em #fff, 0 0 3em #fff, 0 0 4em #fff, 0 0 1em #fff inset, 0 0 3em #fff inset;
+    transition: box-shadow 1s;
+    //animation: glow 2s infinite linear;
     z-index: 1;
 
     .ball-title {
@@ -514,20 +516,18 @@ article {
         }
     }
 
+    &,
     .iiit-h,
     .presents,
+    .title,
+    .year,
     .tagline,
     .dates {
-        transition: font-size $page-open-animation-timeout;
-    }
-
-    .title,
-    .year {
-        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout, text-shadow $page-open-animation-timeout;
+        transition: all $page-open-animation-timeout, color $page-open-animation-timeout;
     }
 
     .page-open & {
-        font-size: .5em;
+        padding-top: .3em;
 
         .title,
         .year {
@@ -535,11 +535,21 @@ article {
             text-shadow: 0 0 2px #000;
         }
 
+        .title {
+            font-size: 3em;
+        }
+
+        .year {
+            font-size: 1em;
+            margin: 0;
+        }
+
         .iiit-h,
         .presents,
         .tagline,
         .dates {
             font-size: 0;
+            margin: 0;
         }
     }
 }
@@ -635,6 +645,8 @@ article {
             bottom: 0;
             top: 5em;
             width: 70%;
+            animation: $page-open-animation-timeout 1 appear;
+            animation-fill-mode: forwards;
 
             img {
                 max-width: 100%;
@@ -776,5 +788,15 @@ article {
 
     to {
         box-shadow: 0 0 1em #fff, 0 0 1em #fff, 0 0 2em #fff, 0 0 3em #fff, 0 0 1em #fff inset, 0 0 3em #fff inset;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
