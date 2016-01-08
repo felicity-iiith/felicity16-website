@@ -18,6 +18,10 @@
         "type"      : "longtext",
         "default"   : "Description of the Category"
     },
+    "nav_icon"      : {
+        "name"      : "Navbar Icon",
+        "type"      : "type"
+    },
     "events_list": {
         "name"      : "Events list",
         "type"      : "external",
@@ -26,7 +30,7 @@
         "data"      : {
             "name"          : "name",
             "start_time"    : "start_time",
-            "tagline"   : "tagline"
+            "tagline"       : "tagline"
         }
     }
 }
