@@ -1,12 +1,11 @@
 <?php $this->load_fragment('skeleton_template/header'); ?>
 <?php if (!$is_ajax): ?>
-<article class="page about open">
+<article class="page open schedule">
 <?php endif; ?>
 <?php
-    if(!is_array($events_list)) {
-        $events_list = array();
-    }
-    echo '<br><br><br>';
+    $events_list = array_filter($events_data, function ($event) {
+        return $event['template'] == 'event';
+    });
     usort($events_list, function($a, $b) {
         if (!isset($b['data']['start_time'])) {
             return -1;
@@ -32,6 +31,7 @@
         }
         return ($a_date < $b_date) ? -1 : 1;
     });
+
     $dates = array();
     foreach ($events_list as &$evref) {
         $evref['path'] = substr($evref['path'], 1);

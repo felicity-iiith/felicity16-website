@@ -1,4 +1,4 @@
-/* global $, loadContent, baseUrl */
+/* global $, loadContent, baseUrl, eventsData */
 /* jshint -W057 */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
@@ -57,7 +57,7 @@ $(function () {
         // Force redraw
         $body.offset();
         $article.addClass('open');
-        $article.on('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function () {
+        $article.on(transitionEnd, function () {
             if (!$(this).hasClass('to-be-deleted')) {
                 $contentHolder.children('.to-be-deleted').remove();
             }
@@ -118,13 +118,6 @@ $(function () {
     });
 });
 
-var eventsData = {
-    'threads'       : ["codecraft", "cachein", "debug-the-c-bug"],
-    'nights'        : ["codecraft", "cachein", "debug-the-c-bug"],
-    'futsal'        : ["codecraft", "cachein", "debug-the-c-bug"],
-    'stomp-the-yard': ["codecraft", "cachein", "debug-the-c-bug"],
-};
-
 $(function () {
     var $dummyTarget        = $('<div>', {'class': 'nav-cum-tooltip-dummy-target'}).appendTo('body'),
         $navCumTooltip      = $('<div>', {'class': 'nav-cum-tooltip'}).appendTo($dummyTarget),
@@ -133,11 +126,11 @@ $(function () {
         $triangleBack       = $('<div>', {'class': 'triangle-back'}).appendTo($navCumTooltip),
         $triangleFront      = $('<div>', {'class': 'triangle-front'}).appendTo($navCumTooltip);
 
-    var $contentHolder = $('.content-holder');
+    //var $contentHolder = $('.content-holder');
+    (function () {})($triangleBack, $triangleFront);
 
     var linkClicked = function (e) {
         e.stopPropagation();
-        e.preventDefault();
         // $('<div>').appendTo('body').css({
         //     'z-index': 1000,
         //     height: '100%',
@@ -167,39 +160,40 @@ $(function () {
         //
         //     });
         // });
-        var offset = $(this).offset();
-        var x = e.pageX - offset.left;
-        var y = e.pageY - offset.top;
-        $('<div>', {'class': 'wave'})
-        .css({'top':y, 'left': x})
-        .appendTo(this).on(animationEnd, function () {
-            $(this).remove();
-        });
-        var $ball = $('.crystal-ball');
-        $('body').addClass('page-open');
-        $navCumTooltip.animate({'opacity': 0, 'margin-bottom': '10px'}, 50, function () {
-            $navbar.css({'height' : 0});
-            $('.has-tooltip').removeClass('has-tooltip');
-            $navCumTooltip.removeClass('open');
-        });
-        offset = $ball[0].getBoundingClientRect();
-        $('<div>', {'class' : 'big-wave'})
-        .appendTo('body')
-        .css({
-            'top' : offset.top + offset.height / 2,
-            'left': offset.left + offset.width / 2
-        }).on(animationEnd, function () {
 
-            $('<article>', {
-                'class' : 'page open full',
-            })
-            .css('background-color', $(this).css('background-color'))
-            .text('Loading...')
-            .appendTo($contentHolder);
-            $(this).fadeOut(function () {
-                $(this).remove();
-            });
-        });
+        // var offset = $(this).offset();
+        // var x = e.pageX - offset.left;
+        // var y = e.pageY - offset.top;
+        // $('<div>', {'class': 'wave'})
+        // .css({'top':y, 'left': x})
+        // .appendTo(this).on(animationEnd, function () {
+        //     $(this).remove();
+        // });
+        // var $ball = $('.crystal-ball');
+        // $('body').addClass('page-open');
+        // $navCumTooltip.animate({'opacity': 0, 'margin-bottom': '10px'}, 50, function () {
+        //     $navbar.css({'height' : 0});
+        //     $('.has-tooltip').removeClass('has-tooltip');
+        //     $navCumTooltip.removeClass('open');
+        // });
+        // offset = $ball[0].getBoundingClientRect();
+        // $('<div>', {'class' : 'big-wave'})
+        // .appendTo('body')
+        // .css({
+        //     'top' : offset.top + offset.height / 2,
+        //     'left': offset.left + offset.width / 2
+        // }).on(animationEnd, function () {
+        //
+        //     $('<article>', {
+        //         'class' : 'page open full',
+        //     })
+        //     .css('background-color', $(this).css('background-color'))
+        //     .text('Loading...')
+        //     .appendTo($contentHolder);
+        //     $(this).fadeOut(function () {
+        //         $(this).remove();
+        //     });
+        // });
     };
 
     var getLI = function (href, text) {
@@ -207,16 +201,14 @@ $(function () {
     };
 
     var updateNavbarLinks = function (pageName) {
-        var events = eventsData[pageName];
-        var baseLink = urlHelper.getPageUrl(pageName);
-        var $li = getLI( pageName, "Home" );
-        $navbar.empty().append( $li );
+        var events = eventsData[pageName], $li;
+        $navbar.empty();
         for(var i = 0; i < events.length ; i++) {
             var event = events[i];
-            $li = getLI( baseLink + event + '/', event );
+            $li = getLI( baseUrl + event.path.substr(1).replace('index/', ''), event.data.name );
             $navbar.append( $li );
         }
-        return $li.height() * (events.length + 1);
+        return $li.height() * events.length;
     };
 
     var showTooltip = function (cb) {
@@ -279,13 +271,16 @@ $(function () {
         if (e && e.stopPropagation) {
             e.stopPropagation();
         }
+        if (e && e.preventDefault) {
+            e.preventDefault();
+        }
     };
 
     $navCumTooltipTitle.click(function (e) {
         e.stopPropagation();
     });
 
-    $('body').click(function (e) {
+    $('body').click(function () {
         $navCumTooltip.animate({'opacity': 0, 'margin-bottom': '10px'}, 50, function () {
             $navbar.css({'height' : 0});
             $('.has-tooltip').removeClass('has-tooltip');
@@ -293,7 +288,7 @@ $(function () {
         });
     });
 
-    $('.testing')
+    $('.events-nav-button')
     .on('mouseenter', showTooltip)
     .on('mouseleave', hideTooltip)
     .on('click', showNavbar);
