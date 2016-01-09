@@ -31,7 +31,15 @@
 
         <div class="pure-control-group">
             <label for="country">Country:</label>
-            <input type="text" name="country" value="<?= $user_data['country'] ?>" required>
+            <select name="country" required style="padding: 2px;">
+            <?php
+                load_helper('country_list');
+                $countries = get_country_list();
+                foreach($countries as $code => $name):
+            ?>
+                <option value="<?= $code ?>"><?= $name ?></option>
+            <?php endforeach; ?>
+            </select>
         </div>
 
         <div class="pure-control-group">
