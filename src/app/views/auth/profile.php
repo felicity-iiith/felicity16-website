@@ -1,20 +1,54 @@
 <?php
+    $this->load_fragment('auth/form_header', ['heading' => 'Fill your profile' ]);
+?>
+<?php
     //"nick", "name", "mail", "gender", "country", "city", "dob", "organization"
     $gender = $user_data["gender"];
 ?>
-<div class="error">
-    <?= nl2br($error) ?>
-</div>
-<form action="update_profile/" method="post">
-    <label for="name">Nick: <input type="text" name="nick" value="<?= $user_data['nick'] ?>" required></label><br>
-    <label for="name">Name: <input type="text" name="name" value="<?= $user_data['name'] ?>" required></label><br>
-    <label for="gender">Gender:</label>
-    <label><input type="radio" name="gender" value="female" required <?= ($gender == "female") ? "checked" : "" ?>>Female</label>
-    <label><input type="radio" name="gender" value="male" required <?= ($gender == "male") ? "checked" : "" ?>>Male</label>
-    <label><input type="radio" name="gender" value="other" required <?= ($gender == "other") ? "checked" : "" ?>>Other</label><br>
-    <label for="location">Location/City: <input type="text" name="location" value="<?= $user_data['location'] ?>" required></label><br>
-    <label for="country">Country: <input type="text" name="country" value="<?= $user_data['country'] ?>" required></label><br>
-    <label for="dob">Date of Birth: <input type="date" name="dob" value="<?= $user_data['dob'] ?>" required></label><br>
-    <label for="organization">Organization: <input type="text" name="organization" value="<?= $user_data['organization'] ?>" required></label><br>
-    <input type="submit" name="update" value="Save">
+<form action="update_profile/" method="post" class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="nick">Nick:</label>
+            <input type="text" name="nick" id="nick" value="<?= $user_data['nick'] ?>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="<?= $user_data['name'] ?>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender">
+                <option value="female" <?= ($gender == "female") ? "selected" : "" ?>>Female</option>
+                <option value="male" <?= ($gender == "male") ? "selected" : "" ?>>Male</option>
+                <option value="other" <?= ($gender == "other") ? "selected" : "" ?>>Other</option>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="location">Location/City:</label>
+            <input type="text" name="location" id="location"value="<?= $user_data['location'] ?>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="country">Country:</label>
+            <input type="text" name="country" value="<?= $user_data['country'] ?>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" value="<?= $user_data['dob'] ?>" required>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="organization">Organization:</label>
+            <input type="text" name="organization" value="<?= $user_data['organization'] ?>" required>
+        </div>
+
+        <div class="pure-controls">
+            <input type="submit" name="update" value="Save" class="pure-button pure-button-primary">
+        </div>
+    </fieldset>
 </form>
+<?php $this->load_fragment('auth/form_footer'); ?>

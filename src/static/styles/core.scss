@@ -100,19 +100,19 @@ a {
 }
 
 .text-left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .text-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .text-justify {
-    text-align: justify;
+    text-align: justify !important;
 }
 
 .btn {
@@ -804,4 +804,30 @@ article {
     to {
         opacity: 1;
     }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: #555;
+}
+
+.error,
+.success {
+    padding: 0.5em;
+    border-radius: 0.3em;
+}
+
+.error {
+    background: rgb(202, 60, 60);
+}
+
+.success {
+    background: rgb(28, 184, 65);
+}
+
+.container-inline-block {
+    display: inline-block;
 }

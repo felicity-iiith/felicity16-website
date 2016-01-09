@@ -12,6 +12,7 @@ if (!$is_ajax):
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/schedule.css">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nothing+You+Could+Do|Flamenco|Noto+Sans">
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
     </script>
