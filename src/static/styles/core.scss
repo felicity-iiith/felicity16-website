@@ -445,10 +445,32 @@ nav {
 
 .contest-nav {
     @extend %main-bottom-nav;
+    padding-top: 1em;
+    background-image: url('http://localhost/felicity16-website/build/static/images/bg.jpg');
+    background-position: 0 100%;
+    background-color: red;
+    background-attachment: fixed;
     width: 100%;
 
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        display: block;
+        z-index: 0;
+    }
+
+    &:before {
+        background-color: rgba(26, 27, 45, .6);
+    }
+
     li {
-        animation: 2s infinite float;
+        position: relative;
+        z-index: 1;
 
         @for $i from 1 through 4 {
             &:nth-child(#{$i}) {
@@ -488,7 +510,6 @@ nav {
         .contest-caption {
             float: right;
             padding-top: 2.5em;
-            text-transform: uppercase;
         }
     }
 
