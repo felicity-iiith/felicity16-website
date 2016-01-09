@@ -23,6 +23,11 @@
         "type"      : "type",
         "default"   : "icon-doc"
     },
+    "og_image": {
+        "name"      : "Image link to be displayed when page shared on fb (Only suffix, baseUrl already there)",
+        "type"      : "text",
+        "default"   : "files/16/logos/felicity16-logo-large.png"
+    },
     "events_data": {
         "name"      : "Events list",
         "type"      : "external",
