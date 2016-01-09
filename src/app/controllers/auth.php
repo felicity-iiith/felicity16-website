@@ -294,6 +294,30 @@ class auth extends Controller {
                 $error[] = "Nick is already taken";
             }
 
+            if (!in_array($user_data["gender"], ["male", "female", "other"])) {
+                $user_data["gender"] = "";
+                $error[] = "Enter valid gender";
+                $complete = false;
+            }
+
+            if ($user_data["dob"]) {
+                if (date_parse($user_data["dob"])["error_count"]) {
+                    $user_data["dob"] = "";
+                    $error[] = "Enter valid birthdate";
+                    $complete = false;
+                }
+            }
+
+            if ($user_data["country"]) {
+                load_helper("country_list");
+                $country_list = get_country_list();
+                if (!in_array($user_data["country"], array_keys($country_list))) {
+                    $user_data["country"] = "";
+                    $error[] = "Enter valid country";
+                    $complete = false;
+                }
+            }
+
             if ($complete) {
                 $user_data["resitration_status"] = "complete";
             }
