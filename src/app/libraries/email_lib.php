@@ -62,7 +62,8 @@ class email_lib extends Library {
     }
 
     public function send_mail($mail, $email_data) {
-        $mail->addAddress($email_data['to_email'], $email_data['to_name']);
+        $to_name = isset($email_data['to_name']) ? $email_data['to_name'] : "";
+        $mail->addAddress($email_data['to_email'], $to_name);
         $mail->Subject = $email_data['subject'];
         if (isset($email_data['html_body'])) {
             $mail->Body = $email_data['html_body'];

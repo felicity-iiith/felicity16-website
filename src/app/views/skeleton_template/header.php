@@ -1,5 +1,5 @@
 <?php
-if (!$is_ajax):
+if (empty($is_ajax)):
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,7 @@ if (!$is_ajax):
     <title>Felicity · IIIT Hyderabad</title>
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/schedule.css">
@@ -17,6 +18,11 @@ if (!$is_ajax):
     </script>
     <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js" type="text/javascript"></script>
 </head>
+<?php
+    if (!isset($page_slug)) {
+        $page_slug = 'static';
+    }
+?>
 <body<?= empty($page_slug) ? '' : ' class="page-open"' ?>>
     <article class="landing">
         <div class="landing-content">

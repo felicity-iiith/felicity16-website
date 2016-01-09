@@ -20,6 +20,10 @@ body {
     font-size: 24px;
 }
 
+#container {
+    padding: 0 10%;
+}
+
 h1,
 h2 {
     font-weight: 400;
@@ -36,6 +40,7 @@ h2 {
 
 .messages p {
     color: #666;
+    line-height: 1.5em;
 }
 
 #container {
@@ -51,5 +56,8 @@ a {
 @media (max-width: 600px) {
     body {
         font-size: 16px;
+    }
+    #container {
+        padding: 0;
     }
 }

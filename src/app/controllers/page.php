@@ -4,13 +4,13 @@ class page extends Controller {
 
     function __construct() {
         $this->load_library("http_lib", "http");
-        $this->load_library("cas_lib", "cas");
+        $this->load_library("auth_lib", "auth");
 
         $this->load_model("jugaad_model");
         $this->load_model("template_model");
         $this->load_model("perms_model");
 
-        $this->user = $this->cas->getUser() ?: "";
+        $this->user = $this->auth->get_user() ?: "";
     }
 
     function show() {

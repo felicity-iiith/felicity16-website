@@ -13,6 +13,12 @@ $cfg = [
             'db_pass'   => 'password',
             'db_name'   => 'dbname',
         ],
+        'users' => [
+            'db_host'   => 'localhost',
+            'db_user'   => 'user',
+            'db_pass'   => 'password',
+            'db_name'   => 'dbname',
+        ],
         'sap' => [
             'db_host'   => 'localhost',
             'db_user'   => 'user',
@@ -47,4 +53,10 @@ $email_cfg = [
             'from_name' => 'Team Felicity'
         ]
     ]
+];
+
+$ldap_cfg = [
+    "host"          => "ldap://192.168.0.1",
+    "bind_dn"       => "...",
+    "bind_password" => "...",
 ];
