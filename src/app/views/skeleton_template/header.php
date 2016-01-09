@@ -8,7 +8,7 @@ if (empty($is_ajax)):
     <meta name="keywords" content="felicity, felicty16, college, fest, threads, pulsation, iiit, iiith, international, institute, information, technology, hyderabad">
     <meta name="description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.">
     <meta property="og:description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.">
-    <meta property="og:title" content="<?= implode(' · ', array_reverse(array_map(function($str){ return ucfirst(str_replace('-', ' ', $str)); }, explode('__', $page_slug)))) ?> Felicity · IIIT Hyderabad">
+    <meta property="og:title" content="<?= implode(' · ', array_reverse(array_map(function($str){ return ucfirst(str_replace('-', ' ', $str)); }, explode('__', isset($page_slug) ? $page_slug : "")))) ?> Felicity · IIIT Hyderabad">
     <meta property="og:image" content="<?= base_url() . (isset($og_image) ? $og_image : 'files/16/logos/felicity16-logo-large.png') ?>" />
     <title>Felicity · IIIT Hyderabad</title>
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
@@ -42,5 +42,14 @@ if (empty($is_ajax)):
             <p class="dates">February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup></p>
         </div>
     </article>
+    <?php if (isset($is_authenticated)): ?>
+    <div class="auth-quick-links">
+        <?php if ($is_authenticated): ?>
+            <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+        <?php else: ?>
+            <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
     <div class="content-holder">
 <?php endif;

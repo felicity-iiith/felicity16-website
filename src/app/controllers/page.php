@@ -56,6 +56,8 @@ class page extends Controller {
             $data["is_ajax"] = false;
         }
 
+        $data["is_authenticated"] = $this->auth->is_authenticated();
+
         $view_name = $this->template_model->get_view_name($file["template"]);
 
         $data["page_slug"] = implode('__', $path);
