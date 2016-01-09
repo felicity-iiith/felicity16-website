@@ -8,6 +8,9 @@ $nav-link-width: 6rem;
 $nav-link-bottom-margin: 1em;
 $page-open-animation-timeout: .7s;
 
+$red: rgb(202, 60, 60);
+$green: rgb(28, 184, 65);
+
 * {
     box-sizing: border-box;
 }
@@ -37,6 +40,15 @@ body {
     padding: 0;
 }
 
+%main-bottom-nav {
+    @extend %flat-list;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
 %clearfix {
     &:before,
     &:after {
@@ -54,14 +66,6 @@ a {
     text-decoration: none;
     cursor: pointer;
     color: #fff;
-
-    &.underlined {
-        border-bottom: 1px solid;
-
-        &:hover {
-            border-bottom-style: dashed;
-        }
-    }
 }
 
 .row {
@@ -69,11 +73,10 @@ a {
 
     [class*=col] {
         float: left;
-    }
 
-    &.padded > [class*=col],
-    [class*=col].padded {
-        padding: 5px 10px;
+        .padded & {
+            padding: 10px;
+        }
     }
 
     @for $i from 1 through 11 {
@@ -100,19 +103,19 @@ a {
 }
 
 .text-left {
-    text-align: left;
+    text-align: left !important;
 }
 
 .text-right {
-    text-align: right;
+    text-align: right !important;
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
 
 .text-justify {
-    text-align: justify;
+    text-align: justify !important;
 }
 
 .btn {
@@ -164,13 +167,8 @@ nav {
 }
 
 .primary-nav {
-    @extend %flat-list;
-    position: absolute;
-    bottom: 0;
+    @extend %main-bottom-nav;
     width: calc(50% - #{$ball-width / 2});
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
 
     &.left {
         left: 0;
@@ -250,11 +248,9 @@ nav {
     height: 2 * $ball-radius;
     width: 2 * $ball-radius;
     margin: auto;
-    border-radius: $ball-radius;
+    border-radius: 50%;
     background-color: rgba(255, 255, 255, .95);
-    box-shadow: 0 0 10px 10px white, 0 0 10px 3px white, 0 0 10px 10px white inset, 0 0 1em #fff, 0 0 2em .5em #fff, 0 0 3em #fff, 0 0 4em #fff, 0 0 1em #fff inset, 0 0 3em #fff inset;
-    transition: box-shadow 1s;
-    //animation: glow 2s infinite linear;
+    animation: glow 2s infinite linear;
     z-index: 1;
 
     .ball-title {
@@ -335,7 +331,6 @@ nav {
     bottom: calc(100% + 10px);
     margin-bottom: 10px;
     left: 50%;
-    min-width: 150px;
     transform: translateX(-50%);
     background-color: #fff;
     white-space: nowrap;
@@ -364,7 +359,7 @@ nav {
     }
 
     .triangle-front {
-        border-top: 9px solid #ffa500;
+        border-top: 9px solid #fff;
         bottom: -9px;
     }
 
@@ -373,13 +368,9 @@ nav {
     }
 
     .nav-title {
-        font-weight: bold;
         padding: 10px 15px;
         z-index: 10;
         position: relative;
-        border-radius: 5px 5px 0 0;
-        background-color: #ffa500;
-        color: white;
     }
 
     .fire1 {
@@ -437,6 +428,135 @@ nav {
     }
 }
 
+.contest-nav {
+    @extend %main-bottom-nav;
+    width: 100%;
+
+    li {
+        animation: 2s infinite float;
+
+        @for $i from 1 through 4 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i / 5}s;
+            }
+        }
+
+        a {
+            pointer-events: all;
+        }
+    }
+}
+
+.contest-nav-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: bottom;
+    margin-bottom: $nav-link-bottom-margin;
+    background-color: white;
+    color: orange;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: .5em 1em;
+}
+
+.contest {
+    .contest-tnc {
+        @extend %clearfix;
+        .contest-title {
+            float: left;
+            font-size: 3.5em;
+        }
+        .contest-caption {
+            float: right;
+            padding-top: 2.5em;
+            text-transform: uppercase;
+        }
+    }
+    .scoreboard {
+        .flag-container {
+            border-right: 0;
+        }
+        .flag-container + td {
+            border-left: 0;
+        }
+    }
+    .problems {
+        .incorrect {
+            color: $red;
+        }
+        .correct {
+            color: $green;
+        }
+    }
+    .problem {
+        padding: 0 0.5em;
+        .level {
+            border-bottom: 1px solid #FFF;
+            text-transform: uppercase;
+            margin-top: 0.5em;
+        }
+        .title {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+        .statement {
+            border-bottom: 2px solid #FFF;
+        }
+        .answer {
+            text-align: center;
+            padding: 0.5em 0em;
+            input {
+                display: inline-block;
+                margin: 0.2em;
+            }
+            input[type="text"] {
+                font-size: 1.2em;
+            }
+            border-bottom: 2px solid #FFF;
+        }
+        .comments {
+            .comment {
+                margin-left: 1em;
+                margin-bottom: 0.5em;
+                border-left: 2px solid #543;
+                border-bottom: 3px solid #543;
+                padding: 0.5em;
+                .meta {
+                    @extend %clearfix;
+                    padding-bottom: 0.2em;
+                    border-bottom: 1px solid #AAA;
+                    .author {
+                        float: left;
+                        color: #EEE;
+                    }
+                    .time {
+                        float: right;
+                        color: #EEE;
+                    }
+                }
+                .body {
+                    padding: 0.2em 0;
+                }
+            }
+            &:nth-child(2) {
+                border-top: 1px solid #543;
+            }
+            .pure-form {
+                margin: 1em;
+
+                input[type="submit"] {
+                    margin-top: 0.5em;
+                }
+            }
+        }
+        .btn {
+            border-radius: 5px;
+        }
+    }
+}
+
 article {
     padding-bottom: $ball-height;
 }
@@ -448,7 +568,6 @@ article {
     padding-top: 1em;
     color: #021a24;
     width: 100%;
-    z-index: 1;
 
     .landing-content {
         display: inline-block;
@@ -480,7 +599,6 @@ article {
         text-transform: lowercase;
         text-align: center;
         margin: 0;
-        text-shadow: 0 0 0 #000;
 
         a {
             color: inherit;
@@ -493,7 +611,6 @@ article {
         text-align: right;
         font-weight: bold;
         margin-top: 0;
-        text-shadow: 0 0 0 #000;
     }
 
     .tagline {
@@ -521,32 +638,25 @@ article {
         }
     }
 
-    &,
     .iiit-h,
     .presents,
-    .title,
-    .year,
     .tagline,
     .dates {
-        transition: all $page-open-animation-timeout, color $page-open-animation-timeout;
+        transition: font-size $page-open-animation-timeout;
+    }
+
+    .title,
+    .year {
+        transition: font-size $page-open-animation-timeout, color $page-open-animation-timeout;
     }
 
     .page-open & {
-        padding-top: .3em;
+        font-size: .5em;
 
         .title,
         .year {
             color: white;
-            text-shadow: 0 0 2px #000;
-        }
 
-        .title {
-            font-size: 3em;
-        }
-
-        .year {
-            font-size: 1em;
-            margin: 0;
         }
 
         .iiit-h,
@@ -554,7 +664,6 @@ article {
         .tagline,
         .dates {
             font-size: 0;
-            margin: 0;
         }
     }
 }
@@ -564,12 +673,12 @@ article {
     height: 0;
     width: 100%;
     top: 100vh;
+    transition: all $page-open-animation-timeout;
     padding-top: 5.5em;
+    z-index: 0;
     opacity: 1;
     color: white;
     background-color: rgba(26, 27, 45, .6);
-    transition: all $page-open-animation-timeout;
-    z-index: 2;
 
     &:before {
         content: ' ';
@@ -593,10 +702,6 @@ article {
 
     &.full {
         padding-top: 0;
-    }
-
-    &.to-be-deleted {
-        opacity: 0;
     }
 
     &.about {
@@ -650,8 +755,6 @@ article {
             bottom: 0;
             top: 5em;
             width: 70%;
-            animation: $page-open-animation-timeout 1 appear;
-            animation-fill-mode: forwards;
 
             img {
                 max-width: 100%;
@@ -669,15 +772,6 @@ article {
             display: block;
             width: 100%;
             background-color: #fff;
-        }
-    }
-
-    &.contact {
-        font-size: 1.3em;
-
-        .social-icon {
-            max-height: 1em;
-            vertical-align: baseline;
         }
     }
 
@@ -796,12 +890,71 @@ article {
     }
 }
 
-@keyframes appear {
-    from {
-        opacity: 0;
-    }
+// Below is code for Tooltip from http://osvaldas.info/elegant-css-and-jquery-tooltip-responsive-mobile-friendly
+#tooltip {
+    text-align: center;
+    color: orange;
+    background: #fff;
+    position: absolute;
+    z-index: 200;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px #ccc;
 
-    to {
-        opacity: 1;
+    &:after { //triangle decoration
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #fff;
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        margin-left: -10px;
+
+        &.top {
+            border-top-color: transparent;
+            border-bottom: 10px solid #111;
+            top: -20px;
+            bottom: auto;
+        }
+
+        &.left {
+            left: 10px;
+            margin: 0;
+        }
+
+        &.right {
+            right: 10px;
+            left: auto;
+            margin: 0;
+        }
     }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    color: #555;
+}
+
+.error,
+.success {
+    padding: 0.5em;
+    border-radius: 0.3em;
+}
+
+.error {
+    background: $red;
+}
+
+.success {
+    background: $green;
+}
+
+.container-inline-block {
+    display: inline-block;
 }
