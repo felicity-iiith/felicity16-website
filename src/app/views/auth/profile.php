@@ -19,11 +19,9 @@
 
         <div class="pure-control-group">
             <label for="gender">Gender:</label>
-            <select name="gender" id="gender">
-                <option value="female" <?= ($gender == "female") ? "selected" : "" ?>>Female</option>
-                <option value="male" <?= ($gender == "male") ? "selected" : "" ?>>Male</option>
-                <option value="other" <?= ($gender == "other") ? "selected" : "" ?>>Other</option>
-            </select>
+            <label><input type="radio" name="gender" value="female" <?= ($gender == "female") ? "checked" : "" ?> required>Female</label>
+            <label><input type="radio" name="gender" value="male" <?= ($gender == "male") ? "checked" : "" ?> required>Male</label>
+            <label><input type="radio" name="gender" value="other" <?= ($gender == "other") ? "checked" : "" ?> required>Other</label>
         </div>
 
         <div class="pure-control-group">

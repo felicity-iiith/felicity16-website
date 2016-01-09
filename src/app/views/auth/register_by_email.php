@@ -7,7 +7,7 @@
 <form action="register_email/" method="post" class="pure-form pure-form-stacked">
     <fieldset>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
+        <input type="email" id="email" name="email" required>
         <br/>
         <input type="submit" name="register" value="Next" class="pure-button pure-button-primary">
     </fieldset>

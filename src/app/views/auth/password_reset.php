@@ -13,10 +13,10 @@
         <input type="hidden" name="hash" value="<?= $hash ?>">
 
         <label for="">Password:</label>
-        <input type="password" name="password">
+        <input type="password" name="password" required>
 
         <label for="">Password reset:</label>
-        <input type="password" name="confirm_password">
+        <input type="password" name="confirm_password" required>
         <br/>
 
         <input type="submit" value="Submit" class="pure-button pure-button-primary">
