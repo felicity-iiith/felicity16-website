@@ -16,9 +16,11 @@ linters:
         enabled: false
     PseudoElement:
         enabled: false
+    MergeableSelector:
+        enabled: false
 
 # SCSS specific stuff
     NestingDepth:
-        max_depth: 4
+        max_depth: 6
     PlaceholderInExtend:
         enabled: false

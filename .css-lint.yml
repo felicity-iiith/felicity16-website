@@ -16,6 +16,8 @@ linters:
         enabled: false
     PseudoElement:
         enabled: false
+    MergeableSelector:
+        enable: false
 
 # CSS specific stuff
     MergeableSelector:
