@@ -15,7 +15,7 @@
     switch ($error_code) {
         case '400':
             $message = 'Invalid request!';
-            $message_details = 'Your browser sent an invalid request. Please try again.';
+            $message_details = "Please try again.</p><p>If this issue persists, then you're probably trying to repeat an action that can only be performed once.";
             break;
         case '403':
             $message = 'Forbidden!';

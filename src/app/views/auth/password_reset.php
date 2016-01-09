@@ -4,7 +4,7 @@
 <?php
     if ($success):
 ?>
-<div class="success">Password successfully set</div>
+<div class="success">Password successfully set!</div>
 <?php
     else:
 ?>

@@ -135,7 +135,7 @@ class auth extends Controller {
             } else {
                 $this->auth_model->remove_verify_hash($hash);
             }
-            $this->http->redirect(base_url() . "auth/register/");
+            $this->load_view('auth/email_confirmed');
         } elseif ($action == "reset_password") {
             $this->load_view("auth/password_reset", [
                 "success" => false,

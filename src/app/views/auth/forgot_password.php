@@ -1,8 +1,8 @@
 <?php
-    $this->load_fragment('auth/form_header', ['heading' => 'Forgot your Password?' ]);
+    $this->load_fragment('auth/form_header', ['heading' => 'Forgot your password?' ]);
 ?>
 <?php if ($sent): ?>
-    <div class="success">Mail sent.</div>
+    <div class="success">Mail sent!</div>
 <?php else: ?>
 <form action="" method="post" class="pure-form pure-form-stacked">
     <fieldset>
