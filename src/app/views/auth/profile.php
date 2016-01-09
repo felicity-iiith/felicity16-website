@@ -1,5 +1,5 @@
 <?php
-    $this->load_fragment('auth/form_header', ['heading' => 'Fill your profile' ]);
+    $this->load_fragment('auth/form_header', ['heading' => 'Update your profile' ]);
 ?>
 <?php
     //"nick", "name", "mail", "gender", "country", "city", "dob", "organization"

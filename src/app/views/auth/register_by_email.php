@@ -13,3 +13,4 @@
     </fieldset>
 </form>
 <?php endif; ?>
+<?php $this->load_fragment('auth/form_footer'); ?>

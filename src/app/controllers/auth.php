@@ -11,9 +11,7 @@ class auth extends Controller {
     }
 
     function index() {
-        $this->auth_lib->force_authentication();
-        var_dump($this->auth_lib->get_user());
-        var_dump($this->auth_lib->get_user_details());
+        $this->http->redirect(base_url() . "auth/login/");
     }
 
     private function extract_user_info_oauth($id, $attributes) {
@@ -125,7 +123,6 @@ class auth extends Controller {
             $success = false;
             $user = $this->auth_model->get_user_by_mail($email);
             if ($user) {
-                var_dump($user);
                 $updated = $this->auth_model->update_user($user["id"], [
                     "email_verified" => "1"
                 ]);
@@ -134,11 +131,11 @@ class auth extends Controller {
                 }
             }
             if (!$success) {
-                echo "failed";
+                $this->session_lib->flash_set("auth_last_error", "Could not verify email");
             } else {
-                echo "done";
                 $this->auth_model->remove_verify_hash($hash);
             }
+            $this->http->redirect(base_url() . "auth/register/");
         } elseif ($action == "reset_password") {
             $this->load_view("auth/password_reset", [
                 "success" => false,
@@ -176,7 +173,7 @@ class auth extends Controller {
 
         $sent = $this->send_verification_mail($email, $action);
 
-        $this->load_view("auth/mail_resent");
+        $this->http->redirect(base_url() . "auth/register");
     }
 
     private function send_verification_mail($email, $action) {
