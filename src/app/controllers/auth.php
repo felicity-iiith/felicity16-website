@@ -535,6 +535,32 @@ class auth extends Controller {
         }
     }
 
+    function get_magic_user() {
+        // End point for checking and getting user data from oauth id
+        if (empty($_POST["oauth_id"])) {
+            $this->http->response_code(403, false);
+            exit();
+        }
+
+        $oauth_id = $_POST["oauth_id"];
+
+        $user = $this->auth_model->get_user($oauth_id);
+
+        if (!empty($user)
+            && isset($user["resitration_status"]) && $user["resitration_status"] == "complete"
+            && isset($user["email_verified"]) && $user["email_verified"]
+        ) {
+            $user_data = [];
+            $user_data["nick"] = $user["nick"];
+            $user_data["country"] = $user["country"];
+            echo json_encode($user_data);
+            exit();
+        }
+
+        $this->http->response_code(403, false);
+        exit();
+    }
+
     function login() {
         $this->auth_lib->force_authentication();
         $this->http->redirect(base_url());
