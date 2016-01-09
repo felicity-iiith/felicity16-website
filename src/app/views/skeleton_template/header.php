@@ -47,7 +47,7 @@ if (empty($is_ajax)):
         <?php if ($is_authenticated): ?>
             <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
         <?php else: ?>
-            <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login</a></div>
+            <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
         <?php endif; ?>
     </div>
     <?php endif; ?>
