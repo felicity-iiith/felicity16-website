@@ -1120,3 +1120,10 @@ textarea {
 .container-inline-block {
     display: inline-block;
 }
+
+.auth-quick-links {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 300;
+}

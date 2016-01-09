@@ -135,18 +135,22 @@ class auth extends Controller {
             } else {
                 $this->auth_model->remove_verify_hash($hash);
             }
-            $this->load_view('auth/email_confirmed');
+            $this->load_view('auth/email_confirmed', [
+                "is_authenticated" => $this->auth_lib->is_authenticated()
+            ]);
         } elseif ($action == "reset_password") {
             $this->load_view("auth/password_reset", [
                 "success" => false,
                 "hash" => $hash,
-                "error" => ""
+                "error" => "",
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         } elseif ($action == "create_user") {
             $this->load_view("auth/password_reset", [
                 "success" => false,
                 "hash" => $hash,
-                "error" => ""
+                "error" => "",
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         }
     }
@@ -403,7 +407,8 @@ class auth extends Controller {
             $this->load_view("auth/password_reset", [
                 "success" => $success,
                 "error" => implode("\n", $error),
-                "hash" => $hash
+                "hash" => $hash,
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
             exit();
         }
@@ -412,7 +417,8 @@ class auth extends Controller {
     private function register_by_email() {
         $this->load_view("auth/register_by_email", [
             "sent"  => ($this->session_lib->flash_get("auth_last_action") == "email_sent"),
-            "error" => $this->session_lib->flash_get("auth_last_error")
+            "error" => $this->session_lib->flash_get("auth_last_error"),
+            "is_authenticated" => $this->auth_lib->is_authenticated()
         ]);
     }
 
@@ -439,7 +445,8 @@ class auth extends Controller {
         }
         $this->load_view("auth/forgot_password", [
             "sent"  => ($this->session_lib->flash_get("auth_last_action") == "email_sent"),
-            "error" => $this->session_lib->flash_get("auth_last_error")
+            "error" => $this->session_lib->flash_get("auth_last_error"),
+            "is_authenticated" => $this->auth_lib->is_authenticated()
         ]);
     }
 
@@ -513,16 +520,19 @@ class auth extends Controller {
         if ($reg_status == "email_required") {
             $this->load_view("auth/confirm_email", [
                 "user_data" => $user,
-                "error" => $this->session_lib->flash_get("auth_last_error")
+                "error" => $this->session_lib->flash_get("auth_last_error"),
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         } elseif ($reg_status == "incomplete") {
             $this->load_view("auth/profile", [
                 "user_data" => $user,
-                "error" => $this->session_lib->flash_get("auth_last_error")
+                "error" => $this->session_lib->flash_get("auth_last_error"),
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         } elseif (!$user["email_verified"]){
             $this->load_view("auth/email_resend", [
-                "error" => $this->session_lib->flash_get("auth_last_error")
+                "error" => $this->session_lib->flash_get("auth_last_error"),
+                "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         } else {
             // Everything is fine!

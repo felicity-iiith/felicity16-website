@@ -42,5 +42,14 @@ if (empty($is_ajax)):
             <p class="dates">February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup></p>
         </div>
     </article>
+    <?php if (isset($is_authenticated)): ?>
+    <div class="auth-quick-links">
+        <?php if ($is_authenticated): ?>
+            <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+        <?php else: ?>
+            <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login</a></div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
     <div class="content-holder">
 <?php endif;
