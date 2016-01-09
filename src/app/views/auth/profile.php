@@ -36,8 +36,13 @@
                 load_helper('country_list');
                 $countries = get_country_list();
                 foreach($countries as $code => $name):
+                    if ($user_data['country'] == $code) {
+                        $selected = 'selected';
+                    } else {
+                        $selected = '';
+                    }
             ?>
-                <option value="<?= $code ?>"><?= $name ?></option>
+                <option value="<?= $code ?>" <?= $selected ?>><?= $name ?></option>
             <?php endforeach; ?>
             </select>
         </div>
