@@ -238,10 +238,10 @@ class sap_portal extends Controller {
         }
 
         // Send user email notifying about review
-        $this->load_library('email_lib', 'email');
+        $this->load_library('email_lib');
         $subject = "[Felicity SAP] Submission for mission $mission_id reviewed!";
 
-        $user = $this->sap_model->get_user($user_id);
+        $user = $this->sap_model->get_registered_user_details($user_id);
         $data = $this->sap_model->get_submission_with_task($submission_id);
         $data['subject'] = $subject;
         $data['name'] = $user['name'];
@@ -255,7 +255,7 @@ class sap_portal extends Controller {
 
         $this->email_lib->set_text_view($mail, 'sap/emails/submission_reviewed_email_text', $data);
 
-        $this->email->send_mail($mail, [
+        $this->email_lib->send_mail($mail, [
             'to_email'  => $user['email'],
             'to_name'   => $user['name'],
             'subject'   => $subject,
