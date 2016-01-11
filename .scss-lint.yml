@@ -11,12 +11,14 @@ linters:
     ColorKeyword:
         enabled: false
     SelectorDepth:
-        max_depth: 4
+        max_depth: 8
     PropertySortOrder:
         enabled: false
     PseudoElement:
         enabled: false
     MergeableSelector:
+        enabled: false
+    QualifyingElement:
         enabled: false
 
 # SCSS specific stuff

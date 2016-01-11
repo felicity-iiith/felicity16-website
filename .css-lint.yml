@@ -18,6 +18,8 @@ linters:
         enabled: false
     MergeableSelector:
         enable: false
+    QualifyingElement:
+        enable: false
 
 # CSS specific stuff
     MergeableSelector:
