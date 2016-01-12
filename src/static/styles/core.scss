@@ -446,7 +446,7 @@ nav {
 .contest-nav {
     @extend %main-bottom-nav;
     padding-top: 1em;
-    background-image: url('http://localhost/felicity16-website/build/static/images/bg.jpg');
+    background-image: url('../static/images/bg.jpg');
     background-position: 0 100%;
     background-color: red;
     background-attachment: fixed;
@@ -554,16 +554,16 @@ nav {
         .answer {
             text-align: center;
             padding: .5em 0;
+            border-bottom: 2px solid #fff;
 
             input {
                 display: inline-block;
                 margin: .2em;
-            }
 
-            input[type="text"] {
-                font-size: 1.2em;
+                &[type="text"] {
+                    font-size: 1.2em;
+                }
             }
-            border-bottom: 2px solid #fff;
         }
 
         .comments {
@@ -1129,5 +1129,5 @@ textarea {
 }
 
 .auth-quick-links a {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, .7);
 }
