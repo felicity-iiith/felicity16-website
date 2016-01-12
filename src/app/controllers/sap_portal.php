@@ -344,7 +344,7 @@ class sap_portal extends Controller {
         if (! $this->sap_auth->is_current_user_admin()) {
             $this->http_lib->response_code(403);
         }
-        $id = isset($_POST['user-id']) ? $_POST['user-id'] : NULL;
+        $id = isset($_POST['user-id']) ? $_POST['user-id'] : null;
         $user = $this->sap_model->get_user($id, false);
         if (! $user) {
             $this->http_lib->response_code(400);
