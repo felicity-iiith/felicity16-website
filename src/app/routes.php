@@ -14,6 +14,7 @@ $routes = [
     "/sap/portal/review/submission/"    => "/sap_portal/review_submission/",
     "/sap/portal/users/approve/"        => "/sap_portal/approve_user/",
     "/sap/portal/users/remove/"         => "/sap_portal/remove_user/",
+    "/sap/portal/users/resend-password-email/" => "/sap_portal/resend_password_email/",
     "/sap/portal/users/"                => "/sap_portal/confirm_users/",
     "/sap/portal/" => "/sap_portal/",
     "/sap/" => "/sap/",

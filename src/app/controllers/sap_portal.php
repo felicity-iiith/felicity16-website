@@ -340,6 +340,43 @@ class sap_portal extends Controller {
         $this->http_lib->redirect(base_url() . 'sap/portal/users/');
     }
 
+    public function resend_password_email() {
+        if (! $this->sap_auth->is_current_user_admin()) {
+            $this->http_lib->response_code(403);
+        }
+        $id = isset($_POST['user-id']) ? $_POST['user-id'] : NULL;
+        $user = $this->sap_model->get_user($id, false);
+        if (! $user) {
+            $this->http_lib->response_code(400);
+        }
+
+        $link = base_url() . 'sap/verify/' . $user['hash_for_ceating_password'] . '/';
+
+        // Send user email with link for creating password
+        $this->load_library('email_lib');
+        $subject = "Felicity '16 Student Ambassador Program";
+
+        $mail = $this->email_lib->compose_mail("noreply");
+
+        $this->email_lib->set_html_view($mail, 'sap/emails/create_password_email_html', [
+            'subject' => $subject,
+            'name' => $user['name'],
+            'link' => $link
+        ]);
+        $this->email_lib->set_text_view($mail, 'sap/emails/create_password_email_text', [
+            'subject' => $subject,
+            'name' => $user['name'],
+            'link' => $link
+        ]);
+
+        $this->email_lib->send_mail($mail, [
+            'to_email'  => $user['email'],
+            'to_name'   => $user['name'],
+            'subject'   => $subject,
+        ]);
+        $this->http_lib->redirect(base_url() . 'sap/portal/users/');
+    }
+
     public function remove_user($id = "") {
         if (! $this->sap_auth->is_current_user_admin()) {
             $this->http_lib->response_code(403);
