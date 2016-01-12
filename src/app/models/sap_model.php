@@ -351,6 +351,20 @@ SQL;
         return $stmt->get_result()->fetch_assoc();
     }
 
+    public function get_registered_user_details($id) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->sap,
+            'SELECT u.`email`, a.`name`
+            FROM `sap_users` u
+            JOIN `sap_ambassadors` a ON u.`registration_id` = a.`id`
+            WHERE u.`id` = ?',
+            'i',
+            [$id],
+            true
+        );
+        return $stmt->get_result()->fetch_assoc();
+    }
+
     public function approve_user($id, $password_hash) {
         return $this->db_lib->prepared_execute(
             $this->DB->sap,
