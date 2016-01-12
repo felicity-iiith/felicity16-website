@@ -58,6 +58,12 @@
                             User has been approved and activated.
                         <?php elseif ($user['hash_for_ceating_password']): ?>
                             User has been approved but have not activated.
+                            <form method="post"
+                                action="<?= base_url() ?>sap/portal/users/resend-password-email/"
+                                onsubmit="return confirm('Are you sure you want to resend email to <?= htmlspecialchars($user['name']) ?>?')">
+                                <input type="hidden" name="user-id" value="<?= $user['id'] ?>">
+                                <button class="btn btn-green">Resend email</button>
+                            </form>
                         <?php else: ?>
                             <form method="post"
                                 action="<?= base_url() ?>sap/portal/users/approve/<?= $user['id'] ?>"
