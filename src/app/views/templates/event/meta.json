@@ -62,7 +62,8 @@
     "og_image": {
         "name"      : "Image link to be displayed when page shared on fb (Only suffix, baseUrl already there)",
         "type"      : "text",
-        "default"   : "files/16/logos/felicity16-logo-large.png"
+        "default"   : "files/16/logos/felicity16-logo-large.png",
+        "optional"  : true
     },
     "events_data": {
         "name"      : "Events list",
