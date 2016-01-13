@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `bad_domains` (
-  `doamin` varchar(255) NOT NULL,
-  PRIMARY KEY (`doamin`)
+  `domain` varchar(255) NOT NULL,
+  PRIMARY KEY (`domain`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

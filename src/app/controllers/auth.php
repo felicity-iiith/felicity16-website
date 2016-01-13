@@ -302,7 +302,7 @@ class auth extends Controller {
             } elseif(strlen($user_data["nick"]) < 6) {
                 unset($user_data["nick"]);
                 $complete = false;
-                $error[] = "Nick must be at least 6 character long";
+                $error[] = "Nick must be at least 6 characters long";
             } elseif ($user["nick"] != $user_data["nick"]
                 && $this->auth_model->get_user_by_nick($user_data["nick"])
             ) {
@@ -390,7 +390,7 @@ class auth extends Controller {
                 if (!$verified) {
                     $error[] = "Invalid request";
                 } elseif(strlen($password) < 6) {
-                    $error[] = "Password must be at least 6 character long";
+                    $error[] = "Password must be at least 6 characters long";
                 } else {
                     $email = $verified["email"];
                     $action = $verified["action"];

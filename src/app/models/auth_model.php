@@ -317,7 +317,7 @@ class auth_model extends Model {
 
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->users,
-            "SELECT `doamin` FROM `bad_domains` WHERE `doamin`=?",
+            "SELECT `domain` FROM `bad_domains` WHERE `domain`=?",
             "s",
             [$domain]
         );
@@ -339,7 +339,10 @@ class auth_model extends Model {
         $name = strtolower($name);
         $domain = strtolower($domain);
 
-        // All domain specigic rules goes here
+        // All domain specific rules goes here
+        if ($domain == "googlemail.com") {
+            $domain = "gmail.com";
+        }
         if ($domain == "gmail.com") {
             $name = str_replace('.', '', explode('+', $name)[0]);
         }
