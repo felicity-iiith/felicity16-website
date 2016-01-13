@@ -143,6 +143,7 @@ class auth extends Controller {
                 "success" => false,
                 "hash" => $hash,
                 "error" => "",
+                "action" => "reset_password",
                 "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         } elseif ($action == "create_user") {
@@ -150,6 +151,7 @@ class auth extends Controller {
                 "success" => false,
                 "hash" => $hash,
                 "error" => "",
+                "action" => "create_user",
                 "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
         }
@@ -408,6 +410,7 @@ class auth extends Controller {
                 "success" => $success,
                 "error" => implode("\n", $error),
                 "hash" => $hash,
+                "action" => $action,
                 "is_authenticated" => $this->auth_lib->is_authenticated()
             ]);
             exit();
@@ -572,8 +575,18 @@ class auth extends Controller {
     }
 
     function login() {
+        if (!empty($_GET['next'])) {
+            $next_url = base_url() . $_GET['next'];
+            $this->session_lib->flash_set("auth_next_page", $next_url);
+        }
+
         $this->auth_lib->force_authentication();
-        $this->http->redirect(base_url());
+
+        $next_page = $this->session_lib->flash_get("auth_next_page");
+        if (empty($next_page)) {
+            $next_page = base_url();
+        }
+        $this->http->redirect($next_page);
     }
 
     function logout() {
