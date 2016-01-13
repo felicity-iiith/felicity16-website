@@ -236,22 +236,27 @@ class auth extends Controller {
                 // TODO: email verification
                 $error[] = "Please enter a valid email address";
             } elseif ($mail != $user["mail"]) {
-                if ($this->auth_model->get_user_by_mail($mail)) {
-                    $error[] = "The email id you gave is already registered";
+                if (!$this->auth_model->is_good_email($mail)) {
+                    $error[] = "The email id you gave is not valid";
                 } else {
-                    $updated = $this->auth_model->update_user($user["id"], [
-                        "mail" => $mail,
-                        "email_verified" => "0",
-                        "resitration_status" => "incomplete"
-                    ]);
-                    if ($updated) {
-                        $sent = $this->send_verification_mail($mail, "verify_email");
-                        if (!$sent) {
-                            $error[] = "Could not send mail";
+                    $already_registered = $this->auth_model->get_user_by_mail($mail);
+                    if ($already_registered && $already_registered["id"] != $user["id"]) {
+                        $error[] = "The email id you gave is already registered";
+                    } else {
+                        $updated = $this->auth_model->update_user($user["id"], [
+                            "mail" => $mail,
+                            "email_verified" => "0",
+                            "resitration_status" => "incomplete"
+                        ]);
+                        if ($updated) {
+                            $sent = $this->send_verification_mail($mail, "verify_email");
+                            if (!$sent) {
+                                $error[] = "Could not send mail";
+                            }
                         }
-                    }
-                    if (!$updated) {
-                        $error[] = "Could not update email";
+                        if (!$updated) {
+                            $error[] = "Could not update email";
+                        }
                     }
                 }
             } else {
@@ -265,14 +270,14 @@ class auth extends Controller {
 
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
 
-            $this->http->redirect(base_url() . "auth/register");
+            $this->http->redirect(base_url() . "auth/register/");
         } elseif ($action == "update_profile") {
             if ($user["resitration_status"] == "complete") {
                 return;
             }
 
             $user_data = [
-                "nick" => $_POST["nick"],
+                "nick" => strtolower($_POST["nick"]),
                 "name" => $_POST["name"],
                 "gender" => $_POST["gender"],
                 "location" => $_POST["location"],
@@ -290,7 +295,15 @@ class auth extends Controller {
                 }
             }
 
-            if ($user["nick"] != $user_data["nick"]
+            if (!preg_match('/^[a-z0-9_]+$/i', $user_data["nick"])) {
+                unset($user_data["nick"]);
+                $complete = false;
+                $error[] = "You can use only alphanumeric characters and underscore in nick";
+            } elseif(strlen($user_data["nick"]) < 6) {
+                unset($user_data["nick"]);
+                $complete = false;
+                $error[] = "Nick must be at least 6 characters long";
+            } elseif ($user["nick"] != $user_data["nick"]
                 && $this->auth_model->get_user_by_nick($user_data["nick"])
             ) {
                 unset($user_data["nick"]);
@@ -345,7 +358,9 @@ class auth extends Controller {
         if ($action == "register_email") {
             if (isset($_POST["email"])) {
                 $email = $_POST["email"];
-                if ($this->auth_model->get_user_by_mail($email)
+                if (!$this->auth_model->is_good_email($email)) {
+                    $error[] = "The email id you gave is not valid";
+                } elseif ($this->auth_model->get_user_by_mail($email)
                     || $this->auth_model->get_user_old_ldap($email)
                 ) {
                     $error[] = "The email id you gave is already registered";
@@ -374,6 +389,8 @@ class auth extends Controller {
                 $verified = $this->auth_model->verify_mail($hash, false);
                 if (!$verified) {
                     $error[] = "Invalid request";
+                } elseif(strlen($password) < 6) {
+                    $error[] = "Password must be at least 6 characters long";
                 } else {
                     $email = $verified["email"];
                     $action = $verified["action"];

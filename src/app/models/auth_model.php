@@ -52,11 +52,13 @@ class auth_model extends Model {
     }
 
     function get_user_by_mail($mail) {
+        $mail_hash = $this->get_email_hash($mail);
+
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->users,
-            "SELECT * FROM `users` WHERE `mail`=?",
+            "SELECT * FROM `users` WHERE `mail_hash`=?",
             "s",
-            [$mail]
+            [$mail_hash]
         );
         if ($stmt && $user = $stmt->get_result()->fetch_assoc()) {
             return $user;
@@ -142,14 +144,16 @@ class auth_model extends Model {
         $email_verified = isset($user_data["email_verified"]) ? $user_data["email_verified"] : "0";
         $resitration_status = isset($user_data["resitration_status"]) ? $user_data["resitration_status"] : "email_required";
 
+        $mail_hash = $this->get_email_hash($mail);
+
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->users,
             "INSERT INTO `users`
             (`nick`, `mail`, `name`, `gender`, `location`, `country`, `dob`, `organization`,
-                `raw_attributes`, `email_verified`, `resitration_status`)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            "sssssssssss",
-            [$nick, $mail, $name, $gender, $location, $country, $dob, $organization, $raw_attributes, $email_verified, $resitration_status]
+                `mail_hash`, `raw_attributes`, `email_verified`, `resitration_status`)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "ssssssssssss",
+            [$nick, $mail, $name, $gender, $location, $country, $dob, $organization, $mail_hash, $raw_attributes, $email_verified, $resitration_status]
         );
         if (!$stmt) {
             $db_error = true;
@@ -191,6 +195,10 @@ class auth_model extends Model {
     }
 
     function update_user($user_id, $user_data) {
+        if (isset($user_data["mail"])) {
+            $user_data["mail_hash"] = $this->get_email_hash($user_data["mail"]);
+        }
+
         $params = [];
         $query = "UPDATE `users` SET";
         $param_type = "";
@@ -199,8 +207,9 @@ class auth_model extends Model {
 
         $db_fields = [
             "nick", "mail", "name", "gender", "location", "country", "dob", "organization",
-            "raw_attributes", "email_verified", "resitration_status"
+            "mail_hash", "raw_attributes", "email_verified", "resitration_status"
         ];
+
         foreach ($db_fields as $field) {
             if (isset($user_data[$field])) {
                 $update_query[] = "`$field`=?";
@@ -301,4 +310,44 @@ class auth_model extends Model {
             "userPassword" => "{SHA}" . base64_encode(pack("H*", sha1($password)))
         ]);
     }
+
+    function is_good_email($email) {
+        $email_info = explode("@", $email);
+        $domain = end($email_info);
+
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "SELECT `domain` FROM `bad_domains` WHERE `domain`=?",
+            "s",
+            [$domain]
+        );
+        if ($stmt && $stmt->get_result()->fetch_row()) {
+            return false;
+        }
+        return true;
+    }
+
+    function get_email_hash($email) {
+        if (empty($email)) {
+            return null;
+        }
+
+        $email_info = explode("@", $email);
+        $name = implode("@", array_slice($email_info, 0, -1));
+        $domain = end($email_info);
+
+        $name = strtolower($name);
+        $domain = strtolower($domain);
+
+        // All domain specific rules goes here
+        if ($domain == "googlemail.com") {
+            $domain = "gmail.com";
+        }
+        if ($domain == "gmail.com") {
+            $name = str_replace('.', '', explode('+', $name)[0]);
+        }
+
+        return $name . '@' . $domain;
+    }
+
 }
