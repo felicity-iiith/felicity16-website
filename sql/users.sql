@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2016 at 03:31 AM
+-- Generation Time: Jan 13, 2016 at 01:28 PM
 -- Server version: 5.5.46-0ubuntu0.14.04.2-log
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -13,6 +13,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `feli_users`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bad_domains`
+--
+
+CREATE TABLE IF NOT EXISTS `bad_domains` (
+  `doamin` varchar(255) NOT NULL,
+  PRIMARY KEY (`doamin`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -60,10 +71,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `country` varchar(255) COLLATE utf8_bin NOT NULL,
   `dob` date NOT NULL,
   `organization` varchar(255) COLLATE utf8_bin NOT NULL,
+  `mail_hash` varchar(255) COLLATE utf8_bin NOT NULL,
   `raw_attributes` text COLLATE utf8_bin NOT NULL,
   `email_verified` tinyint(1) NOT NULL,
   `resitration_status` enum('email_required','incomplete','complete') COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `mail_hash` (`mail_hash`),
   UNIQUE KEY `uniqueNick` (`nick`),
   UNIQUE KEY `mail` (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

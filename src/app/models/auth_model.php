@@ -301,4 +301,20 @@ class auth_model extends Model {
             "userPassword" => "{SHA}" . base64_encode(pack("H*", sha1($password)))
         ]);
     }
+
+    function is_good_email($email) {
+        $email_info = explode("@", $email);
+        $domain = end($email_info);
+
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->users,
+            "SELECT `doamin` FROM `bad_domains` WHERE `doamin`=?",
+            "s",
+            [$domain]
+        );
+        if ($stmt && $stmt->get_result()->fetch_row()) {
+            return false;
+        }
+        return true;
+    }
 }

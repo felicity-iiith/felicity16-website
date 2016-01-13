@@ -236,7 +236,9 @@ class auth extends Controller {
                 // TODO: email verification
                 $error[] = "Please enter a valid email address";
             } elseif ($mail != $user["mail"]) {
-                if ($this->auth_model->get_user_by_mail($mail)) {
+                if (!$this->auth_model->is_good_email($email)) {
+                    $error[] = "The email id you gave is not valid";
+                } elseif ($this->auth_model->get_user_by_mail($mail)) {
                     $error[] = "The email id you gave is already registered";
                 } else {
                     $updated = $this->auth_model->update_user($user["id"], [
@@ -345,7 +347,9 @@ class auth extends Controller {
         if ($action == "register_email") {
             if (isset($_POST["email"])) {
                 $email = $_POST["email"];
-                if ($this->auth_model->get_user_by_mail($email)
+                if (!$this->auth_model->is_good_email($email)) {
+                    $error[] = "The email id you gave is not valid";
+                } elseif ($this->auth_model->get_user_by_mail($email)
                     || $this->auth_model->get_user_old_ldap($email)
                 ) {
                     $error[] = "The email id you gave is already registered";
