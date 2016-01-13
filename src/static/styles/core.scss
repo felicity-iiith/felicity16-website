@@ -1128,6 +1128,21 @@ textarea {
     z-index: 300;
 }
 
-.auth-quick-links a {
+.auth-quick-links {
     background-color: rgba(255, 255, 255, .7);
+
+    .nick {
+        padding: .5em 1em;
+        border-left: 1px solid;
+        border-bottom: 1px solid;
+
+        a {
+            color: #1f8dd6;
+
+            &:hover {
+                color: #055da0;
+                border-bottom: 1px solid;
+            }
+        }
+    }
 }
