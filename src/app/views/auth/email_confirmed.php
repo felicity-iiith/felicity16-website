@@ -7,7 +7,7 @@
         <p>Success!</p>
         <p>You have successfully verified your email address.</p>
         <div>
-            <a href="<?= base_url() . "auth/register/" ?>" class="pure-button pure-button-primary pure-button-large">Continue magical journey</a>
+            <a href="<?= base_url() . "auth/login/" ?>" class="pure-button pure-button-primary pure-button-large">Continue magical journey</a>
         </div>
     </div>
     <div class="pure-u-1-5">&nbsp;</div>

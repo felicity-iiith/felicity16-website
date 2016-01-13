@@ -1,10 +1,13 @@
 <?php
-    $this->load_fragment('auth/form_header', ['heading' => 'Reset password' ]);
+    $this->load_fragment('auth/form_header', [
+        'heading' => $action == "reset_password" ? "Reset password" : "Set password"
+    ]);
 ?>
 <?php
     if ($success):
 ?>
 <div class="success">Password successfully set!</div>
+<a href="<?= base_url() . "auth/login/" ?>" class="some-top-margin pure-button pure-button-primary pure-button-large">Continue to a magical journey</a>
 <?php
     else:
 ?>
