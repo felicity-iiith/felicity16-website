@@ -524,7 +524,7 @@ class jugaad_model extends Model {
         return $regex;
     }
 
-    private function get_external_data($file_id, $meta, $user) {
+    private function get_external_data($file_id, $meta, $user, $version_id_only = false) {
         if (empty($meta["path"])) {
             return false;
         }
@@ -544,7 +544,12 @@ class jugaad_model extends Model {
         $this->load_model("perms_model");
 
         // Get data for external files
-        $ext_data = [];
+        if ($version_id_only === true) {
+            $ext_data = 0;
+        } else {
+            $ext_data = [];
+        }
+
         foreach ($files as $file) {
             // Check file permission and discard if user does not have enough permissions
             $user_can = $this->perms_model->get_permissions($file["id"], $user);
@@ -552,19 +557,23 @@ class jugaad_model extends Model {
                 continue;
             }
 
-            $ext_file = [];
-            $ext_file["slug"] = $file["slug"];
-            $ext_file["path"] = $file["path"];
-            $ext_file["template"] = $file["template"];
-            // TODO: $ext_file["url"] to acount for cannonical paths, e.g. index
-            $ext_file["data"] = [];
+            if ($version_id_only === true) {
+                $ext_data = max($ext_data, $this->get_latest_version_id($file["id"]));
+            } else {
+                $ext_file = [];
+                $ext_file["slug"] = $file["slug"];
+                $ext_file["path"] = $file["path"];
+                $ext_file["template"] = $file["template"];
+                // TODO: $ext_file["url"] to acount for cannonical paths, e.g. index
+                $ext_file["data"] = [];
 
-            foreach ($data as $name => $ext_name) {
-                $ext_file["data"][$name] =
-                    $this->get_field_value($file["id"], $ext_name, false, false);
+                foreach ($data as $name => $ext_name) {
+                    $ext_file["data"][$name] =
+                        $this->get_field_value($file["id"], $ext_name, false, false);
+                }
+
+                $ext_data[] = $ext_file;
             }
-
-            $ext_data[] = $ext_file;
         }
 
         return $ext_data;
@@ -631,6 +640,25 @@ class jugaad_model extends Model {
             }
         }
         return $db_error;
+    }
+
+    public function get_latest_version_id_with_external_data($file_id, $template_meta, $user) {
+        if ($file_id === false || !is_array($template_meta)) {
+            return false;
+        }
+
+        $version_id = $this->get_latest_version_id($file_id);
+
+        $data = [];
+        foreach ($template_meta as $name => $meta) {
+            if ($meta["type"] == "external") {
+                $version_id = max(
+                    $version_id,
+                    $this->get_external_data($file_id, $meta, $user, true)
+                );
+            }
+        }
+        return $version_id;
     }
 
     public function get_latest_version_id($file_id) {
