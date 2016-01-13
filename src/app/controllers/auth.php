@@ -236,24 +236,27 @@ class auth extends Controller {
                 // TODO: email verification
                 $error[] = "Please enter a valid email address";
             } elseif ($mail != $user["mail"]) {
-                if (!$this->auth_model->is_good_email($email)) {
+                if (!$this->auth_model->is_good_email($mail)) {
                     $error[] = "The email id you gave is not valid";
-                } elseif ($this->auth_model->get_user_by_mail($mail)) {
-                    $error[] = "The email id you gave is already registered";
                 } else {
-                    $updated = $this->auth_model->update_user($user["id"], [
-                        "mail" => $mail,
-                        "email_verified" => "0",
-                        "resitration_status" => "incomplete"
-                    ]);
-                    if ($updated) {
-                        $sent = $this->send_verification_mail($mail, "verify_email");
-                        if (!$sent) {
-                            $error[] = "Could not send mail";
+                    $already_registered = $this->auth_model->get_user_by_mail($mail);
+                    if ($already_registered && $already_registered["id"] != $user["id"]) {
+                        $error[] = "The email id you gave is already registered";
+                    } else {
+                        $updated = $this->auth_model->update_user($user["id"], [
+                            "mail" => $mail,
+                            "email_verified" => "0",
+                            "resitration_status" => "incomplete"
+                        ]);
+                        if ($updated) {
+                            $sent = $this->send_verification_mail($mail, "verify_email");
+                            if (!$sent) {
+                                $error[] = "Could not send mail";
+                            }
                         }
-                    }
-                    if (!$updated) {
-                        $error[] = "Could not update email";
+                        if (!$updated) {
+                            $error[] = "Could not update email";
+                        }
                     }
                 }
             } else {
@@ -267,7 +270,7 @@ class auth extends Controller {
 
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
 
-            $this->http->redirect(base_url() . "auth/register");
+            $this->http->redirect(base_url() . "auth/register/");
         } elseif ($action == "update_profile") {
             if ($user["resitration_status"] == "complete") {
                 return;
