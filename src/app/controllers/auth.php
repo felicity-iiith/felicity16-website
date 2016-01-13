@@ -277,7 +277,7 @@ class auth extends Controller {
             }
 
             $user_data = [
-                "nick" => $_POST["nick"],
+                "nick" => strtolower($_POST["nick"]),
                 "name" => $_POST["name"],
                 "gender" => $_POST["gender"],
                 "location" => $_POST["location"],
@@ -295,7 +295,15 @@ class auth extends Controller {
                 }
             }
 
-            if ($user["nick"] != $user_data["nick"]
+            if (!preg_match('/^[a-z0-9_]+$/i', $user_data["nick"])) {
+                unset($user_data["nick"]);
+                $complete = false;
+                $error[] = "You can use only alphanumeric characters and underscore in nick";
+            } elseif(strlen($user_data["nick"]) < 6) {
+                unset($user_data["nick"]);
+                $complete = false;
+                $error[] = "Nick must be at least 6 character long";
+            } elseif ($user["nick"] != $user_data["nick"]
                 && $this->auth_model->get_user_by_nick($user_data["nick"])
             ) {
                 unset($user_data["nick"]);
@@ -381,6 +389,8 @@ class auth extends Controller {
                 $verified = $this->auth_model->verify_mail($hash, false);
                 if (!$verified) {
                     $error[] = "Invalid request";
+                } elseif(strlen($password) < 6) {
+                    $error[] = "Password must be at least 6 character long";
                 } else {
                     $email = $verified["email"];
                     $action = $verified["action"];
