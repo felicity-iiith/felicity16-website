@@ -1,0 +1,30 @@
+{
+    "name": {
+        "name"      : "Event name",
+        "type"      : "text",
+        "default"   : "Event name"
+    },
+    "tagline": {
+        "name"      : "Tagline",
+        "type"      : "text",
+        "default"   : "Event's Tagline"
+    },
+    "contest_page_link" : {
+        "name"      : "Contest page link (path only)",
+        "type"      : "text"
+    },
+    "og_image" : {
+        "name"      : "Meta og:image link (path only)",
+        "type"      : "text",
+        "optional"  : true
+    },
+    "json_link": {
+        "name"      : "Link to scores json  (path only)",
+        "type"      : "text"
+    },
+    "explanations_link": {
+        "name"      : "Link to explanations (path only)",
+        "type"      : "text",
+        "optional"  : true
+    }
+}
