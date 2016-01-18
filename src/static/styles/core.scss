@@ -856,14 +856,19 @@ article {
     }
 
     &.sponsors {
+        text-align: center;
+
         p {
-            text-align: center;
+            font-size: 1.2em;
+            line-height: 1.5em;
+            margin-top: .7em;
         }
 
         img {
-            display: block;
-            width: 100%;
+            display: inline-block;
+            max-width: 100%;
             background-color: #fff;
+            padding: 1em;
         }
     }
 
