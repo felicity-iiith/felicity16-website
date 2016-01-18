@@ -188,8 +188,34 @@ nav {
     position: fixed;
     bottom: 0;
     width: 100%;
+    height: #{$ball-height};
     z-index: 101;
     pointer-events: none;
+    background-image: url('../images/bg.jpg');
+    background-size: cover;
+    background-position: 0 0;
+    background-attachment: fixed;
+    transition: background-position $page-open-animation-timeout;
+
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(26, 27, 45, .6);
+    }
+
+    .page-open & {
+        background-position: 0 100%;
+
+        &:before {
+            top: 0;
+            transition: top #{$page-open-animation-timeout / 5};
+        }
+    }
 }
 
 .primary-nav {
@@ -270,7 +296,6 @@ nav {
 .crystal-ball {
     pointer-events: all;
     position: relative;
-    top: $ball-dip;
     height: 2 * $ball-radius;
     width: 2 * $ball-radius;
     margin: auto;
