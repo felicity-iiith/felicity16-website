@@ -97,6 +97,23 @@ a {
             margin-left: #{(100% / 12) * $i};
         }
     }
+
+    @media (max-width: 44rem) {
+        [class*=col] {
+            float: none;
+            margin-top: 1em;
+            width: 100%;
+
+            &.text-right,
+            &.text-left {
+                text-align: center;
+            }
+        }
+
+        [class*=offset] {
+            margin-left: 0;
+        }
+    }
 }
 
 .container {
