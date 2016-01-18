@@ -45,7 +45,11 @@ if (empty($is_ajax)):
     <?php if (isset($is_authenticated)): ?>
     <div class="auth-quick-links">
         <?php if ($is_authenticated): ?>
-            <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+            <?php if (!empty($user_nick)): ?>
+                <div class="nick">Hello, <?= $user_nick ?> <a href="<?= base_url() . "auth/logout/" ?>">Logout</a></div>
+            <?php else: ?>
+                <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+            <?php endif; ?>
         <?php else: ?>
             <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
         <?php endif; ?>

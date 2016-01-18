@@ -58,6 +58,8 @@ class page extends Controller {
 
         $data["is_authenticated"] = $this->auth->is_authenticated();
 
+        $data["user_nick"] = $this->auth->get_user();
+
         $view_name = $this->template_model->get_view_name($file["template"]);
 
         $data["page_slug"] = implode('__', $path);
