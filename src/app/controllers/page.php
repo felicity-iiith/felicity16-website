@@ -58,10 +58,17 @@ class page extends Controller {
                 }
             }
 
+            $latest_version = $this->jugaad_model->get_latest_version_id_with_external_data($file_id, $template_meta, $this->user);
+
+            if (!empty($_GET["prev_id"]) && $_GET["prev_id"] == $latest_version) {
+                $this->http->response_code(304, false);
+                exit();
+            }
+
             $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
 
             echo json_encode([
-                "version_id" => $this->jugaad_model->get_latest_version_id_with_external_data($file_id, $template_meta, $this->user),
+                "version_id" => $latest_version,
                 "page_data" => $data
             ]);
         } else {
