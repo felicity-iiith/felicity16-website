@@ -33,6 +33,7 @@
             <a class="btn btn-blue" href="#useredit"><i class="fa fa-user"></i> Edit user permissions (scroll down)</a>
             <?php endif; ?>
             <a class="btn btn-blue" href="?history"><i class="fa fa-history"></i> History</a>
+            <a class="btn btn-blue" href="<?= base_url() . substr($path, 1) ?>"><i class="fa fa-eye"></i> View page</a>
         </nav>
         <?php if ($error): ?>
         <div class="error" id="error_msg"><?= $error ?></div>
