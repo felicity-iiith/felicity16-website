@@ -25,6 +25,12 @@ $cfg = [
             'db_pass'   => 'password',
             'db_name'   => 'dbname',
         ],
+        'contest' => [
+            'db_host'   => 'localhost',
+            'db_user'   => 'user',
+            'db_pass'   => 'password',
+            'db_name'   => 'dbname',
+        ],
     ],
     '404_view' => 'http_error',
     '404_data' => ['error_code' => 404],
@@ -51,6 +57,14 @@ $email_cfg = [
             'password'  => 'email_user_pass',
             'email'     => 'email_address',
             'from_name' => 'Team Felicity'
+        ],
+        'noreply_threads'   => [
+            'username'      => 'email_user',
+            'password'      => 'email_user_pass',
+            'email'         => 'email_address',
+            'from_name'     => 'Team Felicity',
+            'reply_to'      => 'email_reply_to',
+            'reply_to_name' => 'Threads Team'
         ]
     ]
 ];

@@ -24,6 +24,8 @@ $routes = [
     "/sap/portal/"                      => "/sap_portal/",
     "/sap/"                             => "/sap/",
 
+    "/threads/breakin/register/"         => "/contest/breakin/",
+
     "/api/"     => "/page/show/api/",
     "/"         => "/page/show/"
 ];
