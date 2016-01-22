@@ -67,10 +67,11 @@ class page extends Controller {
 
             $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
 
+            header('Content-Type: application/json; charset=UTF-8');
             echo json_encode([
                 "version_id" => $latest_version,
                 "page_data" => $data
-            ]);
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } else {
             $header = getallheaders();
             $is_ajax = isset($header["X-Ajax-Request"]) && $header["X-Ajax-Request"];
