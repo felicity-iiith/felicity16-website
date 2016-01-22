@@ -15,7 +15,7 @@ if (empty($is_ajax)):
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=2">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Flamenco|Noto+Sans">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
