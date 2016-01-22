@@ -21,8 +21,9 @@ $routes = [
     "/sap/portal/users/remove/"         => "/sap_portal/remove_user/",
     "/sap/portal/users/resend-password-email/" => "/sap_portal/resend_password_email/",
     "/sap/portal/users/"                => "/sap_portal/confirm_users/",
-    "/sap/portal/" => "/sap_portal/",
-    "/sap/" => "/sap/",
+    "/sap/portal/"                      => "/sap_portal/",
+    "/sap/"                             => "/sap/",
 
-    "/" => "/page/show/"
+    "/api/"     => "/page/show/api/",
+    "/"         => "/page/show/"
 ];
