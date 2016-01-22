@@ -185,6 +185,7 @@ class jugaad extends Controller {
     private function show_file_edit($file) {
         $file["template_meta"] = $this->template_model->get_meta($file["template"]);
         $file["data"] = $this->jugaad_model->get_file_data($file['id'], $file["template_meta"], $this->user, false);
+        $file["path"] = $this->jugaad_model->get_file_path($file['id']);
 
         $this->load_view("file_edit", $file);
     }

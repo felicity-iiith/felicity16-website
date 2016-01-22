@@ -10,7 +10,7 @@
                 $out .= "<input type='text' data-type='color' name='$field_name' value='" . htmlentities($data, ENT_QUOTES) . "' $extras/>";
                 break;
             case 'longtext':
-                $out .= "<br><textarea name='$field_name' $extras>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
+                $out .= "<br><textarea name='$field_name' rows='4' cols='50' $extras>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
                 break;
             case 'time':
             case 'date':
@@ -55,8 +55,8 @@
                 $out .= "</div><br><a onclick='addListItem(this)' href='javascript:void(0)'><i class='fa fa-plus'></i> Add item</a></div>";
                 break;
             case 'external':
-                $out .= "<a onclick='foldNext(this)' href='javascript:void(0)'>Hide</a>"
-                    . "<pre>"
+                $out .= "<a onclick='foldNext(this)' href='javascript:void(0)'>Show</a>"
+                    . "<pre style='display: none'>"
                     . htmlentities(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES), ENT_QUOTES)
                     . "</pre>";
                 break;
