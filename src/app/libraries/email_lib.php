@@ -48,6 +48,14 @@ class email_lib extends Library {
         $mail->Encoding   = 'quoted-printable';
         $mail->CharSet    = 'UTF-8';
 
+        if (!empty($from['reply_to'])) {
+            $reply_to_name = '';
+            if (!empty($from['reply_to_name'])) {
+                $reply_to_name = $from['reply_to_name'];
+            }
+            $mail->addReplyTo($from['reply_to'], $reply_to_name);
+        }
+
         $mail->setFrom($from['email'], $from['from_name']);
 
         return $mail;
