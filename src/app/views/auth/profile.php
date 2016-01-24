@@ -14,7 +14,7 @@
 
         <div class="pure-control-group">
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="<?= $user_data['name'] ?>" required>
+            <input type="text" name="name" id="name" value="<?= htmlentities($user_data['name']) ?>" required>
         </div>
 
         <div class="pure-control-group">
@@ -26,7 +26,7 @@
 
         <div class="pure-control-group">
             <label for="location">Location/City:</label>
-            <input type="text" name="location" id="location"value="<?= $user_data['location'] ?>" required>
+            <input type="text" name="location" id="location"value="<?= htmlentities($user_data['location']) ?>" required>
         </div>
 
         <div class="pure-control-group">
@@ -54,7 +54,7 @@
 
         <div class="pure-control-group">
             <label for="organization">Organization:</label>
-            <input type="text" name="organization" value="<?= $user_data['organization'] ?>" required>
+            <input type="text" name="organization" value="<?= htmlentities($user_data['organization']) ?>" required>
         </div>
 
         <div class="pure-controls">
