@@ -32,6 +32,23 @@ $cfg = [
             'db_name'   => 'dbname',
         ],
     ],
+
+    'i18n' => [
+        'locales' => [
+            'en_IN',
+            'hi_IN',
+        ],
+        'languages' => [
+            'en' => 'en_IN',
+            'hi' => 'hi_IN',
+        ],
+        // 'gettext' => false,
+        'gettext' => [
+            'domain' => 'messages',
+            'directory' => './locale'
+        ]
+    ],
+
     '404_view' => 'http_error',
     '404_data' => ['error_code' => 404],
 ];

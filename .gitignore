@@ -1,6 +1,7 @@
 # Project files
 /build/
 /deploy/
+/src/locale/
 /src/app/config.php
 /src/.htaccess
 
