@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><?= _('Scoreboard') ?> · <?= $name ?> · <?= _('Threads') ?>  · <?= _('Felicity') ?></title>
+    <title><?= __('Scoreboard') ?> · <?= $name ?> · <?= __('Threads') ?>  · <?= __('Felicity') ?></title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?= $name ?> Threads Felicity ">
@@ -390,25 +390,25 @@ td.user-nick {
 <body>
     <header class="header">
         <div class="header-content">
-            <h1 class="title"><a href="<?= locale_base_url() ?>"><?= _('Felicity') ?></a></h1>
+            <h1 class="title"><a href="<?= locale_base_url() ?>"><?= __('Felicity') ?></a></h1>
             <p class="year">2016</p>
         </div>
     </header>
     <div class="wrapper">
         <div class="container title-and-nav-container clearfix">
             <div class="page-title text-left">
-                <h1><a href="<?= locale_base_url() . $contest_page_link ?>"><?= _($name) ?></a></h1>
-                <p><?= _($tagline) ?></p>
+                <h1><a href="<?= locale_base_url() . $contest_page_link ?>"><?= __($name) ?></a></h1>
+                <p><?= __($tagline) ?></p>
             </div>
         </div>
         <div class="container">
-            <h2 class="text-center"><?= _('Final Scoreboard') ?></h2>
+            <h2 class="text-center"><?= __('Final Scoreboard') ?></h2>
             <div style="margin: 2em;" class="text-center">
                 <span class="my-bg msg inline-block">
-                    <?= _('Congratulations to all the winners!') ?>
+                    <?= __('Congratulations to all the winners!') ?>
                     <?php if (!empty($explanations_link)): ?>
                         <br>
-                        <a target="_blank" href="<?= base_url() . $explanations_link ?>"><?= _('Link to explanations') ?></a>
+                        <a target="_blank" href="<?= base_url() . $explanations_link ?>"><?= __('Link to explanations') ?></a>
                     <?php endif; ?>
                 </span>
             </div>
@@ -416,9 +416,9 @@ td.user-nick {
                 <table border="0" class="some-top-margin pure-table score-table my-table">
                     <thead>
                         <tr class="my-table-header">
-                            <th><?= _('Rank') ?></th>
-                            <th class="text-center"><?= _('Nick') ?></th>
-                            <th><?= _('Score') ?></th>
+                            <th><?= __('Rank') ?></th>
+                            <th class="text-center"><?= __('Nick') ?></th>
+                            <th><?= __('Score') ?></th>
                         </tr>
                     </thead>
                     <tbody>

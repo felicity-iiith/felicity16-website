@@ -396,7 +396,7 @@ class jugaad extends Controller {
 
 ";
         foreach ($strings as $string) {
-            echo '_("' . addslashes($string) . '");' . "\n";
+            echo '__("' . addslashes($string) . '");' . "\n";
         }
     }
 

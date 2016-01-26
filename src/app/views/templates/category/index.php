@@ -22,21 +22,21 @@ usort($events_to_display, function ($e1, $e2) {
 });
 ?>
 <div class="container text-center">
-    <h1><?= _($name) ?></h1>
-    <p class="lead"><?= _($tagline) ?></p>
+    <h1><?= __($name) ?></h1>
+    <p class="lead"><?= __($tagline) ?></p>
     <div class="row">
         <div class="col6">
-            <p class="lead text-justify some-top-margin"><?= nl2br(_($long_description)) ?></p>
+            <p class="lead text-justify some-top-margin"><?= nl2br(__($long_description)) ?></p>
         </div>
         <div class="col6">
-            <h2><?= _('Events') ?></h2>
+            <h2><?= __('Events') ?></h2>
             <div class="event-list">
                 <?php if (count($events_to_display)): ?>
                     <?php foreach ($events_to_display as $event): ?>
                         <a class="event btn" href="<?= locale_base_url() . substr($event['path'], 1) ?>">
-                            <p class="lead"><?= _($event['data']['name']) ?></p>
-                            <p><small><?= _($event['data']['tagline']) ?></small></p>
-                            <p><small><?= ($d = $event['data']['start_time']) ? strftime('%B %e', date_timestamp_get(date_create($d))) : _('To be announced') ?></small></p>
+                            <p class="lead"><?= __($event['data']['name']) ?></p>
+                            <p><small><?= __($event['data']['tagline']) ?></small></p>
+                            <p><small><?= ($d = $event['data']['start_time']) ? strftime('%B %e', date_timestamp_get(date_create($d))) : __('To be announced') ?></small></p>
                         </a>
                     <?php endforeach; ?>
                 <?php else: ?>

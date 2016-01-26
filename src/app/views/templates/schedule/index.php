@@ -188,7 +188,7 @@
                             if ($event['data']['start_time']) {
                                 $formatted = strftime('%B %e, %A', date_timestamp_get(date_create($event['data']['start_time'])));
                             } else {
-                                $formatted = _("Date to be announced");
+                                $formatted = __("Date to be announced");
                             }
                             if (strcmp($lastdate, $formatted) != 0):
                                 $lastdate = $formatted;
@@ -202,7 +202,7 @@
                         <td class="event-container">
                             <a href="<?= locale_base_url() . $event['path'] ?>" class="event">
                                 <div class="circle"><div class="innercircle"></div></div>
-                                <span><?= _($event['data']['name']) ?></span>
+                                <span><?= __($event['data']['name']) ?></span>
                             </a>
                         </td>
                     </tr>

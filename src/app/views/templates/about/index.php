@@ -3,7 +3,7 @@
 <article class="page open about">
 <?php endif; ?>
     <p>
-        <?= _($about_us) ?>
+        <?= __($about_us) ?>
     </p>
 <?php if (!$is_ajax): ?>
 </article>

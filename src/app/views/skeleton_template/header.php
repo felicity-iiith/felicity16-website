@@ -10,7 +10,7 @@ if (empty($is_ajax)):
     <meta property="og:description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.">
     <meta property="og:title" content="<?= implode(' · ', array_reverse(array_map(function($str){ return ucfirst(str_replace('-', ' ', $str)); }, explode('__', isset($page_slug) ? $page_slug : "")))) ?> Felicity · IIIT Hyderabad">
     <meta property="og:image" content="<?= base_url() . (isset($og_image) ? $og_image : 'files/16/poster1.jpg') ?>">
-    <title><?= _('Felicity') ?> · <?= _('IIIT Hyderabad') ?></title>
+    <title><?= __('Felicity') ?> · <?= __('IIIT Hyderabad') ?></title>
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
@@ -32,15 +32,15 @@ if (empty($is_ajax)):
     <article class="landing">
         <div class="landing-content">
             <p class="iiit-h">
-                <img src="<?= base_url() ?>static/images/iiit-logo.png" alt="IIIT H Logo"> <?= _('IIIT-H') ?>
+                <img src="<?= base_url() ?>static/images/iiit-logo.png" alt="IIIT H Logo"> <?= __('IIIT-H') ?>
             </p>
             <p class="presents">
-                <?= _('presents') ?>
+                <?= __('presents') ?>
             </p>
-            <h1 class="title"><a href="<?= locale_base_url() ?>"><?= _('Felicity') ?></a></h1>
+            <h1 class="title"><a href="<?= locale_base_url() ?>"><?= __('Felicity') ?></a></h1>
             <p class="year">2016</p>
-            <p class="tagline"><?= _('Where magic happens') ?></p>
-            <p class="dates"><?= _('February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>') ?></p>
+            <p class="tagline"><?= __('Where magic happens') ?></p>
+            <p class="dates"><?= __('February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>') ?></p>
         </div>
     </article>
     <?php if (isset($is_authenticated)): ?>
