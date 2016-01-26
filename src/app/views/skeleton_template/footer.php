@@ -30,7 +30,7 @@ if (empty($is_ajax)):
     <nav>
         <?php if (isset($categorised_event)): ?>
         <div class="crystal-ball">
-            <div class="ball-title">Events</div>
+            <div class="ball-title"><?= _('Events') ?></div>
             <ul class="events-nav">
                 <?php foreach ($categorised_event as $category => $events): ?>
                     <li>
@@ -44,24 +44,24 @@ if (empty($is_ajax)):
         <?php endif; ?>
         <ul class="primary-nav left">
             <li>
-                <?php $primary_nav_link('about', 'dragon8.png'); ?>
+                <?php $primary_nav_link(_('about'), 'dragon8.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link('gallery', 'dragon2.png'); ?>
+                <?php $primary_nav_link(_('gallery'), 'dragon2.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link('schedule', 'dragon7.png'); ?>
+                <?php $primary_nav_link(_('schedule'), 'dragon7.png'); ?>
             </li>
         </ul>
         <ul class="primary-nav right">
             <li>
-                <?php $primary_nav_link('sponsors', 'dragon5.png'); ?>
+                <?php $primary_nav_link(_('sponsors'), 'dragon5.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link('team', 'dragon3.png'); ?>
+                <?php $primary_nav_link(_('team'), 'dragon3.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link('contact', 'dragon6.png'); ?>
+                <?php $primary_nav_link(_('contact'), 'dragon6.png'); ?>
             </li>
         </ul>
     </nav>

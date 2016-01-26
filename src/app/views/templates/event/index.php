@@ -3,30 +3,30 @@
 <article class="page open full event <?= $page_slug ?>">
 <?php endif; ?>
     <div class="container">
-    <h1><?= $name ?></h1>
-        <p class="lead"><?= $tagline ?></p>
+    <h1><?= _($name) ?></h1>
+        <p class="lead"><?= _($tagline) ?></p>
         <div class="row padded">
             <div class="col6">
-                <h2><?= $status ?></h2>
+                <h2><?= _($status) ?></h2>
                 <?php if ($button_text): ?>
-                    <a class="btn" href="<?= base_url() . $button_link ?>"><?= $button_text ?></a>
+                    <a class="btn" href="<?= base_url() . $button_link ?>"><?= _($button_text) ?></a>
                 <?php endif; ?>
-                <div class="lead text-left some-top-margin"><?= nl2br($description) ?></div>
+                <div class="lead text-left some-top-margin"><?= nl2br(_($description)) ?></div>
                 <?php if (is_array($rules) && count($rules)): ?>
-                    <h2 class="text-left">Rules</h2>
+                    <h2 class="text-left"><?= _('Rules') ?></h2>
                     <ul class="text-justify">
                         <?php foreach ($rules as $rule): ?>
-                            <li><?= $rule ?></li>
+                            <li><?= _($rule) ?></li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>
             </div>
             <div class="col6">
-                <h2>Event Details</h2>
-                <p>All times are in UTC+5:30.</p>
+                <h2><?= _('Event Details') ?></h2>
+                <p><?= _('All times are in UTC+5:30.') ?></p>
                 <div class="row padded">
                     <div class="col6 text-right">
-                        <strong>Start time:</strong>
+                        <strong><?= _('Start time:') ?></strong>
                     </div>
                     <div class="col6 text-left">
                         <?php $datetime = date_parse($start_time); ?>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="row padded">
                     <div class="col6 text-right">
-                        <strong>End time:</strong>
+                        <strong><?= _('End time:') ?></strong>
                     </div>
                     <div class="col6 text-left">
                         <?php $datetime = date_parse($end_time); ?>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="row padded">
                     <div class="col6 text-right">
-                        <strong>Venue:</strong>
+                        <strong><?= _('Venue:') ?></strong>
                     </div>
                     <div class="col6 text-left">
                         <?= $venue ?>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="row padded">
                     <div class="col6 text-right">
-                        <strong>Contact Email:</strong>
+                        <strong><?= _('Contact Email:') ?></strong>
                     </div>
                     <div class="col6 text-left">
                         <a class="underlined" href="mailto:<?= $contact_email?>"><?= $contact_email ?></a>

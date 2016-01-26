@@ -4,25 +4,25 @@
 <?php endif; ?>
     <div class="container">
         <p>
-            There are many ways of contacting us.
+            <?= _('There are many ways of contacting us.') ?>
         </p>
         <p>
-            You may email us at
-            <a target="_blank" class="underlined" href="mailto:contact@felicity.iiit.ac.in">contact@felicity.iiit.ac.in</a>
+            <?= sprintf(_('You may email us at %s'), '<a target="_blank" class="underlined" href="mailto:contact@felicity.iiit.ac.in">contact@felicity.iiit.ac.in</a>') ?>
         </p>
         <p>
-            Or find us on
-            <a target="_blank" href="https://www.facebook.com/felicity.iiith"><img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png"> facebook</a>
-            or
-            <a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="<?= base_url() ?>static/images/twitter-icon.png"> twitter</a>.
+            <?= sprintf(
+                _('Or find us on %s or %s'),
+                '<a target="_blank" href="https://www.facebook.com/felicity.iiith"><img class="social-icon" src="' . base_url() . 'static/images/fb-icon.png"> facebook</a>',
+                '<a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="' . base_url() . 'static/images/twitter-icon.png"> twitter</a>.'
+            ) ?>
         </p>
         <p>
-            Or bug our coordinators
+            <?= _('Or bug our coordinators') ?>
         </p>
         <div class="row text-center">
             <div class="col4">
                 <p>
-                    Jeevan Chowdary
+                    <?= _('Jeevan Chowdary') ?>
                     <a target="_blank" href="https://www.facebook.com/g1.8.jeevan">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
@@ -34,7 +34,7 @@
             </div>
             <div class="col4">
                 <p>
-                    Sanatan Mishra
+                    <?= _('Sanatan Mishra') ?>
                     <a target="_blank" href="https://www.facebook.com/sanatan.mishra.7">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
@@ -46,7 +46,7 @@
             </div>
             <div class="col4">
                 <p>
-                    Vivek Ghaisas
+                    <?= _('Vivek Ghaisas') ?>
                     <a target="_blank" href="https://www.facebook.com/vghaisas">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
