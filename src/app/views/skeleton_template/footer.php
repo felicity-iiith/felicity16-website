@@ -17,11 +17,11 @@ if (empty($is_ajax)):
     if (!isset($page_slug)) {
         $page_slug = "static";
     }
-    $primary_nav_link = function ($name, $image) use ($page_slug) {
+    $primary_nav_link = function ($name, $display_name, $image) use ($page_slug) {
 ?>
         <a href="<?= locale_base_url() . $name ?>/" data-href="<?= $name ?>" class="primary-nav-link <?= $name ?><?= $name == $page_slug ? ' open' : '' ?>">
             <img src="<?= base_url() ?>static/images/<?= $image ?>">
-            <div class="title"><?= ucfirst($name) ?></div>
+            <div class="title"><?= $display_name ?></div>
         </a>
 <?php
     }
@@ -44,24 +44,24 @@ if (empty($is_ajax)):
         <?php endif; ?>
         <ul class="primary-nav left">
             <li>
-                <?php $primary_nav_link(_('about'), 'dragon8.png'); ?>
+                <?php $primary_nav_link('about', _('About'), 'dragon8.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link(_('gallery'), 'dragon2.png'); ?>
+                <?php $primary_nav_link('gallery', _('Gallery'), 'dragon2.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link(_('schedule'), 'dragon7.png'); ?>
+                <?php $primary_nav_link('schedule', _('Schedule'), 'dragon7.png'); ?>
             </li>
         </ul>
         <ul class="primary-nav right">
             <li>
-                <?php $primary_nav_link(_('sponsors'), 'dragon5.png'); ?>
+                <?php $primary_nav_link('sponsors', _('Sponsors'), 'dragon5.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link(_('team'), 'dragon3.png'); ?>
+                <?php $primary_nav_link('team', _('Team'), 'dragon3.png'); ?>
             </li>
             <li>
-                <?php $primary_nav_link(_('contact'), 'dragon6.png'); ?>
+                <?php $primary_nav_link('contact', _('Contact'), 'dragon6.png'); ?>
             </li>
         </ul>
     </nav>

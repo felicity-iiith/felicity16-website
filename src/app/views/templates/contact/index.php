@@ -11,9 +11,9 @@
         </p>
         <p>
             <?= sprintf(
-                _('Or find us on %s or %s'),
+                _('Or find us on %s or %s.'),
                 '<a target="_blank" href="https://www.facebook.com/felicity.iiith"><img class="social-icon" src="' . base_url() . 'static/images/fb-icon.png"> facebook</a>',
-                '<a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="' . base_url() . 'static/images/twitter-icon.png"> twitter</a>.'
+                '<a target="_blank" href="https://twitter.com/felicity_iiith"><img class="social-icon" src="' . base_url() . 'static/images/twitter-icon.png"> twitter</a>'
             ) ?>
         </p>
         <p>
