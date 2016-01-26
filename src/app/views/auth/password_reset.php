@@ -7,11 +7,11 @@
     if ($success):
 ?>
 <div class="success">Password successfully set!</div>
-<a href="<?= base_url() . "auth/login/" ?>" class="some-top-margin pure-button pure-button-primary pure-button-large">Continue to a magical journey</a>
+<a href="<?= locale_base_url() . "auth/login/" ?>" class="some-top-margin pure-button pure-button-primary pure-button-large">Continue to a magical journey</a>
 <?php
     else:
 ?>
-<form action="<?= base_url() . "auth/register/password_reset/" ?>" method="post" class="pure-form pure-form-stacked">
+<form action="<?= locale_base_url() . "auth/register/password_reset/" ?>" method="post" class="pure-form pure-form-stacked">
     <fieldset>
         <input type="hidden" name="hash" value="<?= $hash ?>">
 

@@ -19,6 +19,7 @@ if (empty($is_ajax)):
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Flamenco|Noto+Sans">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
+        var localeBaseUrl = '<?= locale_base_url() ?>';
     </script>
     <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js" type="text/javascript"></script>
 </head>
@@ -36,7 +37,7 @@ if (empty($is_ajax)):
             <p class="presents">
                 presents
             </p>
-            <h1 class="title"><a href="<?= base_url() ?>">Felicity</a></h1>
+            <h1 class="title"><a href="<?= locale_base_url() ?>">Felicity</a></h1>
             <p class="year">2016</p>
             <p class="tagline">Where magic happens</p>
             <p class="dates">February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup></p>
@@ -46,12 +47,12 @@ if (empty($is_ajax)):
     <div class="auth-quick-links">
         <?php if ($is_authenticated): ?>
             <?php if (!empty($user_nick)): ?>
-                <div class="nick">Hello, <?= $user_nick ?> <a href="<?= base_url() . "auth/logout/" ?>">Logout</a></div>
+                <div class="nick">Hello, <?= $user_nick ?> <a href="<?= locale_base_url() . "auth/logout/" ?>">Logout</a></div>
             <?php else: ?>
-                <div><a href="<?= base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+                <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
             <?php endif; ?>
         <?php else: ?>
-            <div><a href="<?= base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
+            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
         <?php endif; ?>
     </div>
     <?php endif; ?>

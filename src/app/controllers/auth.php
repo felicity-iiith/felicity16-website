@@ -11,7 +11,7 @@ class auth extends Controller {
     }
 
     function index() {
-        $this->http->redirect(base_url() . "auth/login/");
+        $this->http->redirect(locale_base_url() . "auth/login/");
     }
 
     private function extract_user_info_oauth($id, $attributes) {
@@ -179,7 +179,7 @@ class auth extends Controller {
 
         $sent = $this->send_verification_mail($email, $action);
 
-        $this->http->redirect(base_url() . "auth/register");
+        $this->http->redirect(locale_base_url() . "auth/register");
     }
 
     private function send_verification_mail($email, $action) {
@@ -272,7 +272,7 @@ class auth extends Controller {
 
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
 
-            $this->http->redirect(base_url() . "auth/register/");
+            $this->http->redirect(locale_base_url() . "auth/register/");
         } elseif ($action == "update_profile") {
             if ($user["resitration_status"] == "complete") {
                 return;
@@ -351,7 +351,7 @@ class auth extends Controller {
                 $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
             }
 
-            $this->http->redirect(base_url() . "auth/register");
+            $this->http->redirect(locale_base_url() . "auth/register");
         }
     }
 
@@ -378,7 +378,7 @@ class auth extends Controller {
                 $error[] = "Invalid request";
             }
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));
-            $this->http->redirect(base_url() . "auth/register");
+            $this->http->redirect(locale_base_url() . "auth/register");
         } elseif ($action == "password_reset") {
             $hash = isset($_POST["hash"]) ? $_POST["hash"] : null;
             $success = false;
@@ -560,7 +560,7 @@ class auth extends Controller {
             if ($goto_url) {
                 $this->http->redirect($goto_url);
             } else {
-                $this->http->redirect(base_url());
+                $this->http->redirect(locale_base_url());
             }
         }
     }
@@ -601,7 +601,7 @@ class auth extends Controller {
 
         $next_page = $this->session_lib->flash_get("auth_next_page");
         if (empty($next_page)) {
-            $next_page = base_url();
+            $next_page = locale_base_url();
         }
         $this->http->redirect($next_page);
     }

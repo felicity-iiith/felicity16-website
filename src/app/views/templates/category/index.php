@@ -33,7 +33,7 @@ usort($events_to_display, function ($e1, $e2) {
             <div class="event-list">
                 <?php if (count($events_to_display)): ?>
                     <?php foreach ($events_to_display as $event): ?>
-                        <a class="event btn" href="<?= base_url() . substr($event['path'], 1) ?>">
+                        <a class="event btn" href="<?= locale_base_url() . substr($event['path'], 1) ?>">
                             <p class="lead"><?= $event['data']['name'] ?></p>
                             <p><small><?= $event['data']['tagline'] ?></small></p>
                             <p><small><?= ($d = $event['data']['start_time']) ? date_format(date_create($d), 'j\<\s\u\p\>S\<\/\s\u\p> F') : 'To be announced' ?></small></p>

@@ -20,7 +20,7 @@ class auth_lib extends Library {
 
         $this->session_lib->flash_set("auth_go_back", $current_path);
 
-        $this->http_lib->redirect(base_url() . "auth/register/");
+        $this->http_lib->redirect(locale_base_url() . "auth/register/");
     }
 
     public function force_authentication() {

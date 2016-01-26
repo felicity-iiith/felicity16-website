@@ -390,14 +390,14 @@ td.user-nick {
 <body>
     <header class="header">
         <div class="header-content">
-            <h1 class="title"><a href="<?= base_url() ?>">Felicity</a></h1>
+            <h1 class="title"><a href="<?= locale_base_url() ?>">Felicity</a></h1>
             <p class="year">2016</p>
         </div>
     </header>
     <div class="wrapper">
         <div class="container title-and-nav-container clearfix">
             <div class="page-title text-left">
-                <h1><a href="<?= base_url() . $contest_page_link ?>"><?= $name ?></a></h1>
+                <h1><a href="<?= locale_base_url() . $contest_page_link ?>"><?= $name ?></a></h1>
                 <p><?= $tagline ?></p>
             </div>
         </div>

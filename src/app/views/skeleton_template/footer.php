@@ -19,7 +19,7 @@ if (empty($is_ajax)):
     }
     $primary_nav_link = function ($name, $image) use ($page_slug) {
 ?>
-        <a href="<?= base_url() . $name ?>/" data-href="<?= $name ?>" class="primary-nav-link <?= $name ?><?= $name == $page_slug ? ' open' : '' ?>">
+        <a href="<?= locale_base_url() . $name ?>/" data-href="<?= $name ?>" class="primary-nav-link <?= $name ?><?= $name == $page_slug ? ' open' : '' ?>">
             <img src="<?= base_url() ?>static/images/<?= $image ?>">
             <div class="title"><?= ucfirst($name) ?></div>
         </a>

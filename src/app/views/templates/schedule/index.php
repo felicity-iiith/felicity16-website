@@ -186,7 +186,7 @@
                     <tr class="timeline <?= $event['type'] ?>">
                         <?php
                             if ($event['data']['start_time']) {
-                                $formatted = date_format(date_create($event['data']['start_time']), 'l, jS F');
+                                $formatted = strftime('%B %e, %A', date_timestamp_get(date_create($event['data']['start_time'])));
                             } else {
                                 $formatted = "Date to be announced";
                             }
@@ -200,7 +200,7 @@
                             <td class="day"></td>
                         <?php endif; ?>
                         <td class="event-container">
-                            <a href="<?= base_url() . $event['path'] ?>" class="event">
+                            <a href="<?= locale_base_url() . $event['path'] ?>" class="event">
                                 <div class="circle"><div class="innercircle"></div></div>
                                 <span><?= $event['data']['name'] ?></span>
                             </a>

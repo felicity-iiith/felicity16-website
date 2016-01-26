@@ -6,6 +6,7 @@
 */
 $routes = [
     "/trash/"       => "/jugaad/trash/",
+    "/jugaad/locale_dump/" => "/jugaad/locale_dump/",
     "/jugaad/"      => "/jugaad/read/",
     "/ajax/"        => "/ajax/",
     "/auth/"        => "/auth/",

@@ -25,7 +25,7 @@ class page extends Controller {
 
         if (end($path) == 'index') {
             $this->http->redirect(
-                base_url() . implode("/", array_slice($path, 0, -1)) . "/"
+                locale_base_url() . implode("/", array_slice($path, 0, -1)) . "/"
             );
         }
 
