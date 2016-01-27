@@ -14,7 +14,7 @@
     <p><?= $heading ?></p>
     <form action="update_mail/" method="post" class="pure-form pure-form-stacked">
         <fieldset>
-            <label for="mail">Email</label>
+            <label for="mail"><?= __('Email') ?></label>
             <input type="email" name="mail" id="mail" value="<?= $user_data['mail'] ?>" required><br/>
             <!-- TODO : change confirm to more human friendly -->
             <input type="submit" name="update_mail" value="<?= $button_action ?>" class="pure-button pure-button-primary">
