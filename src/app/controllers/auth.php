@@ -131,7 +131,7 @@ class auth extends Controller {
                 }
             }
             if (!$success) {
-                $this->session_lib->flash_set("auth_last_error", "Could not verify email");
+                $this->session_lib->flash_set("auth_last_error", __("Could not verify email"));
             } else {
                 $this->auth_model->remove_verify_hash($hash);
             }
@@ -236,14 +236,14 @@ class auth extends Controller {
 
             if (!$mail) {
                 // TODO: email verification
-                $error[] = "Please enter a valid email address";
+                $error[] = __("Please enter a valid email address");
             } elseif ($mail != $user["mail"]) {
                 if (!$this->auth_model->is_good_email($mail)) {
-                    $error[] = "The email id you gave is not valid";
+                    $error[] = __("The email id you gave is not valid");
                 } else {
                     $already_registered = $this->auth_model->get_user_by_mail($mail);
                     if ($already_registered && $already_registered["id"] != $user["id"]) {
-                        $error[] = "The email id you gave is already registered";
+                        $error[] = __("The email id you gave is already registered");
                     } else {
                         $updated = $this->auth_model->update_user($user["id"], [
                             "mail" => $mail,
@@ -253,11 +253,11 @@ class auth extends Controller {
                         if ($updated) {
                             $sent = $this->send_verification_mail($mail, "verify_email");
                             if (!$sent) {
-                                $error[] = "Could not send mail";
+                                $error[] = __("Could not send mail");
                             }
                         }
                         if (!$updated) {
-                            $error[] = "Could not update email";
+                            $error[] = __("Could not update email");
                         }
                     }
                 }
@@ -266,7 +266,7 @@ class auth extends Controller {
                     "resitration_status" => "incomplete"
                 ]);
                 if (!$updated) {
-                    $error[] = "Could not update email";
+                    $error[] = __("Could not update email");
                 }
             }
 
@@ -292,7 +292,7 @@ class auth extends Controller {
             $error = [];
             foreach ($user_data as $key => $value) {
                 if (empty($value)) {
-                    $error[] = "Please fill all the required fields";
+                    $error[] = __("Please fill all the required fields");
                     $complete = false;
                 }
             }
@@ -300,29 +300,29 @@ class auth extends Controller {
             if (!preg_match('/^[a-z0-9_]+$/i', $user_data["nick"])) {
                 unset($user_data["nick"]);
                 $complete = false;
-                $error[] = "You can use only alphanumeric characters and underscore in nick";
+                $error[] = __("You can use only alphanumeric characters and underscore in nick");
             } elseif(strlen($user_data["nick"]) < 6) {
                 unset($user_data["nick"]);
                 $complete = false;
-                $error[] = "Nick must be at least 6 characters long";
+                $error[] = __("Nick must be at least 6 characters long");
             } elseif ($user["nick"] != $user_data["nick"]
                 && $this->auth_model->get_user_by_nick($user_data["nick"])
             ) {
                 unset($user_data["nick"]);
                 $complete = false;
-                $error[] = "Nick is already taken";
+                $error[] = __("Nick is already taken");
             }
 
             if (!in_array($user_data["gender"], ["male", "female", "other"])) {
                 $user_data["gender"] = "";
-                $error[] = "Enter valid gender";
+                $error[] = __("Enter valid gender");
                 $complete = false;
             }
 
             if ($user_data["dob"]) {
                 if (date_parse($user_data["dob"])["error_count"]) {
                     $user_data["dob"] = "";
-                    $error[] = "Enter valid birthdate";
+                    $error[] = __("Enter valid birthdate");
                     $complete = false;
                 }
             }
@@ -332,7 +332,7 @@ class auth extends Controller {
                 $country_list = get_country_list();
                 if (!in_array($user_data["country"], array_keys($country_list))) {
                     $user_data["country"] = "";
-                    $error[] = "Enter valid country";
+                    $error[] = __("Enter valid country");
                     $complete = false;
                 }
             }
@@ -344,7 +344,7 @@ class auth extends Controller {
             $updated = $this->auth_model->update_user($user["id"], $user_data);
 
             if (!$updated) {
-                $error[] = "Could not update profile";
+                $error[] = __("Could not update profile");
             }
 
             if (count($error)) {
@@ -361,15 +361,15 @@ class auth extends Controller {
             if (isset($_POST["email"])) {
                 $email = $_POST["email"];
                 if (!$this->auth_model->is_good_email($email)) {
-                    $error[] = "The email id you gave is not valid";
+                    $error[] = __("The email id you gave is not valid");
                 } elseif ($this->auth_model->get_user_by_mail($email)
                     || $this->auth_model->get_user_old_ldap($email)
                 ) {
-                    $error[] = "The email id you gave is already registered";
+                    $error[] = __("The email id you gave is already registered");
                 } else {
                     $sent = $this->send_verification_mail($email, "create_user");
                     if (!$sent) {
-                        $error[] = "Could not send mail";
+                        $error[] = __("Could not send mail");
                     } else {
                         $this->session_lib->flash_set("auth_last_action", "email_sent");
                     }
@@ -390,9 +390,9 @@ class auth extends Controller {
 
                 $verified = $this->auth_model->verify_mail($hash, false);
                 if (!$verified) {
-                    $error[] = "Invalid request";
+                    $error[] = __("Invalid request");
                 } elseif(strlen($password) < 6) {
-                    $error[] = "Password must be at least 6 characters long";
+                    $error[] = __("Password must be at least 6 characters long");
                 } else {
                     $email = $verified["email"];
                     $action = $verified["action"];
@@ -403,7 +403,7 @@ class auth extends Controller {
                             $this->auth_model->remove_verify_hash($hash);
                             $success = true;
                         } else {
-                            $error[] = "Could not update";
+                            $error[] = __("Could not update");
                         }
                     } elseif ($action == "create_user") {
                         $updated = $this->auth_model->create_ldap_user($email, $password);
@@ -411,14 +411,14 @@ class auth extends Controller {
                             $this->auth_model->remove_verify_hash($hash);
                             $success = true;
                         } else {
-                            $error[] = "Could not create user";
+                            $error[] = __("Could not create user");
                         }
                     } else {
-                        $error[] = "Invalid request";
+                        $error[] = __("Invalid request");
                     }
                 }
             } else {
-                $error[] = "Passwords does not match";
+                $error[] = __("Passwords does not match");
             }
             if (!isset($hash) || !$hash) {
                 $this->http->response_code(400);
@@ -450,15 +450,15 @@ class auth extends Controller {
 
             if (!$user) {
                 if ($this->auth_model->get_user_by_mail($email)) {
-                    $error[] = "You didn't registered with email, maybe you used Google, GitHub or Facebook to login?";
+                    $error[] = __("You didn't registered with email, maybe you used Google, GitHub or Facebook to login?");
                 } else {
-                    $error[] = "This email id is not registred";
+                    $error[] = __("This email id is not registred");
                 }
             } else {
                 if ($this->send_verification_mail($email, "reset_password")) {
                     $this->session_lib->flash_set("auth_last_action", "email_sent");
                 } else {
-                    $error[] = "Could not send mail";
+                    $error[] = __("Could not send mail");
                 }
             }
             $this->session_lib->flash_set("auth_last_error", implode("\n", $error));

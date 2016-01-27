@@ -1,17 +1,17 @@
 <?php
     if (empty($user_data['mail'])) {
-        $heading = 'enter your email';
-        $button_action = 'Submit';
-        $message = "We will send an email to this address to verify it.";
+        $heading = __('In order to continue, please enter your email.');
+        $button_action = __('Submit');
+        $message = __("We will send an email to this address to verify it.");
     } else {
-        $heading = 'confirm your email';
-        $button_action = 'Confirm';
-        $message = "If you change your email, we will send an email to the new address to verify it.";
+        $heading = __('In order to continue, please confirm your email.');
+        $button_action = __('Confirm');
+        $message = __("If you change your email, we will send an email to the new address to verify it.");
     }
-    $this->load_fragment('auth/form_header', ['heading' => 'Welcome!' ]);
+    $this->load_fragment('auth/form_header', ['heading' => __('Welcome!') ]);
 ?>
 <div>
-    <p>In order to continue, please <?= $heading ?>.</p>
+    <p><?= $heading ?></p>
     <form action="update_mail/" method="post" class="pure-form pure-form-stacked">
         <fieldset>
             <label for="mail">Email</label>

@@ -6,9 +6,9 @@ if (empty($is_ajax)):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="keywords" content="felicity, felicty16, college, fest, threads, pulsation, iiit, iiith, international, institute, information, technology, hyderabad">
-    <meta name="description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.">
-    <meta property="og:description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.">
-    <meta property="og:title" content="<?= implode(' · ', array_reverse(array_map(function($str){ return ucfirst(str_replace('-', ' ', $str)); }, explode('__', isset($page_slug) ? $page_slug : "")))) ?> Felicity · IIIT Hyderabad">
+    <meta name="description" content="<?= __("Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.") ?>">
+    <meta property="og:description" content="<?= __("Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.") ?>">
+    <meta property="og:title" content="<?= implode(' · ', array_filter([implode(' · ', array_reverse(array_map(function($str){ return __(ucfirst(str_replace('-', ' ', $str))); }, explode('__', isset($page_slug) ? $page_slug : "")))), __("Felicity") . " · " . __("IIIT Hyderabad")])) ?>">
     <meta property="og:image" content="<?= base_url() . (isset($og_image) ? $og_image : 'files/16/poster1.jpg') ?>">
     <title><?= __('Felicity') ?> · <?= __('IIIT Hyderabad') ?></title>
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
@@ -47,12 +47,12 @@ if (empty($is_ajax)):
     <div class="auth-quick-links">
         <?php if ($is_authenticated): ?>
             <?php if (!empty($user_nick)): ?>
-                <div class="nick">Hello, <?= $user_nick ?> <a href="<?= locale_base_url() . "auth/logout/" ?>">Logout</a></div>
+                <div class="nick"><?= sprintf(__('Hello, %s'), $user_nick) ?> <a href="<?= locale_base_url() . "auth/logout/" ?>"><?= __('Logout') ?></a></div>
             <?php else: ?>
-                <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn">Logout</a></div>
+                <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn"><?= __('Logout') ?></a></div>
             <?php endif; ?>
         <?php else: ?>
-            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn">Login / Register</a></div>
+            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn"><?= __('Login / Register') ?></a></div>
         <?php endif; ?>
     </div>
     <?php endif; ?>

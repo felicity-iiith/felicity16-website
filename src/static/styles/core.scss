@@ -11,6 +11,24 @@ $page-open-animation-timeout: .7s;
 $red: rgb(202, 60, 60);
 $green: rgb(28, 184, 65);
 
+@font-face {
+    font-family: 'hindi';
+    src: local('Lohit Devanagari');
+    unicode-range: U+0900-097F;
+}
+
+@font-face {
+    font-family: 'telugu';
+    src: local('Lohit Telugu');
+    unicode-range: U+0C00-0C7F;
+}
+
+@font-face {
+    font-family: 'gujarati';
+    src: local('Lohit Gujarati');
+    unicode-range: U+0A81-0AF9;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -22,7 +40,7 @@ body {
 
 body {
     overflow-y: scroll;
-    font-family: "Noto Sans", sans-serif;
+    font-family: "Noto Sans", hindi, telugu, gujarati, sans-serif;
     background-image: url('../images/bg.jpg');
     background-size: cover;
     background-position: 0 0;
@@ -677,7 +695,7 @@ article {
     }
 
     .iiit-h {
-        font-family: "Times new roman", serif;
+        font-family: "Times new roman", hindi, telugu, gujarati, serif;
         font-size: 2em;
         line-height: 1.25em;
         margin: 0;
@@ -695,7 +713,7 @@ article {
     }
 
     .title {
-        font-family: Flamenco, sans-serif;
+        font-family: Flamenco, hindi, telugu, gujarati, sans-serif;
         font-size: 6em;
         text-transform: lowercase;
         text-align: center;
@@ -708,7 +726,7 @@ article {
     }
 
     .year {
-        font-family: Flamenco, sans-serif;
+        font-family: Flamenco, hindi, telugu, gujarati, sans-serif;
         font-size: 2em;
         text-align: right;
         font-weight: bold;
@@ -717,13 +735,13 @@ article {
     }
 
     .tagline {
-        font-family: Flamenco, sans-serif;
+        font-family: Flamenco, hindi, telugu, gujarati, sans-serif;
         font-size: 2.25em;
         text-align: center;
     }
 
     .dates {
-        font-family: sans-serif;
+        font-family: hindi, telugu, gujarati, sans-serif;
         font-size: 1.2em;
     }
 
