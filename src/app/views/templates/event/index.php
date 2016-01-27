@@ -31,7 +31,7 @@
                     <div class="col6 text-left">
                         <?php $datetime = date_parse($start_time); ?>
                         <?php if ($datetime['error_count']): ?>
-                            <?= $start_time ?>
+                            <?= __($start_time) ?>
                         <?php else: ?>
                             <a class="date-time" target="_blank" href="http://www.timeanddate.com/worldclock/fixedtime.html?day=<?= $datetime['day']?>&month=<?= $datetime['month']?>&year=<?= $datetime['year']?>&hour=<?= $datetime['hour']?>&min=<?= $datetime['minute']?>&sec=<?= $datetime['second']?>&p1=505&msg=<?= urlencode($name) ?>">
                                 <?= $start_time ?>
@@ -46,7 +46,7 @@
                     <div class="col6 text-left">
                         <?php $datetime = date_parse($end_time); ?>
                         <?php if ($datetime['error_count']): ?>
-                            <?= $end_time ?>
+                            <?= __($end_time) ?>
                         <?php else: ?>
                             <a class="date-time" target="_blank" href="http://www.timeanddate.com/worldclock/fixedtime.html?day=<?= $datetime['day']?>&month=<?= $datetime['month']?>&year=<?= $datetime['year']?>&hour=<?= $datetime['hour']?>&min=<?= $datetime['minute']?>&sec=<?= $datetime['second']?>&p1=505&msg=<?= urlencode($name) ?>">
                                 <?= $end_time ?>
@@ -59,7 +59,7 @@
                         <strong><?= __('Venue:') ?></strong>
                     </div>
                     <div class="col6 text-left">
-                        <?= $venue ?>
+                        <?= __($venue) ?>
                     </div>
                 </div>
                 <div class="row padded">
