@@ -1210,3 +1210,34 @@ textarea {
         }
     }
 }
+
+.lang-quick-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    color: #0b2a60;
+
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 0 0 10px 0;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: .5em 1em;
+
+    a {
+        color: #1f8dd6;
+
+        &:hover {
+            color: #055da0;
+            border-bottom: 1px solid;
+        }
+    }
+
+    .active-lang {
+        color: black;
+
+        &:hover {
+            color: black;
+        }
+    }
+}

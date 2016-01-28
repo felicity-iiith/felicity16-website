@@ -1,4 +1,4 @@
-/* global $, loadContent, localeBaseUrl, eventsData, ga */
+/* global $, loadContent, baseUrl, localeBaseUrl, eventsData, ga */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
     animationEnd  = 'webkitAnimationEnd animationend msAnimationEnd oAnimationEnd';
@@ -7,6 +7,14 @@ var urlHelper = {
     getPageUrl : function (pageName) {
         var pagePath = pageName.replace('-', '/');
         return localeBaseUrl + pagePath + '/';
+    },
+
+    getAltPageUrl: function (pageName, lang) {
+        var pagePath = '';
+        if (pageName) {
+            pagePath = pageName.replace('-', '/') + '/';
+        }
+        return baseUrl + lang + '/' + pagePath;
     },
 
     getPageName : function (pageUrl) {
@@ -20,6 +28,12 @@ var pageHelper = {
             return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         }).join(' ');
     }
+};
+
+var updateAltUrls = function(pageName) {
+    $('.lang-link').each(function() {
+        this.href = urlHelper.getAltPageUrl(pageName, this.lang);
+    });
 };
 
 $(function () {
@@ -79,10 +93,12 @@ $(function () {
         if ($clickedLink.hasClass('open')) {
             showLanding();
             history.pushState(localeBaseUrl, null, localeBaseUrl);
+            updateAltUrls();
         } else {
             var newUrl = urlHelper.getPageUrl(pageName);
             history.pushState(newUrl, null, newUrl);
             openLink(pageName);
+            updateAltUrls(pageName);
         }
         ga('send', 'pageview');
     };
@@ -103,6 +119,7 @@ $(function () {
         e.preventDefault();
         showLanding();
         history.pushState(localeBaseUrl, null, localeBaseUrl);
+        updateAltUrls();
         ga('send', 'pageview');
     });
 });

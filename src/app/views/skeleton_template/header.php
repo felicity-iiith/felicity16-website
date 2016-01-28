@@ -10,6 +10,25 @@ if (empty($is_ajax)):
     <meta property="og:description" content="<?= __("Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives.") ?>">
     <meta property="og:title" content="<?= implode(' · ', array_filter([implode(' · ', array_reverse(array_map(function($str){ return __(ucfirst(str_replace('-', ' ', $str))); }, explode('__', isset($page_slug) ? $page_slug : "")))), __("Felicity") . " · " . __("IIIT Hyderabad")])) ?>">
     <meta property="og:image" content="<?= base_url() . (isset($og_image) ? $og_image : 'files/16/poster1.jpg') ?>">
+
+    <?php
+    global $cfg;
+    $path = empty($_SERVER['PATH_INFO']) ? '/' : $_SERVER['PATH_INFO'];
+    $lang_prefix = explode('_', setlocale(LC_ALL, "0"))[0];
+
+    if (strpos($path, $lang_prefix) === 1) {
+        $path = substr($path, strlen($lang_prefix) + 1);
+    }
+
+    $lang_list = isset($cfg['i18n']['languages']) ? $cfg['i18n']['languages'] : [];
+    ?>
+    <?php if ($lang_list): ?>
+        <link rel="alternate" href="<?= base_url() . substr($path, 1) ?>" hreflang="x-default" />
+        <?php foreach ($lang_list as $lang => $locale): ?>
+        <link rel="alternate" href="<?= base_url() . $lang . $path ?>" hreflang="<?= $lang ?>" />
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <title><?= __('Felicity') ?> · <?= __('IIIT Hyderabad') ?></title>
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
@@ -43,6 +62,14 @@ if (empty($is_ajax)):
             <p class="dates"><?= __('February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>') ?></p>
         </div>
     </article>
+    <?php if ($lang_list): ?>
+    <div class="lang-quick-links">
+        <?php foreach ($lang_list as $lang => $locale): ?>
+            <a href="<?= base_url() . $lang . $path ?>" lang="<?= $lang ?>" class="lang-link<?= ($lang == $lang_prefix) ? ' active-lang' : '' ?>"><?= locale_get_display_name($lang, $lang) ?></a> ·
+        <?php endforeach; ?>
+        <i class="icon-language"></i>
+    </div>
+    <?php endif; ?>
     <?php if (isset($is_authenticated)): ?>
     <div class="auth-quick-links">
         <?php if ($is_authenticated): ?>
