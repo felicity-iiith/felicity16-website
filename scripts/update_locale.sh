@@ -17,5 +17,8 @@ echo " ..... done."
 for locale in ${locales[@]}
 do
     echo "Merging $locale"
-    msgmerge -U src/locale/${locale}/LC_MESSAGES/messages.po src/locale/messages.pot
+    msgmerge --backup=none -U src/locale/${locale}/LC_MESSAGES/messages.po src/locale/messages.pot
 done
+
+echo "Cleaning up"
+rm src/locale/locale_dump.php
