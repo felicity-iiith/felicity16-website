@@ -1,9 +1,12 @@
 # Project files
 /build/
 /deploy/
-/src/locale/
 /src/app/config.php
 /src/.htaccess
+
+# Locale
+/src/locale/locale_dump.php
+/src/locale/**/*.mo
 
 # Editors
 *.swp
@@ -11,6 +14,7 @@
 *.komodo
 *.komodoproject
 \#*#
+*~
 
 # npm
 /node_modules/
