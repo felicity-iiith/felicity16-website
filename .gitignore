@@ -4,12 +4,17 @@
 /src/app/config.php
 /src/.htaccess
 
+# Locale
+/src/locale/locale_dump.php
+/src/locale/**/*.mo
+
 # Editors
 *.swp
 *.geany
 *.komodo
 *.komodoproject
 \#*#
+*~
 
 # npm
 /node_modules/

@@ -51,16 +51,16 @@
             <table class="cal-table" data-month="Jan">
                 <thead>
                     <tr>
-                        <th class="cal-month-name" colspan="7">January 2016</th>
+                        <th class="cal-month-name" colspan="7"><?= strftime('%B %Y', strtotime('January 2016')) ?></th>
                     </tr>
                     <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
+                        <th><?= strftime('%a', strtotime('Sun')) ?></th>
+                        <th><?= strftime('%a', strtotime('Mon')) ?></th>
+                        <th><?= strftime('%a', strtotime('Tue')) ?></th>
+                        <th><?= strftime('%a', strtotime('Wed')) ?></th>
+                        <th><?= strftime('%a', strtotime('Thu')) ?></th>
+                        <th><?= strftime('%a', strtotime('Fri')) ?></th>
+                        <th><?= strftime('%a', strtotime('Sat')) ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,19 +116,19 @@
             </table>
         </div>
         <div class="cal-month">
-            <table class="cal-table" data-month="Jan">
+            <table class="cal-table" data-month="Feb">
                 <thead>
                     <tr>
-                        <th class="cal-month-name" colspan="7">February 2016</th>
+                        <th class="cal-month-name" colspan="7"><?= strftime('%B %Y', strtotime('February 2016')) ?></th>
                     </tr>
                     <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
+                        <th><?= strftime('%a', strtotime('Sun')) ?></th>
+                        <th><?= strftime('%a', strtotime('Mon')) ?></th>
+                        <th><?= strftime('%a', strtotime('Tue')) ?></th>
+                        <th><?= strftime('%a', strtotime('Wed')) ?></th>
+                        <th><?= strftime('%a', strtotime('Thu')) ?></th>
+                        <th><?= strftime('%a', strtotime('Fri')) ?></th>
+                        <th><?= strftime('%a', strtotime('Sat')) ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -186,9 +186,9 @@
                     <tr class="timeline <?= $event['type'] ?>">
                         <?php
                             if ($event['data']['start_time']) {
-                                $formatted = date_format(date_create($event['data']['start_time']), 'l, jS F');
+                                $formatted = strftime('%B %e, %A', date_timestamp_get(date_create($event['data']['start_time'])));
                             } else {
-                                $formatted = "Date to be announced";
+                                $formatted = __("Date to be announced");
                             }
                             if (strcmp($lastdate, $formatted) != 0):
                                 $lastdate = $formatted;
@@ -200,9 +200,9 @@
                             <td class="day"></td>
                         <?php endif; ?>
                         <td class="event-container">
-                            <a href="<?= base_url() . $event['path'] ?>" class="event">
+                            <a href="<?= locale_base_url() . $event['path'] ?>" class="event">
                                 <div class="circle"><div class="innercircle"></div></div>
-                                <span><?= $event['data']['name'] ?></span>
+                                <span><?= __($event['data']['name']) ?></span>
                             </a>
                         </td>
                     </tr>

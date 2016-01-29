@@ -7,14 +7,14 @@ class static_page extends Controller {
     }
 
     public function login() {
-        $this->http_lib->redirect( base_url() . 'auth/login/' );
+        $this->http_lib->redirect( locale_base_url() . 'auth/login/' );
     }
 
     public function logout() {
-        $this->http_lib->redirect( base_url() . 'auth/logout/' );
+        $this->http_lib->redirect( locale_base_url() . 'auth/logout/' );
     }
 
     public function register() {
-        $this->http_lib->redirect( base_url() . 'auth/login/' );
+        $this->http_lib->redirect( locale_base_url() . 'auth/login/' );
     }
 }

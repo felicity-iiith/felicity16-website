@@ -5,7 +5,7 @@
 </style>
 <article class="page open full">
     <div class="container">
-        <h1 class="text-center">Register for <a class="underlined" href="<?= base_url() ?>threads/breakin/">Breakin</a></h1>
+        <h1 class="text-center">Register for <a class="underlined" href="<?= locale_base_url() ?>threads/breakin/">Breakin</a></h1>
         <?php if ($team_info): ?>
             <p class="text-center lead success">
                 You're registered for the event

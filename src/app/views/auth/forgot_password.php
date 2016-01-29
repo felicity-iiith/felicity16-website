@@ -1,15 +1,15 @@
 <?php
-    $this->load_fragment('auth/form_header', ['heading' => 'Forgot your password?' ]);
+    $this->load_fragment('auth/form_header', ['heading' => __('Forgot your password?') ]);
 ?>
 <?php if ($sent): ?>
-    <div class="success">Mail sent!</div>
+    <div class="success"><?= __('Mail sent!') ?></div>
 <?php else: ?>
 <form action="" method="post" class="pure-form pure-form-stacked">
     <fieldset>
-        <label for="email">Email:</label>
+        <label for="email"><?= __('Email:') ?></label>
         <input type="email" name="email" id="email" required>
         <br/>
-        <input type="submit" name="register" value="Next" class="pure-button pure-button-primary">
+        <input type="submit" name="register" value="<?= __('Next') ?>" class="pure-button pure-button-primary">
     </fieldset>
 </form>
 <?php endif; ?>

@@ -18,6 +18,7 @@ var paths = {
     fonts: 'src/static/fonts/*',
     php: 'src/**/*.{php,json,pem}',
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt', 'src/favicon.ico'],
+    locale: ['src/locale/**/*'],
     vendor: ['vendor/**/*'],
 };
 
@@ -79,6 +80,11 @@ gulp.task('stuff', function() {
         .pipe(gulp.dest(destination + '/'));
 });
 
+gulp.task('locale', function() {
+    return gulp.src(paths.locale, {dot: true})
+        .pipe(gulp.dest(destination + '/locale'));
+});
+
 gulp.task('vendor', function() {
     return gulp.src(paths.vendor, {dot: true})
         .pipe(gulp.dest(destination + '/vendor/'));
@@ -126,11 +132,13 @@ gulp.task('watch', ['default'], function() {
         .on('change', srcToBuildDeleter);
     gulp.watch(paths.stuff, ['stuff'])
         .on('change', srcToBuildDeleter);
+    gulp.watch(paths.locale, ['locale'])
+        .on('change', srcToBuildDeleter);
     gulp.watch(paths.vendor, {dot: true})
         .on('change', deleter('vendor/', destination + '/vendor/'));
 });
 
-gulp.task('build', ['styles', 'scripts', 'images', 'fonts', 'php', 'stuff', 'vendor']);
+gulp.task('build', ['styles', 'scripts', 'images', 'fonts', 'php', 'stuff', 'locale', 'vendor']);
 
 gulp.task('default', ['clean'], function() {
     gulp.run('build');

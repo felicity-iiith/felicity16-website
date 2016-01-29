@@ -25,7 +25,7 @@ class page extends Controller {
 
         if (end($path) == 'index') {
             $this->http->redirect(
-                base_url() . implode("/", array_slice($path, 0, -1)) . "/"
+                locale_base_url() . implode("/", array_slice($path, 0, -1)) . "/"
             );
         }
 
@@ -96,6 +96,65 @@ class page extends Controller {
             $data["page_slug"] = implode('__', $path);
 
             $this->load_view($view_name, $data);
+        }
+    }
+
+    function locale_dump() {
+        $strings = [];
+
+        $files = $this->jugaad_model->get_file_data(0, [
+            'files' => [
+                'type' => 'external',
+                'path' => '**',
+                'data' => []
+            ]
+        ], $this->user);
+
+        $files = $files['files'];
+
+        foreach ($files as $file) {
+            $template_meta = $this->template_model->get_meta($file["template"]);
+
+            if ($template_meta === false) {
+                continue;
+            }
+
+            $translatable_types = ['text', 'longtext'];
+
+            foreach ($template_meta as $name => $meta) {
+                if (!(in_array($meta['type'], $translatable_types)
+                    || ($meta['type'] == 'list' && in_array($meta['listType'], $translatable_types)))
+                ) {
+                    unset($template_meta[$name]);
+                }
+            }
+
+            $file_id = $this->jugaad_model->get_path_id(explode('/', $file['path']));
+            $data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, true);
+
+            foreach ($data as $value) {
+                if (!$value) continue;
+                if (is_array($value)) {
+                    foreach ($value as $val) {
+                        $strings[] = $val;
+                    }
+                } else {
+                    $strings[] = $value;
+                }
+            }
+        }
+
+        header('Content-Type: text/plain; charset=UTF-8');
+
+        echo "<?php
+/**
+ * Save this code in src/locale/locale_dump.php
+ * After saving this scan src/ with poedit to start translating!
+ */
+
+";
+        foreach ($strings as $string) {
+            echo '__("' . addslashes($string) . '");' . "\n";
         }
     }
 

@@ -24,6 +24,8 @@ class cas_lib extends Library {
             } else {
                 phpCAS::setNoCasServerValidation();
             }
+
+            setcookie('org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE', explode('_', setlocale(LC_ALL, '0'))[0], 0, '/');
             self::$initialized = true;
         }
     }

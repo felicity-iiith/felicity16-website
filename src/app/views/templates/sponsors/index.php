@@ -39,8 +39,8 @@ $sponsors2014 = [
 ];
 ?>
     <div class="container">
-        <h2>Past sponsors</h2>
-        <h3>Year 2015</h3>
+        <h2><?= __('Past sponsors') ?></h2>
+        <h3><?= __('Year 2015') ?></h3>
         <div class="row some-top-margin">
             <div class="col6 offset3">
                 <img src="<?= base_url() ?>static/images/sponsors/qualcomm.jpg" alt="Qualcomm logo"/>
@@ -71,7 +71,7 @@ $sponsors2014 = [
                 <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
-        <h3>Year 2014 and before</h3>
+        <h3><?= __('Year 2014 and before') ?></h3>
         <?php foreach (array_chunk($sponsors2014, 4) as $sponsors): ?>
             <div class="row">
                 <?php foreach ($sponsors as $sponsor): ?>

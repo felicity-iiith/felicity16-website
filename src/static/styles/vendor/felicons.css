@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'felicons';
-  src: url('../../fonts/felicons.eot?26510358');
-  src: url('../../fonts/felicons.eot?26510358#iefix') format('embedded-opentype'),
-       url('../../fonts/felicons.woff?26510358') format('woff'),
-       url('../../fonts/felicons.ttf?26510358') format('truetype'),
-       url('../../fonts/felicons.svg?26510358#felicons') format('svg');
+  src: url('../../fonts/felicons.eot?12999460');
+  src: url('../../fonts/felicons.eot?12999460#iefix') format('embedded-opentype'),
+       url('../../fonts/felicons.woff?12999460') format('woff'),
+       url('../../fonts/felicons.ttf?12999460') format('truetype'),
+       url('../../fonts/felicons.svg?12999460#felicons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'felicons';
-    src: url('../../fonts/felicons.svg?26510358#felicons') format('svg');
+    src: url('../../fonts/felicons.svg?12999460#felicons') format('svg');
   }
 }
 */
@@ -60,3 +60,4 @@
 .icon-child:before { content: '\e803'; } /* '' */
 .icon-music:before { content: '\e804'; } /* '' */
 .icon-doc:before { content: '\e805'; } /* '' */
+.icon-language:before { content: '\e806'; } /* '' */

@@ -14,21 +14,21 @@
     <?php
     switch ($error_code) {
         case '400':
-            $message = 'Invalid request!';
-            $message_details = "Please try again.</p><p>If this issue persists, then you're probably trying to repeat an action that can only be performed once.";
+            $message = __('Invalid request!');
+            $message_details = __("Please try again.</p><p>If this issue persists, then you're probably trying to repeat an action that can only be performed once.");
             break;
         case '403':
-            $message = 'Forbidden!';
-            $message_details = 'Sorry, you do not have permission to view this page.';
+            $message = __('Forbidden!');
+            $message_details = __('Sorry, you do not have permission to view this page.');
             break;
         case '404':
-            $message = 'Page not found!';
-            $message_details = 'Sorry, the page you were looking for could not be found.';
+            $message = __('Page not found!');
+            $message_details = __('Sorry, the page you were looking for could not be found.');
             break;
         default:
-            $message = 'Something went wrong.';
-            $message_details = 'If this issue persists, please mail'
-                . ' <a href="mailto:help@felicity.iiit.ac.in">help@felicity.iiit.ac.in</a>.';
+            $message = __('Something went wrong.');
+            $message_details = sprintf(__('If this issue persists, please mail %s'),
+                '<a href="mailto:help@felicity.iiit.ac.in">help@felicity.iiit.ac.in</a>.');
     }
     ?>
         <?php if (isset($message)): ?>
@@ -37,8 +37,8 @@
             <p><?= $message_details ?></p>
         <?php endif; ?>
     </div>
-    <p><a href="<?= base_url() ?>">&lt;&lt; Felicity ʼ16 Home</a></p>
-    <p><a href="javascript:history.back()">&lt;&lt; Back</a></p>
+    <p><a href="<?= locale_base_url() ?>">&lt;&lt; <?= __('Felicity ʼ16 Home') ?></a></p>
+    <p><a href="javascript:history.back()">&lt;&lt; <?= __('Back') ?></a></p>
     </div>
 </body>
 </html>
