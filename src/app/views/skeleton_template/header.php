@@ -83,5 +83,16 @@ if (empty($is_ajax)):
         <?php endif; ?>
     </div>
     <?php endif; ?>
+    <?php
+        $display_titles = [
+            'about' => 'About',
+            'gallery' => 'Gallery',
+            'schedule' => 'Schedule',
+            'sponsors' => 'Sponsors',
+            'team' => 'Team',
+            'contact' => 'Contact',
+        ]
+    ?>
+    <div class="mobile-page-title"><?= isset($display_titles[$page_slug]) ? __($display_titles[$page_slug]) : '' ?></div>
     <div class="content-holder">
 <?php endif;

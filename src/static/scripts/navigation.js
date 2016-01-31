@@ -40,6 +40,7 @@ $(function () {
             .on(animationEnd, function () {
                 $(this).removeClass('disappear');
             });
+        $('.mobile-page-title').removeClass('open');
     };
 
     var openLink = function(pageName) {
@@ -59,6 +60,9 @@ $(function () {
         loadContent(newUrl, $article);
         $body.addClass('page-open');
         $clickedLink.addClass('open');
+        $('.mobile-page-title').text($clickedLink.text());
+        $('.mobile-page-title').addClass('open');
+        $('.primary-nav-wrap').removeClass('open');
         // Force redraw
         $body.offset();
         $article.addClass('open');
@@ -238,4 +242,18 @@ $(function () {
     .on('mouseenter', showTooltip)
     .on('mouseleave', hideTooltip)
     .on('click', showNavbar);
+});
+
+
+$(function() {
+    function openPrimaryNavSidebar() {
+        $('.primary-nav-wrap').addClass('open');
+    }
+
+    function closePrimaryNavSidebar() {
+        $('.primary-nav-wrap').removeClass('open');
+    }
+
+    $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
+    $('.primary-nav-open').on('click', openPrimaryNavSidebar);
 });
