@@ -248,10 +248,12 @@ $(function () {
 $(function() {
     function openPrimaryNavSidebar() {
         $('.primary-nav-wrap').addClass('open');
+        location.hash = 'nav';
     }
 
     function closePrimaryNavSidebar() {
         $('.primary-nav-wrap').removeClass('open');
+        location.hash = '_';
     }
 
     $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
@@ -263,12 +265,21 @@ $(function() {
             return;
         }
         $('.quick-links-wrap').addClass('open');
+        location.hash = 'nav';
     }
 
     function closeQuickLinksSidebar() {
         $('.quick-links-wrap').removeClass('open');
+        location.hash = '_';
     }
 
     $('.quick-links-overlay').on('click', closeQuickLinksSidebar);
     $('.quick-links-open').on('click', openQuickLinksSidebar);
+
+    $(window).on('hashchange', function() {
+        if (location.hash != '#nav') {
+            closePrimaryNavSidebar();
+            closeQuickLinksSidebar();
+        }
+    });
 });

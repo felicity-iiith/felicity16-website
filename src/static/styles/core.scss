@@ -1453,7 +1453,8 @@ textarea {
         }
     }
 
-    .auth-quick-links, .lang-quick-links {
+    .auth-quick-links,
+    .lang-quick-links {
         position: relative;
         margin: 3px;
     }
@@ -1461,7 +1462,7 @@ textarea {
     .auth-quick-links {
         .nick {
             border-radius: 0;
-            border: none;
+            border: 0;
 
             a {
                 display: block;
@@ -1471,7 +1472,7 @@ textarea {
 
     .lang-quick-links {
         border-radius: 0;
-        border: none;
+        border: 0;
         text-align: center;
 
         ul {
@@ -1484,7 +1485,7 @@ textarea {
                 margin: 4px;
 
                 &:before {
-                    content: "";
+                    content: '';
                 }
             }
         }
