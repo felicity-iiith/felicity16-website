@@ -27,7 +27,7 @@ if (empty($is_ajax)):
     }
 ?>
     </div>
-    <nav>
+    <nav class="primary-links">
         <?php if (isset($categorised_event)): ?>
         <div class="crystal-ball">
             <div class="ball-title"><?= __('Events') ?></div>
@@ -88,9 +88,6 @@ if (empty($is_ajax)):
             <?php endforeach; ?>
         </div>
         <?php endif; ?>
-        <div class="primary-nav-helpers">
-
-        </div>
         <div class="primary-nav-wrap">
             <div class="primary-nav-open"></div>
             <div class="primary-nav-overlay"></div>

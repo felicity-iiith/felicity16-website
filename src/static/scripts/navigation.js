@@ -256,4 +256,19 @@ $(function() {
 
     $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
     $('.primary-nav-open').on('click', openPrimaryNavSidebar);
+
+    function openQuickLinksSidebar() {
+        if ($('.primary-nav-wrap').hasClass('open')) {
+            closePrimaryNavSidebar();
+            return;
+        }
+        $('.quick-links-wrap').addClass('open');
+    }
+
+    function closeQuickLinksSidebar() {
+        $('.quick-links-wrap').removeClass('open');
+    }
+
+    $('.quick-links-overlay').on('click', closeQuickLinksSidebar);
+    $('.quick-links-open').on('click', openQuickLinksSidebar);
 });
