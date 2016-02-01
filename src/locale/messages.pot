@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-29 18:33+0530\n"
+"POT-Creation-Date: 2016-02-01 22:16+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgid ""
 "everyone!"
 msgstr ""
 
-#: src/locale/locale_dump.php:11 src/app/views/skeleton_template/footer.php:53
+#: src/locale/locale_dump.php:11 src/app/views/skeleton_template/footer.php:59
 msgid "Schedule"
 msgstr ""
 
@@ -58,13 +58,15 @@ msgid ""
 "computers and experience an unabated felicity! "
 msgstr ""
 
-#: src/locale/locale_dump.php:16 src/locale/locale_dump.php:23
-#: src/locale/locale_dump.php:44 src/locale/locale_dump.php:62
-#: src/locale/locale_dump.php:89 src/locale/locale_dump.php:104
-#: src/locale/locale_dump.php:121 src/locale/locale_dump.php:128
-#: src/locale/locale_dump.php:135 src/locale/locale_dump.php:144
-#: src/locale/locale_dump.php:149 src/locale/locale_dump.php:154
-#: src/locale/locale_dump.php:160
+#: src/locale/locale_dump.php:16 src/locale/locale_dump.php:26
+#: src/locale/locale_dump.php:47 src/locale/locale_dump.php:65
+#: src/locale/locale_dump.php:92 src/locale/locale_dump.php:107
+#: src/locale/locale_dump.php:124 src/locale/locale_dump.php:131
+#: src/locale/locale_dump.php:143 src/locale/locale_dump.php:152
+#: src/locale/locale_dump.php:157 src/locale/locale_dump.php:162
+#: src/locale/locale_dump.php:169 src/locale/locale_dump.php:176
+#: src/locale/locale_dump.php:220 src/locale/locale_dump.php:227
+#: src/locale/locale_dump.php:234 src/locale/locale_dump.php:240
 msgid "files/16/logos/felicity16-logo-large.png"
 msgstr ""
 
@@ -82,38 +84,53 @@ msgid ""
 "based on ACM ICPC format."
 msgstr ""
 
-#: src/locale/locale_dump.php:20 src/locale/locale_dump.php:86
-#: src/locale/locale_dump.php:100 src/locale/locale_dump.php:125
-#: src/locale/locale_dump.php:132 src/locale/locale_dump.php:141
-#: src/app/views/templates/event/index.php:16
+#: src/locale/locale_dump.php:20 src/locale/locale_dump.php:89
+#: src/locale/locale_dump.php:103 src/locale/locale_dump.php:128
+#: src/locale/locale_dump.php:137 src/locale/locale_dump.php:149
+#: src/locale/locale_dump.php:166 src/locale/locale_dump.php:173
+#: src/locale/locale_dump.php:216 src/locale/locale_dump.php:224
+#: src/locale/locale_dump.php:231 src/app/views/templates/event/index.php:16
 msgid "Rules"
 msgstr ""
 
-#: src/locale/locale_dump.php:21 src/locale/locale_dump.php:42
-#: src/locale/locale_dump.php:60 src/locale/locale_dump.php:80
-#: src/locale/locale_dump.php:87 src/locale/locale_dump.php:102
-#: src/locale/locale_dump.php:119 src/locale/locale_dump.php:126
-#: src/locale/locale_dump.php:133
+#: src/locale/locale_dump.php:21
+msgid "Practice Contest begins at 1600 hours"
+msgstr ""
+
+#: src/locale/locale_dump.php:22
+msgid "contest/codecraft"
+msgstr ""
+
+#: src/locale/locale_dump.php:23
+msgid "Link to the Practice Contest"
+msgstr ""
+
+#: src/locale/locale_dump.php:24 src/locale/locale_dump.php:45
+#: src/locale/locale_dump.php:63 src/locale/locale_dump.php:83
+#: src/locale/locale_dump.php:90 src/locale/locale_dump.php:105
+#: src/locale/locale_dump.php:122 src/locale/locale_dump.php:129
+#: src/locale/locale_dump.php:141 src/locale/locale_dump.php:167
+#: src/locale/locale_dump.php:174 src/locale/locale_dump.php:218
 msgid "Online"
 msgstr ""
 
-#: src/locale/locale_dump.php:22 src/locale/locale_dump.php:43
-#: src/locale/locale_dump.php:61 src/locale/locale_dump.php:81
-#: src/locale/locale_dump.php:88 src/locale/locale_dump.php:103
-#: src/locale/locale_dump.php:120 src/locale/locale_dump.php:127
-#: src/locale/locale_dump.php:134 src/locale/locale_dump.php:143
+#: src/locale/locale_dump.php:25 src/locale/locale_dump.php:46
+#: src/locale/locale_dump.php:64 src/locale/locale_dump.php:84
+#: src/locale/locale_dump.php:91 src/locale/locale_dump.php:106
+#: src/locale/locale_dump.php:123 src/locale/locale_dump.php:130
+#: src/locale/locale_dump.php:142 src/locale/locale_dump.php:151
 msgid "threads@felicity.iiit.ac.in"
 msgstr ""
 
-#: src/locale/locale_dump.php:24 src/locale/locale_dump.php:167
+#: src/locale/locale_dump.php:27 src/locale/locale_dump.php:247
 msgid "Gordian Knot"
 msgstr ""
 
-#: src/locale/locale_dump.php:25 src/locale/locale_dump.php:168
+#: src/locale/locale_dump.php:28 src/locale/locale_dump.php:248
 msgid "The Project Euler of Felicity"
 msgstr ""
 
-#: src/locale/locale_dump.php:26
+#: src/locale/locale_dump.php:29
 msgid ""
 "This Project Euler-styled contest challenges you to untangle intricate "
 "enigmas of mathematics.\n"
@@ -124,66 +141,66 @@ msgid ""
 "The link to the contest portal will be available at the time of the contest."
 msgstr ""
 
-#: src/locale/locale_dump.php:31
+#: src/locale/locale_dump.php:34
 msgid ""
 "For unlocking each level, you need to solve at least 3 problems in the "
 "previous level."
 msgstr ""
 
-#: src/locale/locale_dump.php:32
+#: src/locale/locale_dump.php:35
 msgid ""
 "There are 10 levels in all. Each question carries some points depending on "
 "its level."
 msgstr ""
 
-#: src/locale/locale_dump.php:33
+#: src/locale/locale_dump.php:36
 msgid "Score for a problem on the i-th level is 100*i."
 msgstr ""
 
-#: src/locale/locale_dump.php:34
+#: src/locale/locale_dump.php:37
 msgid "Bonus marks will be awarded after completing all problems in a level."
 msgstr ""
 
-#: src/locale/locale_dump.php:35
+#: src/locale/locale_dump.php:38
 msgid ""
 "Bonus for level i is calculated as 100*i - 5*(number of wrong answers on "
 "that level)."
 msgstr ""
 
-#: src/locale/locale_dump.php:36
+#: src/locale/locale_dump.php:39
 msgid "Time penalty of 30 seconds is levied after a wrong submission."
 msgstr ""
 
-#: src/locale/locale_dump.php:37
+#: src/locale/locale_dump.php:40
 msgid "Any attempt to game the system will lead to disqualification."
 msgstr ""
 
-#: src/locale/locale_dump.php:38
+#: src/locale/locale_dump.php:41
 msgid "Tie in scores will be resolved first by level, then by timestamp."
 msgstr ""
 
-#: src/locale/locale_dump.php:39 src/locale/locale_dump.php:57
-#: src/locale/locale_dump.php:118
+#: src/locale/locale_dump.php:42 src/locale/locale_dump.php:60
+#: src/locale/locale_dump.php:121
 msgid "The contest has ended"
 msgstr ""
 
-#: src/locale/locale_dump.php:40
+#: src/locale/locale_dump.php:43
 msgid "scores/gordian-knot/"
 msgstr ""
 
-#: src/locale/locale_dump.php:41 src/locale/locale_dump.php:79
+#: src/locale/locale_dump.php:44 src/locale/locale_dump.php:82
 msgid "Link to the final scorebard"
 msgstr ""
 
-#: src/locale/locale_dump.php:45 src/locale/locale_dump.php:171
+#: src/locale/locale_dump.php:48 src/locale/locale_dump.php:251
 msgid "Break In CTF"
 msgstr ""
 
-#: src/locale/locale_dump.php:46 src/locale/locale_dump.php:172
+#: src/locale/locale_dump.php:49 src/locale/locale_dump.php:252
 msgid "Break & Get In"
 msgstr ""
 
-#: src/locale/locale_dump.php:47
+#: src/locale/locale_dump.php:50
 msgid ""
 "The official Capture The Flag event for Felicity Threads. Break In is a "
 "jeopardy-style CTF event, where you use whatever means at your disposal to "
@@ -195,51 +212,51 @@ msgid ""
 "The IRC is live on #breakin on freenode. "
 msgstr ""
 
-#: src/locale/locale_dump.php:52
+#: src/locale/locale_dump.php:55
 msgid ""
 "Break In is a team event. Each team can consist of a maximum of 2 players."
 msgstr ""
 
-#: src/locale/locale_dump.php:53
+#: src/locale/locale_dump.php:56
 msgid "Please do not attack CTF infrastructure."
 msgstr ""
 
-#: src/locale/locale_dump.php:54
+#: src/locale/locale_dump.php:57
 msgid ""
 "All team members must be registered <a class=\"underlined\" href=\"https://"
 "felicity.iiit.ac.in/register/\">here</a>. The link for team registration is "
 "provided."
 msgstr ""
 
-#: src/locale/locale_dump.php:55
+#: src/locale/locale_dump.php:58
 msgid ""
 "The link for the contest will be provided here just before the contest "
 "starts."
 msgstr ""
 
-#: src/locale/locale_dump.php:56
+#: src/locale/locale_dump.php:59
 msgid ""
 "Bonus points will be awarded for finding legitimate bugs with the contest "
 "portal"
 msgstr ""
 
-#: src/locale/locale_dump.php:58
+#: src/locale/locale_dump.php:61
 msgid "scores/breakin/"
 msgstr ""
 
-#: src/locale/locale_dump.php:59
+#: src/locale/locale_dump.php:62
 msgid "Link to the scoreboard"
 msgstr ""
 
-#: src/locale/locale_dump.php:63 src/locale/locale_dump.php:161
+#: src/locale/locale_dump.php:66 src/locale/locale_dump.php:241
 msgid "Cache In"
 msgstr ""
 
-#: src/locale/locale_dump.php:64
+#: src/locale/locale_dump.php:67
 msgid "The more you look, the less you see."
 msgstr ""
 
-#: src/locale/locale_dump.php:65
+#: src/locale/locale_dump.php:68
 msgid ""
 "Here are the <a href=\"https://felicity.iiit.ac.in/files/16/cachein-"
 "explanations.pdf\" class=\"underlined\">explanations of all the questions.</"
@@ -255,58 +272,58 @@ msgid ""
 "to find a new one ahead."
 msgstr ""
 
-#: src/locale/locale_dump.php:71
+#: src/locale/locale_dump.php:74
 msgid "The answers can be a single word or a phrase."
 msgstr ""
 
-#: src/locale/locale_dump.php:72
+#: src/locale/locale_dump.php:75
 msgid ""
 "Each right answer will fetch you 100 points and will lead you to the next "
 "level."
 msgstr ""
 
-#: src/locale/locale_dump.php:73
+#: src/locale/locale_dump.php:76
 msgid "There is no partial scoring for any question."
 msgstr ""
 
-#: src/locale/locale_dump.php:74
+#: src/locale/locale_dump.php:77
 msgid ""
 "In case your submission is incorrect, you are not allowed to submit to that "
 "question again for the next 30 seconds."
 msgstr ""
 
-#: src/locale/locale_dump.php:75
+#: src/locale/locale_dump.php:78
 msgid ""
 "The participants will be ranked first on the basis of the number of "
 "questions solved. In case of a tie, the time taken to solve the questions "
 "will be considered."
 msgstr ""
 
-#: src/locale/locale_dump.php:76
+#: src/locale/locale_dump.php:79
 msgid "Any attempt to game with the system will lead to disqualification."
 msgstr ""
 
-#: src/locale/locale_dump.php:77
+#: src/locale/locale_dump.php:80
 msgid "Contest has ended!"
 msgstr ""
 
-#: src/locale/locale_dump.php:78
+#: src/locale/locale_dump.php:81
 msgid "scores/cachein/"
 msgstr ""
 
-#: src/locale/locale_dump.php:82
+#: src/locale/locale_dump.php:85
 msgid "files/16/cache_in.jpg"
 msgstr ""
 
-#: src/locale/locale_dump.php:83
+#: src/locale/locale_dump.php:86
 msgid "Kings of ML"
 msgstr ""
 
-#: src/locale/locale_dump.php:84
+#: src/locale/locale_dump.php:87
 msgid "Do not regret, just regress"
 msgstr ""
 
-#: src/locale/locale_dump.php:85
+#: src/locale/locale_dump.php:88
 msgid ""
 "Do not make the mistake of considering this as just another coding contest. "
 "Each question here is an exotic research problem in itself. So gear up all "
@@ -314,15 +331,15 @@ msgid ""
 "intuition."
 msgstr ""
 
-#: src/locale/locale_dump.php:90
+#: src/locale/locale_dump.php:93
 msgid "TLE"
 msgstr ""
 
-#: src/locale/locale_dump.php:91
+#: src/locale/locale_dump.php:94
 msgid "Dare to code beyond the norms."
 msgstr ""
 
-#: src/locale/locale_dump.php:92
+#: src/locale/locale_dump.php:95
 msgid ""
 "The coding contest that pushes you beyond your comfort zones. From esoteric "
 "programming to obfuscation, it welcomes any dirty tricks you can play with "
@@ -339,19 +356,19 @@ msgid ""
 "them within some constraints on time, space and code."
 msgstr ""
 
-#: src/locale/locale_dump.php:101
+#: src/locale/locale_dump.php:104
 msgid "Contest rescheduled."
 msgstr ""
 
-#: src/locale/locale_dump.php:105
+#: src/locale/locale_dump.php:108
 msgid "Kernel Cruise"
 msgstr ""
 
-#: src/locale/locale_dump.php:106
+#: src/locale/locale_dump.php:109
 msgid "Harness those clock cycles!"
 msgstr ""
 
-#: src/locale/locale_dump.php:107
+#: src/locale/locale_dump.php:110
 msgid ""
 "Felicity Threads ʼ16 presents to you Kernel Cruise, a platform where you’ll "
 "be pitched against various computational problems, varying from "
@@ -373,40 +390,40 @@ msgid ""
 "tutorials, for learning and practice."
 msgstr ""
 
-#: src/locale/locale_dump.php:113
+#: src/locale/locale_dump.php:116
 msgid "This is a familiarization phase."
 msgstr ""
 
-#: src/locale/locale_dump.php:114
+#: src/locale/locale_dump.php:117
 msgid "There are 3 simple problems."
 msgstr ""
 
-#: src/locale/locale_dump.php:115
+#: src/locale/locale_dump.php:118
 msgid ""
 "You can read resources, surf the internet and submit CUDA codes for the same."
 msgstr ""
 
-#: src/locale/locale_dump.php:116
+#: src/locale/locale_dump.php:119
 msgid ""
 "For those who do not have NVIDIA on their PCs, you can use the IDE to test "
 "your codes."
 msgstr ""
 
-#: src/locale/locale_dump.php:117
+#: src/locale/locale_dump.php:120
 msgid ""
 "The version of CUDA is 4.0 and compile flags are -arch=compute_11 -"
 "code=sm_11 -lm -lcurand."
 msgstr ""
 
-#: src/locale/locale_dump.php:122
+#: src/locale/locale_dump.php:125
 msgid "Botomata"
 msgstr ""
 
-#: src/locale/locale_dump.php:123
+#: src/locale/locale_dump.php:126
 msgid "May the best bot win"
 msgstr ""
 
-#: src/locale/locale_dump.php:124
+#: src/locale/locale_dump.php:127
 msgid ""
 "Botomata belongs to a new genre of AI and combinatorial search contests, and "
 "will contain challenges from puzzles like Sudoku, Kakuro, Rubik\\'s Cube, "
@@ -414,29 +431,45 @@ msgid ""
 "strategies and heuristics for constraint satisfaction and game playing."
 msgstr ""
 
-#: src/locale/locale_dump.php:129
+#: src/locale/locale_dump.php:132
 msgid "Code Helix"
 msgstr ""
 
-#: src/locale/locale_dump.php:130
-msgid "Program naturally"
+#: src/locale/locale_dump.php:133
+msgid "Think naturally"
 msgstr ""
 
-#: src/locale/locale_dump.php:131
+#: src/locale/locale_dump.php:134
 msgid ""
-"Indulge with nature by programming in the fields of natural sciences ranging "
-"from bioinformatics to genetics."
-msgstr ""
-
-#: src/locale/locale_dump.php:136
-msgid "Debug The C Bug"
-msgstr ""
-
-#: src/locale/locale_dump.php:137
-msgid " Are bugs your pet peeves? Chase them down!"
+"Code-Helix is the latest entry in the Felicity Threads. The contest has a "
+"mix of programming and subjective questions from the fields of Science, "
+"encompassing Physics, Chemistry, Biology, Bioinformatics, Genetics and some "
+"questions requiring critical thinking.\n"
+"\n"
+"The contest would start on 31st January, noon and end on 2nd Feb midnight."
 msgstr ""
 
 #: src/locale/locale_dump.php:138
+msgid "Contest is now live!"
+msgstr ""
+
+#: src/locale/locale_dump.php:139
+msgid "contest/code-helix"
+msgstr ""
+
+#: src/locale/locale_dump.php:140
+msgid "LINK TO THE CONTEST"
+msgstr ""
+
+#: src/locale/locale_dump.php:144
+msgid "Debug The C Bug"
+msgstr ""
+
+#: src/locale/locale_dump.php:145
+msgid " Are bugs your pet peeves? Chase them down!"
+msgstr ""
+
+#: src/locale/locale_dump.php:146
 msgid ""
 "Find the bugs in the code (solution) for a problem and fix them, sounds "
 "simple right?\n"
@@ -444,42 +477,42 @@ msgid ""
 "This is an onsite event."
 msgstr ""
 
-#: src/locale/locale_dump.php:142
+#: src/locale/locale_dump.php:150
 msgid "Onsite"
 msgstr ""
 
-#: src/locale/locale_dump.php:145
+#: src/locale/locale_dump.php:153
 msgid "Pulsation"
 msgstr ""
 
-#: src/locale/locale_dump.php:146
+#: src/locale/locale_dump.php:154
 msgid "Innovate. Design. Automate."
 msgstr ""
 
-#: src/locale/locale_dump.php:147
+#: src/locale/locale_dump.php:155
 msgid "Electronics events"
 msgstr ""
 
-#: src/locale/locale_dump.php:148
+#: src/locale/locale_dump.php:156
 msgid ""
 " What is the digital age without digital electronics? For those who\\'s "
 "heart is but an IC that pumps bits instead of blood, pulsation is here to "
 "resonate with the frequency of your hearts!"
 msgstr ""
 
-#: src/locale/locale_dump.php:150
+#: src/locale/locale_dump.php:158
 msgid "Litcafe"
 msgstr ""
 
-#: src/locale/locale_dump.php:151
+#: src/locale/locale_dump.php:159
 msgid "If wordplay is your foreplay, be there!"
 msgstr ""
 
-#: src/locale/locale_dump.php:152
+#: src/locale/locale_dump.php:160
 msgid "The literary contest"
 msgstr ""
 
-#: src/locale/locale_dump.php:153
+#: src/locale/locale_dump.php:161
 msgid ""
 "In cities full of large malls and big restaurants, in a society where the "
 "paradigm of large reigns our imagination, sometimes that little café in a "
@@ -494,19 +527,154 @@ msgid ""
 "cater to everyone’s tastes."
 msgstr ""
 
-#: src/locale/locale_dump.php:155
+#: src/locale/locale_dump.php:163
+msgid "LitQuiz"
+msgstr ""
+
+#: src/locale/locale_dump.php:164
+msgid "Et tu, questions ?"
+msgstr ""
+
+#: src/locale/locale_dump.php:165
+msgid ""
+"Welcome to the Ultimate Clash of Literary enthusiasts as they go up against "
+"each other through rounds that test the voracious readers, geeks and even "
+"the grammar Nazis!"
+msgstr ""
+
+#: src/locale/locale_dump.php:168 src/locale/locale_dump.php:175
+#: src/locale/locale_dump.php:219 src/locale/locale_dump.php:226
+#: src/locale/locale_dump.php:233
+msgid "contact@felicity.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:170
+msgid "Shakespeare Codes"
+msgstr ""
+
+#: src/locale/locale_dump.php:171
+msgid "A horse! A horse! My kingdom for a horse!"
+msgstr ""
+
+#: src/locale/locale_dump.php:172
+msgid ""
+"Code in the esoteric programming language inspired by the legendary poet, "
+"playwright and actor, William Shakespeare, and win glory mastering the Tech "
+"and Lit side of things all at once."
+msgstr ""
+
+#: src/locale/locale_dump.php:177
+msgid "FanFicFeb"
+msgstr ""
+
+#: src/locale/locale_dump.php:178
+msgid "Tribute from the Fanatic Fandom"
+msgstr ""
+
+#: src/locale/locale_dump.php:179
+msgid ""
+"How many of us have read, re-read, watched and re-watched TV series and "
+"books that we connected with? Do you remember your avid, obsessive self who "
+"held their breaths and made complex theories to explain and predict that "
+"next episode ? Will Jon Snow come back to life?  Was Cobb still in a dream? "
+"What would have happened if somehow Draco ended with Hermione ? Tell us your "
+"Fan Fiction story as a tribute to the book, comic, movie or TV series whose "
+"protagonists became an indispensable part of your own life :)\n"
+"\n"
+"Just a few guidelines:\n"
+"Your story could range from 250-2500 words.\n"
+"Avoid any cuss words or raw NSFW content.\n"
+"Send in your entries as private messages at the LitCafe page.\n"
+"Here are a few you could start with!\n"
+"\n"
+"<strong>TV Shows:</strong>\n"
+"Agents of S.H.I.E.L.D\n"
+"F.R.I.E.N.D.S.\n"
+"Doctor Who\n"
+"Supernatural\n"
+"Game of Thrones\n"
+"\n"
+"<strong>Movies:</strong>\n"
+"Marvel-DC Movies\n"
+"Chris Nolan works\n"
+"Pulp Fiction\n"
+"Star Wars\n"
+"Back to the Future\n"
+"\n"
+"<strong>Book Series:</strong>\n"
+"A Song of Ice and Fire\n"
+"The Lord of the Rings\n"
+"Harry Potter Series\n"
+"The Hunger Games\n"
+"Bartimaeus trilogy\n"
+"\n"
+"<strong>Anime-Manga:</strong>\n"
+"Fullmetal Alchemist\n"
+"Code Geass\n"
+"Death Note\n"
+"Bleach\n"
+"Naruto\n"
+"The Last Airbender\n"
+"One Piece"
+msgstr ""
+
+#: src/locale/locale_dump.php:217
+msgid "Contest on Facebook Page"
+msgstr ""
+
+#: src/locale/locale_dump.php:221
+msgid "Crime Scene Investigation"
+msgstr ""
+
+#: src/locale/locale_dump.php:222
+msgid "Who killed the cat ?"
+msgstr ""
+
+#: src/locale/locale_dump.php:223
+msgid ""
+"Calling all detectives and private investigators! Make your way through "
+"baffling clues, red herrings and mysterious suspects as you race against "
+"time to solve the greatest challenge on the campus with your deduction and "
+"logic skills."
+msgstr ""
+
+#: src/locale/locale_dump.php:225
+msgid "Felicity Ground, IIIT"
+msgstr ""
+
+#: src/locale/locale_dump.php:228
+msgid "Spoken Word Poetry"
+msgstr ""
+
+#: src/locale/locale_dump.php:229
+msgid "Poetry is truth in its Sunday clothes"
+msgstr ""
+
+#: src/locale/locale_dump.php:230
+msgid ""
+"Enthrall the audiences as you make a beautiful symphony with your words. "
+"Challenge your imagination and creativity as you present your poems to the "
+"world, with panache. Do you have it in you to attempt this intricate art and "
+"emerge a winner? Find out at the Flagship event of LitCafe."
+msgstr ""
+
+#: src/locale/locale_dump.php:232
+msgid "TBD, IIIT"
+msgstr ""
+
+#: src/locale/locale_dump.php:235
 msgid "Zombie Zone"
 msgstr ""
 
-#: src/locale/locale_dump.php:156
+#: src/locale/locale_dump.php:236
 msgid "Life is short, play more."
 msgstr ""
 
-#: src/locale/locale_dump.php:157
+#: src/locale/locale_dump.php:237
 msgid "Virtual games"
 msgstr ""
 
-#: src/locale/locale_dump.php:158
+#: src/locale/locale_dump.php:238
 msgid ""
 "Are you the alpha male in the cyber space? Do you kick terrorist-ass in "
 "counter strike? Or are you a single gamer that rules them all in DOTA? Do "
@@ -516,39 +684,39 @@ msgid ""
 "to go Zombie?"
 msgstr ""
 
-#: src/locale/locale_dump.php:162
+#: src/locale/locale_dump.php:242
 msgid "The more you look, the less you see"
 msgstr ""
 
-#: src/locale/locale_dump.php:163
+#: src/locale/locale_dump.php:243
 msgid "threads/cachein/"
 msgstr ""
 
-#: src/locale/locale_dump.php:164
+#: src/locale/locale_dump.php:244
 msgid "files/16/cachein_scores.png"
 msgstr ""
 
-#: src/locale/locale_dump.php:165
+#: src/locale/locale_dump.php:245
 msgid "static/scores/cachein.json"
 msgstr ""
 
-#: src/locale/locale_dump.php:166
+#: src/locale/locale_dump.php:246
 msgid "files/16/cachein-explanations.pdf"
 msgstr ""
 
-#: src/locale/locale_dump.php:169
+#: src/locale/locale_dump.php:249
 msgid "threads/gordian-knot/"
 msgstr ""
 
-#: src/locale/locale_dump.php:170
+#: src/locale/locale_dump.php:250
 msgid "static/scores/gordian.json"
 msgstr ""
 
-#: src/locale/locale_dump.php:173
+#: src/locale/locale_dump.php:253
 msgid "threads/breakin/"
 msgstr ""
 
-#: src/locale/locale_dump.php:174
+#: src/locale/locale_dump.php:254
 msgid "static/scores/breakin.json"
 msgstr ""
 
@@ -1016,22 +1184,22 @@ msgstr ""
 msgid "Login / Register"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:47
+#: src/app/views/skeleton_template/footer.php:53
 msgid "About"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:50
+#: src/app/views/skeleton_template/footer.php:56
 msgid "Gallery"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:58
+#: src/app/views/skeleton_template/footer.php:64
 msgid "Sponsors"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:61
+#: src/app/views/skeleton_template/footer.php:67
 msgid "Team"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:64
+#: src/app/views/skeleton_template/footer.php:70
 msgid "Contact"
 msgstr ""
