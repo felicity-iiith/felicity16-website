@@ -1,4 +1,4 @@
-/* global $, loadContent, baseUrl, localeBaseUrl, eventsData, ga */
+/* global $, loadContent, baseUrl, localeBaseUrl, ga */
 
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
     animationEnd  = 'webkitAnimationEnd animationend msAnimationEnd oAnimationEnd';
@@ -19,14 +19,6 @@ var urlHelper = {
 
     getPageName : function (pageUrl) {
         return pageUrl.split('?')[0].split('#')[0].replace(localeBaseUrl, '').replace(/\/+$/, '');
-    }
-};
-
-var pageHelper = {
-    getPageTitle : function (pageName) {
-        return pageName.split('-').map(function (name) {
-            return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        }).join(' ');
     }
 };
 
@@ -138,116 +130,32 @@ $(function () {
 });
 
 $(function () {
-    var $dummyTarget        = $('<div>', {'class': 'nav-cum-tooltip-dummy-target'}).appendTo('body'),
-        $navCumTooltip      = $('<div>', {'class': 'nav-cum-tooltip'}).appendTo($dummyTarget),
-        $navCumTooltipTitle = $('<div>', {'class': 'nav-title'}).appendTo($navCumTooltip),
-        $navbar             = $('<ul>',  {'class': 'events-sub-nav'}).appendTo($navCumTooltip),
-        $triangleBack       = $('<div>', {'class': 'triangle-back'}).appendTo($navCumTooltip),
-        $triangleFront      = $('<div>', {'class': 'triangle-front'}).appendTo($navCumTooltip);
+    var getNavbarHeight = function (pageName) {
+        var $dummyTarget        = $('.nav-cum-tooltip-dummy-target.cat-' + pageName),
+            $navCumTooltip      = $dummyTarget.find('.nav-cum-tooltip'),
+            $navbar             = $navCumTooltip.find('.events-sub-nav');
 
-    //var $contentHolder = $('.content-holder');
-    (function () {})($triangleBack, $triangleFront);
-
-    var linkClicked = function (e) {
-        e.stopPropagation();
-        // $('<div>').appendTo('body').css({
-        //     'z-index': 1000,
-        //     height: '100%',
-        //     width: '100%',
-        //     'position': 'fixed',
-        //     top: 0,
-        //     bottom: 0,
-        //     left: 0,
-        //     right: 0
-        // }).click(function (e) {
-        //     e.stopPropagation();
-        // });
-        // var offset = $navCumTooltip.offset();
-        // var y = e.pageY - offset.top;
-        // $('<div>', {class:'fire1'}).css({
-        //     top: y,
-        // }).appendTo($navCumTooltip).animate({
-        //     height: $navCumTooltip.height() - y
-        // },function () {
-        //     $triangleBack.css({
-        //         'border-top': '9px solid green',
-        //         'bottom': '-9px',
-        //     });
-        //     $triangleFront.animate({
-        //         'border-width': 0
-        //     }, function () {
-        //
-        //     });
-        // });
-
-        // var offset = $(this).offset();
-        // var x = e.pageX - offset.left;
-        // var y = e.pageY - offset.top;
-        // $('<div>', {'class': 'wave'})
-        // .css({'top':y, 'left': x})
-        // .appendTo(this).on(animationEnd, function () {
-        //     $(this).remove();
-        // });
-        // var $ball = $('.crystal-ball');
-        // $('body').addClass('page-open');
-        // $navCumTooltip.animate({'opacity': 0, 'margin-bottom': '10px'}, 50, function () {
-        //     $navbar.css({'height' : 0});
-        //     $('.has-tooltip').removeClass('has-tooltip');
-        //     $navCumTooltip.removeClass('open');
-        // });
-        // offset = $ball[0].getBoundingClientRect();
-        // $('<div>', {'class' : 'big-wave'})
-        // .appendTo('body')
-        // .css({
-        //     'top' : offset.top + offset.height / 2,
-        //     'left': offset.left + offset.width / 2
-        // }).on(animationEnd, function () {
-        //
-        //     $('<article>', {
-        //         'class' : 'page open full',
-        //     })
-        //     .css('background-color', $(this).css('background-color'))
-        //     .text('Loading...')
-        //     .appendTo($contentHolder);
-        //     $(this).fadeOut(function () {
-        //         $(this).remove();
-        //     });
-        // });
-    };
-
-    var getLI = function (href, text) {
-        return $('<li>').append( $('<a>', {'href': href }).text( text ).click(linkClicked) );
-    };
-
-    var updateNavbarLinks = function (pageName) {
-        var events = eventsData[pageName], $li;
-        $navbar.empty();
-        try {
-            events[0].path = events[0].path.replace('index/', '');
-            events[0].data.name = "Home";
-        } catch (e) {
-
-        }
-        for(var i = 0; i < events.length ; i++) {
-            var event = events[i];
-            $li = getLI( localeBaseUrl + event.path.substr(1), event.data.name );
-            $navbar.append( $li );
-        }
-        return $li.height() * events.length;
+        var events = $navbar.find('li');
+        return events.height() * events.length;
     };
 
     var showTooltip = function (cb) {
-        if ($navCumTooltip.hasClass('open')) {
+        var $target = $(this);
+        var pageName = $target.data('href');
+
+        var $dummyTarget        = $('.nav-cum-tooltip-dummy-target.cat-' + pageName),
+            $navCumTooltip      = $dummyTarget.find('.nav-cum-tooltip'),
+            $navbar             = $navCumTooltip.find('.events-sub-nav');
+
+        if ($('.nav-cum-tooltip').filter('.open').length) {
             return;
         }
-        var $target = $(this);
+
         if ($target.hasClass('has-tooltip')) {
             return;
         }
         $target.addClass('has-tooltip');
 
-        var pageName = $target.data('href');
-        $navCumTooltipTitle.text(pageHelper.getPageTitle(pageName));
         $navbar.height(0);
 
         var offset  = $target[0].getBoundingClientRect();
@@ -262,6 +170,12 @@ $(function () {
     };
 
     var hideTooltip = function () {
+        var $target = $(this);
+        var pageName = $target.data('href');
+
+        var $dummyTarget        = $('.nav-cum-tooltip-dummy-target.cat-' + pageName),
+            $navCumTooltip      = $dummyTarget.find('.nav-cum-tooltip');
+
         if ($navCumTooltip.hasClass('open')) {
             return;
         }
@@ -271,6 +185,12 @@ $(function () {
 
     var showNavbar = function (e) {
         var $target = $(this);
+        var pageName = $target.data('href');
+
+        var $dummyTarget        = $('.nav-cum-tooltip-dummy-target.cat-' + pageName),
+            $navCumTooltip      = $dummyTarget.find('.nav-cum-tooltip'),
+            $navbar             = $navCumTooltip.find('.events-sub-nav');
+
         if ( $target.hasClass('has-tooltip')) {
             if ($navCumTooltip.hasClass('open')) {
                 $navCumTooltip.removeClass('open');
@@ -279,17 +199,19 @@ $(function () {
                 });
             } else {
                 $navCumTooltip.addClass('open');
-                var pageName = $target.data('href');
-                var height = updateNavbarLinks(pageName);
+                var height = getNavbarHeight(pageName);
                 $navbar.stop().animate({
                     'height': height
                 });
             }
         } else {
-            if ($navCumTooltip.hasClass('open')) {
+            if ($('.nav-cum-tooltip').filter('.open').length) {
+                $navCumTooltip = $('.nav-cum-tooltip.open');
+                $navbar = $navCumTooltip.find('.events-sub-nav');
                 $navbar.css({'height' : 0});
                 $('.has-tooltip').removeClass('has-tooltip');
                 $navCumTooltip.removeClass('open');
+                $navCumTooltip.css({'opacity': 0, 'margin-bottom': '10px'}, 50);
                 showTooltip.call(this, showNavbar.bind(this));
             }
         }
@@ -301,11 +223,10 @@ $(function () {
         }
     };
 
-    $navCumTooltipTitle.click(function (e) {
-        e.stopPropagation();
-    });
-
     $('body').click(function () {
+        var $navCumTooltip      = $('.nav-cum-tooltip.open'),
+            $navbar             = $navCumTooltip.find('.events-sub-nav');
+
         $navCumTooltip.animate({'opacity': 0, 'margin-bottom': '10px'}, 50, function () {
             $navbar.css({'height' : 0});
             $('.has-tooltip').removeClass('has-tooltip');
