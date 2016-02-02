@@ -1560,6 +1560,10 @@ textarea {
             display: block;
             pointer-events: all;
             margin-bottom: 5px;
+            // scss-lint:disable ImportantRule
+            width: auto !important;
+            height: auto !important;
+            // scss-lint:enable ImportantRule
 
             .nav-cum-tooltip {
                 position: relative;
