@@ -292,6 +292,7 @@ $(function() {
     function closePrimaryNavSidebar() {
         $('.primary-nav-wrap').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
+        locHash = "#_";
     }
 
     $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
@@ -309,6 +310,7 @@ $(function() {
     function closeQuickLinksSidebar() {
         $('.quick-links-wrap').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
+        locHash = "#_";
     }
 
     $('.quick-links-overlay').on('click', closeQuickLinksSidebar);
@@ -342,6 +344,7 @@ $(function() {
 
         $('.events-nav-cum-tooltip').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
+        locHash = "#_";
 
         if (e && e.stopPropagation) {
             e.stopPropagation();
