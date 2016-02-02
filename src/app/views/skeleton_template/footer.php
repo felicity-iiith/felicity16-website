@@ -42,6 +42,7 @@ if (empty($is_ajax)):
             </ul>
         </div>
         <div class="events-nav-cum-tooltip">
+            <div class="nav-cum-tooltip-wrap">
             <?php foreach ($categorised_event as $category => $events): ?>
                 <div class="nav-cum-tooltip-dummy-target cat-<?= $category ?>">
                     <?php
@@ -86,6 +87,7 @@ if (empty($is_ajax)):
                     </div>
                 </div>
             <?php endforeach; ?>
+            </div>
         </div>
         <?php endif; ?>
         <div class="primary-nav-wrap">
