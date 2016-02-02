@@ -3,6 +3,9 @@
 var transitionEnd = 'webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd',
     animationEnd  = 'webkitAnimationEnd animationend msAnimationEnd oAnimationEnd';
 
+var lastHash = location.hash;
+var lastLocation = location.href.split('#')[0];
+
 var urlHelper = {
     getPageUrl : function (pageName) {
         var pagePath = pageName.replace('-', '/');
@@ -89,23 +92,32 @@ $(function () {
         if ($clickedLink.hasClass('open')) {
             showLanding();
             history.pushState(localeBaseUrl, null, localeBaseUrl);
+            lastLocation = localeBaseUrl;
             updateAltUrls();
         } else {
             var newUrl = urlHelper.getPageUrl(pageName);
-            history.pushState(newUrl, null, newUrl);
+            if (location.hash == "#nav") {
+                history.replaceState(newUrl, null, newUrl);
+            } else {
+                history.pushState(newUrl, null, newUrl);
+            }
+            lastLocation = newUrl;
+            lastHash = '';
             openLink(pageName);
             updateAltUrls(pageName);
         }
         ga('send', 'pageview');
     };
     $(window).on('popstate', function() {
-        if (!history.state) return;
+        var newLocation = location.href.split('#')[0];
+        if (newLocation == lastLocation) return;
         var pageName = urlHelper.getPageName(window.location.href);
         if (pageName === '') {
             showLanding();
         } else {
             openLink(pageName);
         }
+        lastLocation = newLocation;
     });
     $('.primary-nav-link').on('click', onPrimaryNavLinkClick);
     $('.landing-content .title a').on('click', function (e) {
@@ -115,6 +127,7 @@ $(function () {
         e.preventDefault();
         showLanding();
         history.pushState(localeBaseUrl, null, localeBaseUrl);
+        lastLocation = localeBaseUrl;
         updateAltUrls();
         ga('send', 'pageview');
     });
@@ -282,17 +295,16 @@ $(function () {
 
 
 $(function() {
-    var locHash = location.hash;
-
     function openPrimaryNavSidebar() {
         $('.primary-nav-wrap').addClass('open');
-        location.hash = 'nav';
+        history.pushState(undefined, undefined, '#nav');
+        lastHash = '#nav';
     }
 
     function closePrimaryNavSidebar() {
         $('.primary-nav-wrap').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
-        locHash = "#_";
+        lastHash = "#_";
     }
 
     $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
@@ -304,30 +316,32 @@ $(function() {
             return;
         }
         $('.quick-links-wrap').addClass('open');
-        location.hash = 'nav';
+        history.pushState(undefined, undefined, '#nav');
+        lastHash = '#nav';
     }
 
     function closeQuickLinksSidebar() {
         $('.quick-links-wrap').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
-        locHash = "#_";
+        lastHash = "#_";
     }
 
     $('.quick-links-overlay').on('click', closeQuickLinksSidebar);
     $('.quick-links-open').on('click', openQuickLinksSidebar);
 
     $(window).on('hashchange', function() {
-        if (locHash == '#nav') {
+        if (lastHash == '#nav') {
             closePrimaryNavSidebar();
             closeQuickLinksSidebar();
             closeEventsNav();
         }
-        locHash = location.hash;
+        lastHash = location.hash;
     });
 
     function openEventsNav(e) {
         $('.events-nav-cum-tooltip').addClass('open');
-        location.hash = 'nav';
+        history.pushState(undefined, undefined, '#nav');
+        lastHash = '#nav';
 
         if (e && e.stopPropagation) {
             e.stopPropagation();
@@ -344,7 +358,7 @@ $(function() {
 
         $('.events-nav-cum-tooltip').removeClass('open');
         history.replaceState(undefined, undefined, '#_');
-        locHash = "#_";
+        lastHash = "#_";
 
         if (e && e.stopPropagation) {
             e.stopPropagation();
