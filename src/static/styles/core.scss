@@ -212,7 +212,7 @@ nav.primary-links {
     background-size: cover;
     background-position: 0 0;
     background-attachment: fixed;
-    background: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.5), rgba(0,0,0,1), rgba(0,0,0,1));
+    background: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .5), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
 
     &:before {
         content: '';
@@ -1287,10 +1287,12 @@ textarea {
         position: fixed;
         top: 0;
         left: 0;
-        height: 50px;
-        width: 50px;
-        background-color: black;
+        background-color: rgba(0, 0, 0, .5);
         cursor: pointer;
+
+        i {
+            font-size: 2em;
+        }
     }
 
     .primary-nav-wrap {
@@ -1421,10 +1423,12 @@ textarea {
         position: fixed;
         top: 0;
         right: 0;
-        height: 50px;
-        width: 50px;
-        background-color: black;
+        background-color: rgba(0, 0, 0, .5);
         cursor: pointer;
+
+        i {
+            font-size: 2em;
+        }
     }
 
     .quick-links-wrap.open .quick-links-overlay {

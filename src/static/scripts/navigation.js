@@ -282,6 +282,8 @@ $(function () {
 
 
 $(function() {
+    var locHash = location.hash;
+
     function openPrimaryNavSidebar() {
         $('.primary-nav-wrap').addClass('open');
         location.hash = 'nav';
@@ -289,7 +291,7 @@ $(function() {
 
     function closePrimaryNavSidebar() {
         $('.primary-nav-wrap').removeClass('open');
-        location.hash = '_';
+        history.replaceState(undefined, undefined, '#_');
     }
 
     $('.primary-nav-overlay').on('click', closePrimaryNavSidebar);
@@ -306,18 +308,19 @@ $(function() {
 
     function closeQuickLinksSidebar() {
         $('.quick-links-wrap').removeClass('open');
-        location.hash = '_';
+        history.replaceState(undefined, undefined, '#_');
     }
 
     $('.quick-links-overlay').on('click', closeQuickLinksSidebar);
     $('.quick-links-open').on('click', openQuickLinksSidebar);
 
     $(window).on('hashchange', function() {
-        if (location.hash != '#nav') {
+        if (locHash == '#nav') {
             closePrimaryNavSidebar();
             closeQuickLinksSidebar();
             closeEventsNav();
         }
+        locHash = location.hash;
     });
 
     function openEventsNav(e) {
@@ -338,7 +341,7 @@ $(function() {
         }
 
         $('.events-nav-cum-tooltip').removeClass('open');
-        location.hash = '_';
+        history.replaceState(undefined, undefined, '#_');
 
         if (e && e.stopPropagation) {
             e.stopPropagation();

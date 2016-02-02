@@ -63,7 +63,7 @@ if (empty($is_ajax)):
         </div>
     </article>
     <nav class="quick-links-wrap">
-        <div class="quick-links-open"></div>
+        <div class="quick-links-open"><i class="icon-user"></i></div>
         <div class="quick-links-overlay"></div>
 
         <?php if (isset($is_authenticated)): ?>

@@ -91,7 +91,7 @@ if (empty($is_ajax)):
         </div>
         <?php endif; ?>
         <div class="primary-nav-wrap">
-            <div class="primary-nav-open"></div>
+            <div class="primary-nav-open"><i class="icon-menu"></i></div>
             <div class="primary-nav-overlay"></div>
             <ul class="primary-nav left">
                 <li>
