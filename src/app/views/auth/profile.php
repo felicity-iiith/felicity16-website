@@ -8,7 +8,7 @@
 <form action="update_profile/" method="post" class="pure-form pure-form-aligned">
     <fieldset>
         <div class="pure-control-group">
-            <label for="nick"><?= __('Nick:') ?></label>
+            <label for="nick"><?= __('Nick / Username / Handle:') ?></label>
             <input type="text" name="nick" id="nick" value="<?= $user_data['nick'] ?>" required>
         </div>
 
@@ -53,7 +53,7 @@
         </div>
 
         <div class="pure-control-group">
-            <label for="organization"><?= __('Organization:') ?></label>
+            <label for="organization"><?= __('College / Institution / Company:') ?></label>
             <input type="text" name="organization" value="<?= htmlentities($user_data['organization']) ?>" required>
         </div>
 
