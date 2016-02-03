@@ -14,7 +14,7 @@
                 <div class="lead text-left some-top-margin"><?= nl2br(__($description)) ?></div>
                 <?php if (is_array($rules) && count($rules)): ?>
                     <h2 class="text-left"><?= __('Rules') ?></h2>
-                    <ul class="text-justify">
+                    <ul class="text-left">
                         <?php foreach ($rules as $rule): ?>
                             <li><?= __($rule) ?></li>
                         <?php endforeach; ?>
