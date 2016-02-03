@@ -41,6 +41,52 @@ if (empty($is_ajax)):
                 <?php endforeach; ?>
             </ul>
         </div>
+        <div class="events-nav-cum-tooltip">
+            <?php foreach ($categorised_event as $category => $events): ?>
+                <div class="nav-cum-tooltip-dummy-target cat-<?= $category ?>">
+                    <?php
+                        $category_name = "";
+                        $events_sub_nav_home = [];
+                        $events_sub_nav = [];
+                        foreach ($events as $event) {
+                            if (substr($event['path'], -6) === 'index/') {
+                                $category_name = $event['data']['name'];
+                                $events_sub_nav_home = [
+                                    'path'=> substr($event['path'], 1, -6),
+                                    'name'=> __('Home')
+                                ];
+                            } else {
+                                array_push($events_sub_nav, [
+                                    'path'=> substr($event['path'], 1),
+                                    'name'=> $event['data']['name']
+                                ]);
+                            }
+                        }
+                        usort($events_sub_nav, function($a, $b) {
+                            return $a['name'] - $b['name'];
+                        });
+
+                        // Localize now
+                        foreach ($events_sub_nav as $key => $event) {
+                            $events_sub_nav[$key]['name'] = __($event['name']);
+                        }
+
+                        // Add `Home` at the begining
+                        array_unshift($events_sub_nav, $events_sub_nav_home);
+                    ?>
+                    <div class="nav-cum-tooltip">
+                        <div class="nav-title"><?= __($category_name) ?></div>
+                        <ul class="events-sub-nav">
+                            <?php foreach ($events_sub_nav as $event): ?>
+                                <li><a href="<?= locale_base_url() . $event['path'] ?>"><?= $event['name'] ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <div class="triangle-back"></div>
+                        <div class="triangle-front"></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
         <?php endif; ?>
         <ul class="primary-nav left">
             <li>
@@ -65,22 +111,6 @@ if (empty($is_ajax)):
             </li>
         </ul>
     </nav>
-    <?php if (isset($categorised_event)): ?>
-    <script type="text/javascript">
-        var eventsData = <?= json_encode($categorised_event, JSON_UNESCAPED_SLASHES) ?>;
-        for(var i in eventsData) {
-            eventsData[i].sort(function (e1, e2) {
-                if (e1.template == 'category') {
-                    return -1;
-                }
-                if (e2.template == 'category') {
-                    return 1;
-                }
-                return e1.data.name.localeCompare(e2.data.name);
-            });
-        }
-    </script>
-    <?php endif; ?>
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
     <?php if ($page_slug !== "static"): ?>
