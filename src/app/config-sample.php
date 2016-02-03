@@ -95,3 +95,8 @@ $ldap_cfg = [
     "bind_dn"       => "...",
     "bind_password" => "...",
 ];
+
+$payment_cfg = [
+    'url'   => '...',
+    'salt'  => 'some-very-random-string'
+];
