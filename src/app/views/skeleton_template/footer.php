@@ -27,7 +27,7 @@ if (empty($is_ajax)):
     }
 ?>
     </div>
-    <nav>
+    <nav class="primary-links">
         <?php if (isset($categorised_event)): ?>
         <div class="crystal-ball">
             <div class="ball-title"><?= __('Events') ?></div>
@@ -42,6 +42,7 @@ if (empty($is_ajax)):
             </ul>
         </div>
         <div class="events-nav-cum-tooltip">
+            <div class="nav-cum-tooltip-wrap">
             <?php foreach ($categorised_event as $category => $events): ?>
                 <div class="nav-cum-tooltip-dummy-target cat-<?= $category ?>">
                     <?php
@@ -86,30 +87,35 @@ if (empty($is_ajax)):
                     </div>
                 </div>
             <?php endforeach; ?>
+            </div>
         </div>
         <?php endif; ?>
-        <ul class="primary-nav left">
-            <li>
-                <?php $primary_nav_link('about', __('About'), 'dragon8.png'); ?>
-            </li>
-            <li>
-                <?php $primary_nav_link('gallery', __('Gallery'), 'dragon2.png'); ?>
-            </li>
-            <li>
-                <?php $primary_nav_link('schedule', __('Schedule'), 'dragon7.png'); ?>
-            </li>
-        </ul>
-        <ul class="primary-nav right">
-            <li>
-                <?php $primary_nav_link('sponsors', __('Sponsors'), 'dragon5.png'); ?>
-            </li>
-            <li>
-                <?php $primary_nav_link('team', __('Team'), 'dragon3.png'); ?>
-            </li>
-            <li>
-                <?php $primary_nav_link('contact', __('Contact'), 'dragon6.png'); ?>
-            </li>
-        </ul>
+        <div class="primary-nav-wrap">
+            <div class="primary-nav-open"><i class="icon-menu"></i></div>
+            <div class="primary-nav-overlay"></div>
+            <ul class="primary-nav left">
+                <li>
+                    <?php $primary_nav_link('about', __('About'), 'dragon8.png'); ?>
+                </li>
+                <li>
+                    <?php $primary_nav_link('gallery', __('Gallery'), 'dragon2.png'); ?>
+                </li>
+                <li>
+                    <?php $primary_nav_link('schedule', __('Schedule'), 'dragon7.png'); ?>
+                </li>
+            </ul>
+            <ul class="primary-nav right">
+                <li>
+                    <?php $primary_nav_link('sponsors', __('Sponsors'), 'dragon5.png'); ?>
+                </li>
+                <li>
+                    <?php $primary_nav_link('team', __('Team'), 'dragon3.png'); ?>
+                </li>
+                <li>
+                    <?php $primary_nav_link('contact', __('Contact'), 'dragon6.png'); ?>
+                </li>
+            </ul>
+        </div>
     </nav>
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>

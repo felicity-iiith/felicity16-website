@@ -62,26 +62,44 @@ if (empty($is_ajax)):
             <p class="dates"><?= __('February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>') ?></p>
         </div>
     </article>
-    <?php if ($lang_list): ?>
-    <div class="lang-quick-links">
-        <?php foreach ($lang_list as $lang => $locale): ?>
-            <a href="<?= base_url() . $lang . $path ?>" lang="<?= $lang ?>" class="lang-link<?= ($lang == $lang_prefix) ? ' active-lang' : '' ?>"><?= locale_get_display_name($lang, $lang) ?></a> ·
-        <?php endforeach; ?>
-        <i class="icon-language"></i>
-    </div>
-    <?php endif; ?>
-    <?php if (isset($is_authenticated)): ?>
-    <div class="auth-quick-links">
-        <?php if ($is_authenticated): ?>
-            <?php if (!empty($user_nick)): ?>
-                <div class="nick"><?= sprintf(__('Hello, %s'), $user_nick) ?> <a href="<?= locale_base_url() . "auth/logout/" ?>"><?= __('Logout') ?></a></div>
+    <nav class="quick-links-wrap">
+        <div class="quick-links-open"><i class="icon-user"></i></div>
+        <div class="quick-links-overlay"></div>
+
+        <?php if (isset($is_authenticated)): ?>
+        <div class="auth-quick-links">
+            <?php if ($is_authenticated): ?>
+                <?php if (!empty($user_nick)): ?>
+                    <div class="nick"><?= sprintf(__('Hello, %s'), $user_nick) ?> <a href="<?= locale_base_url() . "auth/logout/" ?>"><?= __('Logout') ?></a></div>
+                <?php else: ?>
+                    <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn"><?= __('Logout') ?></a></div>
+                <?php endif; ?>
             <?php else: ?>
-                <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn"><?= __('Logout') ?></a></div>
+                <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn"><?= __('Login / Register') ?></a></div>
             <?php endif; ?>
-        <?php else: ?>
-            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn"><?= __('Login / Register') ?></a></div>
+        </div>
         <?php endif; ?>
-    </div>
-    <?php endif; ?>
+        <?php if ($lang_list): ?>
+        <div class="lang-quick-links">
+            <i class="icon-language"></i>
+            <ul>
+            <?php foreach ($lang_list as $lang => $locale): ?>
+                <li><a href="<?= base_url() . $lang . $path ?>" lang="<?= $lang ?>" class="lang-link<?= ($lang == $lang_prefix) ? ' active-lang' : '' ?>"><?= locale_get_display_name($lang, $lang) ?></a></li>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php endif; ?>
+    </nav>
+    <?php
+        $display_titles = [
+            'about' => 'About',
+            'gallery' => 'Gallery',
+            'schedule' => 'Schedule',
+            'sponsors' => 'Sponsors',
+            'team' => 'Team',
+            'contact' => 'Contact',
+        ]
+    ?>
+    <div class="mobile-page-title"><?= isset($display_titles[$page_slug]) ? __($display_titles[$page_slug]) : '' ?></div>
     <div class="content-holder">
 <?php endif;
