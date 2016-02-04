@@ -40,9 +40,12 @@ class contest extends Controller {
             $errors = [];
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 foreach (['contact_number', 'stream', 'year', 'experience', 'why_join'] as $name) {
-                    if (empty($_POST[$name])) {
+                    if (empty(@trim($_POST[$name]))) {
                         $errors[$name] = __('↑ This is a required field');
                     }
+                }
+                if (!empty($_POST['contact_number']) && ( !ctype_digit($_POST['contact_number']) || strlen($_POST['contact_number']) < 10) ) {
+                    $errors['contact_number'] = 'Please enter a valid phone number';
                 }
                 if (count($errors) == 0) {
                     $user_details = [
