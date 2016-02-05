@@ -5,10 +5,46 @@ class contest extends Controller {
     public function __construct() {
         $this->load_library('auth_lib', 'auth');
         $this->auth->force_authentication();
+        $this->load_model('contest_model', 'model');
+        load_helper('validations');
+    }
+
+    public function paper_presentation() {
+        $user_nick = $this->auth->get_user();
+        $user_details = $this->model->is_registered_for_paper_presentation($user_nick);
+        $errors = [];
+        if (!$user_details && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            required_post_params(['contact_number', 'paper_link'], $errors);
+            if (!empty($_POST['contact_number']) && !is_valid_phone_number($_POST['contact_number']) ) {
+                $errors['contact_number'] = 'Please enter a valid phone number';
+            }
+            if (!empty($_POST['paper_link']) && !is_valid_url($_POST['paper_link']) ) {
+                $errors['paper_link'] = 'Please enter a valid link';
+            }
+            if (!$errors) {
+                $user_details = [
+                    'nick'              => $user_nick,
+                    'contact_number'    => $_POST['contact_number'],
+                    'paper_link'        => $_POST['paper_link'],
+                ];
+                $success = $this->model->register_for_paper_presentation($user_details);
+                if (!$success) {
+                    $errors['common'] = 'Some unexpected error occured';
+                }
+            }
+        }
+        $this->load_view('skeleton_template/header', [
+            'is_authenticated'  => true,
+            'user_nick'         => $user_nick,
+        ]);
+        $this->load_view('contest/paper_presentation', [
+            'user_details'  => $user_details,
+            'errors'        => $errors
+        ]);
+        $this->load_view('skeleton_template/footer');
     }
 
     private function go_to_webdev_workshop_payment($workshop_user_details) {
-        $this->load_model('workshop_model');
         $user_details = $this->auth->get_user_details();
         global $payment_cfg;
         $data = [
@@ -31,23 +67,18 @@ class contest extends Controller {
 
     public function webdev_workshop() {
         $user_nick = $this->auth->get_user();
-        $this->load_model('workshop_model');
-        $user_details = $this->workshop_model->is_registered_for_webdev($user_nick);
+        $user_details = $this->model->is_registered_for_webdev($user_nick);
         if ($user_details) {
             $this->go_to_webdev_workshop_payment($user_details);
         }
         else {
             $errors = [];
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                foreach (['contact_number', 'stream', 'year', 'experience', 'why_join'] as $name) {
-                    if (empty(@trim($_POST[$name]))) {
-                        $errors[$name] = __('↑ This is a required field');
-                    }
-                }
-                if (!empty($_POST['contact_number']) && ( !ctype_digit($_POST['contact_number']) || strlen($_POST['contact_number']) < 10) ) {
+                required_post_params(['contact_number', 'stream', 'year', 'experience', 'why_join'], $errors);
+                if (!empty($_POST['contact_number']) && !is_valid_phone_number($_POST['contact_number']) ) {
                     $errors['contact_number'] = 'Please enter a valid phone number';
                 }
-                if (count($errors) == 0) {
+                if (!$errors) {
                     $user_details = [
                         'nick'              => $user_nick,
                         'contact_number'    => $_POST['contact_number'],
@@ -56,7 +87,7 @@ class contest extends Controller {
                         'experience'        => $_POST['experience'],
                         'why_join'          => $_POST['why_join'],
                     ];
-                    if ($this->workshop_model->register($user_details)) {
+                    if ($this->model->register_for_webdev($user_details)) {
                         $this->go_to_webdev_workshop_payment($user_details);
                     } else {
                         $errors['common'] = __('Some unexpected error occurred');
