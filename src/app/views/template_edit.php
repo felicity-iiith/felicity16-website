@@ -10,7 +10,7 @@
                 $out .= "<input type='text' data-type='color' name='$field_name' value='" . htmlentities($data, ENT_QUOTES) . "' $extras/>";
                 break;
             case 'longtext':
-                $out .= "<br><textarea name='$field_name' rows='4' cols='50' $extras>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
+                $out .= "<br><textarea name='$field_name' rows='10' cols='50' $extras>" . htmlentities($data, ENT_QUOTES) . "</textarea>";
                 break;
             case 'time':
             case 'date':
