@@ -7,7 +7,7 @@ $text_input = function ($name, $large_text=false) use ($errors) {
         <input
             name="<?= $name ?>"
             value="<?= isset($_POST[$name]) ? $_POST[$name] : '' ?>"
-
+            required=""
             type="text"
             class="pure-input-1">
     <?php endif; ?>

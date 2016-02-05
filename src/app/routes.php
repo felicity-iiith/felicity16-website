@@ -25,7 +25,8 @@ $routes = [
     "/sap/portal/"                              => "/sap_portal/",
     "/sap/"                                     => "/sap/",
 
-    "/talks-and-workshops/web-development/register/" => "/contest/webdev_workshop/",
+    "/talks-and-workshops/web-development/register/"    => "/contest/webdev_workshop/",
+    "/talks-and-workshops/paper-presentation/register/" => "/contest/paper_presentation/",
 
     "/api/"     => "/page/show/api/",
     "/"         => "/page/show/"
