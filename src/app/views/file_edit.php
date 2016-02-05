@@ -25,6 +25,12 @@
         <script>
             var base_url = "<?= base_url() ?>";
         </script>
+        <style media="screen">
+            textarea {
+                transition: none;
+                resize: vertical;
+            }
+        </style>
     </head>
     <body onload="setupEdit()">
         <nav>
@@ -35,11 +41,12 @@
             <a class="btn btn-blue" href="?history"><i class="fa fa-history"></i> History</a>
             <a class="btn btn-blue" href="<?= base_url() . substr($path, 1) ?>"><i class="fa fa-eye"></i> View page</a>
         </nav>
+        <h3 class="container">Editing <?= $path ?></h3>
         <?php if ($error): ?>
         <div class="error" id="error_msg"><?= $error ?></div>
         <?php endif; ?>
         <article class="file">
-            <form action="" method="post" class="file-edit">
+            <form action="" method="post" class="file-edit block full-width container">
                 <input type="hidden" name="file_id" value="<?= $id ?>" id="file_id"/>
                 <input type="hidden" name="version_id" value="<?= $version_id ?>" id="version_id"/>
                 <div class="file-title-edit">
