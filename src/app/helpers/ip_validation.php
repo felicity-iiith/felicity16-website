@@ -1,3 +1,4 @@
+<?php
 function check_ipv4_in_cidr($ip, $cidr) {
     if (false !== strpost($cidr, '/')) {
         list($address, $netmask) = explode('/', $cidr, 2);
