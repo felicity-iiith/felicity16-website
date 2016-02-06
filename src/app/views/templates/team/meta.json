@@ -1,0 +1,13 @@
+{
+    "events_data": {
+        "name"      : "Events list",
+        "inApi"     : false,
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
+    }
+}
