@@ -103,4 +103,4 @@ $payment_cfg = [
 
 $auth_cfg = [
     'magic_hosts' => '192.168.0.0/24',
-]
+];
