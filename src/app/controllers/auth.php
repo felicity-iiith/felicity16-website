@@ -576,9 +576,14 @@ class auth extends Controller {
 
         $user = $this->auth_model->get_user($oauth_id);
 
+        global $auth_cfg;
+        $remote_ip = $_SERVER['REMOTE_ADDR'];
+        load_helper('ip_validation');
+
         if (!empty($user)
             && isset($user["resitration_status"]) && $user["resitration_status"] == "complete"
             && isset($user["email_verified"]) && $user["email_verified"]
+            && check_ipv4_in_cidr($remote_ip, $auth_cfg['magic_hosts'])
         ) {
             $user_data = [];
             $user_data["nick"] = $user["nick"];

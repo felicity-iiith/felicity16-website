@@ -100,3 +100,7 @@ $payment_cfg = [
     'url'   => '...',
     'salt'  => 'some-very-random-string'
 ];
+
+$auth_cfg = [
+    'magic_hosts' => '192.168.0.0/24',
+]
