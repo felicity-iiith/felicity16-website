@@ -34,6 +34,7 @@ class contest extends Controller {
             }
         }
         $this->load_view('skeleton_template/header', [
+            'title'             => __('Register').' · '.__('Paper Presentation'),
             'is_authenticated'  => true,
             'user_nick'         => $user_nick,
         ]);
@@ -95,6 +96,7 @@ class contest extends Controller {
                 }
             }
             $this->load_view('skeleton_template/header', [
+                'title'             => __('Register').' · '.__('Web development Workshop'),
                 'is_authenticated'  => true,
                 'user_nick'         => $user_nick,
             ]);
@@ -172,6 +174,7 @@ class contest extends Controller {
         }
 
         $this->load_view('skeleton_template/header', [
+            'title'             => __('Register').' · '.__('Breakin'),
             'is_authenticated'  => true,
             'user_nick'         => $user_nick,
         ]);
