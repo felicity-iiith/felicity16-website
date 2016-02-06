@@ -141,5 +141,9 @@ gulp.task('watch', ['default'], function() {
 gulp.task('build', ['styles', 'scripts', 'images', 'fonts', 'php', 'stuff', 'locale', 'vendor']);
 
 gulp.task('default', ['clean'], function() {
-    gulp.run('build');
+    gulp.run('build', function(){
+        if (args.deploy) {
+            del.sync(['deploy/.htaccess', 'deploy/index.php', 'deploy/app/config.php']);
+        }
+    });
 });
