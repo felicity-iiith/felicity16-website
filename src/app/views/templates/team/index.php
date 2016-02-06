@@ -26,7 +26,7 @@ function img($img_name, $name=null) {
 <div>
     <h2 class="text-center"><?= __('Finance Council') ?></h2>
     <div class="row">
-        <div class="col3 offset2"><?php img('Shyamili-Venkatapathy.jpg', __('Shyamili Venkatapathy')); ?></div>
+        <div class="col3 offset2"><?php img('Shyamili-Venkatapathy.jpg', __('Shyamli Venkatapathy')); ?></div>
         <div class="col3 offset2"><?php img('Gorang-Maniar.jpg', __('Gorang Maniar')); ?></div>
     </div>
 </div>
@@ -71,7 +71,8 @@ function img($img_name, $name=null) {
             <strong><?= __('Parth Kolekar')  ?> (<?= __('Primary Server Admin')?>)</strong>,
             <strong><?= __('Nisarg Jhaveri') ?> (<?= __('Secondary Server Admin')?>)</strong>,
             <?= __('Anurag Gupta') ?>,
-            <?= __('Rohan Karnawat') ?>
+            <?= __('Rohan Karnawat') ?>,
+            <?= __('Ayan Shrivastava') ?>
         </p>
     </div>
 </div>
@@ -127,7 +128,7 @@ function img($img_name, $name=null) {
             <strong><?= __('First row') ?></strong>:<br>
             <?= __('Sagar Gaur') ?>,
             <?= __('Aditya Baskar') ?>,
-            <?= __('Apuroop Kumar Reddy') ?>,
+            <strong><?= __('Apuroop Kumar Reddy') ?> (<?= __('Coordinator') ?>)</strong>,
             <?= __('Anvesh Rao') ?>,
             <?= __('Saksham Agrawal') ?>,
             <?= __('Nurendra Choudhary') ?>,
@@ -154,9 +155,10 @@ function img($img_name, $name=null) {
 <div>
     <h2 class="text-center"><?= __('The LitCafe Coordinators') ?></h2>
     <div class="row">
-        <div class="col3 offset1"><?php img('Anurag-Ghosh.jpg', __('Anurag Ghosh')); ?></div>
-        <div class="col3 offset-half"><?php img('Gorang-Maniar.jpg', __('Gorang Maniar')); ?></div>
-        <div class="col3 offset-half"><?php img('Vatika-Harlalka.jpg', __('Vatika Harlalka')); ?></div>
+        <div class="col3"><?php img('Akanksha-Srivastava.jpg', __('Akanksha Srivastava')); ?></div>
+        <div class="col3"><?php img('Anurag-Ghosh.jpg', __('Anurag Ghosh')); ?></div>
+        <div class="col3"><?php img('Gorang-Maniar.jpg', __('Gorang Maniar')); ?></div>
+        <div class="col3"><?php img('Vatika-Harlalka.jpg', __('Vatika Harlalka')); ?></div>
     </div>
 </div>
 <div>
