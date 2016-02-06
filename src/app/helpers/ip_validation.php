@@ -1,6 +1,6 @@
 <?php
 function check_ipv4_in_cidr($ip, $cidr) {
-    if (false !== strpost($cidr, '/')) {
+    if (false !== strpos($cidr, '/')) {
         list($address, $netmask) = explode('/', $cidr, 2);
         if ($netmask === '0') {
             return filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
