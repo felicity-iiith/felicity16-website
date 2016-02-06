@@ -5,7 +5,7 @@
 <?php
 function img($img_name, $name=null) {
 ?>
-    <div class="img-container<?=$name ? '' : ' group-pic' ?>" style="transform: rotate(<?=2-rand(1,4)?>deg)">
+    <div class="img-container<?=$name ? '' : ' group-pic' ?>" style="transform: rotate(<?= 2 - rand(1, 4) ?>deg)">
         <img src="<?=base_url()?>static/images/clip.png" class="clip">
         <img src="<?=base_url()?>static/images/team/<?=$img_name?>">
     </div>
@@ -131,7 +131,7 @@ function img($img_name, $name=null) {
             <?= __('Anvesh Rao') ?>,
             <?= __('Saksham Agrawal') ?>,
             <?= __('Nurendra Choudhary') ?>,
-            <?= __('AbHinav Prasad') ?>,
+            <?= __('Abhinav Prasad') ?>,
             <?= __('Debayan Das') ?>
         </p>
         <p class="names">

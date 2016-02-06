@@ -6,8 +6,8 @@
         "path"      : ".*/.*",
         "template"  : "(category|event)",
         "data"      : {
-            "name"          : "name",
-            "icon"          : "nav_icon"
+            "name" : "name",
+            "icon" : "nav_icon"
         }
     }
 }
