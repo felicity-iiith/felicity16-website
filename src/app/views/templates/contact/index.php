@@ -1,4 +1,4 @@
-<?php $this->load_fragment('skeleton_template/header'); ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
 <?php if (!$is_ajax): ?>
 <article class="page open contact">
 <?php endif; ?>

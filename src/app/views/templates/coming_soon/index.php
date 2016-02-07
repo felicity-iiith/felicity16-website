@@ -1,4 +1,4 @@
-<?php $this->load_fragment('skeleton_template/header'); ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => __('Coming Soon')]); ?>
 <?php if (!$is_ajax): ?>
 <article class="page open coming_soon">
 <?php endif; ?>

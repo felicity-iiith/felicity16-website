@@ -1,4 +1,4 @@
-<?php $this->load_fragment('skeleton_template/header'); ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => __('Gallery')]); ?>
 <?php if (!$is_ajax): ?>
 <article class="page open gallery">
 <?php endif; ?>

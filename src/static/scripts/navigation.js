@@ -29,7 +29,8 @@ var updateAltUrls = function(pageName) {
 };
 
 $(function () {
-    var $body = $('body'),
+    var localeBaseTitle = document.title.split(' · ').slice(-2).join(' · '),
+        $body = $('body'),
         $document = $(document),
         $contentHolder = $('.content-holder');
 
@@ -92,6 +93,7 @@ $(function () {
             openLink(pageName);
             updateAltUrls(pageName);
         }
+        document.title = localeBaseTitle;
         ga('send', 'pageview');
     };
     $(window).on('popstate', function() {
@@ -111,6 +113,7 @@ $(function () {
         e.preventDefault();
         showLanding();
         history.pushState(localeBaseUrl, null, localeBaseUrl);
+        document.title = localeBaseTitle;
         updateAltUrls();
         ga('send', 'pageview');
     });

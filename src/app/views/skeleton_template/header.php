@@ -29,12 +29,13 @@ if (empty($is_ajax)):
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <title><?= __('Felicity') ?> · <?= __('IIIT Hyderabad') ?></title>
+    <title><?= isset($title) ? $title . ' · ' : '' ?><?= __('Felicity') ?> · <?= __('IIIT-H') ?></title>
+
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css?v=2">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=2">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=3">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Flamenco|Noto+Sans">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
