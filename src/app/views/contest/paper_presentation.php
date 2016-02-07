@@ -5,7 +5,7 @@ $text_input = function ($name, $type="text") use ($errors) {
         name="<?= $name ?>"
         value="<?= isset($_POST[$name]) ? $_POST[$name] : '' ?>"
         type="<?=$type?>"
-        class="pure-input-1" >
+        class="pure-input-1" required="">
 
     <?php if (isset($errors[$name])): ?>
         <div class="error pure-input-1-1"><?= $errors[$name] ?></div>
