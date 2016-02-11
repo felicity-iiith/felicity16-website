@@ -1,7 +1,7 @@
 {
     "events_data": {
         "name"      : "Events list",
-        "inApi"     : false,
+        "inApi"     : true,
         "type"      : "external",
         "path"      : ".*/.*",
         "template"  : "(category|event)",

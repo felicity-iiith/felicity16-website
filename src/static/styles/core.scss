@@ -80,18 +80,19 @@ body {
     }
 }
 
+.underlined {
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
+
 a {
     outline: none;
     text-decoration: none;
     cursor: pointer;
     color: #fff;
 
-    &.underlined {
-        border-bottom: 1px solid;
-
-        &:hover {
-            border-bottom-style: dashed;
-        }
+    &.underlined:hover {
+        border-bottom-style: dashed;
     }
 }
 
@@ -818,6 +819,12 @@ article {
 
     .lead {
         margin-bottom: 2em;
+    }
+
+    .description img {
+        display: block;
+        max-width: 100%;
+        margin: auto;
     }
 }
 
