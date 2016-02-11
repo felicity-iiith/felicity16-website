@@ -6,14 +6,23 @@
 <?php endif; ?>
     <div class="container">
     <h1><?= __($name) ?></h1>
+    <?php if (isset($tagline)): ?>
         <p class="lead"><?= __($tagline) ?></p>
+    <?php endif; ?>
         <div class="row padded">
             <div class="col6">
                 <h2><?= __($status) ?></h2>
                 <?php if ($button_text): ?>
-                    <a class="btn" href="<?= base_url() . $button_link ?>"><?= __($button_text) ?></a>
+                    <a class="btn" href="<?php
+                    load_helper('validations');
+                    if (is_valid_url($button_link)) {
+                        echo $button_link;
+                    } else {
+                        echo base_url() . $button_link;
+                    }
+                    ?>"><?= __($button_text) ?></a>
                 <?php endif; ?>
-                <div class="lead text-left some-top-margin"><?= nl2br(__($description)) ?></div>
+                <div class="lead text-left some-top-margin description"><?= nl2br(__($description)) ?></div>
                 <?php if (is_array($rules) && count($rules)): ?>
                     <h2 class="text-left"><?= __('Rules') ?></h2>
                     <ul class="text-left">
