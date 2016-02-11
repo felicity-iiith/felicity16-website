@@ -1,0 +1,23 @@
+{
+    "title": {
+        "name"      : "Title",
+        "type"      : "text",
+        "default"   : "Title of the page"
+    },
+    "body": {
+        "name"      : "Body",
+        "type"      : "longtext",
+        "default"   : "Body"
+    },
+    "events_data": {
+        "name"      : "Events list",
+        "inApi"     : false,
+        "type"      : "external",
+        "path"      : ".*/.*",
+        "template"  : "(category|event)",
+        "data"      : {
+            "name"          : "name",
+            "icon"          : "nav_icon"
+        }
+    }
+}
