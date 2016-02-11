@@ -4,7 +4,7 @@
 <?php endif; ?>
 <?php
 $sponsors2016 = [
-    ['name' => 'Progress Software', 'image' => 'progress.jpg'],
+    // ['name' => 'Progress Software', 'image' => 'progress.jpg'],
 ];
 
 $sponsors2015 = [
@@ -46,48 +46,53 @@ $sponsors2014 = [
         <h2><?= __('Felicity 2016 Sponsors') ?></h2>
         <div class="row some-top-margin">
             <div class="col6 offset3">
-                <img src="<?= base_url() ?>static/images/sponsors/qualcomm.jpg" alt="Qualcomm logo"/>
                 <p>Title Sponsor</p>
+                <img src="<?= base_url() ?>static/images/sponsors/qualcomm.jpg" alt="Qualcomm logo"/>
             </div>
         </div>
+        <p>Powered By</p>
         <div class="row some-top-margin">
-            <div class="col4 container">
-                <img src="<?= base_url() ?>static/images/sponsors/microsoft.png" alt="Microsoft Logo"/>
-                <p><a class="underlined" href="<?= base_url() ?>threads/kings-of-ml/">Kings of ML</a> and <a class="underlined" href="<?= base_url() ?>threads/botomata/">Botomata</a> sponsor</p>
-            </div>
-            <div class="col4 container">
-                <img src="<?= base_url() ?>static/images/sponsors/indeed.png" alt="Indeed Logo"/>
-                <p>Nights Sponsor</p>
-            </div>
-            <div class="col4 container">
-                <img src="<?= base_url() ?>static/images/sponsors/sbh.png" alt="SBH Logo"/>
-                <p>Official Banking Partner</p>
-            </div>
-        </div>
-        <div class="row some-top-margin">
-            <div class="col3 container">
-                <img src="<?= base_url() ?>static/images/sponsors/cornetto.png" alt="Cornetto Logo"/>
-                <p>Official Snacking Partner</p>
+            <div class="col3 offset3 container">
+                <img src="<?= base_url() ?>static/images/sponsors/9xo.jpg" alt="9XO Logo"/>
             </div>
             <div class="col3 container">
                 <img src="<?= base_url() ?>static/images/sponsors/9xm.png" alt="9XM Logo"/>
-                <p>Powered By Partner</p>
             </div>
-            <div class="col3 container">
-                <img style="background-color: #0F69D6" src="<?= base_url() ?>static/images/sponsors/9xo.png" alt="9XO Logo"/>
-                <p>Powered By Partner</p>
+        </div>
+        <div class="row some-top-margin">
+            <div class="col4 container">
+                <p><a class="underlined" href="<?= base_url() ?>threads/kings-of-ml/">Kings of ML</a> and <a class="underlined" href="<?= base_url() ?>threads/botomata/">Botomata</a> sponsor</p>
+                <img src="<?= base_url() ?>static/images/sponsors/microsoft.png" alt="Microsoft Logo"/>
             </div>
-            <div class="col3 container">
-                <img src="<?= base_url() ?>static/images/sponsors/ccd.png" alt="CCD Logo"/>
+            <div class="col4 container">
+                <p>Nights Sponsor</p>
+                <img src="<?= base_url() ?>static/images/sponsors/indeed.png" alt="Indeed Logo"/>
+            </div>
+            <div class="col4 container">
+                <p>Official Banking Partner</p>
+                <img src="<?= base_url() ?>static/images/sponsors/sbh.png" alt="SBH Logo"/>
+            </div>
+        </div>
+        <div class="row some-top-margin">
+            <div class="col4 container">
+                <p>Official Snacking Partner</p>
+                <img src="<?= base_url() ?>static/images/sponsors/cornetto.png" alt="Cornetto Logo"/>
+            </div>
+            <div class="col4 container">
                 <p>Café Partners</p>
+                <img src="<?= base_url() ?>static/images/sponsors/ccd.png" alt="CCD Logo"/>
+            </div>
+            <div class="col4 container">
+                <p>Progress Software</p>
+                <img src="<?= base_url() ?>static/images/sponsors/progress.jpg" alt="Progress Logo"/>
             </div>
         </div>
         <?php foreach (array_chunk($sponsors2016, 4) as $sponsors): ?>
             <div class="row some-top-margin">
                 <?php foreach ($sponsors as $sponsor): ?>
                     <div class="col3 container">
-                        <img src="<?= base_url() .'static/images/sponsors/'. $sponsor['image'] ?>" alt="<?= $sponsor['name'] ?> Logo" />
                         <p><?= $sponsor['name'] ?></p>
+                        <img src="<?= base_url() .'static/images/sponsors/'. $sponsor['image'] ?>" alt="<?= $sponsor['name'] ?> Logo" />
                     </div>
                 <?php endforeach; ?>
             </div>
