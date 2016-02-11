@@ -35,7 +35,7 @@ if (empty($is_ajax)):
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
     <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css?v=2">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=3">
+    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=4">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Flamenco|Noto+Sans">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
