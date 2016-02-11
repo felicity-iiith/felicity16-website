@@ -7,15 +7,6 @@ body {
 
 .file {
     font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
-}
-
-.file .file-edit {
-    display: flex;
-    flex-direction: column;
-    flex: 1 1;
 }
 
 .file-title-edit {
