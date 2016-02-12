@@ -27,7 +27,7 @@ $text_input = function ($name, $required=true) use ($errors) {
         <h1 class="text-center">Register for
             <a class="underlined" href="<?= locale_base_url() ?>">Futsal</a>
         </h1>
-        <?php if ($team_info): ?>
+        <?php if (!$errors && $team_info): ?>
             <p class="text-center lead success">
                 You're registered for the event as a part of team <?= $team_info['team_name'] ?>
             </p>
@@ -65,11 +65,11 @@ $text_input = function ($name, $required=true) use ($errors) {
                     <label><?= __('Team member 4 username') ?> (*)</label>
                     <?php $text_input('nick4'); ?>
 
-                    <label><?= __('Team member 5 username', false) ?></label>
-                    <?php $text_input('nick5'); ?>
+                    <label><?= __('Team member 5 username') ?></label>
+                    <?php $text_input('nick5', false); ?>
 
-                    <label><?= __('Team member 6 username', false) ?></label>
-                    <?php $text_input('nick6'); ?>
+                    <label><?= __('Team member 6 username') ?></label>
+                    <?php $text_input('nick6', false); ?>
 
                     <button type="submit" class="pure-button pure-button-primary some-top-margin"><?= __('Confirm Registration') ?></button>
                 </fieldset>
