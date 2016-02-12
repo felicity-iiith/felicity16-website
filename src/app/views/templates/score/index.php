@@ -408,7 +408,14 @@ td.user-nick {
                     <?= __('Congratulations to all the winners!') ?>
                     <?php if (!empty($explanations_link)): ?>
                         <br>
-                        <a target="_blank" href="<?= base_url() . $explanations_link ?>"><?= __('Link to explanations') ?></a>
+                        <a target="_blank" href="<?php
+                        load_helper('validations');
+                        if (is_valid_url($explanations_link)) {
+                            echo $explanations_link;
+                        } else {
+                            echo base_url() . $explanations_link;
+                        }
+                        ?><?= __('Link to explanations') ?></a>
                     <?php endif; ?>
                 </span>
             </div>
