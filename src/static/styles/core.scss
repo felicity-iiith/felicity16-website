@@ -841,6 +841,10 @@ article {
         display: inline-block;
         text-align: left;
 
+        .btn {
+            min-width: 200px;
+        }
+
         .event {
             display: block;
             margin-bottom: 10px;
