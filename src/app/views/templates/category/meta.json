@@ -36,6 +36,7 @@
         "type"      : "external",
         "path"      : ".*/.*",
         "template"  : "(category|event)",
+        "inApi"     : false,
         "data"      : {
             "name"          : "name",
             "start_time"    : "start_time",
