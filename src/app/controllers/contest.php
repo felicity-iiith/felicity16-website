@@ -9,6 +9,83 @@ class contest extends Controller {
         load_helper('validations');
     }
 
+    public function futsal() {
+        $user_nick = $this->auth->get_user();
+        $this->load_model('contest_model');
+        $team_info = $this->contest_model->is_registered_for_futsal($user_nick);
+        $errors = [];
+        if (!$team_info && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            required_post_params([
+                'team_name',
+                'contact_number',
+                'nick2',
+                'nick3',
+                'nick4',
+            ], $errors);
+
+            if (!empty($_POST['contact_number']) && !is_valid_phone_number($_POST['contact_number']) ) {
+                $errors['contact_number'] = 'Please enter a valid phone number';
+            }
+
+            if (!empty($_POST['team_name']) && $this->contest_model->check_futsal_team_exists($_POST['team_name']) ) {
+                $errors['team_name'] = 'This team name already exists';
+            }
+
+            $team = [$user_nick];
+            $this->load_model('auth_model');
+            for ($i=2; $i <= 6; $i++) {
+                if ( ! empty($_POST['nick'.$i]) ) {
+                    $teammate = $this->auth_model->get_user_by_nick($_POST['nick'.$i]);
+                    if (!empty($teammate)
+                        && isset($teammate["resitration_status"]) && $teammate["resitration_status"] == "complete"
+                        && isset($teammate["email_verified"])     && $teammate["email_verified"]
+                    ) {
+                        if ($this->contest_model->check_futsal_participant_exists($_POST['nick'.$i])) {
+                            $errors['nick'.$i] = 'This member is already registered';
+                        } else {
+                            $team[] = $_POST['nick'.$i];
+                        }
+                    } else {
+                        $errors['nick'.$i] = 'This member is not registered';
+                    }
+                }
+            }
+
+            if (count(array_unique($team)) != count($team)) {
+                $errors['common'] = 'Duplicate members in team';
+            }
+
+            if (!$errors) {
+                $team_info = [
+                    'team_name' => $_POST['team_name'],
+                ];
+                $success = $this->model->register_for_futsal(
+                    $_POST['team_name'],
+                    $_POST['contact_number'],
+                    $team
+                );
+                if (!$success) {
+                    $errors['common'] = 'Some unexpected error occured';
+                }
+            }
+
+        }
+
+        $this->load_view('skeleton_template/header', [
+            'title'             => __('Register').' · '.__('Futsal'),
+            'is_authenticated'  => true,
+            'user_nick'         => $user_nick,
+        ]);
+
+        $this->load_view('contest/futsal', [
+            'user_nick' => $user_nick,
+            'team_info' => $team_info,
+            'errors'    => $errors
+        ]);
+
+        $this->load_view('skeleton_template/footer');
+    }
+
     public function paper_presentation() {
         $user_nick = $this->auth->get_user();
         $user_details = $this->model->is_registered_for_paper_presentation($user_nick);
