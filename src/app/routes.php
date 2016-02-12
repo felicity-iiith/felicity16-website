@@ -27,7 +27,7 @@ $routes = [
 
     "/talks-and-workshops/web-development/register/"    => "/contest/webdev_workshop/",
     "/talks-and-workshops/paper-presentation/register/" => "/contest/paper_presentation/",
-    "/gaming-and-sports/futsal/register"                => "/contest/futsal/",
+    "/sports/futsal/register"                           => "/contest/futsal/",
 
     "/api/"     => "/page/show/api/",
     "/"         => "/page/show/"
