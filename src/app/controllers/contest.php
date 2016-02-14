@@ -125,6 +125,8 @@ class contest extends Controller {
     private function go_to_webdev_workshop_payment($workshop_user_details) {
         $user_details = $this->auth->get_user_details();
         global $payment_cfg;
+        $url = $payment_cfg['webdev']['url'];
+        $salt = $payment_cfg['webdev']['salt'];
         $data = [
             'nick'  => $user_details['nick'],
             'name'  => $user_details['name'],
@@ -135,12 +137,12 @@ class contest extends Controller {
                 $user_details['name'],
                 $user_details['mail'],
                 $workshop_user_details['contact_number'],
-                $payment_cfg['salt'],
+                $salt,
             ]))
         ];
         $query_str = http_build_query($data);
         $this->load_library('http_lib', 'http');
-        $this->http->redirect( $payment_cfg['url'] . '?' . $query_str );
+        $this->http->redirect( $url . '?' . $query_str );
     }
 
     public function webdev_workshop() {

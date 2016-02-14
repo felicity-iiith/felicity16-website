@@ -30,6 +30,10 @@ $routes = [
     "/talks-and-workshops/paper-presentation/register/" => "/contest/paper_presentation/",
     "/sports/futsal/register"                           => "/contest/futsal/",
 
+    "/litcafe/ttt-workshop/register/payment-webhook/"   => "/ttt_workshop/webhook/",
+    "/litcafe/ttt-workshop/register/success/"           => "/ttt_workshop/success/",
+    "/litcafe/ttt-workshop/register/"                   => "/ttt_workshop/register/",
+
     "/api/"     => "/page/show/api/",
     "/"         => "/page/show/"
 ];
