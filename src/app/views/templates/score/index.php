@@ -415,7 +415,7 @@ td.user-nick {
                         } else {
                             echo base_url() . $explanations_link;
                         }
-                        ?><?= __('Link to explanations') ?></a>
+                        ?>"><?= __('Link to explanations') ?></a>
                     <?php endif; ?>
                 </span>
             </div>
