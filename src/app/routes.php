@@ -14,6 +14,7 @@ $routes = [
     "/login/"               => "/static_page/login/",
     "/logout/"              => "/static_page/logout/",
     "/register/"            => "/static_page/register/",
+    "/scores/codecraft/"    => "/static_page/codecraft/",
 
     "/sap/portal/mission/create/"               => "/sap_portal/create_mission/",
     "/sap/portal/review/mission/"               => "/sap_portal/review_mission/",

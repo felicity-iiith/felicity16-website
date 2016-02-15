@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'fontello';
-  src: url('../../fonts/fontello.eot?36754064');
-  src: url('../../fonts/fontello.eot?36754064#iefix') format('embedded-opentype'),
-       url('../../fonts/fontello.woff?36754064') format('woff'),
-       url('../../fonts/fontello.ttf?36754064') format('truetype'),
-       url('../../fonts/fontello.svg?36754064#fontello') format('svg');
+  font-family: 'felicons';
+  src: url('../../fonts/felicons.eot?84746010');
+  src: url('../../fonts/felicons.eot?84746010#iefix') format('embedded-opentype'),
+       url('../../fonts/felicons.woff?84746010') format('woff'),
+       url('../../fonts/felicons.ttf?84746010') format('truetype'),
+       url('../../fonts/felicons.svg?84746010#felicons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -13,14 +13,14 @@
 /*
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
-    font-family: 'fontello';
-    src: url('../../fonts/fontello.svg?36754064#fontello') format('svg');
+    font-family: 'felicons';
+    src: url('../../fonts/felicons.svg?84746010#felicons') format('svg');
   }
 }
 */
 
  [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: "fontello";
+  font-family: "felicons";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -79,3 +79,4 @@
 .icon-monitor:before { content: '\e816'; } /* '' */
 .icon-link-ext:before { content: '\e817'; } /* '' */
 .icon-keyboard:before { content: '\e818'; } /* '' */
+.icon-fast-food:before { content: '\e819'; } /* '' */
