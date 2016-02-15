@@ -97,6 +97,15 @@ $ldap_cfg = [
 ];
 
 $payment_cfg = [
-    'url'   => '...',
-    'salt'  => 'some-very-random-string'
+    'webdev' => [
+        'url'   => '...',
+        'salt'  => 'some-very-random-string'
+    ],
+    'ttt' => [
+        'gateway_url'   => '...',
+        'salt'  => 'some-very-random-string',
+        'nick_field' => 'some-field',
+        'api_url' => '...',
+        'api_headers' => []
+    ]
 ];

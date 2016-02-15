@@ -27,11 +27,66 @@ class contest_model extends Model {
 
     /*
     |---------------------------------------------------------------------------
+    | TTT-Workshop
+    |---------------------------------------------------------------------------
+    */
+
+    public function is_registered_for_ttt($user_nick) {
+        return $this->is_registered("ttt_registrations", $user_nick);
+    }
+
+    public function register_for_ttt($user_nick, $contact_number) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->contest,
+            "INSERT INTO `ttt_registrations`
+            (`nick`, `contact_number`) VALUES (?, ?)",
+            "ss",
+            [$user_nick, $contact_number]
+        );
+        if (!$stmt) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public function ttt_payment_success($payment_id, $nick, $status, $payment_data) {
+        $stmt = $this->db_lib->prepared_execute(
+            $this->DB->contest,
+            "UPDATE `ttt_registrations`
+            SET `payment_id` = ?, `payment_status` = ?, `payment_data` = ?
+            WHERE `nick` = ?",
+            "ssss",
+            [$payment_id, $status, $payment_data, $nick]
+        );
+        $this->ttt_dump_data($nick, 'callback', $payment_data);
+        if (!$stmt) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public function ttt_dump_data($nick, $type, $response) {
+        $this->db_lib->prepared_execute(
+            $this->DB->contest,
+            "INSERT INTO `ttt_payment_dump`
+            (`nick`, `type`, `response`)
+            VALUES (?, ?, ?)",
+            "sss",
+            [$nick, $type, $response]
+        );
+    }
+
+    /*
+    |---------------------------------------------------------------------------
     | Futsal
     |---------------------------------------------------------------------------
     */
 
-    private function get_fulsal_team($team_id) {
+    private function get_futsal_team($team_id) {
         $stmt = $this->db_lib->prepared_execute(
             $this->DB->contest,
             "SELECT *
@@ -53,7 +108,7 @@ class contest_model extends Model {
     public function is_registered_for_futsal($user_nick) {
         $user_details = $this->is_registered('futsal_participants', $user_nick);
         if ($user_details) {
-            $team_info = $this->get_fulsal_team($user_details['team_id']);
+            $team_info = $this->get_futsal_team($user_details['team_id']);
             return $team_info;
         }
         return false;
