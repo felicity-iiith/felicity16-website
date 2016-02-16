@@ -18,7 +18,11 @@ class static_page extends Controller {
         $this->http_lib->redirect( locale_base_url() . 'auth/login/' );
     }
 
+    public function wdw() {
+        $this->http_lib->redirect( locale_base_url() . 'talks-and-workshops/web-development/' );
+    }
+
     public function codecraft() {
-        $this->load_view('contest/codecraft_scores');
+        $this->load_view('contest/codecraft_scores/');
     }
 }
