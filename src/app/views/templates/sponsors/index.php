@@ -75,8 +75,8 @@ $sponsors2014 = [
         </div>
         <div class="row some-top-margin">
             <div class="col4 container">
-                <p>Official Snacking Partner</p>
-                <img src="<?= base_url() ?>static/images/sponsors/cornetto.png" alt="Cornetto Logo"/>
+                <p>Digital Media Partner</p>
+                <img src="<?= base_url() ?>static/images/sponsors/chaibisket.png" alt="Chai Bisket Logo"/>
             </div>
             <div class="col4 container">
                 <p>Café Partners</p>
