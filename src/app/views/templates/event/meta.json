@@ -7,7 +7,8 @@
     "tagline": {
         "name"      : "Tagline",
         "type"      : "text",
-        "default"   : "Event's Tagline"
+        "default"   : "Event's Tagline",
+        "optional"  : true
     },
     "description": {
         "name"      : "Description",
@@ -25,7 +26,7 @@
         "optional"  : true
     },
     "button_link": {
-        "name"      : "Button link (Base url is prefixed. Just provide path)",
+        "name"      : "Button link (absolute link or path [e.g. threads/codecraft/register/] [recommended])",
         "type"      : "text",
         "optional"  : true
     },

@@ -7,11 +7,13 @@
     "tagline": {
         "name"      : "Category tagline",
         "type"      : "text",
-        "default"   : "Tagline"
+        "default"   : "Tagline",
+        "optional"  : true
     },
     "short_description": {
         "name"      : "Short description about category (not more than 3-4 words)",
-        "type"      : "text"
+        "type"      : "text",
+        "optional"  : true
     },
     "long_description": {
         "name"      : "Description",
@@ -26,13 +28,15 @@
     "og_image": {
         "name"      : "Image link to be displayed when page shared on fb (Only suffix, baseUrl already there)",
         "type"      : "text",
-        "default"   : "files/16/logos/felicity16-logo-large.png"
+        "default"   : "files/16/logos/felicity16-logo-large.png",
+        "optional"  : true
     },
     "events_data": {
         "name"      : "Events list",
         "type"      : "external",
         "path"      : ".*/.*",
         "template"  : "(category|event)",
+        "inApi"     : false,
         "data"      : {
             "name"          : "name",
             "start_time"    : "start_time",

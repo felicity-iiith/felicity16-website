@@ -1,6 +1,7 @@
 <?php
 function is_valid_phone_number($number) {
-    return ctype_digit($number) && strlen($number) > 10;
+    $digits = str_replace("+", "", str_replace(" ", "", $number));
+    return preg_match("/^\+?[\d ]+$/", $number) && strlen($digits) >= 10;
 }
 
 function is_valid_url($url) {

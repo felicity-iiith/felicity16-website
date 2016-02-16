@@ -114,7 +114,7 @@ if (empty($is_ajax)):
     <script src="<?= base_url() ?>static/scripts/common.js" charset="utf-8"></script>
     <script src="<?= base_url() ?>static/scripts/ajaxify.js" charset="utf-8"></script>
     <?php if ($page_slug !== "static"): ?>
-    <script src="<?= base_url() ?>static/scripts/navigation.js?v=2" charset="utf-8"></script>
+    <script src="<?= base_url() ?>static/scripts/navigation.js?v=4" charset="utf-8"></script>
     <?php endif; ?>
     <?php $this->load_fragment('google_analytics'); ?>
 </body>

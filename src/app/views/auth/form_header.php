@@ -1,4 +1,4 @@
-<?php $this->load_fragment('skeleton_template/header'); ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => $heading]); ?>
 <?php if (empty($is_ajax)): ?>
 <article class="page open full">
 <?php endif; ?>
