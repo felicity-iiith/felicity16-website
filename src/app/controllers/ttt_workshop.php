@@ -27,8 +27,8 @@ class ttt_workshop extends Controller {
             'data_name'         => $name,
             'data_email'        => $email,
             'data_phone'        => $phone,
-            $nick_field         => $nick,
-            'data_hidden'       => $nick_field,
+            'data_'.$nick_field => $nick,
+            'data_hidden'       => 'data_'.$nick_field,
         ];
         $readonly_str = 'data_readonly=data_name&data_readonly=data_email&data_readonly=data_phone';
         $query_str = http_build_query($data);
@@ -88,20 +88,22 @@ class ttt_workshop extends Controller {
         }
         global $payment_cfg;
 
-        $id  = urlencode($_GET['payment_id']);
-        $url = $payment_cfg['ttt']['api_url'] . $id . '/';
+        $id             = urlencode($_GET['payment_id']);
+        $url            = $payment_cfg['ttt']['api_url'] . $id . '/';
+        $nick_field     = $payment_cfg['ttt']['nick_field'];
+        $api_headers    = $payment_cfg['ttt']['api_headers'];
 
         $ch  = curl_init();
         //curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $payment_cfg['ttt']['api_headers']);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $api_headers);
         $response = curl_exec($ch);
         $curl_error = curl_errno($ch);
         curl_close($ch);
-        $response_array = json_decode($return, true);
+        $response_array = json_decode($response, true);
         if (@$response_array['success']) {
-            $nick = $response_array['payment']['custom_fields']['Field_12972']['value'];
+            $nick = $response_array['payment']['custom_fields'][$nick_field]['value'];
             $status = $response_array['payment']['status'];
             $payment_id = $_GET['payment_id'];
             $payment_data = $response;
@@ -111,7 +113,14 @@ class ttt_workshop extends Controller {
                 $status == 'Credit' ? 'success' : 'failed',
                 $payment_data
             );
+        } else {
+            if ( is_array( $response_array ) ) {
+                $this->model->ttt_dump_data('unknown', 'callback', json_encode( [ '$_GET' => $_GET, 'response' => $response_array ] ));
+            } else {
+                $this->model->ttt_dump_data('unknown', 'callback', json_encode($_GET));
+            }
         }
+
         $this->http->redirect(base_url() . "litcafe/ttt-workshop/register/");
     }
 
