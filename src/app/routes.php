@@ -16,6 +16,7 @@ $routes = [
     "/register/"            => "/static_page/register/",
     "/scores/codecraft/"    => "/static_page/codecraft/",
     "/wdw/"                 => "/static_page/wdw/",
+    "/accommodation/"       => "/static_page/accommodation/",
 
     "/sap/portal/mission/create/"               => "/sap_portal/create_mission/",
     "/sap/portal/review/mission/"               => "/sap_portal/review_mission/",
@@ -29,7 +30,7 @@ $routes = [
 
     "/talks-and-workshops/web-development/register/"    => "/contest/webdev_workshop/",
     "/talks-and-workshops/paper-presentation/register/" => "/contest/paper_presentation/",
-    "/sports/futsal/register"                           => "/contest/futsal/",
+    "/sports/futsal/register/"                          => "/contest/futsal/",
 
     "/litcafe/ttt-workshop/register/payment-webhook/"   => "/ttt_workshop/webhook/",
     "/litcafe/ttt-workshop/register/success/"           => "/ttt_workshop/success/",

@@ -23,6 +23,15 @@ class static_page extends Controller {
     }
 
     public function codecraft() {
-        $this->load_view('contest/codecraft_scores/');
+        $this->load_view('contest/codecraft_scores');
+    }
+
+    public function accommodation() {
+        $this->load_library('auth_lib');
+        $this->auth_lib->force_authentication();
+
+        $this->load_view('accommodation', [
+            'user' => $this->auth_lib->get_user_details()
+        ]);
     }
 }
