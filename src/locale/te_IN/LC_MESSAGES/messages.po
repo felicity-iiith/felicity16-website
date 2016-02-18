@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Felicity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-01 22:16+0530\n"
+"POT-Creation-Date: 2016-02-18 12:41+0530\n"
 "PO-Revision-Date: 2016-01-28 00:42+0530\n"
 "Last-Translator: Saujanya <saujanyareddy@ymail.com>\n"
 "Language-Team: \n"
@@ -29,7 +29,8 @@ msgstr ""
 "సాంకేతిక మరియు సృజనాత్మక పరాక్రమాన్ని వ్యక్తీకరించే ఈవెంట్ ఇది. రండి, మూడు రోజుల  ఆహ్లాదకరమైన "
 "వాతావరణాన్ని పొందండి."
 
-#: src/locale/locale_dump.php:11 src/app/views/skeleton_template/footer.php:59
+#: src/locale/locale_dump.php:11 src/app/views/templates/schedule/index.php:1
+#: src/app/views/skeleton_template/footer.php:99
 msgid "Schedule"
 msgstr "ప్రోగ్రామ్"
 
@@ -59,15 +60,20 @@ msgid ""
 "computers and experience an unabated felicity! "
 msgstr ""
 
-#: src/locale/locale_dump.php:16 src/locale/locale_dump.php:26
-#: src/locale/locale_dump.php:47 src/locale/locale_dump.php:65
-#: src/locale/locale_dump.php:92 src/locale/locale_dump.php:107
-#: src/locale/locale_dump.php:124 src/locale/locale_dump.php:131
-#: src/locale/locale_dump.php:143 src/locale/locale_dump.php:152
-#: src/locale/locale_dump.php:157 src/locale/locale_dump.php:162
-#: src/locale/locale_dump.php:169 src/locale/locale_dump.php:176
-#: src/locale/locale_dump.php:220 src/locale/locale_dump.php:227
-#: src/locale/locale_dump.php:234 src/locale/locale_dump.php:240
+#: src/locale/locale_dump.php:16 src/locale/locale_dump.php:49
+#: src/locale/locale_dump.php:67 src/locale/locale_dump.php:95
+#: src/locale/locale_dump.php:110 src/locale/locale_dump.php:127
+#: src/locale/locale_dump.php:140 src/locale/locale_dump.php:152
+#: src/locale/locale_dump.php:161 src/locale/locale_dump.php:166
+#: src/locale/locale_dump.php:180 src/locale/locale_dump.php:193
+#: src/locale/locale_dump.php:198 src/locale/locale_dump.php:214
+#: src/locale/locale_dump.php:234 src/locale/locale_dump.php:281
+#: src/locale/locale_dump.php:288 src/locale/locale_dump.php:295
+#: src/locale/locale_dump.php:306 src/locale/locale_dump.php:312
+#: src/locale/locale_dump.php:329 src/locale/locale_dump.php:345
+#: src/locale/locale_dump.php:368 src/locale/locale_dump.php:385
+#: src/locale/locale_dump.php:488 src/locale/locale_dump.php:503
+#: src/locale/locale_dump.php:596 src/locale/locale_dump.php:600
 msgid "files/16/logos/felicity16-logo-large.png"
 msgstr ""
 
@@ -81,58 +87,71 @@ msgstr "మీరు కోడ్ చేయగలరని అనుకుంట
 
 #: src/locale/locale_dump.php:19
 msgid ""
-"The annual grand algorithmic sprint is back yet again, an individual event "
-"based on ACM ICPC format."
+"The flagship event of Threads ʼ16 and the Grand Prix of Algorithms - "
+"CodeCraft is here to challenge your intellect while presenting a chance to "
+"compete against some of the best programmers in the world.\n"
+"\n"
+"You need a Felicity account to participate in CodeCraft. You can register "
+"for a Felicity account at <a class=\"underlined\" href=\"https://felicity."
+"iiit.ac.in/register/\">felicity.iiit.ac.in/register</a>"
 msgstr ""
 
-#: src/locale/locale_dump.php:20 src/locale/locale_dump.php:89
-#: src/locale/locale_dump.php:103 src/locale/locale_dump.php:128
-#: src/locale/locale_dump.php:137 src/locale/locale_dump.php:149
-#: src/locale/locale_dump.php:166 src/locale/locale_dump.php:173
-#: src/locale/locale_dump.php:216 src/locale/locale_dump.php:224
-#: src/locale/locale_dump.php:231 src/app/views/templates/event/index.php:16
+#: src/locale/locale_dump.php:22 src/locale/locale_dump.php:91
+#: src/locale/locale_dump.php:106 src/locale/locale_dump.php:146
+#: src/locale/locale_dump.php:158 src/locale/locale_dump.php:208
+#: src/locale/locale_dump.php:231 src/locale/locale_dump.php:276
+#: src/locale/locale_dump.php:285 src/locale/locale_dump.php:292
+#: src/locale/locale_dump.php:301 src/locale/locale_dump.php:446
+#: src/locale/locale_dump.php:500 src/locale/locale_dump.php:512
+#: src/locale/locale_dump.php:521 src/locale/locale_dump.php:532
+#: src/locale/locale_dump.php:543 src/app/views/templates/event/index.php:27
 msgid "Rules"
 msgstr "నియమాలు"
 
-#: src/locale/locale_dump.php:21
-msgid "Practice Contest begins at 1600 hours"
+#: src/locale/locale_dump.php:23 src/locale/locale_dump.php:44
+#: src/locale/locale_dump.php:62 src/locale/locale_dump.php:124
+msgid "The contest has ended"
+msgstr "కాంటెస్ట్  అయిపోయింది."
+
+#: src/locale/locale_dump.php:24
+msgid "scores/codecraft"
 msgstr ""
 
-#: src/locale/locale_dump.php:22
-msgid "contest/codecraft"
-msgstr ""
+#: src/locale/locale_dump.php:25
+msgid "Link to the scoreboard"
+msgstr "స్కోర్ బోర్డుకి  లింక్."
 
-#: src/locale/locale_dump.php:23
-#, fuzzy
-msgid "Link to the Practice Contest"
-msgstr "వివరణలకూ లింక్"
-
-#: src/locale/locale_dump.php:24 src/locale/locale_dump.php:45
-#: src/locale/locale_dump.php:63 src/locale/locale_dump.php:83
-#: src/locale/locale_dump.php:90 src/locale/locale_dump.php:105
-#: src/locale/locale_dump.php:122 src/locale/locale_dump.php:129
-#: src/locale/locale_dump.php:141 src/locale/locale_dump.php:167
-#: src/locale/locale_dump.php:174 src/locale/locale_dump.php:218
+#: src/locale/locale_dump.php:26 src/locale/locale_dump.php:47
+#: src/locale/locale_dump.php:65 src/locale/locale_dump.php:85
+#: src/locale/locale_dump.php:93 src/locale/locale_dump.php:108
+#: src/locale/locale_dump.php:125 src/locale/locale_dump.php:138
+#: src/locale/locale_dump.php:150 src/locale/locale_dump.php:178
+#: src/locale/locale_dump.php:191 src/locale/locale_dump.php:212
+#: src/locale/locale_dump.php:232 src/locale/locale_dump.php:279
 msgid "Online"
 msgstr "ఆన్లైన్"
 
-#: src/locale/locale_dump.php:25 src/locale/locale_dump.php:46
-#: src/locale/locale_dump.php:64 src/locale/locale_dump.php:84
-#: src/locale/locale_dump.php:91 src/locale/locale_dump.php:106
-#: src/locale/locale_dump.php:123 src/locale/locale_dump.php:130
-#: src/locale/locale_dump.php:142 src/locale/locale_dump.php:151
+#: src/locale/locale_dump.php:27 src/locale/locale_dump.php:48
+#: src/locale/locale_dump.php:66 src/locale/locale_dump.php:86
+#: src/locale/locale_dump.php:94 src/locale/locale_dump.php:109
+#: src/locale/locale_dump.php:126 src/locale/locale_dump.php:139
+#: src/locale/locale_dump.php:151 src/locale/locale_dump.php:160
 msgid "threads@felicity.iiit.ac.in"
 msgstr ""
 
-#: src/locale/locale_dump.php:27 src/locale/locale_dump.php:247
+#: src/locale/locale_dump.php:28
+msgid "files/16/codecraft_poster.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:29 src/locale/locale_dump.php:392
 msgid "Gordian Knot"
 msgstr "గార్డియన్-నాట్"
 
-#: src/locale/locale_dump.php:28 src/locale/locale_dump.php:248
+#: src/locale/locale_dump.php:30 src/locale/locale_dump.php:393
 msgid "The Project Euler of Felicity"
 msgstr "ఫెలిసిటి యొక్క ప్రాజెక్ట్ యూలర్"
 
-#: src/locale/locale_dump.php:29
+#: src/locale/locale_dump.php:31
 msgid ""
 "This Project Euler-styled contest challenges you to untangle intricate "
 "enigmas of mathematics.\n"
@@ -143,66 +162,62 @@ msgid ""
 "The link to the contest portal will be available at the time of the contest."
 msgstr ""
 
-#: src/locale/locale_dump.php:34
+#: src/locale/locale_dump.php:36
 msgid ""
 "For unlocking each level, you need to solve at least 3 problems in the "
 "previous level."
 msgstr "ప్రతి లెవెల్ ని అన్లోక్ చేయడానికి, ముందు లెవెల్ లోని  కనీసం మూడు సమస్యలను పరిష్కరించాలి."
 
-#: src/locale/locale_dump.php:35
+#: src/locale/locale_dump.php:37
 msgid ""
 "There are 10 levels in all. Each question carries some points depending on "
 "its level."
 msgstr "మొత్తం పది లెవేళ్లు ఉన్నాయి. ప్రతి ప్రశ్నకు దాని లెవెల్ని బట్టి మార్కులు ఇవ్వబదతాయి."
 
-#: src/locale/locale_dump.php:36
+#: src/locale/locale_dump.php:38
 msgid "Score for a problem on the i-th level is 100*i."
 msgstr "i-th లెవెల్ లో ఉన్న ప్రశ్నకి 100*i మార్కులు."
 
-#: src/locale/locale_dump.php:37
+#: src/locale/locale_dump.php:39
 msgid "Bonus marks will be awarded after completing all problems in a level."
 msgstr "లెవెల్లోని అన్ని సమస్యలు పూర్తి చేస్తే బోనస్ మార్ల్కులు ఇవ్వబదతాయి."
 
-#: src/locale/locale_dump.php:38
+#: src/locale/locale_dump.php:40
 msgid ""
 "Bonus for level i is calculated as 100*i - 5*(number of wrong answers on "
 "that level)."
 msgstr ""
 
-#: src/locale/locale_dump.php:39
+#: src/locale/locale_dump.php:41
 msgid "Time penalty of 30 seconds is levied after a wrong submission."
 msgstr "ఒక తప్పు సమాధానం తర్వాత ముప్పై (30)  సెకన్ల   పెనాల్టీ విధించబడుతుంది."
 
-#: src/locale/locale_dump.php:40
+#: src/locale/locale_dump.php:42
 msgid "Any attempt to game the system will lead to disqualification."
 msgstr ""
 
-#: src/locale/locale_dump.php:41
+#: src/locale/locale_dump.php:43
 msgid "Tie in scores will be resolved first by level, then by timestamp."
 msgstr ""
 
-#: src/locale/locale_dump.php:42 src/locale/locale_dump.php:60
-#: src/locale/locale_dump.php:121
-msgid "The contest has ended"
-msgstr "కాంటెస్ట్  అయిపోయింది."
-
-#: src/locale/locale_dump.php:43
+#: src/locale/locale_dump.php:45
 msgid "scores/gordian-knot/"
 msgstr ""
 
-#: src/locale/locale_dump.php:44 src/locale/locale_dump.php:82
+#: src/locale/locale_dump.php:46 src/locale/locale_dump.php:84
+#: src/locale/locale_dump.php:177
 msgid "Link to the final scorebard"
 msgstr "అంతిమ స్కోర్ బోర్డుకి  లింక్."
 
-#: src/locale/locale_dump.php:48 src/locale/locale_dump.php:251
+#: src/locale/locale_dump.php:50 src/locale/locale_dump.php:396
 msgid "Break In CTF"
 msgstr "బ్రేక్ఇన్ సి -టి-ఎఫ్"
 
-#: src/locale/locale_dump.php:49 src/locale/locale_dump.php:252
+#: src/locale/locale_dump.php:51 src/locale/locale_dump.php:397
 msgid "Break & Get In"
 msgstr ""
 
-#: src/locale/locale_dump.php:50
+#: src/locale/locale_dump.php:52
 msgid ""
 "The official Capture The Flag event for Felicity Threads. Break In is a "
 "jeopardy-style CTF event, where you use whatever means at your disposal to "
@@ -214,54 +229,56 @@ msgid ""
 "The IRC is live on #breakin on freenode. "
 msgstr ""
 
-#: src/locale/locale_dump.php:55
+#: src/locale/locale_dump.php:57
 msgid ""
 "Break In is a team event. Each team can consist of a maximum of 2 players."
 msgstr ""
 
-#: src/locale/locale_dump.php:56
+#: src/locale/locale_dump.php:58
 msgid "Please do not attack CTF infrastructure."
 msgstr ""
 
-#: src/locale/locale_dump.php:57
+#: src/locale/locale_dump.php:59
 msgid ""
 "All team members must be registered <a class=\"underlined\" href=\"https://"
 "felicity.iiit.ac.in/register/\">here</a>. The link for team registration is "
 "provided."
 msgstr ""
 
-#: src/locale/locale_dump.php:58
+#: src/locale/locale_dump.php:60
 msgid ""
 "The link for the contest will be provided here just before the contest "
 "starts."
 msgstr ""
 
-#: src/locale/locale_dump.php:59
+#: src/locale/locale_dump.php:61
 msgid ""
 "Bonus points will be awarded for finding legitimate bugs with the contest "
 "portal"
 msgstr "కాంటెస్ట్ పోర్టల్ లోని తప్పులని కనిపెడితతే బోనస్ పాయింట్స్ ఇవ్వబడతాయి."
 
-#: src/locale/locale_dump.php:61
+#: src/locale/locale_dump.php:63
 msgid "scores/breakin/"
 msgstr ""
 
-#: src/locale/locale_dump.php:62
-msgid "Link to the scoreboard"
+#: src/locale/locale_dump.php:64 src/locale/locale_dump.php:137
+#: src/locale/locale_dump.php:190 src/locale/locale_dump.php:211
+#, fuzzy
+msgid "Link To The Scoreboard"
 msgstr "స్కోర్ బోర్డుకి  లింక్."
 
-#: src/locale/locale_dump.php:66 src/locale/locale_dump.php:241
+#: src/locale/locale_dump.php:68 src/locale/locale_dump.php:386
 msgid "Cache In"
 msgstr "కాశే ఇన్"
 
-#: src/locale/locale_dump.php:67
+#: src/locale/locale_dump.php:69
 msgid "The more you look, the less you see."
 msgstr ""
 
-#: src/locale/locale_dump.php:68
+#: src/locale/locale_dump.php:70
 msgid ""
 "Here are the <a href=\"https://felicity.iiit.ac.in/files/16/cachein-"
-"explanations.pdf\" class=\"underlined\">explanations of all the questions.</"
+"explanations.pdf\" class=\"underlined\">explanations for all the questions.</"
 "a>\n"
 "\n"
 "Do puzzles and riddles excite you? Can you form one cohesive thought out of "
@@ -274,58 +291,58 @@ msgid ""
 "to find a new one ahead."
 msgstr ""
 
-#: src/locale/locale_dump.php:74
+#: src/locale/locale_dump.php:76
 msgid "The answers can be a single word or a phrase."
 msgstr "సమాధానాలు ఒక పదం లేదా పదాల సమూహం అవ్వోచు."
 
-#: src/locale/locale_dump.php:75
+#: src/locale/locale_dump.php:77
 msgid ""
 "Each right answer will fetch you 100 points and will lead you to the next "
 "level."
 msgstr ""
 
-#: src/locale/locale_dump.php:76
+#: src/locale/locale_dump.php:78
 msgid "There is no partial scoring for any question."
 msgstr "ఏ ప్రశ్నకూ పాక్షిక మార్కులు ఇవ్వబడవు."
 
-#: src/locale/locale_dump.php:77
+#: src/locale/locale_dump.php:79
 msgid ""
 "In case your submission is incorrect, you are not allowed to submit to that "
 "question again for the next 30 seconds."
 msgstr "ఒకవేళ మీ సమాధానం తప్పైతే , తరువాతి ముప్పై సెకన్ల వరకు మీరు ఆ ప్రశ్నకూ సమాధానం ఇవ్వలేరు."
 
-#: src/locale/locale_dump.php:78
+#: src/locale/locale_dump.php:80
 msgid ""
 "The participants will be ranked first on the basis of the number of "
 "questions solved. In case of a tie, the time taken to solve the questions "
 "will be considered."
 msgstr ""
 
-#: src/locale/locale_dump.php:79
+#: src/locale/locale_dump.php:81
 msgid "Any attempt to game with the system will lead to disqualification."
 msgstr ""
 
-#: src/locale/locale_dump.php:80
+#: src/locale/locale_dump.php:82
 msgid "Contest has ended!"
 msgstr ""
 
-#: src/locale/locale_dump.php:81
+#: src/locale/locale_dump.php:83
 msgid "scores/cachein/"
 msgstr ""
 
-#: src/locale/locale_dump.php:85
+#: src/locale/locale_dump.php:87
 msgid "files/16/cache_in.jpg"
 msgstr ""
 
-#: src/locale/locale_dump.php:86
+#: src/locale/locale_dump.php:88
 msgid "Kings of ML"
 msgstr ""
 
-#: src/locale/locale_dump.php:87
+#: src/locale/locale_dump.php:89
 msgid "Do not regret, just regress"
 msgstr ""
 
-#: src/locale/locale_dump.php:88
+#: src/locale/locale_dump.php:90
 msgid ""
 "Do not make the mistake of considering this as just another coding contest. "
 "Each question here is an exotic research problem in itself. So gear up all "
@@ -333,15 +350,19 @@ msgid ""
 "intuition."
 msgstr ""
 
-#: src/locale/locale_dump.php:93
+#: src/locale/locale_dump.php:92
+msgid "Contest has Ended. Final Scoreboard will be made public shortly."
+msgstr ""
+
+#: src/locale/locale_dump.php:96
 msgid "TLE"
 msgstr ""
 
-#: src/locale/locale_dump.php:94
+#: src/locale/locale_dump.php:97
 msgid "Dare to code beyond the norms."
 msgstr ""
 
-#: src/locale/locale_dump.php:95
+#: src/locale/locale_dump.php:98
 msgid ""
 "The coding contest that pushes you beyond your comfort zones. From esoteric "
 "programming to obfuscation, it welcomes any dirty tricks you can play with "
@@ -358,19 +379,19 @@ msgid ""
 "them within some constraints on time, space and code."
 msgstr ""
 
-#: src/locale/locale_dump.php:104
+#: src/locale/locale_dump.php:107
 msgid "Contest rescheduled."
 msgstr "పోటి సమయం మార్చబడింది. "
 
-#: src/locale/locale_dump.php:108
+#: src/locale/locale_dump.php:111
 msgid "Kernel Cruise"
 msgstr "కెర్నల్ క్రూస్"
 
-#: src/locale/locale_dump.php:109
+#: src/locale/locale_dump.php:112
 msgid "Harness those clock cycles!"
 msgstr "సమయాన్ని ఎంతయితే అంత ఉపయోగించుకోండి."
 
-#: src/locale/locale_dump.php:110
+#: src/locale/locale_dump.php:113
 msgid ""
 "Felicity Threads ʼ16 presents to you Kernel Cruise, a platform where you’ll "
 "be pitched against various computational problems, varying from "
@@ -392,41 +413,41 @@ msgid ""
 "tutorials, for learning and practice."
 msgstr ""
 
-#: src/locale/locale_dump.php:116
+#: src/locale/locale_dump.php:119
 msgid "This is a familiarization phase."
 msgstr "ఇది పరిచయ దశ ."
 
-#: src/locale/locale_dump.php:117
+#: src/locale/locale_dump.php:120
 msgid "There are 3 simple problems."
 msgstr "ఇక్కడ మూడు సరళమైన సమస్యలున్నాయి."
 
-#: src/locale/locale_dump.php:118
+#: src/locale/locale_dump.php:121
 msgid ""
 "You can read resources, surf the internet and submit CUDA codes for the same."
 msgstr ""
 
-#: src/locale/locale_dump.php:119
+#: src/locale/locale_dump.php:122
 msgid ""
 "For those who do not have NVIDIA on their PCs, you can use the IDE to test "
 "your codes."
 msgstr ""
 "ఎవరి కంప్యూటర్ లో ఎన్ వీడియా లేదో వాళ్ళు  వాళ్ళ కోడ్స్ ని పరీక్షించేందుకు  (IDE ) ఐడిఇ  వాడండి. "
 
-#: src/locale/locale_dump.php:120
+#: src/locale/locale_dump.php:123
 msgid ""
 "The version of CUDA is 4.0 and compile flags are -arch=compute_11 -"
 "code=sm_11 -lm -lcurand."
 msgstr ""
 
-#: src/locale/locale_dump.php:125
+#: src/locale/locale_dump.php:128 src/locale/locale_dump.php:413
 msgid "Botomata"
 msgstr "బొటొమాటా "
 
-#: src/locale/locale_dump.php:126
+#: src/locale/locale_dump.php:129 src/locale/locale_dump.php:414
 msgid "May the best bot win"
 msgstr "ఉత్తమ  బాట్ గెలుపొందుతుంది అనుకుంటూ. "
 
-#: src/locale/locale_dump.php:127
+#: src/locale/locale_dump.php:130
 msgid ""
 "Botomata belongs to a new genre of AI and combinatorial search contests, and "
 "will contain challenges from puzzles like Sudoku, Kakuro, Rubik\\'s Cube, "
@@ -434,15 +455,43 @@ msgid ""
 "strategies and heuristics for constraint satisfaction and game playing."
 msgstr ""
 
+#: src/locale/locale_dump.php:131
+msgid "Your bot is not allowed to do any form of Network I/O or disk I/O. "
+msgstr ""
+
 #: src/locale/locale_dump.php:132
-msgid "Code Helix"
-msgstr "కోడ్ హెలిక్స్."
+msgid "Attempts made to attack / break the system will be disqualified."
+msgstr ""
 
 #: src/locale/locale_dump.php:133
-msgid "Think naturally"
+msgid "Use of non builtin libraries is not allowed."
 msgstr ""
 
 #: src/locale/locale_dump.php:134
+msgid ""
+"Winners will be announced post contest after a manual evaluation of "
+"submissions."
+msgstr ""
+
+#: src/locale/locale_dump.php:135 src/locale/locale_dump.php:175
+#: src/locale/locale_dump.php:209
+#, fuzzy
+msgid "Contest has Ended!"
+msgstr "కాంటెస్ట్  అయిపోయింది."
+
+#: src/locale/locale_dump.php:136
+msgid "scores/botomata/"
+msgstr ""
+
+#: src/locale/locale_dump.php:141 src/locale/locale_dump.php:401
+msgid "Code Helix"
+msgstr "కోడ్ హెలిక్స్."
+
+#: src/locale/locale_dump.php:142 src/locale/locale_dump.php:402
+msgid "Think naturally"
+msgstr ""
+
+#: src/locale/locale_dump.php:143
 msgid ""
 "Code-Helix is the latest entry in the Felicity Threads. The contest has a "
 "mix of programming and subjective questions from the fields of Science, "
@@ -452,27 +501,29 @@ msgid ""
 "The contest would start on 31st January, noon and end on 2nd Feb midnight."
 msgstr ""
 
-#: src/locale/locale_dump.php:138
-msgid "Contest is now live!"
+#: src/locale/locale_dump.php:147
+#, fuzzy
+msgid "Contest has ended."
+msgstr "కాంటెస్ట్  అయిపోయింది."
+
+#: src/locale/locale_dump.php:148
+msgid "scores/code-helix"
 msgstr ""
 
-#: src/locale/locale_dump.php:139
-msgid "contest/code-helix"
-msgstr ""
+#: src/locale/locale_dump.php:149
+#, fuzzy
+msgid "Link to the Scoreboard"
+msgstr "స్కోర్ బోర్డుకి  లింక్."
 
-#: src/locale/locale_dump.php:140
-msgid "LINK TO THE CONTEST"
-msgstr ""
-
-#: src/locale/locale_dump.php:144
+#: src/locale/locale_dump.php:153
 msgid "Debug The C Bug"
 msgstr "డీబగ్ ది సిబగ్"
 
-#: src/locale/locale_dump.php:145
+#: src/locale/locale_dump.php:154
 msgid " Are bugs your pet peeves? Chase them down!"
 msgstr ""
 
-#: src/locale/locale_dump.php:146
+#: src/locale/locale_dump.php:155
 msgid ""
 "Find the bugs in the code (solution) for a problem and fix them, sounds "
 "simple right?\n"
@@ -480,42 +531,123 @@ msgid ""
 "This is an onsite event."
 msgstr "కోడ్ లోని బగ్స్ ని కనిపెట్టి వాటిని సరిచేయండి, సులువుగా అనిపిస్తుంది కదా ?ఇది ఆన్సైట్ ఈవెంట్."
 
-#: src/locale/locale_dump.php:150
+#: src/locale/locale_dump.php:159
 msgid "Onsite"
 msgstr ""
 
-#: src/locale/locale_dump.php:153
+#: src/locale/locale_dump.php:162
 msgid "Pulsation"
 msgstr "పల్సేశన్"
 
-#: src/locale/locale_dump.php:154
+#: src/locale/locale_dump.php:163
 msgid "Innovate. Design. Automate."
 msgstr ""
 
-#: src/locale/locale_dump.php:155
+#: src/locale/locale_dump.php:164
 msgid "Electronics events"
 msgstr ""
 
-#: src/locale/locale_dump.php:156
+#: src/locale/locale_dump.php:165
 msgid ""
 " What is the digital age without digital electronics? For those who\\'s "
 "heart is but an IC that pumps bits instead of blood, pulsation is here to "
 "resonate with the frequency of your hearts!"
 msgstr ""
 
-#: src/locale/locale_dump.php:158
-msgid "Litcafe"
-msgstr "లిట్-కెఫే"
+#: src/locale/locale_dump.php:167 src/locale/locale_dump.php:405
+msgid "Electronics Showdown"
+msgstr ""
 
-#: src/locale/locale_dump.php:159
+#: src/locale/locale_dump.php:168 src/locale/locale_dump.php:454
+#: src/locale/locale_dump.php:455 src/locale/locale_dump.php:457
+#: src/locale/locale_dump.php:490 src/locale/locale_dump.php:494
+#: src/locale/locale_dump.php:505 src/locale/locale_dump.php:517
+#: src/locale/locale_dump.php:526 src/locale/locale_dump.php:537
+#: src/locale/locale_dump.php:598
+msgid " "
+msgstr ""
+
+#: src/locale/locale_dump.php:169 src/locale/locale_dump.php:406
+msgid "The one of its kind electronics quiz."
+msgstr ""
+
+#: src/locale/locale_dump.php:170
+msgid "There will be a total of 11 levels, with 5 questions in each level."
+msgstr ""
+
+#: src/locale/locale_dump.php:171
+msgid ""
+"You need to answer at least 3 questions in the current level to go the next "
+"level."
+msgstr ""
+
+#: src/locale/locale_dump.php:172
+msgid "A question in level \\'i\\' carries i*100 marks."
+msgstr ""
+
+#: src/locale/locale_dump.php:173 src/locale/locale_dump.php:186
+#, fuzzy
+msgid "There is no penalization for wrong answers."
+msgstr "ఏ ప్రశ్నకూ పాక్షిక మార్కులు ఇవ్వబడవు."
+
+#: src/locale/locale_dump.php:174 src/locale/locale_dump.php:187
+msgid ""
+"The user with the highest score at the end of the event will be the winner."
+msgstr ""
+
+#: src/locale/locale_dump.php:176
+msgid "scores/electronics-showdown/"
+msgstr ""
+
+#: src/locale/locale_dump.php:179 src/locale/locale_dump.php:192
+msgid "pulsation@felicity.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:181 src/locale/locale_dump.php:417
+msgid "Kode Da Circuit"
+msgstr ""
+
+#: src/locale/locale_dump.php:182 src/locale/locale_dump.php:418
+msgid "Anyone can code a program. Can you code a circuit ?"
+msgstr ""
+
+#: src/locale/locale_dump.php:183
+msgid ""
+"An online Verilog Coding Competition, where participants have to come up "
+"with hardware solution for given problems which will be simulated using "
+"Icarus Verilog."
+msgstr ""
+
+#: src/locale/locale_dump.php:184
+#, fuzzy
+msgid "There will be a total of 5 questions."
+msgstr "ఏ ప్రశ్నకూ పాక్షిక మార్కులు ఇవ్వబడవు."
+
+#: src/locale/locale_dump.php:185
+msgid "An \\'i\\'th question carries i*100 marks."
+msgstr ""
+
+#: src/locale/locale_dump.php:188
+msgid "Use Verilog only."
+msgstr ""
+
+#: src/locale/locale_dump.php:189
+msgid "scores/kode-da-circuit"
+msgstr ""
+
+#: src/locale/locale_dump.php:194
+msgid "LitCafe"
+msgstr ""
+
+#: src/locale/locale_dump.php:195
 msgid "If wordplay is your foreplay, be there!"
 msgstr ""
 
-#: src/locale/locale_dump.php:160
+#: src/locale/locale_dump.php:196
 msgid "The literary contest"
 msgstr "సాహిత్య పోటీ"
 
-#: src/locale/locale_dump.php:161
+#: src/locale/locale_dump.php:197
 msgid ""
 "In cities full of large malls and big restaurants, in a society where the "
 "paradigm of large reigns our imagination, sometimes that little café in a "
@@ -530,52 +662,107 @@ msgid ""
 "cater to everyone’s tastes."
 msgstr ""
 
-#: src/locale/locale_dump.php:163
+#: src/locale/locale_dump.php:199 src/locale/locale_dump.php:409
 msgid "LitQuiz"
 msgstr ""
 
-#: src/locale/locale_dump.php:164
+#: src/locale/locale_dump.php:200 src/locale/locale_dump.php:410
 msgid "Et tu, questions ?"
 msgstr ""
 
-#: src/locale/locale_dump.php:165
+#: src/locale/locale_dump.php:201
+#, php-format
 msgid ""
+"LitCafe, Felicity - IIIT Hyderabad presents LitQuiz in collaboration with "
+"Campus Diaries! \n"
+"\n"
 "Welcome to the Ultimate Clash of Literary enthusiasts as they go up against "
 "each other through rounds that test the voracious readers, geeks and even "
-"the grammar Nazis!"
+"the grammar Nazis!\n"
+"\n"
+"Prizes upto Rs 10k up for grabs!\n"
+"\n"
+"<h2 class=\"text-left\">Rules</h2><ul class=\"text-left\"><li>Visit <a href="
+"\"https://campusdiaries.com/events/litquiz-felicity-0/\" onmouseover=\" this."
+"style.color=\\'grey\\'\" onmouseout=\"this.style.color=\\'white\\'\"> Campus "
+"Diaries </a> and click on \\'Attend\\' to be eligible for exciting prizes!</"
+"li><li>Questions would be rolled out in levels, each level would be of a "
+"particular theme or question style.</li><li>In each level the contestants "
+"need to answer at least 60% correctly to go to the next level.</li><li>A "
+"question in level \\'i\\' carries i*100 marks.</li><li>There is no penalty "
+"for wrong answers.</li><li>The contestant with the highest score at the end "
+"of the event will be the winner.</li></ul>"
 msgstr ""
 
-#: src/locale/locale_dump.php:168 src/locale/locale_dump.php:175
-#: src/locale/locale_dump.php:219 src/locale/locale_dump.php:226
-#: src/locale/locale_dump.php:233
+#: src/locale/locale_dump.php:210
+msgid "scores/litquiz/"
+msgstr ""
+
+#: src/locale/locale_dump.php:213 src/locale/locale_dump.php:280
+#: src/locale/locale_dump.php:287 src/locale/locale_dump.php:294
+#: src/locale/locale_dump.php:305 src/locale/locale_dump.php:502
+#: src/locale/locale_dump.php:514 src/locale/locale_dump.php:523
+#: src/locale/locale_dump.php:534 src/locale/locale_dump.php:545
 msgid "contact@felicity.iiit.ac.in"
 msgstr ""
 
-#: src/locale/locale_dump.php:170
-msgid "Shakespeare Codes"
+#: src/locale/locale_dump.php:215
+msgid "Shakespeare’s Shaky Pears!"
 msgstr ""
 
-#: src/locale/locale_dump.php:171
+#: src/locale/locale_dump.php:216
 msgid "A horse! A horse! My kingdom for a horse!"
 msgstr ""
 
-#: src/locale/locale_dump.php:172
+#: src/locale/locale_dump.php:217
 msgid ""
-"Code in the esoteric programming language inspired by the legendary poet, "
-"playwright and actor, William Shakespeare, and win glory mastering the Tech "
-"and Lit side of things all at once."
+"<h2><strong><center>Contest has Ended</center></strong></h2>\n"
+"\n"
+"Welcome to Shakespeare’s Shaky Pears! The online programming event presented "
+"to you by LitCafe, as part of Felicity, IIIT-H. \n"
+"\n"
+"Why a programming event by LitCafe? Well, because this is a contest which "
+"requires you to write your code in Shakespeare’s Programming Language, an "
+"esoteric language which has its syntax resembling Shakespearean plays. The "
+"character in the play are variables, and the interactions between the "
+"characters onstage delineates interactions between these variables.\n"
+"\n"
+"Read more about it here:\n"
+"<a class=\"underlined\" href=\"https://en.wikipedia.org/wiki/"
+"Shakespeare_Programming_Language\">https://en.wikipedia.org/wiki/"
+"Shakespeare_Programming_Language</a>\n"
+"Documentation:\n"
+"<a class=\"underlined\" href=\"http://shakespearelang.sourceforge.net/report/"
+"shakespeare.pdf\">http://shakespearelang.sourceforge.net/report/shakespeare."
+"pdf</a> \n"
+"\n"
+"Now, this contest is not just about getting a correct answer, it’s about "
+"creating an interesting and entertaining play while doing so. So though the "
+"problems might seem simple, they carry only 30% of the score, and the "
+"remaining 70% will go to your creativity in the story, the dialogue and the "
+"characterisation, i.e, the comments! References to the characters’ "
+"Shakespearean companions or tales will fetch you extra points, too!\n"
+"\n"
+"The portal link will posted half an hour before the event starts!"
 msgstr ""
 
-#: src/locale/locale_dump.php:177
+#: src/locale/locale_dump.php:233
+msgid "litcafe@felicity.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:235
 msgid "FanFicFeb"
 msgstr ""
 
-#: src/locale/locale_dump.php:178
+#: src/locale/locale_dump.php:236
 msgid "Tribute from the Fanatic Fandom"
 msgstr ""
 
-#: src/locale/locale_dump.php:179
+#: src/locale/locale_dump.php:237
 msgid ""
+"<strong>Contest has been extended to 21st February due to requests for "
+"extension.</strong>\n"
+"\n"
 "How many of us have read, re-read, watched and re-watched TV series and "
 "books that we connected with? Do you remember your avid, obsessive self who "
 "held their breaths and made complex theories to explain and predict that "
@@ -621,19 +808,23 @@ msgid ""
 "One Piece"
 msgstr ""
 
-#: src/locale/locale_dump.php:217
+#: src/locale/locale_dump.php:277
 msgid "Contest on Facebook Page"
 msgstr ""
 
-#: src/locale/locale_dump.php:221
+#: src/locale/locale_dump.php:278
+msgid "https://www.facebook.com/litcafe.felicity"
+msgstr ""
+
+#: src/locale/locale_dump.php:282
 msgid "Crime Scene Investigation"
 msgstr ""
 
-#: src/locale/locale_dump.php:222
+#: src/locale/locale_dump.php:283
 msgid "Who killed the cat ?"
 msgstr ""
 
-#: src/locale/locale_dump.php:223
+#: src/locale/locale_dump.php:284
 msgid ""
 "Calling all detectives and private investigators! Make your way through "
 "baffling clues, red herrings and mysterious suspects as you race against "
@@ -641,19 +832,19 @@ msgid ""
 "logic skills."
 msgstr ""
 
-#: src/locale/locale_dump.php:225
+#: src/locale/locale_dump.php:286
 msgid "Felicity Ground, IIIT"
 msgstr ""
 
-#: src/locale/locale_dump.php:228
+#: src/locale/locale_dump.php:289
 msgid "Spoken Word Poetry"
 msgstr ""
 
-#: src/locale/locale_dump.php:229
+#: src/locale/locale_dump.php:290
 msgid "Poetry is truth in its Sunday clothes"
 msgstr ""
 
-#: src/locale/locale_dump.php:230
+#: src/locale/locale_dump.php:291
 msgid ""
 "Enthrall the audiences as you make a beautiful symphony with your words. "
 "Challenge your imagination and creativity as you present your poems to the "
@@ -661,67 +852,788 @@ msgid ""
 "emerge a winner? Find out at the Flagship event of LitCafe."
 msgstr ""
 
-#: src/locale/locale_dump.php:232
+#: src/locale/locale_dump.php:293
 msgid "TBD, IIIT"
 msgstr ""
 
-#: src/locale/locale_dump.php:235
+#: src/locale/locale_dump.php:296 src/app/controllers/ttt_workshop.php:68
+#: src/app/views/contest/ttt_workshop.php:30
+msgid "Terribly Tiny Tales Workshop"
+msgstr ""
+
+#: src/locale/locale_dump.php:297
+msgid "A Tale of Microfiction"
+msgstr ""
+
+#: src/locale/locale_dump.php:298
+msgid ""
+"LitCafe @ Felicity - IIIT Hyderabad presents a short story writing  workshop "
+"by the masters in the field: Terribly Tiny Tales.\n"
+"Get insights into the world of Microfiction from Chintan Ruparel, the man "
+"who established India\\'s most  loved social storytelling platform and get a "
+"chance to have your very  own story feature there!\n"
+msgstr ""
+
+#: src/locale/locale_dump.php:302
+msgid "litcafe/ttt-workshop/register/"
+msgstr ""
+
+#: src/locale/locale_dump.php:303 src/locale/locale_dump.php:326
+#: src/locale/locale_dump.php:365 src/locale/locale_dump.php:382
+msgid "Register here"
+msgstr ""
+
+#: src/locale/locale_dump.php:304
+#: src/app/views/skeleton_template/header.php:32
+#, fuzzy
+msgid "IIIT-Hyderabad"
+msgstr "IIIT హైదరాబాద్"
+
+#: src/locale/locale_dump.php:307
 msgid "Zombie Zone"
 msgstr "జోంబి జోన్"
 
-#: src/locale/locale_dump.php:236
+#: src/locale/locale_dump.php:308
 msgid "Life is short, play more."
 msgstr "లైఫ్ చాలా చిన్నది, చాలా ఆడండి."
 
-#: src/locale/locale_dump.php:237
+#: src/locale/locale_dump.php:309
 msgid "Virtual games"
 msgstr "వర్చ్యువల్ ఆటలు"
 
-#: src/locale/locale_dump.php:238
+#: src/locale/locale_dump.php:310
 msgid ""
 "Are you the alpha male in the cyber space? Do you kick terrorist-ass in "
-"counter strike? Or are you a single gamer that rules them all in DOTA? Do "
-"you tokyo drift in NFS Mostwanted, or have you gotten Messi the cup in "
-"FIFA.\n"
+"counter strike? Or are you a War zone survivor in the Call of Duty? Do you "
+"tokyo drift in NFS Most Wanted, or have you gotten Messi the cup in FIFA.\n"
 "Either case, show us what you\\'ve got in our Gaming marathons. Are you game "
 "to go Zombie?"
 msgstr ""
 
-#: src/locale/locale_dump.php:242
+#: src/locale/locale_dump.php:313
+msgid "Counter Strike Global Offensive /1.6"
+msgstr ""
+
+#: src/locale/locale_dump.php:314
+msgid "\"Gamers never die, they respawn ! \""
+msgstr ""
+
+#: src/locale/locale_dump.php:315
+msgid ""
+"\"Follow me !\", \"Roger that.\" Do these words bring an adrenaline rush to "
+"your gaming senses. If it doesn\\'t you are not living a life. \n"
+"In case of Counter Strike, the thing is not who plays it, it is instead who "
+"does not.\n"
+"Zombie Zone, Felicity 2016 brings before you, for the first time, both the "
+"popular versions of Counter-Strike: CS:GO and CS 1.6 this time. While the "
+"1.6 version is still famous amongst the classic veteran gamers while CS:GO "
+"has the newly build charm that attracts the new generation of ferocious yet "
+"accurate young lads.\n"
+"The registered teams will have to play on one version throughout the "
+"tournament.    \n"
+"So get set, reach the Market Place, and buy everything you need from magnums "
+"to grenades! Because, only the best will win! "
+msgstr ""
+
+#: src/locale/locale_dump.php:320
+msgid ""
+"The teams are allowed to play only in one mode, i.e. on v1.6 or on GO "
+"version. Separate seeding will be maintained such that you will be up "
+"against teams of similar mode."
+msgstr ""
+
+#: src/locale/locale_dump.php:321
+msgid ""
+"5v5, one bomb map (de_dust2 or de_inferno) and 15 rounds each in T and CT. "
+"Best of 30 rounds will be considered"
+msgstr ""
+
+#: src/locale/locale_dump.php:322
+msgid ""
+"Standard hardware will be provided at the venue. However, teams can bring "
+"their own equipments"
+msgstr ""
+
+#: src/locale/locale_dump.php:323
+msgid "Standard CS Clan rules apply. "
+msgstr ""
+
+#: src/locale/locale_dump.php:324
+msgid " Registrations are open"
+msgstr ""
+
+#: src/locale/locale_dump.php:325
+msgid "http://goo.gl/forms/Sx5lpTkTZ5"
+msgstr ""
+
+#: src/locale/locale_dump.php:327 src/locale/locale_dump.php:343
+#: src/locale/locale_dump.php:366 src/locale/locale_dump.php:383
+msgid "Teaching Labs, Nilgiri, IIIT Hyderabad"
+msgstr ""
+
+#: src/locale/locale_dump.php:328 src/locale/locale_dump.php:344
+#: src/locale/locale_dump.php:367 src/locale/locale_dump.php:384
+msgid "ayan@felicity.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:330
+msgid "Call of Duty: Modern Warfare I"
+msgstr ""
+
+#: src/locale/locale_dump.php:331
+msgid "\"In the war that changed the world, no one fought alone ! \""
+msgstr ""
+
+#: src/locale/locale_dump.php:332
+msgid ""
+"Have you ever thrown a grenade to clear a room, Or killed a teammate "
+"accidentally ? It\\'s time to Zeke up for Zombie zone and put your skills to "
+"the test in call of duty modern warfare.\n"
+"\n"
+"Fight your way through bog, set traps in bloc and frag the enemy in "
+"backlot.\n"
+msgstr ""
+
+#: src/locale/locale_dump.php:336
+msgid "Each team will have 4 players"
+msgstr ""
+
+#: src/locale/locale_dump.php:337
+msgid "Games modes will be team death match, sabotage and search & destroy"
+msgstr ""
+
+#: src/locale/locale_dump.php:338
+msgid "Maps will be selected at random."
+msgstr ""
+
+#: src/locale/locale_dump.php:339
+msgid ""
+"Standard tournament rules apply and banned weapons/perks will be announced "
+"before the game."
+msgstr ""
+
+#: src/locale/locale_dump.php:340 src/locale/locale_dump.php:363
+#: src/locale/locale_dump.php:380 src/locale/locale_dump.php:483
+msgid "Registrations are open"
+msgstr ""
+
+#: src/locale/locale_dump.php:341
+msgid "http://goo.gl/forms/aWNkSnslCq"
+msgstr ""
+
+#: src/locale/locale_dump.php:342
+msgid "Register Here"
+msgstr ""
+
+#: src/locale/locale_dump.php:346
+msgid "Need For Speed: Most Wanted"
+msgstr ""
+
+#: src/locale/locale_dump.php:347
+msgid "\"SpeedBoost is the way to sin, but it\\'s what you need to win. ! \""
+msgstr ""
+
+#: src/locale/locale_dump.php:348
+msgid ""
+"\"Vroom!\". This sounds like Fast and this sounds like Furious. This sounds "
+"Fun isn\\'t it??\n"
+"Being on the Top isn\\'t good enough. Maintaining it like a boss is what "
+"sounds like a TRUE Racer.\n"
+"\n"
+"Zombie Zone,Felicity\\'16 now has NFS Most Wanted in its store.\n"
+"Now have a Real Racing experience with your friends racing through \n"
+"the streets of Rockport City and Brag about it coz U r the Boss.\n"
+"Beware of the Pursuit breakers though. One small mistake can be \n"
+"a fatal error. Trust your instincts and the Force will be with you.\n"
+"\n"
+"So get to the Garage and tune your car to rule the streets coz your \n"
+"CAR is your GOD."
+msgstr ""
+
+#: src/locale/locale_dump.php:359
+msgid "This is an Individual event."
+msgstr ""
+
+#: src/locale/locale_dump.php:360
+msgid ""
+"Based on the progressing levels Races are set and everyone has to play these "
+"races."
+msgstr ""
+
+#: src/locale/locale_dump.php:361
+msgid "The Fastest TIMES progress to the next rounds."
+msgstr ""
+
+#: src/locale/locale_dump.php:362
+msgid "Equipment will be provided. But you are welcome to bring yours. "
+msgstr ""
+
+#: src/locale/locale_dump.php:364
+msgid "http://goo.gl/forms/DMfzXxdCzI"
+msgstr ""
+
+#: src/locale/locale_dump.php:369
+msgid "FIFA 2015"
+msgstr ""
+
+#: src/locale/locale_dump.php:370
+msgid "If you aren\\'t a Ronaldo on field, why not be on screen ! \""
+msgstr ""
+
+#: src/locale/locale_dump.php:371
+msgid ""
+"Most famous and extensively played sports game on PC, FIFA 2015 is all set "
+"with a bang to steal every football freaks\\' hearts. Skills matter, agreed. "
+"Agility and strategy matter, agreed. But what matters the most, is the "
+"spirit towards this sports. Be it a keyboard or a controller, when you are "
+"ready to become a Messi, the world won\\'t stop you. \n"
+"See you all at Zombie Zone, Felicity \\'16.\n"
+"Cheers! "
+msgstr ""
+
+#: src/locale/locale_dump.php:374
+msgid ""
+"1v1 tournament. Keyboards and Controllers allowed. Separate seeding of "
+"players based on mode of playing equipments."
+msgstr ""
+
+#: src/locale/locale_dump.php:375
+msgid "Tactical defending (legacy not allowed)"
+msgstr ""
+
+#: src/locale/locale_dump.php:376
+msgid "Half-length: 6 minutes"
+msgstr ""
+
+#: src/locale/locale_dump.php:377
+msgid "Extra time and penalties in case of draws"
+msgstr ""
+
+#: src/locale/locale_dump.php:378
+msgid "Best of 1 knockout"
+msgstr ""
+
+#: src/locale/locale_dump.php:379
+msgid "Default squads only"
+msgstr ""
+
+#: src/locale/locale_dump.php:381
+msgid "http://goo.gl/forms/ZqBC0U2kAe"
+msgstr ""
+
+#: src/locale/locale_dump.php:387
 msgid "The more you look, the less you see"
 msgstr ""
 
-#: src/locale/locale_dump.php:243
+#: src/locale/locale_dump.php:388
 msgid "threads/cachein/"
 msgstr ""
 
-#: src/locale/locale_dump.php:244
+#: src/locale/locale_dump.php:389
 msgid "files/16/cachein_scores.png"
 msgstr ""
 
-#: src/locale/locale_dump.php:245
-msgid "static/scores/cachein.json"
+#: src/locale/locale_dump.php:390
+msgid "files/16/scores/cachein.json"
 msgstr ""
 
-#: src/locale/locale_dump.php:246
+#: src/locale/locale_dump.php:391
 msgid "files/16/cachein-explanations.pdf"
 msgstr ""
 
-#: src/locale/locale_dump.php:249
+#: src/locale/locale_dump.php:394
 msgid "threads/gordian-knot/"
 msgstr ""
 
-#: src/locale/locale_dump.php:250
-msgid "static/scores/gordian.json"
+#: src/locale/locale_dump.php:395
+msgid "files/16/scores/gordianknot.json"
 msgstr ""
 
-#: src/locale/locale_dump.php:253
+#: src/locale/locale_dump.php:398
 msgid "threads/breakin/"
 msgstr ""
 
-#: src/locale/locale_dump.php:254
-msgid "static/scores/breakin.json"
+#: src/locale/locale_dump.php:399
+msgid "files/16/scores/breakin.json"
 msgstr ""
+
+#: src/locale/locale_dump.php:400
+msgid "https://github.com/ctfs/write-ups-2016/tree/master/breakin-ctf-2016/"
+msgstr ""
+
+#: src/locale/locale_dump.php:403
+msgid "threads/code-helix/"
+msgstr ""
+
+#: src/locale/locale_dump.php:404
+msgid "files/16/scores/codehelix.json"
+msgstr ""
+
+#: src/locale/locale_dump.php:407
+msgid "pulsation/electronics-showdown/"
+msgstr ""
+
+#: src/locale/locale_dump.php:408
+msgid "files/16/scores/electronicsshowdown.json"
+msgstr ""
+
+#: src/locale/locale_dump.php:411
+msgid "litcafe/litquiz"
+msgstr ""
+
+#: src/locale/locale_dump.php:412
+msgid "files/16/scores/litquiz.json"
+msgstr ""
+
+#: src/locale/locale_dump.php:415
+msgid "threads/botomata"
+msgstr ""
+
+#: src/locale/locale_dump.php:416
+msgid "files/16/scores/botomata.json"
+msgstr ""
+
+#: src/locale/locale_dump.php:419
+msgid "pulsation/kode-da-circuit"
+msgstr ""
+
+#: src/locale/locale_dump.php:420
+msgid "files/16/scores/kodedacircuit.json"
+msgstr ""
+
+#: src/locale/locale_dump.php:421 src/app/controllers/contest.php:178
+msgid "Web development Workshop"
+msgstr ""
+
+#: src/locale/locale_dump.php:422
+msgid "Be the webXPERT"
+msgstr ""
+
+#: src/locale/locale_dump.php:423
+msgid ""
+"<h3><u>About workshop</u></h3>What we do on the Web changes every day. The "
+"web development industry is constantly evolving. While we may not be able to "
+"tell the day-to-day changes while they’re happening, it\\'s easy for us to "
+"look back at the past few months and see that a lot of things we do now are "
+"much different than what we\\'ve been doing before.\n"
+"\n"
+"Because our work lies in one of the fastest-paced industries, it\\'s "
+"important for us to predict and learn about what\\'s coming up or risk being "
+"left in the web development dust.\n"
+"<h3><u>Here’s why you should join us</u></h3>Learn how to craft your ideas "
+"into something real! Coding is the ability to take the abstract and make it "
+"concrete. In this class we’ll show you how to go from no prior coding "
+"knowledge to crafting your own dynamic websites using HTML, CSS, JavaScript, "
+"PHP and MYSQL.\n"
+"\n"
+"<strong>When</strong>\n"
+"February 19th to 21st, 2016.\n"
+"\n"
+"<strong>Where</strong>\n"
+"[ Only Offline ]\n"
+"IIIT Hyderabad, Gachibowli, Hyderabad, Telangana, Pincode - 500032.\n"
+"<h3>Workshop Highlights</h3><ul><li>Learn and interact with experts in the "
+"field of Web Development.\n"
+"<li>Practical demonstration for each and every module mentioned in course "
+"contents.\n"
+"<li>Improve your job prospects and get an edge over your counterparts.\n"
+"<li>Receive an unparalleled education on the art of computer security with "
+"personal one-to-one attention.\n"
+"<li>Covers all the basics for development of a server side website.\n"
+"<li>Hands on Demonstrations of Latest Animation Techniques & Tools.\n"
+"</ul><h3>Workshop Details</h3><ul><li>All study material would be provided\n"
+"<li>All the necessary softwares would be provided\n"
+"<li>Workshop will be of 18 Hours (3 Days, 6 hrs each)\n"
+"</ul>\n"
+"\n"
+"Note: If you have issues with registration or payment, contact us at <a href="
+"\"mailto:webdev@felicity.iiit.ac.in\" class=\"underlined\">webdev@felicity."
+"iiit.ac.in</a>"
+msgstr ""
+
+#: src/locale/locale_dump.php:447
+msgid "<small>Registration fee is ₹1000/-</small>"
+msgstr ""
+
+#: src/locale/locale_dump.php:448
+msgid "talks-and-workshops/web-development/register/"
+msgstr ""
+
+#: src/locale/locale_dump.php:449 src/locale/locale_dump.php:485
+#, fuzzy
+msgid "Link for registration"
+msgstr "వివరణలకూ లింక్"
+
+#: src/locale/locale_dump.php:450 src/locale/locale_dump.php:486
+msgid "IIIT Hyderabad, Gachibowli Hyderabad - 500032"
+msgstr ""
+
+#: src/locale/locale_dump.php:451
+msgid "webdev@felicity.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:452
+msgid "files/16/webdev.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:453
+msgid "Talks, Workshops and Presentations"
+msgstr ""
+
+#: src/locale/locale_dump.php:456
+msgid "<p class=\"lead text-center\">See events for more details</p>"
+msgstr ""
+
+#: src/locale/locale_dump.php:458 src/app/controllers/contest.php:114
+msgid "Paper Presentation"
+msgstr ""
+
+#: src/locale/locale_dump.php:459
+msgid "A Research extravaganza"
+msgstr ""
+
+#: src/locale/locale_dump.php:460
+msgid ""
+"<b><i>If you have any doubt regarding registration,scroll down to see \"How "
+"to register?\". If you still face a problem then  contact us on "
+"+91-9908286132  </b></i> <b>(SUHAS)</b><b><i> or inturi.suhasreddy@students."
+"iiit.ac.in</b></i>\n"
+"\n"
+"\n"
+"<b>Deadline : Feb 18 ,11:59AM</b>\n"
+"<b>Prizes : Participation Certificates and many more.. </b>\n"
+"\n"
+"<h3>How to register?</h3><ul>\n"
+"<li>First login into our website using the top right link.\n"
+"<li>open docs.google.com and click on the \"+\" button.\n"
+"<li>copy the content present in your research paper(either .pdf or .docx or "
+"any other)(Use ctrl-a to select the text completely and then do ctrl-c) "
+"then, paste it in the new doc that you have just now created in the google "
+"docs.\n"
+"<li>Wait for a second or two so that google saves your doc. Now, go to the "
+"url(link) present in the top and copy it.\n"
+"<li>Come back to felicity paper presentation page and click on \"link for "
+"registration\" button.\n"
+"<li>paste the previously copied link in the box that you find on our page "
+"and click submit. \n"
+"</ul>\n"
+"<h4><b>About the event</h4></b>\n"
+"Felicity gives you an opportunity to showcase your research aptitude.Pick "
+"any cutting-edge research topic that catches your fancy and present it.\n"
+"<h3><b>Terms and Conditions</b></h3><ul>\n"
+"<li>You need to publish your <b>OWN</b> research paper (<i><b>paper</b> and "
+"not just the abstract</i>) which will be scrutinized by our research team. "
+"If we are satisfied with your work then <b>ONLY</b> we will call you for "
+"presentations which will be held in our campus.\n"
+"<li> Last date for accepting entries is <b>18th Feb 11:59AM </b>\n"
+"<li> Team size : 1-3(strictly not more than 3)\n"
+"<li> No Registration Fee\n"
+"<li>Papers from any background will  be accepted. \n"
+"<li>Stay tuned for further updates."
+msgstr ""
+
+#: src/locale/locale_dump.php:484
+msgid "talks-and-workshops/paper-presentation/register"
+msgstr ""
+
+#: src/locale/locale_dump.php:487
+msgid "inturi.suhasreddy@students.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:489
+msgid "Nights"
+msgstr ""
+
+#: src/locale/locale_dump.php:491
+msgid ""
+"The most anticipated and splendid part of Felicity. Pronites ensure a "
+"perfect end to the three days, leaving us with memories to cherish. You "
+"would not want to miss these."
+msgstr ""
+
+#: src/locale/locale_dump.php:492 src/locale/locale_dump.php:599
+msgid "  "
+msgstr ""
+
+#: src/locale/locale_dump.php:493
+msgid "Sifar"
+msgstr ""
+
+#: src/locale/locale_dump.php:495
+msgid ""
+"They are scintillating, rocking and you’ll love them! Sifar is coming to "
+"Felicity ‘16 and they are bringing their fresh alt-rock beats with them! "
+"Join us in a crazy musical journey with Sifar, that will make you sway on "
+"their music. Get ready to be shaken up by their formidable performance at "
+"IIIT-H on the 20th of February, 2016. It\\'s going to be a whole new level "
+"of awesome, we promise! \n"
+"\n"
+"Check out their <a class=\"underlined\" href=\"https://www.youtube.com/user/"
+"sifarband\" target=\"blank\">YouTube</a> channel for a preview.\n"
+"\n"
+"<img src=\"/files/16/images/sifar.jpg\" alt=\"SifarPoster\" >"
+msgstr ""
+
+#: src/locale/locale_dump.php:501 src/locale/locale_dump.php:513
+#: src/locale/locale_dump.php:522 src/locale/locale_dump.php:533
+#: src/locale/locale_dump.php:544
+msgid "IIIT Hyderabad"
+msgstr "IIIT హైదరాబాద్"
+
+#: src/locale/locale_dump.php:504
+msgid "SPUNK!"
+msgstr ""
+
+#: src/locale/locale_dump.php:506
+msgid ""
+"If Desi music, with heavy rock edge, is something that your imagination "
+"fancies, then SPUNK! brings you exactly that - a hypnotic journey through "
+"Bollywood from the 60s to the 90s fused with super groovy rhythms, full-"
+"power guitars and melodious vocal lines! Bang your heads and scream it out "
+"on one of the best Hindi rock acts of India, a genre of music that is sure "
+"to win your heart. Groove along with us on 20th of February in the "
+"reverberation of pure magic that is SPUNK!, or else, Seedha Palaat Udhar "
+"Nautanki Kahike! \n"
+"\n"
+"Check out their <a class=\"underlined\" href=\"https://www.youtube.com/user/"
+"SpunkIndiaTV\" target=\"blank\">YouTube</a> channel for a preview.\n"
+"\n"
+"<img src=\"https://felicity.iiit.ac.in/files/16/images/spunk.jpg\" alt="
+"\"SPUNK! Poster\">\n"
+msgstr ""
+
+#: src/locale/locale_dump.php:515
+msgid "files/16/images/spunk.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:516
+msgid "Comedy Night"
+msgstr ""
+
+#: src/locale/locale_dump.php:518
+msgid ""
+"Azeem Banatwalla, the tall and funny guy you see at the <a class=\"underlined"
+"\" href=\"https://www.youtube.com/watch?"
+"v=W4AfLmXmeRk&list=PLox1kfMm75BzUCg7nbJ_u7q6ik_aBcotI\" target=\"_blank"
+"\">EIC Outrage</a> will make his appearance at Felicity ʼ16! He is an "
+"amazingly talented comedian popularly known for a wholesale supply of puns. "
+"An engineer-turned-writer-turned-comedian, he has got the stuff to crack you "
+"up, in sackfuls. Come laugh your guts out on 19th February, with the "
+"wickedly funny Azeem Banatwalla, at IIIT-H, the place where magic happens.\n"
+"\n"
+"<img src=\"/files/16/images/comedy.jpg\" alt=\"ComedyPoster\" >"
+msgstr ""
+
+#: src/locale/locale_dump.php:524
+msgid "/files/16/images/comedy.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:525
+msgid "DJ Zaeden"
+msgstr ""
+
+#: src/locale/locale_dump.php:527
+msgid ""
+"The youngest Indian DJ to have ever played in Tomorrowland as well as "
+"featured on Hardwell On Air is now coming to Felicity! Zaeden, a prodigy as "
+"some would claim, will win your hearts with his ingenious mixes if not with "
+"his drop-dead gorgeous looks. We dare you to stay immune to his charm and "
+"captivating beats.\n"
+"\n"
+"Check out his <a class=\"underlined\" href=\"https://www.youtube.com/user/"
+"zaedenmusic/\" target=\"_blank\">YouTube</a> channel for a preview.\n"
+"\n"
+"<img src=\"/files/16/images/zaeden.jpg\" alt=\"Zaeden\">"
+msgstr ""
+
+#: src/locale/locale_dump.php:535
+msgid "/files/16/images/zaeden.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:536
+msgid "Progressive Brothers"
+msgstr ""
+
+#: src/locale/locale_dump.php:538
+msgid ""
+"India’s best trance DJs, known around the world as the Progressive Brothers "
+"will spice up the stage for the grandeur night marking the end of Felicity "
+"‘16! The highly energetic, bold and fresh combination of music brought to "
+"you by these charismatic artists will surely have you calling for more. "
+"After three days of pure fun, the progressive house will help you loosen up "
+"by losing yourself! \n"
+"\n"
+"Check out their <a class=\"underlined\" href=\"https://www.youtube.com/user/"
+"progressivebrothers/\" target=\"_blank\">YouTube</a> channel for a preview.\n"
+"\n"
+"<img src=\"/files/16/images/progressive-brothers.jpg\" alt="
+"\"ProgressiveBrothers\">"
+msgstr ""
+
+#: src/locale/locale_dump.php:546
+msgid "/files/16/images/progressive-brothers.jpg"
+msgstr ""
+
+#: src/locale/locale_dump.php:547
+msgid "Privacy Policy"
+msgstr ""
+
+#: src/locale/locale_dump.php:548
+msgid ""
+"<p>\n"
+"This Privacy Policy is designed to tell you about the practices regarding "
+"collection, use, and disclosure of information that may be collected by "
+"Felicity, IIIT-Hyderabad. Please be sure to read this entire Privacy Policy, "
+"before using or submitting information to the websites owned or operated by "
+"Felicity, IIIT-Hyderabad.\n"
+"</p>\n"
+"\n"
+"<h2>Consent</h2>\n"
+"\n"
+"<p>By using the sites or services provided by Felicity, IIIT-Hyderabad, you "
+"agree to the Terms of this Privacy Policy. Whenever you submit information "
+"to Felicity, IIIT-Hyderabad, you consent to the collection, use, and "
+"disclosure of that information in accordance with this Privacy Policy.</p>\n"
+"\n"
+"<h2>Information</h2>\n"
+"<p>At Felicity, IIIT-Hyderabad, we use fair and proper means to collect your "
+"personal information (Which means information about an individual which can "
+"identify the specific individual, like name, date of birth, nationality, "
+"location, gender, email address, phone numbers, organisations, etc. ) to the "
+"extent necessary to achieve the purpose for use prescribed in this Privacy "
+"Policy. We do not collect information regarding your race, ancestry, "
+"lineage, religion, political views or membership of workers’ unions.</p>\n"
+"\n"
+"<p>For any given individual’s personal information we collect, we consider "
+"Name and Contact Details like email address and phone number to be Sensitive "
+"Information, and the rest to be Safe-To-Aggregate Data.</p>\n"
+"\n"
+"<h2>Sharing of Information</h2>\n"
+"\n"
+"<h3>Public Sharing</h3>\n"
+"<p>\n"
+"Of the information collected for each individual, Felicity, IIIT-Hyderabad "
+"will publicly share nicknames/usernames, country and college/organisation "
+"details of each individual. Your name may be disclosed publicly under some "
+"circumstances.</p>\n"
+"\n"
+"<h3>Disclosure to Third Parties</h3>\n"
+"<p>Of the information collected for each individual, Felicity, IIIT-"
+"Hyderabad will disclose only Safe-To-Aggregate Data of each individual to "
+"third parties (such as sponsors). None of the information classified as "
+"Sensitive Information will be disclosed to third parties, aside from your "
+"email id, which may be disclosed to sponsors when we deem necessary.</p>\n"
+"\n"
+"<h2>Children</h2>\n"
+"<p>We will not knowingly collect Personal Information via the Sites from "
+"visitors younger than thirteen (13) years of age. We treat all our customers "
+"as adults in the wake of this declaration,  however, and we strongly "
+"encourage parents to talk to their children about their use of the Internet "
+"and the information they disclose on websites.</p>\n"
+"\n"
+"<h2>Cookies and Google Analytics</h2>\n"
+"<p>A cookie is a piece of text placed on your computer by a web server. We "
+"occasionally use cookies on some parts of our web services to enhance your "
+"experience of the site. We may use a session cookie to store a randomly "
+"generated identifying tag on your computer. Session cookies are temporary "
+"and are automatically deleted during operation of your browser or when your "
+"browser is closed.\n"
+"Most web browsers may be customized to refuse new cookies or delete existing "
+"cookies. Rejecting or deleting cookies may limit your ability to take "
+"advantage of some of our features and could result in the loss of any "
+"customized setting.</p>\n"
+"\n"
+"<p>We also use Google Analytics to analyze traffic to our website and its "
+"services. Data generated through Google Analytics can be linked, by the "
+"Google Analytics customer or by Google, using Google technology, to third-"
+"party cookies, related to visits to other websites.</p>\n"
+"\n"
+"<p><em><small>This privacy policy was last updated on the 29th of January, "
+"2016.</small></em></p>"
+msgstr ""
+
+#: src/locale/locale_dump.php:580 src/app/controllers/contest.php:75
+msgid "Futsal"
+msgstr ""
+
+#: src/locale/locale_dump.php:581
+msgid "Joga Bonito"
+msgstr ""
+
+#: src/locale/locale_dump.php:582
+msgid ""
+" 4-a-side Futsal is coming to Felicity! Register your team and stand a "
+"chance to win prizes worth up to 15k INR!\n"
+"\n"
+"If you are registering online, ensure that your team members are registered "
+"as well.\n"
+"\n"
+"On the spot registrations allowed too.\n"
+msgstr ""
+
+#: src/locale/locale_dump.php:588
+msgid ""
+"4 players in a squad with 2 substitutes allowed per team (Max team size 6)"
+msgstr ""
+
+#: src/locale/locale_dump.php:589
+msgid "Rolling substitutions allowed throughout the game"
+msgstr ""
+
+#: src/locale/locale_dump.php:590
+msgid ""
+"Only current and active students from a college/university/school will be "
+"allowed to participate."
+msgstr ""
+
+#: src/locale/locale_dump.php:591
+msgid ""
+"Every team member must carry their institute ID card. Failure to do so will "
+"make them ineligible to play."
+msgstr ""
+
+#: src/locale/locale_dump.php:592
+msgid "sports/futsal/register/"
+msgstr ""
+
+#: src/locale/locale_dump.php:593
+msgid "Register your team here"
+msgstr ""
+
+#: src/locale/locale_dump.php:594
+msgid "Football Ground, IIIT-H"
+msgstr ""
+
+#: src/locale/locale_dump.php:595
+msgid "abhinav.shukla@research.iiit.ac.in"
+msgstr ""
+
+#: src/locale/locale_dump.php:597
+msgid "Sporting Events"
+msgstr ""
+
+#: src/app/helpers/validations.php:14
+msgid "↑ This is a required field"
+msgstr ""
+
+#: src/app/controllers/ttt_workshop.php:68 src/app/controllers/contest.php:75
+#: src/app/controllers/contest.php:114 src/app/controllers/contest.php:178
+#: src/app/controllers/contest.php:256
+#: src/app/views/contest/paper_presentation.php:26
+#: src/app/views/contest/ttt_workshop.php:31
+#: src/app/views/contest/webdev_workshop.php:31
+#: src/app/views/auth/register_by_email.php:2
+msgid "Register"
+msgstr ""
+
+#: src/app/controllers/contest.php:173
+msgid "Some unexpected error occurred"
+msgstr ""
+
+#: src/app/controllers/contest.php:256
+#, fuzzy
+msgid "Breakin"
+msgstr "బ్రేక్ఇన్ సి -టి-ఎఫ్"
 
 #: src/app/controllers/auth.php:134
 msgid "Could not verify email"
@@ -810,26 +1722,352 @@ msgstr ""
 msgid "This email id is not registred"
 msgstr ""
 
-#: src/app/views/templates/category/index.php:32
+#: src/app/views/templates/category/index.php:36
 #: src/app/views/skeleton_template/footer.php:33
 msgid "Events"
 msgstr "ఇవెంట్స్"
 
-#: src/app/views/templates/category/index.php:39
+#: src/app/views/templates/category/index.php:45
 msgid "To be announced"
 msgstr "ప్రకటించాల్సి ఉంది."
 
-#: src/app/views/templates/sponsors/index.php:42
+#: src/app/views/templates/sponsors/index.php:1
+#: src/app/views/skeleton_template/footer.php:104
+msgid "Sponsors"
+msgstr "స్పాన్సర్లు"
+
+#: src/app/views/templates/sponsors/index.php:46
+#, fuzzy
+msgid "Felicity 2016 Sponsors"
+msgstr " ఫెలిసిటీ'16  హోమ్"
+
+#: src/app/views/templates/sponsors/index.php:100
 msgid "Past sponsors"
 msgstr "గత స్పాన్సర్లు"
 
-#: src/app/views/templates/sponsors/index.php:43
+#: src/app/views/templates/sponsors/index.php:101
 msgid "Year 2015"
 msgstr "2015  సంవత్సరం "
 
-#: src/app/views/templates/sponsors/index.php:74
+#: src/app/views/templates/sponsors/index.php:132
 msgid "Year 2014 and before"
 msgstr "సంవత్సరం 2014 మరియు ముందు"
+
+#: src/app/views/templates/team/index.php:19
+msgid "The Felicity Coordinators"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:21
+#: src/app/views/templates/team/index.php:109
+#: src/app/views/templates/contact/index.php:25
+msgid "Jeevan Chowdary"
+msgstr "జీవన్ చౌధరి"
+
+#: src/app/views/templates/team/index.php:22
+#: src/app/views/templates/contact/index.php:37
+msgid "Sanatan Mishra"
+msgstr "సనాతన్  మిశ్రా"
+
+#: src/app/views/templates/team/index.php:23
+#: src/app/views/templates/team/index.php:64
+#: src/app/views/templates/contact/index.php:49
+msgid "Vivek Ghaisas"
+msgstr "వివేక్ ఘాఇసాస్"
+
+#: src/app/views/templates/team/index.php:27
+msgid "Finance Council"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:29
+#: src/app/views/templates/team/index.php:150
+msgid "Shyamli Venkatapathy"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:30
+#: src/app/views/templates/team/index.php:167
+msgid "Gorang Maniar"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:34
+#, fuzzy
+msgid "The Threads Team"
+msgstr "థ్రెడ్స్"
+
+#: src/app/views/templates/team/index.php:42
+#: src/app/views/templates/team/index.php:108
+#: src/app/views/templates/team/index.php:135
+msgid "First row"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:43
+#: src/app/views/templates/team/index.php:137
+msgid "Aditya Baskar"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:44
+msgid "Rounak Mundra"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:45
+msgid "Rahul Nahata"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:46
+#: src/app/views/templates/team/index.php:148
+msgid "Amitha Reddy"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:47
+msgid "Meghana Manusanipalli"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:50
+#: src/app/views/templates/team/index.php:112
+#: src/app/views/templates/team/index.php:146
+msgid "Second row"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:51
+msgid "Ayush Mishra"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:52
+msgid "Chanakya Malireddy"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:53
+msgid "Sriram Narayanan"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:54
+msgid "Shriram Rahatgaonkar"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:55
+msgid "Harshil Goel"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:56
+msgid "Saksham Aggarwal"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:57
+msgid "Tanmay Sahay"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:58
+msgid "Himanshu Dahiya"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:59
+msgid "Ashish Jain"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:60
+msgid "Kunal Singh"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:63
+#: src/app/views/templates/team/index.php:119
+#: src/app/views/templates/team/index.php:157
+msgid "Third row"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:65
+msgid "Nikhil Daliya"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:66
+msgid "Anveshi Shukla"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:67
+msgid "Aniket Jain"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:68
+msgid "Harshit Harchani"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:69
+#: src/app/views/templates/team/index.php:113
+msgid "Pranjal Rai"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:70
+msgid "Abhineet Jain"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:70
+#: src/app/views/templates/team/index.php:138
+msgid "Coordinator"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:71
+msgid "Parth Kolekar"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:71
+msgid "Primary Server Admin"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:72
+#: src/app/views/templates/team/index.php:154
+msgid "Nisarg Jhaveri"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:72
+msgid "Secondary Server Admin"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:73
+#: src/app/views/templates/team/index.php:174
+msgid "Anurag Gupta"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:74
+msgid "Rohan Karnawat"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:75
+msgid "Ayan Shrivastava"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:79
+msgid "Abhineet Jain<br>Threads Coordinator"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:80
+msgid "Nisarg Jhaveri<br>Secondary Server Admin"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:81
+msgid "Parth Laxmikant Kolekar<br>Primary Server Admin"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:100
+msgid "The Marketing and HR Team"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:114
+msgid "Inturi Suhas Reddy"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:115
+msgid "Revi Teja"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:116
+#: src/app/views/templates/team/index.php:158
+msgid "Rishabh Khawad"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:120
+msgid "Pooja Shamili Ganti"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:121
+msgid "Akruti Kushwaha"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:122
+#: src/app/views/templates/team/index.php:152
+msgid "Smriti Singh"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:127
+msgid "The Kalakshetra Team"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:136
+msgid "Sagar Gaur"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:138
+msgid "Apuroop Kumar Reddy"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:139
+msgid "Anvesh Rao"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:140
+msgid "Saksham Agrawal"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:141
+#, fuzzy
+msgid "Nurendra Choudhary"
+msgstr "జీవన్ చౌధరి"
+
+#: src/app/views/templates/team/index.php:142
+msgid "Abhinav Prasad"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:143
+msgid "Debayan Das"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:147
+msgid "Roopal Nahar"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:149
+msgid "Kaveri Anuranjana"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:151
+msgid "Srishti Aggarwal"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:153
+msgid "Sanjana Sharma"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:163
+msgid "The LitCafe Coordinators"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:165
+msgid "Akanksha Srivastava"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:166
+msgid "Anurag Ghosh"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:168
+msgid "Vatika Harlalka"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:172
+msgid "The Pronites Coordinators"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:175
+msgid "Shashank Agrawal"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:179
+msgid "Show Management Team"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:184
+msgid "Aishwary Gupta"
+msgstr ""
+
+#: src/app/views/templates/team/index.php:185
+msgid "Aditya Bohra"
+msgstr ""
+
+#: src/app/views/templates/gallery/index.php:1
+#: src/app/views/skeleton_template/footer.php:96
+msgid "Gallery"
+msgstr "గ్యాలరీ"
+
+#: src/app/views/templates/coming_soon/index.php:1
+msgid "Coming Soon"
+msgstr ""
 
 #: src/app/views/templates/coming_soon/index.php:5
 msgid "This page is coming soon"
@@ -847,7 +2085,7 @@ msgstr "స్కోరుబోర్డు"
 #: src/app/views/templates/score/index.php:393
 #: src/app/views/skeleton_template/header.php:11
 #: src/app/views/skeleton_template/header.php:32
-#: src/app/views/skeleton_template/header.php:59
+#: src/app/views/skeleton_template/header.php:60
 msgid "Felicity"
 msgstr "ఫెలిసిటీ"
 
@@ -859,21 +2097,26 @@ msgstr "అంతిమ స్కోర్‌బోర్డ్"
 msgid "Congratulations to all the winners!"
 msgstr "విజేతలకు అభినందనలు!"
 
-#: src/app/views/templates/score/index.php:411
+#: src/app/views/templates/score/index.php:418
 msgid "Link to explanations"
 msgstr "వివరణలకూ లింక్"
 
-#: src/app/views/templates/score/index.php:419
+#: src/app/views/templates/score/index.php:426
 msgid "Rank"
 msgstr "ర్యాంక్"
 
-#: src/app/views/templates/score/index.php:420
+#: src/app/views/templates/score/index.php:427
 msgid "Nick"
 msgstr "మారుపేరు"
 
-#: src/app/views/templates/score/index.php:421
+#: src/app/views/templates/score/index.php:428
 msgid "Score"
 msgstr "స్కోరు"
+
+#: src/app/views/templates/contact/index.php:1
+#, fuzzy
+msgid "Contact Us"
+msgstr "సంప్రదించండి"
 
 #: src/app/views/templates/contact/index.php:7
 msgid "There are many ways of contacting us."
@@ -893,41 +2136,116 @@ msgstr "లేదా  మమ్మల్ని %s లేదా %s  లో   క�
 msgid "Or bug our coordinators"
 msgstr "లేదా మా సమన్వయకరతలను విసిగించండి."
 
-#: src/app/views/templates/contact/index.php:25
-msgid "Jeevan Chowdary"
-msgstr "జీవన్ చౌధరి"
-
-#: src/app/views/templates/contact/index.php:37
-msgid "Sanatan Mishra"
-msgstr "సనాతన్  మిశ్రా"
-
-#: src/app/views/templates/contact/index.php:49
-msgid "Vivek Ghaisas"
-msgstr "వివేక్ ఘాఇసాస్"
-
-#: src/app/views/templates/event/index.php:25
+#: src/app/views/templates/event/index.php:36
 msgid "Event Details"
 msgstr "ఈవెంట్ వివరాలు"
 
-#: src/app/views/templates/event/index.php:26
+#: src/app/views/templates/event/index.php:37
 msgid "All times are in UTC+5:30."
 msgstr "సమయమంతా UTCలో ఉంది."
 
-#: src/app/views/templates/event/index.php:29
+#: src/app/views/templates/event/index.php:40
 msgid "Start time:"
 msgstr "ఆరంభ సమయం"
 
-#: src/app/views/templates/event/index.php:44
+#: src/app/views/templates/event/index.php:55
 msgid "End time:"
 msgstr "ముగింపు సమయం"
 
-#: src/app/views/templates/event/index.php:59
+#: src/app/views/templates/event/index.php:70
 msgid "Venue:"
 msgstr "వేదిక"
 
-#: src/app/views/templates/event/index.php:67
+#: src/app/views/templates/event/index.php:78
 msgid "Contact Email:"
 msgstr "సంప్రదింపు ఇమెయిల్"
+
+#: src/app/views/templates/about/index.php:1
+#, fuzzy
+msgid "About Us"
+msgstr "సమాచారం"
+
+#: src/app/views/contest/paper_presentation.php:25
+msgid "Paper presentation"
+msgstr ""
+
+#: src/app/views/contest/paper_presentation.php:45
+#: src/app/views/contest/ttt_workshop.php:57
+#: src/app/views/contest/webdev_workshop.php:40
+#, fuzzy
+msgid "Contact number"
+msgstr "సంప్రదించండి"
+
+#: src/app/views/contest/paper_presentation.php:48
+msgid "Link of your paper"
+msgstr ""
+
+#: src/app/views/contest/paper_presentation.php:51
+#: src/app/views/contest/futsal.php:74
+msgid "Confirm Registration"
+msgstr ""
+
+#: src/app/views/contest/ttt_workshop.php:43
+#: src/app/views/contest/ttt_workshop.php:59
+msgid "Proceed to payment ₹100"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:50
+#, fuzzy
+msgid "Team name"
+msgstr "టీమ్"
+
+#: src/app/views/contest/futsal.php:53
+msgid "Contact number of any one team member"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:56
+msgid "Team member 1 username"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:59
+msgid "Team member 2 username"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:62
+msgid "Team member 3 username"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:65
+msgid "Team member 4 username"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:68
+msgid "Team member 5 username"
+msgstr ""
+
+#: src/app/views/contest/futsal.php:71
+msgid "Team member 6 username"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:30
+msgid "Web development workshop"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:43
+msgid "Stream of study / Branch"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:46
+msgid "Year of study"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:49
+msgid "Your experience in web development"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:52
+msgid "Why you want to do this workshop?"
+msgstr ""
+
+#: src/app/views/contest/webdev_workshop.php:55
+msgid "Proceed to payment"
+msgstr ""
 
 #: src/app/views/http_error.php:17
 msgid "Invalid request!"
@@ -972,10 +2290,6 @@ msgstr " ఫెలిసిటీ'16  హోమ్"
 msgid "Back"
 msgstr "ముందు  పేజ్"
 
-#: src/app/views/auth/register_by_email.php:2
-msgid "Register"
-msgstr ""
-
 #: src/app/views/auth/register_by_email.php:6
 msgid "Verification mail sent!"
 msgstr ""
@@ -996,7 +2310,7 @@ msgstr ""
 msgid "Email:"
 msgstr ""
 
-#: src/app/views/auth/register_by_email.php:16
+#: src/app/views/auth/register_by_email.php:15
 #: src/app/views/auth/forgot_password.php:12
 msgid "Next"
 msgstr ""
@@ -1009,23 +2323,23 @@ msgstr ""
 msgid "Set password"
 msgstr ""
 
-#: src/app/views/auth/password_reset.php:9
+#: src/app/views/auth/password_reset.php:10
 msgid "Password successfully set!"
 msgstr ""
 
-#: src/app/views/auth/password_reset.php:10
+#: src/app/views/auth/password_reset.php:11
 msgid "Continue to a magical journey"
 msgstr ""
 
-#: src/app/views/auth/password_reset.php:18
+#: src/app/views/auth/password_reset.php:19
 msgid "Password:"
 msgstr ""
 
-#: src/app/views/auth/password_reset.php:21
+#: src/app/views/auth/password_reset.php:23
 msgid "Confirm pasword:"
 msgstr ""
 
-#: src/app/views/auth/password_reset.php:25
+#: src/app/views/auth/password_reset.php:27
 #: src/app/views/auth/confirm_email.php:4
 msgid "Submit"
 msgstr ""
@@ -1034,15 +2348,15 @@ msgstr ""
 msgid "Email successfully verified!"
 msgstr ""
 
-#: src/app/views/auth/email_confirmed.php:7
+#: src/app/views/auth/email_confirmed.php:6
 msgid "Success!"
 msgstr ""
 
-#: src/app/views/auth/email_confirmed.php:8
+#: src/app/views/auth/email_confirmed.php:7
 msgid "You have successfully verified your email address."
 msgstr ""
 
-#: src/app/views/auth/email_confirmed.php:10
+#: src/app/views/auth/email_confirmed.php:9
 msgid "Continue magical journey"
 msgstr ""
 
@@ -1077,7 +2391,7 @@ msgid "Update your profile"
 msgstr ""
 
 #: src/app/views/auth/profile.php:11
-msgid "Nick:"
+msgid "Nick / Username / Handle:"
 msgstr ""
 
 #: src/app/views/auth/profile.php:16
@@ -1113,7 +2427,7 @@ msgid "Date of Birth:"
 msgstr ""
 
 #: src/app/views/auth/profile.php:56
-msgid "Organization:"
+msgid "College / Institution / Company:"
 msgstr ""
 
 #: src/app/views/auth/profile.php:61
@@ -1132,13 +2446,13 @@ msgstr ""
 msgid "Email Verification Required"
 msgstr ""
 
-#: src/app/views/auth/email_resend.php:7
+#: src/app/views/auth/email_resend.php:6
 msgid ""
 "Your email has not yet been verified. Please click the verification link you "
 "received in your email to proceed."
 msgstr ""
 
-#: src/app/views/auth/email_resend.php:9
+#: src/app/views/auth/email_resend.php:8
 msgid "Resend email"
 msgstr ""
 
@@ -1153,56 +2467,55 @@ msgid ""
 msgstr ""
 
 #: src/app/views/skeleton_template/header.php:11
-#: src/app/views/skeleton_template/header.php:32
-msgid "IIIT Hyderabad"
-msgstr "IIIT హైదరాబాద్"
-
-#: src/app/views/skeleton_template/header.php:54
+#: src/app/views/skeleton_template/header.php:55
 msgid "IIIT-H"
 msgstr " ఐఐఐటి ఎచ్"
 
-#: src/app/views/skeleton_template/header.php:57
+#: src/app/views/skeleton_template/header.php:58
 msgid "presents"
 msgstr "సమర్పించు"
 
-#: src/app/views/skeleton_template/header.php:61
+#: src/app/views/skeleton_template/header.php:62
 msgid "Where magic happens"
 msgstr "ఇదో మాయల ప్రపంచం."
 
-#: src/app/views/skeleton_template/header.php:62
+#: src/app/views/skeleton_template/header.php:63
 msgid "February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>"
 msgstr "19, 20 మరియు 21 ఫిబ్రవరి"
 
-#: src/app/views/skeleton_template/header.php:77
+#: src/app/views/skeleton_template/header.php:78
 #, php-format
 msgid "Hello, %s"
 msgstr ""
 
-#: src/app/views/skeleton_template/header.php:77
-#: src/app/views/skeleton_template/header.php:79
+#: src/app/views/skeleton_template/header.php:78
+#: src/app/views/skeleton_template/header.php:80
 msgid "Logout"
 msgstr ""
 
-#: src/app/views/skeleton_template/header.php:82
+#: src/app/views/skeleton_template/header.php:83
 msgid "Login / Register"
 msgstr ""
 
-#: src/app/views/skeleton_template/footer.php:53
+#: src/app/views/skeleton_template/footer.php:56
+msgid "Home"
+msgstr ""
+
+#: src/app/views/skeleton_template/footer.php:93
 msgid "About"
 msgstr "సమాచారం"
 
-#: src/app/views/skeleton_template/footer.php:56
-msgid "Gallery"
-msgstr "గ్యాలరీ"
-
-#: src/app/views/skeleton_template/footer.php:64
-msgid "Sponsors"
-msgstr "స్పాన్సర్లు"
-
-#: src/app/views/skeleton_template/footer.php:67
+#: src/app/views/skeleton_template/footer.php:107
 msgid "Team"
 msgstr "టీమ్"
 
-#: src/app/views/skeleton_template/footer.php:70
+#: src/app/views/skeleton_template/footer.php:110
 msgid "Contact"
 msgstr "సంప్రదించండి"
+
+#, fuzzy
+#~ msgid "Link to the Practice Contest"
+#~ msgstr "వివరణలకూ లింక్"
+
+#~ msgid "Litcafe"
+#~ msgstr "లిట్-కెఫే"

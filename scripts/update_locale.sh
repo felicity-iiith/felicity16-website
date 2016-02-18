@@ -1,5 +1,5 @@
 #!/bin/bash
-locales=("hi_IN" "te_IN" "gu_IN")
+locales=("hi_IN" "te_IN" "gu_IN" "mr_IN")
 
 echo "Getting locale_dump from https://felicity.iiit.ac.in"
 status=$(curl -# --write-out "%{http_code}" "https://felicity.iiit.ac.in/jugaad/locale_dump/" -o "src/locale/locale_dump.php")
