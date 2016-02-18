@@ -79,12 +79,18 @@ $sponsors2014 = [
                 <img src="<?= base_url() ?>static/images/sponsors/chaibisket.png" alt="Chai Bisket Logo"/>
             </div>
             <div class="col4 container">
-                <p>Café Partners</p>
-                <img src="<?= base_url() ?>static/images/sponsors/ccd.png" alt="CCD Logo"/>
+                <p>Official Coupons Partner</p>
+                <img src="<?= base_url() ?>static/images/sponsors/nearby.png" alt="Nearby Logo"/>
             </div>
             <div class="col4 container">
                 <p>Progress Software</p>
                 <img src="<?= base_url() ?>static/images/sponsors/progress.jpg" alt="Progress Logo"/>
+            </div>
+        </div>
+        <div class="row some-top-margin">
+            <div class="col4 offset4 container">
+                <p>Café Partners</p>
+                <img src="<?= base_url() ?>static/images/sponsors/ccd.png" alt="CCD Logo"/>
             </div>
         </div>
         <?php foreach (array_chunk($sponsors2016, 4) as $sponsors): ?>
