@@ -29,7 +29,6 @@ $routes = [
     "/sap/"                                     => "/sap/",
 
     "/talks-and-workshops/web-development/register/"    => "/contest/webdev_workshop/",
-    "/talks-and-workshops/paper-presentation/register/" => "/contest/paper_presentation/",
     "/sports/futsal/register/"                          => "/contest/futsal/",
 
     "/litcafe/ttt-workshop/register/payment-webhook/"   => "/ttt_workshop/webhook/",
