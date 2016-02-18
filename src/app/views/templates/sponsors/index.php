@@ -103,6 +103,7 @@ $sponsors2014 = [
                 <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
+        <hr>
         <h2><?= __('Past sponsors') ?></h2>
         <h3><?= __('Year 2015') ?></h3>
         <div class="row some-top-margin">
@@ -135,6 +136,7 @@ $sponsors2014 = [
                 <?php endforeach; ?>
             </div>
         <?php endforeach; ?>
+        <hr>
         <h3><?= __('Year 2014 and before') ?></h3>
         <?php foreach (array_chunk($sponsors2014, 4) as $sponsors): ?>
             <div class="row">
