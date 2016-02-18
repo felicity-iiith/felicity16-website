@@ -1,19 +1,22 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Felicity\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 12:41+0530\n"
-"PO-Revision-Date: 2016-02-02 00:00+0530\n"
-"Last-Translator: Nisarg Jhaveri <nisargjhaveri@gmail.com>\n"
+"POT-Creation-Date: 2016-02-18 12:48+0530\n"
+"PO-Revision-Date: 2016-02-16 23:26+0530\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: gu\n"
+"Language: mr_IN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"X-Poedit-KeywordsList: __;_;gettext\n"
-"X-Poedit-Basepath: ../../../../\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.8.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/locale/locale_dump.php:7
 msgid ""
@@ -25,28 +28,30 @@ msgid ""
 "Come experience a zestful three day long bonanza that has something for "
 "everyone!"
 msgstr ""
-"જ્યારે ખૂબ બધા લોકો અને વિચારો ભેગા મળે છે, ત્યારે આ સમૂહમાં છૂપાયેલી ઊર્જા પોતે ભવ્યાથી "
-"ઉભરી આવે છે. ફેલિસિટી આંતરરાષ્ટ્રીય માહિતી ટેકનોલોજી સંસ્થાનો વાર્ષિક વૈજ્ઞાનિક અને "
-"સાંસ્કૃતિક ઉત્સવ છે. સંસ્થાના વિધ્યાર્થીઓ સાથે મળીને પોતાની તકનીકી તથા રચનાત્મક ક્ષમતાઓની "
-"ફેલિસિટીના માધ્યમથી અનેરી અભિવ્યક્તિ કરે છે. આ ત્રણ દિવસીય ઉત્સવનો અનુભવ કરો, જેમાં દરેકને "
-"માટે રોમાંચક કાર્યક્રમો છે!"
+"विद्यार्थी आणि विचारांच्या एका मोठ्या गटाला जेव्हा बौद्धिक समाज मिळतो तेव्हा त्या "
+"समाजाची गुप्त ऊर्जा स्वत: प्रकट होते.\n"
+"फेलिसिटी इंटरनॅशनल इन्स्टिट्यूट ऑफ इन्फॉर्मेशन टेक्नॉलॉजी, हैदराबाद यांचा वार्षिक, वैज्ञानिक "
+"आणि सांस्कृतिक उत्सव आहे.\n"
+"फेलिसिटीच्या माध्यमातून सर्जनशीलता आणि तांत्रिक कौशल्याची अभिव्यक्ती प्रदर्शित करण्यासाठी "
+"विद्यार्थी एकत्र येतात . \n"
+"तीन दिवसांच्या या रोमांचकारी प्रवासाचा अनुभव घ्या जेथे प्रत्येकासाठी काहीतरी आहे  "
 
 #: src/locale/locale_dump.php:11 src/app/views/templates/schedule/index.php:1
 #: src/app/views/skeleton_template/footer.php:99
 msgid "Schedule"
-msgstr "સમયપત્રક"
+msgstr "वेळापत्रक "
 
 #: src/locale/locale_dump.php:12 src/app/views/templates/score/index.php:4
 msgid "Threads"
-msgstr ""
+msgstr "थ्रेड "
 
 #: src/locale/locale_dump.php:13
 msgid "Think. Solve. Code."
-msgstr ""
+msgstr "विचार करा . सोडवा . कोड करा "
 
 #: src/locale/locale_dump.php:14
 msgid "The tech contest"
-msgstr ""
+msgstr "तंत्र स्पर्धा"
 
 #: src/locale/locale_dump.php:15
 msgid ""
@@ -61,6 +66,14 @@ msgid ""
 "computing enthusiast! Indulge in this wonderful fiesta within the world of "
 "computers and experience an unabated felicity! "
 msgstr ""
+"फेलिसिटी थ्रेड २०१६, आयआयआयटी हैदराबाद यांचा नेत्रदीपक वार्षिक तांत्रिक सण त्याच्या १२ "
+"व्या  आवृत्तीत  येथे उपलब्ध आहे! प्रोग्रामिंग, गणित आणि  सामान्य ज्ञान यांसारख्या विविध "
+"क्षेत्रात भव्य आणि आकर्षक बौद्धिक स्पर्धा असलेला थ्रेड हा संगणकीय आणि अभियांत्रिकी आत्मा "
+"असलेला एक ऑनलाइन उत्सव आहे. अल्गोरिदमची भव्य शर्यत असणारा कोडक्राफ्ट , कर्नल क्रूझमधील "
+"समांतर प्रोग्रामिंग , गणितीय गूढ गॉर्जियन नॉट, दुर्दम्य साहस दाखवणारा सी. टी. एफ. "
+"कार्यक्रम ब्रेक इन आणि टी.एल.ई.-थ्रेड मधील फसवी कोडी प्रत्येक उत्साही संगणक विद्यार्थ्याला "
+"काही ना काही देतातच . संगणक आणि अनुभवाच्या विस्मयकारक दुनियेतील यथेच्छ करमणूक असणारा "
+"अवीट उत्सव फेलिसिटी मध्ये समरस व्हा ."
 
 #: src/locale/locale_dump.php:16 src/locale/locale_dump.php:49
 #: src/locale/locale_dump.php:67 src/locale/locale_dump.php:95
@@ -77,15 +90,15 @@ msgstr ""
 #: src/locale/locale_dump.php:488 src/locale/locale_dump.php:503
 #: src/locale/locale_dump.php:596 src/locale/locale_dump.php:600
 msgid "files/16/logos/felicity16-logo-large.png"
-msgstr ""
+msgstr "files/16/logos/felicity16-logo-large.png"
 
 #: src/locale/locale_dump.php:17
 msgid "CodeCraft"
-msgstr ""
+msgstr "कोडक्राफ्ट "
 
 #: src/locale/locale_dump.php:18
 msgid "So, you think you can code?"
-msgstr ""
+msgstr "तुम्ही कोड करु शकता ?"
 
 #: src/locale/locale_dump.php:19
 msgid ""
@@ -108,20 +121,21 @@ msgstr ""
 #: src/locale/locale_dump.php:521 src/locale/locale_dump.php:532
 #: src/locale/locale_dump.php:543 src/app/views/templates/event/index.php:27
 msgid "Rules"
-msgstr "નિયમો"
+msgstr "नियम "
 
 #: src/locale/locale_dump.php:23 src/locale/locale_dump.php:44
 #: src/locale/locale_dump.php:62 src/locale/locale_dump.php:124
 msgid "The contest has ended"
-msgstr "આ સ્પર્ધા સમાપ્ત થઈ ગઈ છે"
+msgstr "The contest has ended"
 
 #: src/locale/locale_dump.php:24
+#, fuzzy
 msgid "scores/codecraft"
-msgstr ""
+msgstr "contest/codecraft"
 
 #: src/locale/locale_dump.php:25
 msgid "Link to the scoreboard"
-msgstr "સ્કોરબોર્ડની લિંક"
+msgstr "Link to the scoreboard"
 
 #: src/locale/locale_dump.php:26 src/locale/locale_dump.php:47
 #: src/locale/locale_dump.php:65 src/locale/locale_dump.php:85
@@ -131,7 +145,7 @@ msgstr "સ્કોરબોર્ડની લિંક"
 #: src/locale/locale_dump.php:191 src/locale/locale_dump.php:212
 #: src/locale/locale_dump.php:232 src/locale/locale_dump.php:279
 msgid "Online"
-msgstr "ઓનલાઈન"
+msgstr "ऑनलाइन"
 
 #: src/locale/locale_dump.php:27 src/locale/locale_dump.php:48
 #: src/locale/locale_dump.php:66 src/locale/locale_dump.php:86
@@ -139,19 +153,20 @@ msgstr "ઓનલાઈન"
 #: src/locale/locale_dump.php:126 src/locale/locale_dump.php:139
 #: src/locale/locale_dump.php:151 src/locale/locale_dump.php:160
 msgid "threads@felicity.iiit.ac.in"
-msgstr ""
+msgstr "threads@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:28
+#, fuzzy
 msgid "files/16/codecraft_poster.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:29 src/locale/locale_dump.php:392
 msgid "Gordian Knot"
-msgstr ""
+msgstr "गॉर्जियन नॉट "
 
 #: src/locale/locale_dump.php:30 src/locale/locale_dump.php:393
 msgid "The Project Euler of Felicity"
-msgstr ""
+msgstr "फेलिसिटीचा प्रोजेक्ट युलर "
 
 #: src/locale/locale_dump.php:31
 msgid ""
@@ -163,61 +178,74 @@ msgid ""
 "\n"
 "The link to the contest portal will be available at the time of the contest."
 msgstr ""
+"This Project Euler-styled contest challenges you to untangle intricate "
+"enigmas of mathematics.\n"
+"\n"
+"Registration link: <a href=\"https://felicity.iiit.ac.in/register/\" class="
+"\"underlined\">https://felicity.iiit.ac.in/register/</a>\n"
+"\n"
+"The link to the contest portal will be available at the time of the contest."
 
 #: src/locale/locale_dump.php:36
 msgid ""
 "For unlocking each level, you need to solve at least 3 problems in the "
 "previous level."
 msgstr ""
+"For unlocking each level, you need to solve at least 3 problems in the "
+"previous level."
 
 #: src/locale/locale_dump.php:37
 msgid ""
 "There are 10 levels in all. Each question carries some points depending on "
 "its level."
 msgstr ""
+"There are 10 levels in all. Each question carries some points depending on "
+"its level."
 
 #: src/locale/locale_dump.php:38
 msgid "Score for a problem on the i-th level is 100*i."
-msgstr ""
+msgstr "Score for a problem on the i-th level is 100*i."
 
 #: src/locale/locale_dump.php:39
 msgid "Bonus marks will be awarded after completing all problems in a level."
-msgstr ""
+msgstr "Bonus marks will be awarded after completing all problems in a level."
 
 #: src/locale/locale_dump.php:40
 msgid ""
 "Bonus for level i is calculated as 100*i - 5*(number of wrong answers on "
 "that level)."
 msgstr ""
+"Bonus for level i is calculated as 100*i - 5*(number of wrong answers on "
+"that level)."
 
 #: src/locale/locale_dump.php:41
 msgid "Time penalty of 30 seconds is levied after a wrong submission."
-msgstr ""
+msgstr "Time penalty of 30 seconds is levied after a wrong submission."
 
 #: src/locale/locale_dump.php:42
 msgid "Any attempt to game the system will lead to disqualification."
-msgstr ""
+msgstr "Any attempt to game the system will lead to disqualification."
 
 #: src/locale/locale_dump.php:43
 msgid "Tie in scores will be resolved first by level, then by timestamp."
-msgstr ""
+msgstr "Tie in scores will be resolved first by level, then by timestamp."
 
 #: src/locale/locale_dump.php:45
 msgid "scores/gordian-knot/"
-msgstr ""
+msgstr "scores/gordian-knot/"
 
 #: src/locale/locale_dump.php:46 src/locale/locale_dump.php:84
 #: src/locale/locale_dump.php:177
 msgid "Link to the final scorebard"
-msgstr "સ્કોરબોર્ડની લિંક"
+msgstr "Link to the final scorebard"
 
 #: src/locale/locale_dump.php:50 src/locale/locale_dump.php:396
 msgid "Break In CTF"
-msgstr ""
+msgstr "ब्रेक इन सी. टी. एफ."
 
 #: src/locale/locale_dump.php:51 src/locale/locale_dump.php:397
 msgid "Break & Get In"
-msgstr ""
+msgstr "Break & Get In"
 
 #: src/locale/locale_dump.php:52
 msgid ""
@@ -230,15 +258,24 @@ msgid ""
 "\n"
 "The IRC is live on #breakin on freenode. "
 msgstr ""
+"The official Capture The Flag event for Felicity Threads. Break In is a "
+"jeopardy-style CTF event, where you use whatever means at your disposal to "
+"win. If you enjoy finding ways in which a system can be broken, this event "
+"is for you.\n"
+"Prizes worth ₹5000 INR\n"
+"\n"
+"\n"
+"The IRC is live on #breakin on freenode. "
 
 #: src/locale/locale_dump.php:57
 msgid ""
 "Break In is a team event. Each team can consist of a maximum of 2 players."
 msgstr ""
+"Break In is a team event. Each team can consist of a maximum of 2 players."
 
 #: src/locale/locale_dump.php:58
 msgid "Please do not attack CTF infrastructure."
-msgstr ""
+msgstr "Please do not attack CTF infrastructure."
 
 #: src/locale/locale_dump.php:59
 msgid ""
@@ -246,38 +283,46 @@ msgid ""
 "felicity.iiit.ac.in/register/\">here</a>. The link for team registration is "
 "provided."
 msgstr ""
+"All team members must be registered <a class=\"underlined\" href=\"https://"
+"felicity.iiit.ac.in/register/\">here</a>. The link for team registration is "
+"provided."
 
 #: src/locale/locale_dump.php:60
 msgid ""
 "The link for the contest will be provided here just before the contest "
 "starts."
 msgstr ""
+"The link for the contest will be provided here just before the contest "
+"starts."
 
 #: src/locale/locale_dump.php:61
 msgid ""
 "Bonus points will be awarded for finding legitimate bugs with the contest "
 "portal"
 msgstr ""
+"Bonus points will be awarded for finding legitimate bugs with the contest "
+"portal"
 
 #: src/locale/locale_dump.php:63
 msgid "scores/breakin/"
-msgstr ""
+msgstr "scores/breakin/"
 
 #: src/locale/locale_dump.php:64 src/locale/locale_dump.php:137
 #: src/locale/locale_dump.php:190 src/locale/locale_dump.php:211
 #, fuzzy
 msgid "Link To The Scoreboard"
-msgstr "સ્કોરબોર્ડની લિંક"
+msgstr "Link to the scoreboard"
 
 #: src/locale/locale_dump.php:68 src/locale/locale_dump.php:386
 msgid "Cache In"
-msgstr ""
+msgstr "कॅश इन "
 
 #: src/locale/locale_dump.php:69
 msgid "The more you look, the less you see."
-msgstr ""
+msgstr "जितके अधिक शोधाल तितकेच कमी सापडेल !!"
 
 #: src/locale/locale_dump.php:70
+#, fuzzy
 msgid ""
 "Here are the <a href=\"https://felicity.iiit.ac.in/files/16/cachein-"
 "explanations.pdf\" class=\"underlined\">explanations for all the questions.</"
@@ -292,26 +337,42 @@ msgid ""
 "Play with images, URLs and your brain until you unlock a mystery, but only "
 "to find a new one ahead."
 msgstr ""
+"Here are the <a href=\"https://felicity.iiit.ac.in/files/16/cachein-"
+"explanations.pdf\" class=\"underlined\">explanations of all the questions.</"
+"a>\n"
+"\n"
+"Do puzzles and riddles excite you? Can you form one cohesive thought out of "
+"discrete ideas? Do you have a blend of Langdon, Jones and Holmes inside "
+"you? \n"
+"\n"
+"If the answer to the above questions is a resounding \\'yes\\', we have "
+"brought \"Cache-in\" to whet your appetite.\n"
+"Play with images, URLs and your brain until you unlock a mystery, but only "
+"to find a new one ahead."
 
 #: src/locale/locale_dump.php:76
 msgid "The answers can be a single word or a phrase."
-msgstr ""
+msgstr "The answers can be a single word or a phrase."
 
 #: src/locale/locale_dump.php:77
 msgid ""
 "Each right answer will fetch you 100 points and will lead you to the next "
 "level."
 msgstr ""
+"Each right answer will fetch you 100 points and will lead you to the next "
+"level."
 
 #: src/locale/locale_dump.php:78
 msgid "There is no partial scoring for any question."
-msgstr ""
+msgstr "There is no partial scoring for any question."
 
 #: src/locale/locale_dump.php:79
 msgid ""
 "In case your submission is incorrect, you are not allowed to submit to that "
 "question again for the next 30 seconds."
 msgstr ""
+"In case your submission is incorrect, you are not allowed to submit to that "
+"question again for the next 30 seconds."
 
 #: src/locale/locale_dump.php:80
 msgid ""
@@ -319,30 +380,33 @@ msgid ""
 "questions solved. In case of a tie, the time taken to solve the questions "
 "will be considered."
 msgstr ""
+"The participants will be ranked first on the basis of the number of "
+"questions solved. In case of a tie, the time taken to solve the questions "
+"will be considered."
 
 #: src/locale/locale_dump.php:81
 msgid "Any attempt to game with the system will lead to disqualification."
-msgstr ""
+msgstr "Any attempt to game with the system will lead to disqualification."
 
 #: src/locale/locale_dump.php:82
 msgid "Contest has ended!"
-msgstr "સ્પર્ધા ખતમ થઈ ગઈ છે!"
+msgstr "Contest has ended!"
 
 #: src/locale/locale_dump.php:83
 msgid "scores/cachein/"
-msgstr ""
+msgstr "scores/cachein/"
 
 #: src/locale/locale_dump.php:87
 msgid "files/16/cache_in.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:88
 msgid "Kings of ML"
-msgstr ""
+msgstr " ML चा राजा "
 
 #: src/locale/locale_dump.php:89
 msgid "Do not regret, just regress"
-msgstr ""
+msgstr "Do not regret, just regress"
 
 #: src/locale/locale_dump.php:90
 msgid ""
@@ -351,6 +415,10 @@ msgid ""
 "your statistics, machine learning, data mining and most importantly your "
 "intuition."
 msgstr ""
+"Do not make the mistake of considering this as just another coding contest. "
+"Each question here is an exotic research problem in itself. So gear up all "
+"your statistics, machine learning, data mining and most importantly your "
+"intuition."
 
 #: src/locale/locale_dump.php:92
 msgid "Contest has Ended. Final Scoreboard will be made public shortly."
@@ -358,11 +426,11 @@ msgstr ""
 
 #: src/locale/locale_dump.php:96
 msgid "TLE"
-msgstr ""
+msgstr "टी एल ई "
 
 #: src/locale/locale_dump.php:97
 msgid "Dare to code beyond the norms."
-msgstr ""
+msgstr "सर्वसामान्यांच्या पलीकडे जाऊन कोड करण्याचे साहस करा. "
 
 #: src/locale/locale_dump.php:98
 msgid ""
@@ -380,18 +448,31 @@ msgid ""
 "The contest will require you to not only solve the problem, but try solving "
 "them within some constraints on time, space and code."
 msgstr ""
+"The coding contest that pushes you beyond your comfort zones. From esoteric "
+"programming to obfuscation, it welcomes any dirty tricks you can play with "
+"the code.\n"
+"\n"
+"A 24 hour long programming contest with a twist.\n"
+"A coding contest full with unnatural programming challenges that would "
+"require smart solutions and tricks.\n"
+"\n"
+"Primary language is going to be C, but knowledge of other languages, and "
+"love for esoteric and obfuscated programming would make your life easier.\n"
+"\n"
+"The contest will require you to not only solve the problem, but try solving "
+"them within some constraints on time, space and code."
 
 #: src/locale/locale_dump.php:107
 msgid "Contest rescheduled."
-msgstr ""
+msgstr "Contest rescheduled."
 
 #: src/locale/locale_dump.php:111
 msgid "Kernel Cruise"
-msgstr ""
+msgstr "कर्नल क्रुझ"
 
 #: src/locale/locale_dump.php:112
 msgid "Harness those clock cycles!"
-msgstr ""
+msgstr "Harness those clock cycles!"
 
 #: src/locale/locale_dump.php:113
 msgid ""
@@ -414,39 +495,62 @@ msgid ""
 "\\'ll be given access to the contest portal, in addition to problems and "
 "tutorials, for learning and practice."
 msgstr ""
+"Felicity Threads ʼ16 presents to you Kernel Cruise, a platform where you’ll "
+"be pitched against various computational problems, varying from "
+"combinatorial to numerical in nature, on a General Purpose GPU computing "
+"environment.\n"
+"GPUs are data parallel machines, with a multitude of processors on single "
+"chip capable of performing similar computations over chunks of a large "
+"amount of data, and involves vector processing. They are programmed using "
+"frameworks such CUDA, which is available for Nvidia GPU machines.\n"
+"\n"
+"Programming parallel machines involves much greater skill than programming "
+"single core machines, as vectorization, synchronization, and distribution "
+"come up as major challenges. And it is this dragon of parallelism, that we "
+"invite you to battle.\n"
+"\n"
+"And if you haven\\'t faced this dragon before, don\\'t worry, as we\\'ll be "
+"having familiarization phase for three days before the contest, wherein you"
+"\\'ll be given access to the contest portal, in addition to problems and "
+"tutorials, for learning and practice."
 
 #: src/locale/locale_dump.php:119
 msgid "This is a familiarization phase."
-msgstr ""
+msgstr "This is a familiarization phase."
 
 #: src/locale/locale_dump.php:120
 msgid "There are 3 simple problems."
-msgstr ""
+msgstr "There are 3 simple problems."
 
 #: src/locale/locale_dump.php:121
 msgid ""
 "You can read resources, surf the internet and submit CUDA codes for the same."
 msgstr ""
+"You can read resources, surf the internet and submit CUDA codes for the same."
 
 #: src/locale/locale_dump.php:122
 msgid ""
 "For those who do not have NVIDIA on their PCs, you can use the IDE to test "
 "your codes."
 msgstr ""
+"For those who do not have NVIDIA on their PCs, you can use the IDE to test "
+"your codes."
 
 #: src/locale/locale_dump.php:123
 msgid ""
 "The version of CUDA is 4.0 and compile flags are -arch=compute_11 -"
 "code=sm_11 -lm -lcurand."
 msgstr ""
+"The version of CUDA is 4.0 and compile flags are -arch=compute_11 -"
+"code=sm_11 -lm -lcurand."
 
 #: src/locale/locale_dump.php:128 src/locale/locale_dump.php:413
 msgid "Botomata"
-msgstr ""
+msgstr "बोटोमेटा "
 
 #: src/locale/locale_dump.php:129 src/locale/locale_dump.php:414
 msgid "May the best bot win"
-msgstr ""
+msgstr "May the best bot win"
 
 #: src/locale/locale_dump.php:130
 msgid ""
@@ -455,14 +559,19 @@ msgid ""
 "and games like Reversi, for you to play with and devise effective search "
 "strategies and heuristics for constraint satisfaction and game playing."
 msgstr ""
+"Botomata belongs to a new genre of AI and combinatorial search contests, and "
+"will contain challenges from puzzles like Sudoku, Kakuro, Rubik\\'s Cube, "
+"and games like Reversi, for you to play with and devise effective search "
+"strategies and heuristics for constraint satisfaction and game playing."
 
 #: src/locale/locale_dump.php:131
 msgid "Your bot is not allowed to do any form of Network I/O or disk I/O. "
 msgstr ""
 
 #: src/locale/locale_dump.php:132
+#, fuzzy
 msgid "Attempts made to attack / break the system will be disqualified."
-msgstr ""
+msgstr "Any attempt to game the system will lead to disqualification."
 
 #: src/locale/locale_dump.php:133
 msgid "Use of non builtin libraries is not allowed."
@@ -478,19 +587,20 @@ msgstr ""
 #: src/locale/locale_dump.php:209
 #, fuzzy
 msgid "Contest has Ended!"
-msgstr "સ્પર્ધા ખતમ થઈ ગઈ છે!"
+msgstr "Contest has ended!"
 
 #: src/locale/locale_dump.php:136
+#, fuzzy
 msgid "scores/botomata/"
-msgstr ""
+msgstr "scores/breakin/"
 
 #: src/locale/locale_dump.php:141 src/locale/locale_dump.php:401
 msgid "Code Helix"
-msgstr ""
+msgstr "कोड हेलिक्स"
 
 #: src/locale/locale_dump.php:142 src/locale/locale_dump.php:402
 msgid "Think naturally"
-msgstr ""
+msgstr "Think naturally"
 
 #: src/locale/locale_dump.php:143
 msgid ""
@@ -501,28 +611,35 @@ msgid ""
 "\n"
 "The contest would start on 31st January, noon and end on 2nd Feb midnight."
 msgstr ""
+"Code-Helix is the latest entry in the Felicity Threads. The contest has a "
+"mix of programming and subjective questions from the fields of Science, "
+"encompassing Physics, Chemistry, Biology, Bioinformatics, Genetics and some "
+"questions requiring critical thinking.\n"
+"\n"
+"The contest would start on 31st January, noon and end on 2nd Feb midnight."
 
 #: src/locale/locale_dump.php:147
 #, fuzzy
 msgid "Contest has ended."
-msgstr "સ્પર્ધા ખતમ થઈ ગઈ છે!"
+msgstr "Contest has ended!"
 
 #: src/locale/locale_dump.php:148
+#, fuzzy
 msgid "scores/code-helix"
-msgstr ""
+msgstr "contest/code-helix"
 
 #: src/locale/locale_dump.php:149
 #, fuzzy
 msgid "Link to the Scoreboard"
-msgstr "સ્કોરબોર્ડની લિંક"
+msgstr "Link to the scoreboard"
 
 #: src/locale/locale_dump.php:153
 msgid "Debug The C Bug"
-msgstr ""
+msgstr "डिबग द सी बग "
 
 #: src/locale/locale_dump.php:154
 msgid " Are bugs your pet peeves? Chase them down!"
-msgstr ""
+msgstr " Are bugs your pet peeves? Chase them down!"
 
 #: src/locale/locale_dump.php:155
 msgid ""
@@ -531,22 +648,26 @@ msgid ""
 "\n"
 "This is an onsite event."
 msgstr ""
+"Find the bugs in the code (solution) for a problem and fix them, sounds "
+"simple right?\n"
+"\n"
+"This is an onsite event."
 
 #: src/locale/locale_dump.php:159
 msgid "Onsite"
-msgstr ""
+msgstr "ऑनसाइट "
 
 #: src/locale/locale_dump.php:162
 msgid "Pulsation"
-msgstr ""
+msgstr "स्पंदन"
 
 #: src/locale/locale_dump.php:163
 msgid "Innovate. Design. Automate."
-msgstr ""
+msgstr "बदल घडवा , रचना करा ,स्वयंचलित करा "
 
 #: src/locale/locale_dump.php:164
 msgid "Electronics events"
-msgstr ""
+msgstr "इलेक्ट्रॉनिक्स कार्यक्रम "
 
 #: src/locale/locale_dump.php:165
 msgid ""
@@ -554,10 +675,14 @@ msgid ""
 "heart is but an IC that pumps bits instead of blood, pulsation is here to "
 "resonate with the frequency of your hearts!"
 msgstr ""
+" What is the digital age without digital electronics? For those who\\'s "
+"heart is but an IC that pumps bits instead of blood, pulsation is here to "
+"resonate with the frequency of your hearts!"
 
 #: src/locale/locale_dump.php:167 src/locale/locale_dump.php:405
+#, fuzzy
 msgid "Electronics Showdown"
-msgstr ""
+msgstr "इलेक्ट्रॉनिक्स कार्यक्रम "
 
 #: src/locale/locale_dump.php:168 src/locale/locale_dump.php:454
 #: src/locale/locale_dump.php:455 src/locale/locale_dump.php:457
@@ -587,8 +712,9 @@ msgid "A question in level \\'i\\' carries i*100 marks."
 msgstr ""
 
 #: src/locale/locale_dump.php:173 src/locale/locale_dump.php:186
+#, fuzzy
 msgid "There is no penalization for wrong answers."
-msgstr ""
+msgstr "There is no partial scoring for any question."
 
 #: src/locale/locale_dump.php:174 src/locale/locale_dump.php:187
 msgid ""
@@ -600,8 +726,9 @@ msgid "scores/electronics-showdown/"
 msgstr ""
 
 #: src/locale/locale_dump.php:179 src/locale/locale_dump.php:192
+#, fuzzy
 msgid "pulsation@felicity.iiit.ac.in"
-msgstr ""
+msgstr "contact@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:181 src/locale/locale_dump.php:417
 msgid "Kode Da Circuit"
@@ -619,8 +746,9 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:184
+#, fuzzy
 msgid "There will be a total of 5 questions."
-msgstr ""
+msgstr "There is no partial scoring for any question."
 
 #: src/locale/locale_dump.php:185
 msgid "An \\'i\\'th question carries i*100 marks."
@@ -640,11 +768,11 @@ msgstr ""
 
 #: src/locale/locale_dump.php:195
 msgid "If wordplay is your foreplay, be there!"
-msgstr ""
+msgstr "If wordplay is your foreplay, be there!"
 
 #: src/locale/locale_dump.php:196
 msgid "The literary contest"
-msgstr ""
+msgstr "साहित्य स्पर्धा "
 
 #: src/locale/locale_dump.php:197
 msgid ""
@@ -660,14 +788,25 @@ msgid ""
 "cells and have a great time. From creative writing to speaking, these events "
 "cater to everyone’s tastes."
 msgstr ""
+"In cities full of large malls and big restaurants, in a society where the "
+"paradigm of large reigns our imagination, sometimes that little café in a "
+"corner of the road with a few tables and the kindly barman catches our "
+"attention. It is that small cozy place which is frequented by characters as "
+"queer as the place itself. The owner knows everyone and there is a "
+"comfortable sense of belonging which serves as a retreat from everything "
+"extravagant and estranging. Do you relate to that kind of a place? LitCafe "
+"at Felicity provides exactly that kind of experience. In a fest alive with a "
+"myriad events, a small group of people gather to stimulate their creative "
+"cells and have a great time. From creative writing to speaking, these events "
+"cater to everyone’s tastes."
 
 #: src/locale/locale_dump.php:199 src/locale/locale_dump.php:409
 msgid "LitQuiz"
-msgstr ""
+msgstr "लिटक्विझ "
 
 #: src/locale/locale_dump.php:200 src/locale/locale_dump.php:410
 msgid "Et tu, questions ?"
-msgstr ""
+msgstr "Et tu, questions ?"
 
 #: src/locale/locale_dump.php:201
 #, php-format
@@ -694,8 +833,9 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:210
+#, fuzzy
 msgid "scores/litquiz/"
-msgstr ""
+msgstr "scores/breakin/"
 
 #: src/locale/locale_dump.php:213 src/locale/locale_dump.php:280
 #: src/locale/locale_dump.php:287 src/locale/locale_dump.php:294
@@ -703,15 +843,16 @@ msgstr ""
 #: src/locale/locale_dump.php:514 src/locale/locale_dump.php:523
 #: src/locale/locale_dump.php:534 src/locale/locale_dump.php:545
 msgid "contact@felicity.iiit.ac.in"
-msgstr ""
+msgstr "contact@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:215
+#, fuzzy
 msgid "Shakespeare’s Shaky Pears!"
-msgstr ""
+msgstr "शेक्सपिअरचे कोड !!"
 
 #: src/locale/locale_dump.php:216
 msgid "A horse! A horse! My kingdom for a horse!"
-msgstr ""
+msgstr "A horse! A horse! My kingdom for a horse!"
 
 #: src/locale/locale_dump.php:217
 msgid ""
@@ -746,18 +887,20 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:233
+#, fuzzy
 msgid "litcafe@felicity.iiit.ac.in"
-msgstr ""
+msgstr "threads@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:235
 msgid "FanFicFeb"
-msgstr ""
+msgstr "फॅन फिक फेब "
 
 #: src/locale/locale_dump.php:236
 msgid "Tribute from the Fanatic Fandom"
-msgstr ""
+msgstr "Tribute from the Fanatic Fandom"
 
 #: src/locale/locale_dump.php:237
+#, fuzzy
 msgid ""
 "<strong>Contest has been extended to 21st February due to requests for "
 "extension.</strong>\n"
@@ -806,10 +949,53 @@ msgid ""
 "The Last Airbender\n"
 "One Piece"
 msgstr ""
+"How many of us have read, re-read, watched and re-watched TV series and "
+"books that we connected with? Do you remember your avid, obsessive self who "
+"held their breaths and made complex theories to explain and predict that "
+"next episode ? Will Jon Snow come back to life?  Was Cobb still in a dream? "
+"What would have happened if somehow Draco ended with Hermione ? Tell us your "
+"Fan Fiction story as a tribute to the book, comic, movie or TV series whose "
+"protagonists became an indispensable part of your own life :)\n"
+"\n"
+"Just a few guidelines:\n"
+"Your story could range from 250-2500 words.\n"
+"Avoid any cuss words or raw NSFW content.\n"
+"Send in your entries as private messages at the LitCafe page.\n"
+"Here are a few you could start with!\n"
+"\n"
+"<strong>TV Shows:</strong>\n"
+"Agents of S.H.I.E.L.D\n"
+"F.R.I.E.N.D.S.\n"
+"Doctor Who\n"
+"Supernatural\n"
+"Game of Thrones\n"
+"\n"
+"<strong>Movies:</strong>\n"
+"Marvel-DC Movies\n"
+"Chris Nolan works\n"
+"Pulp Fiction\n"
+"Star Wars\n"
+"Back to the Future\n"
+"\n"
+"<strong>Book Series:</strong>\n"
+"A Song of Ice and Fire\n"
+"The Lord of the Rings\n"
+"Harry Potter Series\n"
+"The Hunger Games\n"
+"Bartimaeus trilogy\n"
+"\n"
+"<strong>Anime-Manga:</strong>\n"
+"Fullmetal Alchemist\n"
+"Code Geass\n"
+"Death Note\n"
+"Bleach\n"
+"Naruto\n"
+"The Last Airbender\n"
+"One Piece"
 
 #: src/locale/locale_dump.php:277
 msgid "Contest on Facebook Page"
-msgstr ""
+msgstr "फेसबुक पेजवरील स्पर्धा "
 
 #: src/locale/locale_dump.php:278
 msgid "https://www.facebook.com/litcafe.felicity"
@@ -817,11 +1003,11 @@ msgstr ""
 
 #: src/locale/locale_dump.php:282
 msgid "Crime Scene Investigation"
-msgstr ""
+msgstr "Crime Scene Investigation"
 
 #: src/locale/locale_dump.php:283
 msgid "Who killed the cat ?"
-msgstr ""
+msgstr "Who killed the cat ?"
 
 #: src/locale/locale_dump.php:284
 msgid ""
@@ -830,18 +1016,22 @@ msgid ""
 "time to solve the greatest challenge on the campus with your deduction and "
 "logic skills."
 msgstr ""
+"Calling all detectives and private investigators! Make your way through "
+"baffling clues, red herrings and mysterious suspects as you race against "
+"time to solve the greatest challenge on the campus with your deduction and "
+"logic skills."
 
 #: src/locale/locale_dump.php:286
 msgid "Felicity Ground, IIIT"
-msgstr ""
+msgstr "फेलिसिटी मैदान , आयआयआयटी "
 
 #: src/locale/locale_dump.php:289
 msgid "Spoken Word Poetry"
-msgstr ""
+msgstr "Spoken Word Poetry"
 
 #: src/locale/locale_dump.php:290
 msgid "Poetry is truth in its Sunday clothes"
-msgstr ""
+msgstr "Poetry is truth in its Sunday clothes"
 
 #: src/locale/locale_dump.php:291
 msgid ""
@@ -850,10 +1040,14 @@ msgid ""
 "world, with panache. Do you have it in you to attempt this intricate art and "
 "emerge a winner? Find out at the Flagship event of LitCafe."
 msgstr ""
+"Enthrall the audiences as you make a beautiful symphony with your words. "
+"Challenge your imagination and creativity as you present your poems to the "
+"world, with panache. Do you have it in you to attempt this intricate art and "
+"emerge a winner? Find out at the Flagship event of LitCafe."
 
 #: src/locale/locale_dump.php:293
 msgid "TBD, IIIT"
-msgstr ""
+msgstr "टीबीडी , आयआयआयटी"
 
 #: src/locale/locale_dump.php:296 src/app/controllers/ttt_workshop.php:68
 #: src/app/views/contest/ttt_workshop.php:30
@@ -881,27 +1075,28 @@ msgstr ""
 #: src/locale/locale_dump.php:365 src/locale/locale_dump.php:382
 #, fuzzy
 msgid "Register here"
-msgstr "નોંધણી કરો"
+msgstr "Register"
 
 #: src/locale/locale_dump.php:304
 #: src/app/views/skeleton_template/header.php:32
 #, fuzzy
 msgid "IIIT-Hyderabad"
-msgstr "આઈ. આઈ. આઈ. ટી. હૈદરાબાદ"
+msgstr "आयआयआयटी-हैदराबाद"
 
 #: src/locale/locale_dump.php:307
 msgid "Zombie Zone"
-msgstr ""
+msgstr "झॉम्बी झोन "
 
 #: src/locale/locale_dump.php:308
 msgid "Life is short, play more."
-msgstr ""
+msgstr "Life is short, play more."
 
 #: src/locale/locale_dump.php:309
 msgid "Virtual games"
-msgstr ""
+msgstr "व्हर्च्युअल गेम्स "
 
 #: src/locale/locale_dump.php:310
+#, fuzzy
 msgid ""
 "Are you the alpha male in the cyber space? Do you kick terrorist-ass in "
 "counter strike? Or are you a War zone survivor in the Call of Duty? Do you "
@@ -909,6 +1104,12 @@ msgid ""
 "Either case, show us what you\\'ve got in our Gaming marathons. Are you game "
 "to go Zombie?"
 msgstr ""
+"Are you the alpha male in the cyber space? Do you kick terrorist-ass in "
+"counter strike? Or are you a single gamer that rules them all in DOTA? Do "
+"you tokyo drift in NFS Mostwanted, or have you gotten Messi the cup in "
+"FIFA.\n"
+"Either case, show us what you\\'ve got in our Gaming marathons. Are you game "
+"to go Zombie?"
 
 #: src/locale/locale_dump.php:313
 msgid "Counter Strike Global Offensive /1.6"
@@ -973,8 +1174,9 @@ msgstr ""
 
 #: src/locale/locale_dump.php:328 src/locale/locale_dump.php:344
 #: src/locale/locale_dump.php:367 src/locale/locale_dump.php:384
+#, fuzzy
 msgid "ayan@felicity.iiit.ac.in"
-msgstr ""
+msgstr "threads@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:330
 msgid "Call of Duty: Modern Warfare I"
@@ -1024,7 +1226,7 @@ msgstr ""
 #: src/locale/locale_dump.php:342
 #, fuzzy
 msgid "Register Here"
-msgstr "નોંધણી કરો"
+msgstr "Register"
 
 #: src/locale/locale_dump.php:346
 msgid "Need For Speed: Most Wanted"
@@ -1124,51 +1326,56 @@ msgstr ""
 
 #: src/locale/locale_dump.php:387
 msgid "The more you look, the less you see"
-msgstr ""
+msgstr "The more you look, the less you see"
 
 #: src/locale/locale_dump.php:388
 msgid "threads/cachein/"
-msgstr ""
+msgstr "threads/cachein/"
 
 #: src/locale/locale_dump.php:389
 msgid "files/16/cachein_scores.png"
-msgstr ""
+msgstr "files/16/cachein_scores.png"
 
 #: src/locale/locale_dump.php:390
+#, fuzzy
 msgid "files/16/scores/cachein.json"
-msgstr ""
+msgstr "static/scores/cachein.json"
 
 #: src/locale/locale_dump.php:391
 msgid "files/16/cachein-explanations.pdf"
-msgstr ""
+msgstr "files/16/cachein-explanations.pdf"
 
 #: src/locale/locale_dump.php:394
 msgid "threads/gordian-knot/"
-msgstr ""
+msgstr "threads/gordian-knot/"
 
 #: src/locale/locale_dump.php:395
+#, fuzzy
 msgid "files/16/scores/gordianknot.json"
-msgstr ""
+msgstr "static/scores/gordian.json"
 
 #: src/locale/locale_dump.php:398
 msgid "threads/breakin/"
-msgstr ""
+msgstr "threads/breakin/"
 
 #: src/locale/locale_dump.php:399
+#, fuzzy
 msgid "files/16/scores/breakin.json"
-msgstr ""
+msgstr "static/scores/breakin.json"
 
 #: src/locale/locale_dump.php:400
 msgid "https://github.com/ctfs/write-ups-2016/tree/master/breakin-ctf-2016/"
 msgstr ""
 
 #: src/locale/locale_dump.php:403
+#, fuzzy
 msgid "threads/code-helix/"
-msgstr ""
+msgstr "contest/code-helix"
 
 #: src/locale/locale_dump.php:404
+#, fuzzy
 msgid "files/16/scores/codehelix.json"
-msgstr ""
+msgstr "static/scores/cachein.json"
 
 #: src/locale/locale_dump.php:407
 msgid "pulsation/electronics-showdown/"
@@ -1183,16 +1390,19 @@ msgid "litcafe/litquiz"
 msgstr ""
 
 #: src/locale/locale_dump.php:412
+#, fuzzy
 msgid "files/16/scores/litquiz.json"
-msgstr ""
+msgstr "files/16/cachein_scores.png"
 
 #: src/locale/locale_dump.php:415
+#, fuzzy
 msgid "threads/botomata"
-msgstr ""
+msgstr "threads/breakin/"
 
 #: src/locale/locale_dump.php:416
+#, fuzzy
 msgid "files/16/scores/botomata.json"
-msgstr ""
+msgstr "files/16/cachein_scores.png"
 
 #: src/locale/locale_dump.php:419
 msgid "pulsation/kode-da-circuit"
@@ -1263,19 +1473,21 @@ msgstr ""
 #: src/locale/locale_dump.php:449 src/locale/locale_dump.php:485
 #, fuzzy
 msgid "Link for registration"
-msgstr "સ્પર્ધાની સમજૂતીઓની લિંક"
+msgstr "Link to explanations"
 
 #: src/locale/locale_dump.php:450 src/locale/locale_dump.php:486
 msgid "IIIT Hyderabad, Gachibowli Hyderabad - 500032"
 msgstr ""
 
 #: src/locale/locale_dump.php:451
+#, fuzzy
 msgid "webdev@felicity.iiit.ac.in"
-msgstr ""
+msgstr "threads@felicity.iiit.ac.in"
 
 #: src/locale/locale_dump.php:452
+#, fuzzy
 msgid "files/16/webdev.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:453
 msgid "Talks, Workshops and Presentations"
@@ -1379,7 +1591,7 @@ msgstr ""
 #: src/locale/locale_dump.php:522 src/locale/locale_dump.php:533
 #: src/locale/locale_dump.php:544
 msgid "IIIT Hyderabad"
-msgstr "આઈ. આઈ. આઈ. ટી. હૈદરાબાદ"
+msgstr "आयआयआयटी-हैदराबाद"
 
 #: src/locale/locale_dump.php:504
 msgid "SPUNK!"
@@ -1404,8 +1616,9 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:515
+#, fuzzy
 msgid "files/16/images/spunk.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:516
 msgid "Comedy Night"
@@ -1426,8 +1639,9 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:524
+#, fuzzy
 msgid "/files/16/images/comedy.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:525
 msgid "DJ Zaeden"
@@ -1448,8 +1662,9 @@ msgid ""
 msgstr ""
 
 #: src/locale/locale_dump.php:535
+#, fuzzy
 msgid "/files/16/images/zaeden.jpg"
-msgstr ""
+msgstr "files/16/cache_in.jpg"
 
 #: src/locale/locale_dump.php:536
 msgid "Progressive Brothers"
@@ -1602,8 +1817,9 @@ msgid "Register your team here"
 msgstr ""
 
 #: src/locale/locale_dump.php:594
+#, fuzzy
 msgid "Football Ground, IIIT-H"
-msgstr ""
+msgstr "फेलिसिटी मैदान , आयआयआयटी "
 
 #: src/locale/locale_dump.php:595
 msgid "abhinav.shukla@research.iiit.ac.in"
@@ -1614,8 +1830,9 @@ msgid "Sporting Events"
 msgstr ""
 
 #: src/app/helpers/validations.php:14
+#, fuzzy
 msgid "↑ This is a required field"
-msgstr ""
+msgstr "Please fill all the required fields"
 
 #: src/app/controllers/ttt_workshop.php:68 src/app/controllers/contest.php:75
 #: src/app/controllers/contest.php:114 src/app/controllers/contest.php:178
@@ -1625,133 +1842,136 @@ msgstr ""
 #: src/app/views/contest/webdev_workshop.php:31
 #: src/app/views/auth/register_by_email.php:2
 msgid "Register"
-msgstr "નોંધણી કરો"
+msgstr "Register"
 
 #: src/app/controllers/contest.php:173
 msgid "Some unexpected error occurred"
 msgstr ""
 
 #: src/app/controllers/contest.php:256
+#, fuzzy
 msgid "Breakin"
-msgstr ""
+msgstr "ब्रेक इन सी. टी. एफ."
 
 #: src/app/controllers/auth.php:134
 msgid "Could not verify email"
-msgstr ""
+msgstr "Could not verify email"
 
 #: src/app/controllers/auth.php:239
 msgid "Please enter a valid email address"
-msgstr ""
+msgstr "Please enter a valid email address"
 
 #: src/app/controllers/auth.php:242 src/app/controllers/auth.php:364
 msgid "The email id you gave is not valid"
-msgstr ""
+msgstr "The email id you gave is not valid"
 
 #: src/app/controllers/auth.php:246 src/app/controllers/auth.php:368
 msgid "The email id you gave is already registered"
-msgstr ""
+msgstr "The email id you gave is already registered"
 
 #: src/app/controllers/auth.php:256 src/app/controllers/auth.php:372
 #: src/app/controllers/auth.php:461
 msgid "Could not send mail"
-msgstr ""
+msgstr "Could not send mail"
 
 #: src/app/controllers/auth.php:260 src/app/controllers/auth.php:269
 msgid "Could not update email"
-msgstr ""
+msgstr "Could not update email"
 
 #: src/app/controllers/auth.php:295
 msgid "Please fill all the required fields"
-msgstr ""
+msgstr "Please fill all the required fields"
 
 #: src/app/controllers/auth.php:303
 msgid "You can use only alphanumeric characters and underscore in nick"
-msgstr ""
+msgstr "You can use only alphanumeric characters and underscore in nick"
 
 #: src/app/controllers/auth.php:307
 msgid "Nick must be at least 6 characters long"
-msgstr ""
+msgstr "Nick must be at least 6 characters long"
 
 #: src/app/controllers/auth.php:313
 msgid "Nick is already taken"
-msgstr ""
+msgstr "Nick is already taken"
 
 #: src/app/controllers/auth.php:318
 msgid "Enter valid gender"
-msgstr ""
+msgstr "Enter valid gender"
 
 #: src/app/controllers/auth.php:325
 msgid "Enter valid birthdate"
-msgstr ""
+msgstr "Enter valid birthdate"
 
 #: src/app/controllers/auth.php:335
 msgid "Enter valid country"
-msgstr ""
+msgstr "Enter valid country"
 
 #: src/app/controllers/auth.php:347
 msgid "Could not update profile"
-msgstr ""
+msgstr "Could not update profile"
 
 #: src/app/controllers/auth.php:393 src/app/controllers/auth.php:417
 msgid "Invalid request"
-msgstr "અમાન્ય માંગ!"
+msgstr "Invalid request"
 
 #: src/app/controllers/auth.php:395
 msgid "Password must be at least 6 characters long"
-msgstr ""
+msgstr "Password must be at least 6 characters long"
 
 #: src/app/controllers/auth.php:406
 msgid "Could not update"
-msgstr ""
+msgstr "Could not update"
 
 #: src/app/controllers/auth.php:414
 msgid "Could not create user"
-msgstr ""
+msgstr "Could not create user"
 
 #: src/app/controllers/auth.php:421
 msgid "Passwords does not match"
-msgstr ""
+msgstr "Passwords does not match"
 
 #: src/app/controllers/auth.php:453
 msgid ""
 "You didn't registered with email, maybe you used Google, GitHub or Facebook "
 "to login?"
 msgstr ""
+"You didn't registered with email, maybe you used Google, GitHub or Facebook "
+"to login?"
 
 #: src/app/controllers/auth.php:455
 msgid "This email id is not registred"
-msgstr ""
+msgstr "This email id is not registred"
 
 #: src/app/views/templates/category/index.php:36
 #: src/app/views/skeleton_template/footer.php:33
 msgid "Events"
-msgstr "કાર્યક્રમો"
+msgstr "Events"
 
 #: src/app/views/templates/category/index.php:45
 msgid "To be announced"
-msgstr "જાહેરાત બાકી છે"
+msgstr "To be announced"
 
 #: src/app/views/templates/sponsors/index.php:1
 #: src/app/views/skeleton_template/footer.php:104
 msgid "Sponsors"
-msgstr "પ્રાયોજક"
+msgstr "प्रायोजक "
 
 #: src/app/views/templates/sponsors/index.php:46
 #, fuzzy
 msgid "Felicity 2016 Sponsors"
-msgstr "ફેલિસિટી મુખપૃષ્ઠ"
+msgstr "Felicity ʼ16 Home"
 
 #: src/app/views/templates/sponsors/index.php:100
 msgid "Past sponsors"
-msgstr "ભૂતકાળના પ્રાયોજકો"
+msgstr "पूर्वीचे प्रायोजक "
 
 #: src/app/views/templates/sponsors/index.php:101
 msgid "Year 2015"
-msgstr "વર્ષ 2015"
+msgstr "वर्ष २०१५ "
 
 #: src/app/views/templates/sponsors/index.php:132
 msgid "Year 2014 and before"
-msgstr "વર્ષ 2014 અને તે પહેલાં"
+msgstr "वर्ष २०१४ आणि पूर्वीची वर्षे "
 
 #: src/app/views/templates/team/index.php:19
 msgid "The Felicity Coordinators"
@@ -1761,18 +1981,18 @@ msgstr ""
 #: src/app/views/templates/team/index.php:109
 #: src/app/views/templates/contact/index.php:25
 msgid "Jeevan Chowdary"
-msgstr "જીવન ચૌધરી"
+msgstr "जीवन चौधरी"
 
 #: src/app/views/templates/team/index.php:22
 #: src/app/views/templates/contact/index.php:37
 msgid "Sanatan Mishra"
-msgstr "સનાતાન મિશ્રા"
+msgstr "सनातन मिश्रा "
 
 #: src/app/views/templates/team/index.php:23
 #: src/app/views/templates/team/index.php:64
 #: src/app/views/templates/contact/index.php:49
 msgid "Vivek Ghaisas"
-msgstr "વિવેક ઘૈસાસ"
+msgstr "विवेक घैसास "
 
 #: src/app/views/templates/team/index.php:27
 msgid "Finance Council"
@@ -1789,8 +2009,9 @@ msgid "Gorang Maniar"
 msgstr ""
 
 #: src/app/views/templates/team/index.php:34
+#, fuzzy
 msgid "The Threads Team"
-msgstr ""
+msgstr "थ्रेड "
 
 #: src/app/views/templates/team/index.php:42
 #: src/app/views/templates/team/index.php:108
@@ -1997,7 +2218,7 @@ msgstr ""
 #: src/app/views/templates/team/index.php:141
 #, fuzzy
 msgid "Nurendra Choudhary"
-msgstr "જીવન ચૌધરી"
+msgstr "जीवन चौधरी"
 
 #: src/app/views/templates/team/index.php:142
 msgid "Abhinav Prasad"
@@ -2062,7 +2283,7 @@ msgstr ""
 #: src/app/views/templates/gallery/index.php:1
 #: src/app/views/skeleton_template/footer.php:96
 msgid "Gallery"
-msgstr "ગેલેરી"
+msgstr "गॅलरी"
 
 #: src/app/views/templates/coming_soon/index.php:1
 msgid "Coming Soon"
@@ -2070,15 +2291,15 @@ msgstr ""
 
 #: src/app/views/templates/coming_soon/index.php:5
 msgid "This page is coming soon"
-msgstr "ટૂંક સમયમાં આવી રહ્યું છે"
+msgstr "This page is coming soon"
 
 #: src/app/views/templates/schedule/index.php:191
 msgid "Date to be announced"
-msgstr "તારીખ જાહેર કરવાની બાકી છે"
+msgstr "Date to be announced"
 
 #: src/app/views/templates/score/index.php:4
 msgid "Scoreboard"
-msgstr "સ્કોરબોર્ડ"
+msgstr "गुणफलक "
 
 #: src/app/views/templates/score/index.php:4
 #: src/app/views/templates/score/index.php:393
@@ -2086,83 +2307,83 @@ msgstr "સ્કોરબોર્ડ"
 #: src/app/views/skeleton_template/header.php:32
 #: src/app/views/skeleton_template/header.php:60
 msgid "Felicity"
-msgstr "ફેલિસિટી"
+msgstr "फेलिसिटी"
 
 #: src/app/views/templates/score/index.php:405
 msgid "Final Scoreboard"
-msgstr "આખરી સ્કોરબોર્ડ"
+msgstr "अंतिम गुणफलक "
 
 #: src/app/views/templates/score/index.php:408
 msgid "Congratulations to all the winners!"
-msgstr "બધા વિજેતાએને અભિનંદન!"
+msgstr "विजेत्यांचे हार्दिक अभिनंदन ! "
 
 #: src/app/views/templates/score/index.php:418
 msgid "Link to explanations"
-msgstr "સ્પર્ધાની સમજૂતીઓની લિંક"
+msgstr "Link to explanations"
 
 #: src/app/views/templates/score/index.php:426
 msgid "Rank"
-msgstr "સ્થાન"
+msgstr "रँक  "
 
 #: src/app/views/templates/score/index.php:427
 msgid "Nick"
-msgstr "ઉપનામ"
+msgstr "Nick"
 
 #: src/app/views/templates/score/index.php:428
 msgid "Score"
-msgstr "સ્કોર"
+msgstr "स्कोअर"
 
 #: src/app/views/templates/contact/index.php:1
 #, fuzzy
 msgid "Contact Us"
-msgstr "સંપર્ક"
+msgstr "संपर्क"
 
 #: src/app/views/templates/contact/index.php:7
 msgid "There are many ways of contacting us."
-msgstr "અમારો સંપર્ક ઘણી રીતે કરી શકો છો"
+msgstr "आमच्याशी संपर्क करण्याचे अनेक मार्ग आहेत. "
 
 #: src/app/views/templates/contact/index.php:10
 #, php-format
 msgid "You may email us at %s"
-msgstr "%s પર ઈ-મેલ કરો"
+msgstr "आपण येथे आम्हाला ईमेल करू शकता %s "
 
 #: src/app/views/templates/contact/index.php:14
 #, php-format
 msgid "Or find us on %s or %s."
-msgstr "અથવા %s કે %s પર મળો"
+msgstr "किंवा येथे %s  किंवा येथे %s भेट द्या ."
 
 #: src/app/views/templates/contact/index.php:20
 msgid "Or bug our coordinators"
-msgstr "કે પછી અમારા સંયોજકો ને પરેશાન કરો!"
+msgstr "किंवा आमच्या समन्वयकांशी संपर्क करा. "
 
 #: src/app/views/templates/event/index.php:36
 msgid "Event Details"
-msgstr "કાર્યક્રમની વિગતો"
+msgstr "कार्यक्रमाचा तपशील "
 
 #: src/app/views/templates/event/index.php:37
 msgid "All times are in UTC+5:30."
-msgstr "બધા સમય UTC+05:30 માં છે."
+msgstr "All times are in UTC+5:30."
 
 #: src/app/views/templates/event/index.php:40
 msgid "Start time:"
-msgstr "પ્રારંભ સમય:"
+msgstr "आरंभ वेळ: "
 
 #: src/app/views/templates/event/index.php:55
 msgid "End time:"
-msgstr "સમાપ્તિ સમય:"
+msgstr "समाप्त वेळ:"
 
 #: src/app/views/templates/event/index.php:70
 msgid "Venue:"
-msgstr "સ્થળ:"
+msgstr "स्थळ:"
 
 #: src/app/views/templates/event/index.php:78
 msgid "Contact Email:"
-msgstr "સંપર્ક ઈ-મેલ:"
+msgstr "संपर्क ईमेल:"
 
 #: src/app/views/templates/about/index.php:1
 #, fuzzy
 msgid "About Us"
-msgstr "અમારા વિશે"
+msgstr "प्रस्तावना"
 
 #: src/app/views/contest/paper_presentation.php:25
 msgid "Paper presentation"
@@ -2173,7 +2394,7 @@ msgstr ""
 #: src/app/views/contest/webdev_workshop.php:40
 #, fuzzy
 msgid "Contact number"
-msgstr "સંપર્ક"
+msgstr "संपर्क"
 
 #: src/app/views/contest/paper_presentation.php:48
 msgid "Link of your paper"
@@ -2192,7 +2413,7 @@ msgstr ""
 #: src/app/views/contest/futsal.php:50
 #, fuzzy
 msgid "Team name"
-msgstr "આયોજક"
+msgstr "टीम  "
 
 #: src/app/views/contest/futsal.php:53
 msgid "Contact number of any one team member"
@@ -2248,146 +2469,152 @@ msgstr ""
 
 #: src/app/views/http_error.php:17
 msgid "Invalid request!"
-msgstr "અમાન્ય માંગ!"
+msgstr "Invalid request!"
 
 #: src/app/views/http_error.php:18
 msgid ""
 "Please try again.</p><p>If this issue persists, then you're probably trying "
 "to repeat an action that can only be performed once."
 msgstr ""
+"Please try again.</p><p>If this issue persists, then you're probably trying "
+"to repeat an action that can only be performed once."
 
 #: src/app/views/http_error.php:21
 msgid "Forbidden!"
-msgstr "પ્રતિબંધિત!"
+msgstr "Forbidden!"
 
 #: src/app/views/http_error.php:22
 msgid "Sorry, you do not have permission to view this page."
-msgstr "માફ કરશો, તમને આ પાનું જોવાની પરવાનગી નથી."
+msgstr "Sorry, you do not have permission to view this page."
 
 #: src/app/views/http_error.php:25
 msgid "Page not found!"
-msgstr "પાનું ન મળ્યુ."
+msgstr "Page not found!"
 
 #: src/app/views/http_error.php:26
 msgid "Sorry, the page you were looking for could not be found."
-msgstr "માફ કરશો, તમે શોધી રહ્યા છો આ પાનું મળી શક્યું નથી."
+msgstr "Sorry, the page you were looking for could not be found."
 
 #: src/app/views/http_error.php:29
 msgid "Something went wrong."
-msgstr "કંઈક બરાબર નથી."
+msgstr "Something went wrong."
 
 #: src/app/views/http_error.php:30
 #, php-format
 msgid "If this issue persists, please mail %s"
-msgstr "જો આ સમસ્યા ચાલુ રહે તો %s પર મેલ કરો"
+msgstr "If this issue persists, please mail %s"
 
 #: src/app/views/http_error.php:40
 msgid "Felicity ʼ16 Home"
-msgstr "ફેલિસિટી મુખપૃષ્ઠ"
+msgstr "Felicity ʼ16 Home"
 
 #: src/app/views/http_error.php:41
 msgid "Back"
-msgstr "પાછળ"
+msgstr "Back"
 
 #: src/app/views/auth/register_by_email.php:6
 msgid "Verification mail sent!"
-msgstr "ચકાસણી મેલ મોકલાઈ ગયો!"
+msgstr "Verification mail sent!"
 
 #: src/app/views/auth/register_by_email.php:7
 msgid ""
 "To proceed, you must verify your email address by clicking on the link sent "
 "to your inbox."
-msgstr "આગળ વધવા તમને મોકલાયેલ મેલમાંની ચકાસણી લિંક પર ક્લિક કરવું જરુરી છે."
+msgstr ""
+"To proceed, you must verify your email address by clicking on the link sent "
+"to your inbox."
 
 #: src/app/views/auth/register_by_email.php:10
 #: src/app/views/auth/confirm_email.php:5
 msgid "We will send an email to this address to verify it."
-msgstr "આ ઈ-મેલ સરનામું ચકાસવા તેના પર એક મેલ મોકલવામાં આવશે."
+msgstr "We will send an email to this address to verify it."
 
 #: src/app/views/auth/register_by_email.php:13
 #: src/app/views/auth/forgot_password.php:9
 msgid "Email:"
-msgstr "ઈ-મેલ:"
+msgstr "Email:"
 
 #: src/app/views/auth/register_by_email.php:15
 #: src/app/views/auth/forgot_password.php:12
 msgid "Next"
-msgstr "આગળ"
+msgstr "Next"
 
 #: src/app/views/auth/password_reset.php:3
 msgid "Reset password"
-msgstr "પાસવર્ડ રીસેટ કરો"
+msgstr "Reset password"
 
 #: src/app/views/auth/password_reset.php:3
 msgid "Set password"
-msgstr "પાસવર્ડ સેટ કરો"
+msgstr "Set password"
 
 #: src/app/views/auth/password_reset.php:10
 msgid "Password successfully set!"
-msgstr "પાસવર્ડ બરાબર સેટ થઈ ગયો!"
+msgstr "Password successfully set!"
 
 #: src/app/views/auth/password_reset.php:11
 msgid "Continue to a magical journey"
-msgstr "જાદુઈ પ્રવાસ પર આગળ વધો"
+msgstr "Continue to a magical journey"
 
 #: src/app/views/auth/password_reset.php:19
 msgid "Password:"
-msgstr "પાસવર્ડ:"
+msgstr "Password:"
 
 #: src/app/views/auth/password_reset.php:23
 msgid "Confirm pasword:"
-msgstr "પાસવર્ડ (ફરીથી):"
+msgstr "Confirm pasword:"
 
 #: src/app/views/auth/password_reset.php:27
 #: src/app/views/auth/confirm_email.php:4
 msgid "Submit"
-msgstr "મોકલો"
+msgstr "Submit"
 
 #: src/app/views/auth/email_confirmed.php:2
 msgid "Email successfully verified!"
-msgstr "ઈ-મેલ બરાબર રીતે ચકાસાઈ ગયો!"
+msgstr "Email successfully verified!"
 
 #: src/app/views/auth/email_confirmed.php:6
 msgid "Success!"
-msgstr "સફળતા!"
+msgstr "Success!"
 
 #: src/app/views/auth/email_confirmed.php:7
 msgid "You have successfully verified your email address."
-msgstr "તમારા ઈ-મેલની બરાબર ચકાસણી થઈ ગઈ."
+msgstr "You have successfully verified your email address."
 
 #: src/app/views/auth/email_confirmed.php:9
 msgid "Continue magical journey"
-msgstr "જાદુઈ પ્રવાસ પર આગળ વધો"
+msgstr "Continue magical journey"
 
 #: src/app/views/auth/confirm_email.php:3
 msgid "In order to continue, please enter your email."
-msgstr "આગળ વધવા તમારું ઈ-મેલ સરનામું દાખલ કરો."
+msgstr "In order to continue, please enter your email."
 
 #: src/app/views/auth/confirm_email.php:7
 msgid "In order to continue, please confirm your email."
-msgstr "આગળ વધવા તમારું ઈ-મેલ સરનામાની ખાતરી કરો."
+msgstr "In order to continue, please confirm your email."
 
 #: src/app/views/auth/confirm_email.php:8
 msgid "Confirm"
-msgstr "બરાબર છે"
+msgstr "Confirm"
 
 #: src/app/views/auth/confirm_email.php:9
 msgid ""
 "If you change your email, we will send an email to the new address to verify "
 "it."
-msgstr "જો તમે તમારું ઈ-મેલ સરનામું બદલશો, તો તેના પર ચકાસણી માટે મેલ મોકલવામાં આવશે."
+msgstr ""
+"If you change your email, we will send an email to the new address to verify "
+"it."
 
 #: src/app/views/auth/confirm_email.php:11
 msgid "Welcome!"
-msgstr "આપનું સ્વાગત છે!"
+msgstr "सुस्वागतम् "
 
 #: src/app/views/auth/confirm_email.php:17
 msgid "Email"
-msgstr "ઈ-મેલ"
+msgstr "Email"
 
 #: src/app/views/auth/profile.php:2
 msgid "Update your profile"
-msgstr "તમારી માહિતી સુધારો"
+msgstr "Update your profile"
 
 #: src/app/views/auth/profile.php:11
 msgid "Nick / Username / Handle:"
@@ -2395,35 +2622,35 @@ msgstr ""
 
 #: src/app/views/auth/profile.php:16
 msgid "Name:"
-msgstr "નામ:"
+msgstr "Name:"
 
 #: src/app/views/auth/profile.php:21
 msgid "Gender:"
-msgstr "જાતિ:"
+msgstr "Gender:"
 
 #: src/app/views/auth/profile.php:22
 msgid "Female"
-msgstr "સ્ત્રી"
+msgstr "Female"
 
 #: src/app/views/auth/profile.php:23
 msgid "Male"
-msgstr "પુરુષ"
+msgstr "Male"
 
 #: src/app/views/auth/profile.php:24
 msgid "Other"
-msgstr "અન્ય"
+msgstr "Other"
 
 #: src/app/views/auth/profile.php:28
 msgid "Location/City:"
-msgstr "સ્થળ/શહેર:"
+msgstr "Location/City:"
 
 #: src/app/views/auth/profile.php:33
 msgid "Country:"
-msgstr "દેશ:"
+msgstr "Country:"
 
 #: src/app/views/auth/profile.php:51
 msgid "Date of Birth:"
-msgstr "જન્મદિવસ:"
+msgstr "Date of Birth:"
 
 #: src/app/views/auth/profile.php:56
 msgid "College / Institution / Company:"
@@ -2431,30 +2658,31 @@ msgstr ""
 
 #: src/app/views/auth/profile.php:61
 msgid "Save"
-msgstr "સાચવો"
+msgstr "Save"
 
 #: src/app/views/auth/forgot_password.php:2
 msgid "Forgot your password?"
-msgstr "પાસવર્ડ ભૂલી ગયા?"
+msgstr "Forgot your password?"
 
 #: src/app/views/auth/forgot_password.php:5
 msgid "Mail sent!"
-msgstr "મેલ મોકલાઈ ગયો!"
+msgstr "Mail sent!"
 
 #: src/app/views/auth/email_resend.php:2
 msgid "Email Verification Required"
-msgstr "ઈ-મેલની ચકાસણી જરુરી"
+msgstr "Email Verification Required"
 
 #: src/app/views/auth/email_resend.php:6
 msgid ""
 "Your email has not yet been verified. Please click the verification link you "
 "received in your email to proceed."
 msgstr ""
-"આ ઈ-મેલ સરનામું ચકાસાયેલ નથી. કૃપા કરી તમને મોકલાયેલ મેલમાંથી ચકાસણી લિંક પર ક્લિક કરો."
+"Your email has not yet been verified. Please click the verification link you "
+"received in your email to proceed."
 
 #: src/app/views/auth/email_resend.php:8
 msgid "Resend email"
-msgstr "ઈ-મેલ ફરી મોકલો"
+msgstr "Resend email"
 
 #: src/app/views/skeleton_template/header.php:9
 #: src/app/views/skeleton_template/header.php:10
@@ -2465,41 +2693,41 @@ msgid ""
 "Felicity as a medium to serve this motive and pickup various social "
 "initiatives."
 msgstr ""
-"ફેલિસિટી આઈ. આઈ. આઈ. ટી. હૈદરાબાદનો વાર્ષિક વૈજ્ઞાનિક અને સાંસ્કૃતિક ઉત્સવ છે. તેમાં "
-"તકનિકી, સાંસ્કૃતિક, સાહિત્યિક કાર્યક્રમો, વ્યાખ્યાનો, કાર્યશિબિરો વગેરેનો સમાવેશ થાય છે. "
-"આઈ. આઈ. આઈ. ટી. હૈદરાબાદમાં અમે સમાજને પાછું આપવામાં માનીએ છીએ અને ફેલિસિટી દ્વારા અમે "
-"આ હેતુ પૂરો પાડવા પહેલ કરીએ છીએ."
+"फेलिसिटी आयआयआयटी-हैदराबाद यांचा  वार्षिक तांत्रिक आणि सांस्कृतिक ऊत्सव आहे .फेलिसिटीमध्ये "
+"तांत्रिक, सांस्कृतिक आणि साहित्यिक कार्यक्रम, मुख्य रात्री, चर्चा , कार्यशाळा आणि "
+"सादरीकरण यांचा समावेश आहे. आम्ही, आयआयआयटी येथे, समाजाचे ॠण परत फेडण्याच्या हेतूने "
+"सामाजिक उपक्रम करण्यासाठी एक माध्यम म्हणून फेलिसिटीचा वापर करतो ."
 
 #: src/app/views/skeleton_template/header.php:11
 #: src/app/views/skeleton_template/header.php:55
 msgid "IIIT-H"
-msgstr "આઈ. આઈ. આઈ. ટી. હૈદરાબાદ"
+msgstr "आयआयआयटी-हैदराबाद"
 
 #: src/app/views/skeleton_template/header.php:58
 msgid "presents"
-msgstr "પ્રસ્તુત"
+msgstr "प्रस्तुत करत आहे .."
 
 #: src/app/views/skeleton_template/header.php:62
 msgid "Where magic happens"
-msgstr "જ્યાં થાય છે જાદુ"
+msgstr "जेथे जादू घडते  "
 
 #: src/app/views/skeleton_template/header.php:63
 msgid "February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>"
-msgstr "19, 20 અને 21 ફેબ્રુઆરી"
+msgstr "१९ ,२० आणि २१ फेब्रुवारी "
 
 #: src/app/views/skeleton_template/header.php:78
 #, php-format
 msgid "Hello, %s"
-msgstr "નમસ્તે, %s"
+msgstr "Hello, %s"
 
 #: src/app/views/skeleton_template/header.php:78
 #: src/app/views/skeleton_template/header.php:80
 msgid "Logout"
-msgstr "પ્રસ્થાન"
+msgstr "Logout"
 
 #: src/app/views/skeleton_template/header.php:83
 msgid "Login / Register"
-msgstr "પ્રવેશ / નોંધણી"
+msgstr "Login / Register"
 
 #: src/app/views/skeleton_template/footer.php:56
 msgid "Home"
@@ -2507,24 +2735,56 @@ msgstr ""
 
 #: src/app/views/skeleton_template/footer.php:93
 msgid "About"
-msgstr "અમારા વિશે"
+msgstr "प्रस्तावना"
 
 #: src/app/views/skeleton_template/footer.php:107
 msgid "Team"
-msgstr "આયોજક"
+msgstr "टीम  "
 
 #: src/app/views/skeleton_template/footer.php:110
 msgid "Contact"
-msgstr "સંપર્ક"
+msgstr "संपर्क"
+
+#~ msgid ""
+#~ "The annual grand algorithmic sprint is back yet again, an individual "
+#~ "event based on ACM ICPC format."
+#~ msgstr "पुन्हा एकदा येत आहे अल्गोरिदमची भव्य शर्यत , ACM ICPC वर आधारित एक स्पर्धा "
+
+#~ msgid "Practice Contest begins at 1600 hours"
+#~ msgstr "स्पर्धेची रंगीत तालीम १६०० वाजता सुरु होईल."
+
+#~ msgid "Link to the Practice Contest"
+#~ msgstr "Link to the Practice Contest"
 
 #~ msgid "Contest is now live!"
-#~ msgstr "સ્પર્ધા અત્યારે ચાલુ છે!"
+#~ msgstr "Contest is now live!"
 
 #~ msgid "LINK TO THE CONTEST"
-#~ msgstr "સ્પર્ધાની લિંક"
+#~ msgstr "LINK TO THE CONTEST"
+
+#~ msgid "Litcafe"
+#~ msgstr "लिटकॅफे "
+
+#~ msgid ""
+#~ "Welcome to the Ultimate Clash of Literary enthusiasts as they go up "
+#~ "against each other through rounds that test the voracious readers, geeks "
+#~ "and even the grammar Nazis!"
+#~ msgstr ""
+#~ "Welcome to the Ultimate Clash of Literary enthusiasts as they go up "
+#~ "against each other through rounds that test the voracious readers, geeks "
+#~ "and even the grammar Nazis!"
+
+#~ msgid ""
+#~ "Code in the esoteric programming language inspired by the legendary poet, "
+#~ "playwright and actor, William Shakespeare, and win glory mastering the "
+#~ "Tech and Lit side of things all at once."
+#~ msgstr ""
+#~ "Code in the esoteric programming language inspired by the legendary poet, "
+#~ "playwright and actor, William Shakespeare, and win glory mastering the "
+#~ "Tech and Lit side of things all at once."
 
 #~ msgid "Nick:"
-#~ msgstr "ઉપનામ:"
+#~ msgstr "Nick:"
 
 #~ msgid "Organization:"
-#~ msgstr "સંસ્થા:"
+#~ msgstr "Organization:"
