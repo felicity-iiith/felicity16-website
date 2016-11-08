@@ -32,45 +32,87 @@ if (empty($is_ajax)):
     <title><?= isset($title) ? $title . ' · ' : '' ?><?= __('Felicity') ?> · <?= __('IIIT-Hyderabad') ?></title>
 
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/normalize.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/felicons.css?v=4">
-    <link rel="stylesheet" href="<?= base_url() ?>static/styles/core.css?v=4">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Flamenco|Noto+Sans">
+    <script type="text/javascript" src="<?= base_url() ?>static/scripts/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>static/scripts/vendor/plax.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/new.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/panel.css">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
         var localeBaseUrl = '<?= locale_base_url() ?>';
     </script>
-    <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('.mountain').plaxify({"xRange":5,"yRange":5})
+        $('.land2').plaxify({"xRange":20,"yRange":20})
+        $('.land3').plaxify({"xRange":25,"yRange":25})
+        $('.land').plaxify({"xRange":40,"yRange":40})
+        $('.house').plaxify({"xRange":30,"yRange":30})
+        $('.title').plaxify({"xRange":100,"yRange":100})
+        // $('.wave').plaxify({"xRange":40,"yRange":40,"invert":false})
+        $('.boat').plaxify({"xRange":40,"yRange":40,"invert":false})
+
+        $.plax.enable()
+      })
+    </script>
 </head>
 <?php
     if (!isset($page_slug)) {
         $page_slug = 'static';
     }
 ?>
-<body<?= empty($page_slug) ? '' : ' class="page-open"' ?>>
-    <article class="landing">
-        <div class="landing-content">
-            <p class="iiit-h">
-                <img src="<?= base_url() ?>static/images/iiit-logo.png" alt="IIIT H Logo"> <?= __('IIIT-H') ?>
-            </p>
-            <p class="presents">
-                <?= __('presents') ?>
-            </p>
-            <h1 class="title"><a href="<?= locale_base_url() ?>"><?= __('Felicity') ?></a></h1>
-            <p class="year">2016</p>
-            <p class="tagline"><?= __('Where magic happens') ?></p>
-            <p class="dates"><?= __('February 19<sup>th</sup>, 20<sup>th</sup> and 21<sup>st</sup>') ?></p>
+<body>
+    <img src="<?= base_url() ?>static/images/home/background.png" class="mountain"></div>
+    <div class="land2"></div>
+    <div class="land3"></div>
+    <div class="house"></div>
+    <div class="land"></div>
+    <div class="wave plain depth-60"></div>
+    <div class="wave paint depth-50"></div>
+    <div class="wave paint depth-40"></div>
+    <div class="wave plain depth-30"></div>
+    <div class="wave paint depth-20"></div>
+    <div class="wave plain depth-10"></div>
+    <!--div class="wave plain depth-40"></div>
+    <div class="wave paint depth-50"></div>
+    <h1 class="title"><b>felicity<em>17</em></b></h1>
+    <div class="wave plain depth-0"></div>
+    <div class="boat"></div>
+    <div class="wave paint depth-60"></div>
+    <div class="wave plain depth-80"></div>
+    <div class="wave paint depth-100"></div>
+    <div onclick="showDetails('About')" class="cloud cloud-1">About</div>
+    <div onclick="showDetails('Gallery')" class="cloud cloud-2">Gallery</div>
+    <div onclick="showDetails('Schedule')" class="cloud cloud-3">Schedule</div>
+    <div onclick="showDetails('Sponsors')" class="cloud cloud-4">Sponsors</div>
+    <div onclick="showDetails('Team')" class="cloud cloud-5">Team</div> -->
+    <section id="about" class="about hide">
+        <div class="cell">
+            <div class="cables center accelerate">
+                <div class="linkholder">
+                    <ul class="links">
+                        <li><a>Button 1</a></li>
+                        <li><a>Button 2</a></li>
+                        <li><a>Button 3</a></li>
+                        <li><a>Button 4</a></li>
+                    </ul>
+                </div>
+                <div class="panel accelerate">
+                    <header>
+                        <h1 onclick="alert(1)">felicity<em>17</em></h1>
+                    </header>
+                    <p>Insert random content here</p>
+                    <p>Insert random content here</p>
+                    <p>Insert random content here</p>
+                </div>
+            </div>
         </div>
-    </article>
-    <?php if ($lang_list): ?>
-    <div class="lang-quick-links">
-        <?php foreach ($lang_list as $lang => $locale): ?>
-            <a href="<?= base_url() . $lang . $path ?>" lang="<?= $lang ?>" class="lang-link<?= ($lang == $lang_prefix) ? ' active-lang' : '' ?>"><?= locale_get_display_name($lang, $lang) ?></a> ·
-        <?php endforeach; ?>
-        <i class="icon-language"></i>
-    </div>
-    <?php endif; ?>
+    </section>
+    <button id="toggle" class="toggle i">
+        <div class="cross">
+            <div class="x"></div>
+            <div class="y"></div>
+        </div>
+    </button>
     <?php if (isset($is_authenticated)): ?>
     <div class="auth-quick-links">
         <?php if ($is_authenticated): ?>
@@ -80,9 +122,30 @@ if (empty($is_ajax)):
                 <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn"><?= __('Logout') ?></a></div>
             <?php endif; ?>
         <?php else: ?>
-            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn"><?= __('Login / Register') ?></a></div>
+            <div><a onclick="window.location.href = '<?= locale_base_url() . "auth/login/" ?>';" class="pure-button btn"><?= __('Login / Register') ?></a></div>
         <?php endif; ?>
     </div>
     <?php endif; ?>
-    <div class="content-holder">
+    <script>
+        var $html = $('html'),
+            $toggle = $('#toggle'),
+            $about = $('#about'),
+            $scene = $('#scene');
+
+        function showDetails() {
+            $about.removeClass('hide');
+            $toggle.removeClass('i');
+        }
+
+        function hideDetails() {
+            $about.addClass('hide');
+            $toggle.addClass('i');
+        }
+
+        $toggle.on('click', function(event) {
+            $toggle.hasClass('i') ? showDetails() : hideDetails();
+        });
+    </script>
+  </body>
+</html>
 <?php endif;

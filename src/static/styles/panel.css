@@ -1,0 +1,287 @@
+@import url("http://fonts.googleapis.com/css?family=Dosis:600|Roboto+Slab:100,300,400,700");
+
+html {
+	font-family: "Roboto Slab", sans-serif;
+	font-size: 15px;
+	text-align: center;
+	line-height: 1.4em;
+}
+
+button {
+	cursor: pointer;
+	font-size: 1.33333em;
+	line-height: 45.6px;
+	font-family: "Dosis", sans-serif;
+	background-color: #f2f2f2;
+	font-weight: 600;
+	border-radius: 28px;
+	height: 56px;
+	width: 56px;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	outline: none;
+	border: none;
+}
+
+.accelerate {
+	transform: translate3d(0,0,0);
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+}
+
+.center {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+	border-radius: 6px;
+	background: #f2f2f2 url(../images/home/panel.jpg) -7px 0;
+	background-color: rgba(255, 255, 255, 0.0);
+	background-size: 399px 357px;
+	padding-bottom: 50px;
+	/*overflow: scroll;*/
+	/* ^^^ */
+	height: 88vh;
+	margin: 0 auto;
+	width: 88%;
+}
+
+.cell {
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.panel {
+	background-clip: padding-box;
+	transform: translate3d(0,0,0);
+	position: relative;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.about {
+	perspective: 1000px;
+	color: #666666;
+	min-height: 460px;
+	position: absolute;
+	overflow: hidden;
+	display: table;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: 0;
+}
+
+.about.hide .cables {
+	transform: translate3d(0,-10%,0) rotateX(-90deg);
+	opacity: 0;
+}
+
+.about.hide .panel {
+	transform: rotateX(-20deg);
+}
+
+.about .panel,
+.about .cables {
+	transform: translate3d(0,0,0);
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+	position: relative;
+}
+
+.about .cables {
+	transform-origin: 50% -100%;
+}
+
+.about .panel {
+	transform-origin: 50% 0%;
+}
+
+.about .center:before {
+	border-left: 1px dashed rgba(29, 31, 39, 0.2);
+	position: absolute;
+	display: block;
+	height: 100%;
+	content: "";
+	left: 5%;
+	top: 0;
+}
+
+.about .center:after {
+	border-radius: 0 0 6px 0;
+	background-clip: padding-box;
+	background: transparent url(../images/home/compass.png) 0 0 no-repeat;
+	background-size: 224px 224px;
+	position: absolute;
+	display: block;
+	height: 160px;
+	width: 120px;
+	opacity: 0.2;
+	content: "";
+	bottom: 0;
+	right: 0;
+}
+
+.about .linkholder {
+	background-clip: padding-box;
+	background: transparent url(../images/home/map.png) 0 0 no-repeat;
+	background-size: 60.5px 82.5px;
+}
+
+.about .panel header:before {
+	border-radius: 6px 0 0 0;
+	position: absolute;
+	display: block;
+	height: 150px;
+	width: 110px;
+	opacity: 0.8;
+	content: "";
+	left: 0;
+	top: 0;
+}
+
+.about .panel h1 {
+	font-size: 3.83333em;
+	font-weight: 100;
+	color: #d92400;
+}
+
+.about .panel h1 em {
+	color: #1d1f27;
+}
+
+.about .panel p {
+	margin: 0 8% 1.2em;
+	position: relative;
+	z-index: 1;
+}
+
+.about .panel p strong {
+	font-weight: 700;
+	color: #1d1f27;
+}
+
+.about .linkholder .links {
+	zoom: 1;
+	box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	position: relative;
+	z-index: 1;
+}
+
+.about .linkholder .links:after, .about .linkholder .links:before {
+	display: table;
+	content: "";
+}
+
+.about .linkholder .links:after {
+	clear: both;
+}
+
+.about .linkholder .links li {
+	box-sizing: border-box;
+	display: block;
+	float: left;
+	width: 25%;
+}
+
+.about .linkholder .links li a {
+	color: #d92400;
+	border-radius: 0 0 0 5px;
+	background-clip: padding-box;
+}
+
+.about .linkholder .links li + li {
+	border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.about .linkholder .links li + li a {
+	border-radius: 0 0 5px 0;
+	background-clip: padding-box;
+}
+
+.about .linkholder .links a {
+	font-size: 1.33333em;
+	font-family: "Dosis", sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 1em 0 1.1em;
+	display: block;
+}
+
+.toggle {
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+	margin: -28px;
+	position: absolute;
+	bottom: 12%;
+	left: 50%;
+}
+
+.toggle.i .cross {
+	transform: rotateZ(0deg);
+}
+
+.toggle.i .cross .x {
+	margin-left: -2px;
+	width: 4px;
+	margin-top: -12px;
+}
+
+.toggle.i .cross .y {
+	margin-top: -4px;
+	height: 16px;
+}
+
+.cross {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+.cross .x, .cross .y {
+	border-radius: 2px;
+	background-clip: padding-box;
+	background-color: #1d1f27;
+	height: 4px;
+	width: 4px;
+	margin: -2px;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.cross .x {
+	margin-left: -12px;
+	margin-top: -2px;
+	width: 24px;
+}
+
+.cross .y {
+	margin-top: -12px;
+	height: 24px;
+}
+
+.cross {
+	transform: rotateZ(45deg);
+}
+
+.cross, .x, .y {
+	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.about .panel,
+.about .cables {
+	transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+button:hover {
+	background-color: #d92400;
+	color: white;
+}
+
+.toggle:hover .x, .toggle:hover .y {
+	background-color: white;
+}
+
+.links a:hover {
+	background-color: #d92400;
+	color: white;
+}
