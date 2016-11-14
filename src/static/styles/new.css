@@ -4,15 +4,17 @@ body {
 	text-align: center;
 
 }
+
 .layer {
 	width: 100%;
 	height: 100%;
 }
+
 .mountain {
  	background: url(../images/home/background.png) no-repeat 50% 100%;
 	background-size: cover;
 	width: auto;
-	height: 100%;
+	height: 113%;
 }
 
 .land {
@@ -22,7 +24,7 @@ body {
 	position: absolute;
 	width: 110%;
 	left: -5%;
-	top: -5%;
+	height: 115vh;
 }
 
 .land2 {
@@ -32,7 +34,8 @@ body {
 	position: absolute;
 	width: 105%;
 	left: -5%;
-	top: 0%;
+	top: 15%;
+
 }
 
 .land3 {
@@ -49,31 +52,39 @@ body {
 	background: url(../images/home/2house.png) no-repeat 50% 100%;
 	background-size: cover;
 	position: absolute;
-	width: 100%;
-	height: 50%;
-	top: 40vh;
+	left: -2%;
+	right: -2%;
+	top: 6%;
+	bottom: -7%;
 }
 
 .mountain {
 	position: absolute;
 	width: 105%;
-	height:auto;
 	left: 0%;
 	top: 0%;
 }
+
 .title em {
 	font-style: normal;
 	font-size:0.6em;
 	color: #d92400;
 }
+
 .title {
+	color: white;
 	font-size: 3em;
-	text-shadow: 0 8px 6px rgba(0, 0, 0, 0.6);
+    text-shadow:
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
 	margin-top: -0.7em;
 	position: absolute;
 	width: 100%;
 	top: 42%;
 }
+
 .wave {
 	-webkit-animation: wave 4s 0.1s infinite linear;
 	-moz-animation: wave 4s 0.1s infinite linear;
@@ -86,6 +97,7 @@ body {
 	background-size: 40vh 20vh;
 	height: 20vh;
 }
+
 .wave:after {
 	background-color: #10e4e8;
 	position: absolute;
@@ -107,7 +119,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 6s 0.1s infinite linear;
-	bottom: 0vh;
+	bottom: -6vh;
 	margin: 0px 0px;
 }
 
@@ -115,7 +127,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 9s 0.1s infinite linear;
-	bottom: 3vh;
+	bottom: -3vh;
 	margin: 0px 0px;
 }
 
@@ -123,7 +135,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 8s 0.1s infinite linear;
-	bottom: 6vh;
+	bottom: 0vh;
 	margin: 0px 0px;
 }
 
@@ -131,7 +143,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 6s 0.1s infinite linear;
-	bottom: 8vh;
+	bottom: 5vh;
 	margin: 0px 0px;
 }
 
@@ -139,7 +151,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 5s 0.1s infinite linear;
-	bottom: 11vh;
+	bottom: 8vh;
 	margin: 0px 0px;
 }
 
@@ -147,7 +159,7 @@ body {
 	-webkit-animation: wave 8s 0.1s infinite linear;
 	-moz-animation: wave 8s 0.1s infinite linear;
 	animation: wave 7s 0.1s infinite linear;
-	bottom: 13vh;
+	bottom: 12vh;
 	margin: 0px 0px;
 }
 
@@ -205,4 +217,39 @@ body {
 		-moz-transform: rotateZ(360deg) translate3d(0,10%,0) rotateZ(-360deg);
 		transform: rotateZ(360deg) translate3d(0,10%,0) rotateZ(-360deg);
 	}
+}
+
+.cloud {
+	background-image: url(../images/home/cloud-1.png);
+	background-size: cover;
+	position: absolute;
+	height: 11.3vh;
+	width: 25.4vh;
+	color: black;
+}
+
+.cloud-1 {
+	left: 3%;
+	top: 6%;
+}
+
+
+.cloud-2 {
+	left: 20%;
+	top: 10%;
+}
+
+.cloud-3 {
+	left: 50%;
+	top: 2%;
+}
+
+.cloud-4 {
+	left: 70%;
+	top: 4%;
+}
+
+.cloud-5 {
+	left: 85%;
+	top: 8%;
 }
