@@ -43,7 +43,7 @@ if (empty($is_ajax)):
         $page_slug = 'static';
     }
 ?>
-<body>
+<body  style="overflow: hidden;">
   <div id="fb-root"></div>
 
     <div id="container" class="wrapper">
@@ -80,12 +80,35 @@ if (empty($is_ajax)):
         </li>
         </ul>
       </li-->
-      <li class="layer" data-depth="0.20"><div class="land2"></div></li>
-      <li class="layer" data-depth="0.21"><div class="land3"></div></li>
-      <li class="layer" data-depth="0.23"><div class="house"></div></li>
-      <li class="layer" data-depth="0.27"><div class="land"></div></li>
-      <li class="layer" data-depth="0.40"><div class="wave plain depth-60"></div></li>
-      <li class="layer" data-depth="0.50"><div class="wave paint depth-50"></div></li>
+      <li class="layer" data-depth="0.20">
+                <div class="land2"></div>
+            </li>
+            <!-- <li class="layer" data-depth="0.21"><div class="land3"></div></li> -->
+            <li class="layer" data-depth="0.23">
+                <div class="house"></div>
+            </li>
+            <li class="layer" data-depth="0.27">
+                <div class="land"></div>
+            </li>
+            <li class="layer" data-depth="0.28">
+                <h1 class="title"><b>felicity<em>17</em></b></h1>
+            </li>
+            <li class="layer" data-depth="0.40">
+                <div class="wave plain depth-60"></div>
+            </li>
+            <li class="layer" data-depth="0.50">
+                <div class="wave paint depth-50"></div>
+            </li>
+            <!-- <<<<<<< HEAD -->
+            <li class="layer" data-depth="0.50">
+                <div class="boat depth-50"></div>
+            </li>
+            <li class="layer" data-depth="0.60">
+                <div class="wave plain depth-40"></div>
+            </li>
+            <li class="layer" data-depth="0.70">
+                <div class="wave paint depth-30"></div>
+            </li>
       <li class="layer" data-depth="0.28"><h1 class="title"><b>felicity<em>17</em></b></h1></li>
       <!--li class="layer" data-depth="0.60"><div class="lighthouse depth-60"></div></li -->
       <!--li class="layer" data-depth="0.60">
@@ -102,33 +125,36 @@ if (empty($is_ajax)):
         </li>
         </ul>
       </li-->
-      <li class="layer" data-depth="0.60"><div class="wave paint depth-40"></div></li>
-      <!--li class="layer" data-depth="0.65"><div class="boat"></div></li-->
-      <li class="layer" data-depth="0.70"><div class="wave plain depth-30"></div></li>
-      <li class="layer" data-depth="0.80"><div class="wave paint depth-20"></div></li>
-      <li class="layer" data-depth="0.90"><div class="wave plain depth-10"></div></li>
-      <li class="layer" data-depth="0.15"><div onclick="showDetails('About')" class="cloud cloud-1">About</div></li>
-      <li class="layer" data-depth="0.09"><div onclick="showDetails('Gallery')" class="cloud cloud-2">Gallery</div></li>
-      <li class="layer" data-depth="0.15"><div onclick="showDetails('Schedule')" class="cloud cloud-3">Schedule</div></li>
-      <li class="layer" data-depth="0.09"><div onclick="showDetails('Sponsors')" class="cloud cloud-4">Sponsors</div></li>
-      <li class="layer" data-depth="0.15"><div onclick="showDetails('Team')" class="cloud cloud-5">Team</div></li>
+      <li class="layer" data-depth="0.09">
+                <div onclick="toggleDetails('Team')" class="cloud cloud-5"><span>Team</span></div>
+                <div onclick="toggleDetails('Gallery')" class="cloud cloud-2"><span>Gallery</span></div>
+                <div onclick="toggleDetails('Schedule')" class="cloud cloud-3"><span>Schedule</span></div>
+                <div onclick="toggleDetails('Sponsors')" class="cloud cloud-4"><span>Sponsors</span></div>
+                <div onclick="toggleDetails('About')" class="cloud cloud-1"><span>About</span></div>
+            </li>
       </ul>
-      <section id="about" class="wrapper about hide accelerate">
-      <div class="cell accelerate">
-        <div class="cables center accelerate">
-        <div class="panel accelerate">
-          <ul class="links">
-          <li><a>Login</a></li>
-          <li><a target="_blank" >Register</a></li>
-          </ul>
-          <header>
-          <h1>felicity<em>17</em></h1>
-          </header>
-          <p>Insert random content here</p>
-        </div>
-        </div>
-      </div>
-      </section>
+      <section id="about" class="about hide">
+            <div class="cell">
+                <div class="cables center accelerate">
+                    <div class="linkholder">
+                        <ul class="links">
+                            <li><a>Button 1</a></li>
+                            <li><a>Button 2</a></li>
+                            <li><a>Button 3</a></li>
+                            <li><a>Button 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="panel accelerate">
+                        <header>
+                            <h1 onclick="alert(1)">felicity<em>17</em></h1>
+                        </header>
+                        <p>Insert random content here</p>
+                        <p>Insert random content here</p>
+                        <p>Insert random content here</p>
+                    </div>
+                </div>
+            </div>
+        </section>
       <button id="toggle" class="toggle i">
       <div class="cross">
         <div class="x"></div>
