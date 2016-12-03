@@ -14,7 +14,7 @@ var uglifyjs = require('gulp-uglify');
 var paths = {
     styles: 'src/static/styles/**/*.{scss,css}',
     scripts: 'src/static/scripts/**/*.js',
-    images: 'src/static/images/**/*.{jpg,jpeg,png,svg}',
+    images: 'src/static/images/**/*.{jpg,jpeg,png,svg,gif}',
     fonts: 'src/static/fonts/*',
     php: 'src/**/*.{php,json,pem}',
     stuff: ['src/.htaccess', 'src/humans.txt', 'src/robots.txt', 'src/favicon.ico'],

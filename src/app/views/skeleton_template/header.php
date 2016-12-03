@@ -90,9 +90,6 @@ if (empty($is_ajax)):
             <li class="layer" data-depth="0.27">
                 <div class="land"></div>
             </li>
-            <li class="layer" data-depth="0.28">
-                <h1 class="title"><b>felicity<em>17</em></b></h1>
-            </li>
             <li class="layer" data-depth="0.40">
                 <div class="wave plain depth-60"></div>
             </li>
@@ -109,7 +106,6 @@ if (empty($is_ajax)):
             <li class="layer" data-depth="0.70">
                 <div class="wave paint depth-30"></div>
             </li>
-      <li class="layer" data-depth="0.28"><h1 class="title"><b>felicity<em>17</em></b></h1></li>
       <!--li class="layer" data-depth="0.60"><div class="lighthouse depth-60"></div></li -->
       <!--li class="layer" data-depth="0.60">
         <ul class="rope depth-60">
@@ -125,6 +121,11 @@ if (empty($is_ajax)):
         </li>
         </ul>
       </li-->
+      <li class="layer" data-depth="0.08">
+
+        <h1 class="title">
+          <img style="display:block; margin-left:auto;margin-right:auto;width:30vw; height:auto;" src="<?= base_url() ?>static/images/logo.png"></h1>
+      </li>
       <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('Team')" class="cloud cloud-5"><span>Team</span></div>
                 <div onclick="toggleDetails('Gallery')" class="cloud cloud-2"><span>Gallery</span></div>
@@ -133,6 +134,7 @@ if (empty($is_ajax)):
                 <div onclick="toggleDetails('About')" class="cloud cloud-1"><span>About</span></div>
             </li>
       </ul>
+
       <section id="about" class="about hide">
             <div class="cell">
                 <div class="cables center accelerate">
