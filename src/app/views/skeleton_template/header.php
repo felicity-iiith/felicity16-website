@@ -225,7 +225,7 @@ if (empty($is_ajax)):
       }
 
       function showPage(type) {
-        $.ajax({url: baseUrl + type, success: function(result){
+        $.ajax({url: baseUrl + type + '/', success: function(result){
             $(".content-holder").html(result);
         }});
       }
