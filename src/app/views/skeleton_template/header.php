@@ -32,6 +32,7 @@ if (empty($is_ajax)):
     <title><?= isset($title) ? $title . ' · ' : '' ?><?= __('Felicity') ?> · <?= __('IIIT-Hyderabad') ?></title>
 
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/new.css">
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
@@ -122,17 +123,17 @@ if (empty($is_ajax)):
         </ul>
       </li-->
       <li class="layer" data-depth="0.08">
-
         <h1 class="title">
-          <img style="display:block; margin-left:auto;margin-right:auto;width:30vw; height:auto;" src="<?= base_url() ?>static/images/logo.png"></h1>
+          <img style="display:block; margin-left:auto;margin-right:auto;width:30vw; height:auto;" src="<?= base_url() ?>static/images/logo.png">
+        </h1>
       </li>
       <li class="layer" data-depth="0.09">
-                <div onclick="toggleDetails('Team')" class="cloud cloud-5"><span>Team</span></div>
-                <div onclick="toggleDetails('Gallery')" class="cloud cloud-2"><span>Gallery</span></div>
-                <div onclick="toggleDetails('Schedule')" class="cloud cloud-3"><span>Schedule</span></div>
-                <div onclick="toggleDetails('Sponsors')" class="cloud cloud-4"><span>Sponsors</span></div>
-                <div onclick="toggleDetails('About')" class="cloud cloud-1"><span>About</span></div>
-            </li>
+                <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
+                <!--<div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div> -->
+                <div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Sponsors</span></div>
+                <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
+                <div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Contact</span></div>
+      </li>
       </ul>
 
       <section id="about" class="about hide">
@@ -140,23 +141,19 @@ if (empty($is_ajax)):
                 <div class="cables center accelerate">
                     <div class="linkholder">
                         <ul class="links">
-                            <li><a>Button 1</a></li>
-                            <li><a>Button 2</a></li>
-                            <li><a>Button 3</a></li>
-                            <li><a>Button 4</a></li>
+                            <li><a onclick="showPage('about')">About US</a></li>
+                            <li><a onclick="showPage('sponsors')">Sponsors</a></li>
+                            <li><a onclick="showPage('contact')">Contact Us</a></li>
                         </ul>
                     </div>
-                    <div class="panel accelerate">
+                    <div class="panel accelerate content-holder">
                         <header>
                             <h1 onclick="alert(1)">felicity<em>17</em></h1>
                         </header>
-                        <p>Insert random content here</p>
-                        <p>Insert random content here</p>
-                        <p>Insert random content here</p>
                     </div>
                 </div>
             </div>
-        </section>
+      </section>
       <button id="toggle" class="toggle i">
       <div class="cross">
         <div class="x"></div>
@@ -167,7 +164,6 @@ if (empty($is_ajax)):
       <script src="<?= base_url() ?>static/scripts/libraries.min.js"></script>
       <script src="<?= base_url() ?>static/scripts/jquery.parallax.js"></script>
       <script>
-
       // jQuery Selections
       var $html = $('html'),
       $container = $('#container'),
@@ -217,16 +213,24 @@ if (empty($is_ajax)):
         $toggle.removeClass('i');
       }
 
-      function hideDetails() {
+      function hideDetails(type) {
         $about.addClass('hide');
         $about.slideUp();
         $toggle.addClass('i');
       }
 
-      function toggleDetails(event) {
-        $toggle.hasClass('i') ? showDetails() : hideDetails();
+      function toggleDetails(type) {
+        showPage(type);
+        $toggle.hasClass('i') ? showDetails(type) : hideDetails(type);
       }
-        hideDetails();
+
+      function showPage(type) {
+        $.ajax({url: baseUrl + type, success: function(result){
+            $(".content-holder").html(result);
+        }});
+      }
+      hideDetails();
+      showPage('about');
       // Listen for toggle click event.
       $toggle.on('click', function(event) {
         $toggle.hasClass('i') ? showDetails() : hideDetails();

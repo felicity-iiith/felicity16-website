@@ -1,8 +1,11 @@
-<?php $this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
+<?php //$this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
 <?php if (!$is_ajax): ?>
-<article class="page open contact">
+<article class="page contact">
 <?php endif; ?>
     <div class="container">
+        <header>
+            <h1>Contact<span class="tabheading"> Us</span></h1>
+        </header>
         <p>
             <?= __('There are many ways of contacting us.') ?>
         </p>
@@ -22,43 +25,43 @@
         <div class="row text-center">
             <div class="col4">
                 <p>
-                    <?= __('Jeevan Chowdary') ?>
-                    <a target="_blank" href="https://www.facebook.com/g1.8.jeevan">
+                    <?= __('Arihant Jain') ?>
+                    <a target="_blank" href="https://www.facebook.com/arihantjn53">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
-                    <a target="_blank" class="underlined" href="mailto:jeevan@felicity.iiit.ac.in">jeevan@felicity.iiit.ac.in</a>
+                    <a target="_blank" class="underlined" href="mailto:arihant@felicity.iiit.ac.in">arihant@felicity.iiit.ac.in</a>
                 </p>
-                <p>(+91) 9849255966</p>
+                <p>(+91) 7799270649</p>
             </div>
             <div class="col4">
                 <p>
-                    <?= __('Sanatan Mishra') ?>
-                    <a target="_blank" href="https://www.facebook.com/sanatan.mishra.7">
+                    <?= __('Nishant Gupta') ?>
+                    <a target="_blank" href="https://www.facebook.com/Nishanz">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
-                    <a target="_blank" class="underlined" href="mailto:sanatan@felicity.iiit.ac.in">sanatan@felicity.iiit.ac.in</a>
+                    <a target="_blank" class="underlined" href="mailto:nishant@felicity.iiit.ac.in">nishant@felicity.iiit.ac.in</a>
                 </p>
-                <p>(+91) 8712876675</p>
+                <p>(+91) 9052678082</p>
             </div>
             <div class="col4">
                 <p>
-                    <?= __('Vivek Ghaisas') ?>
-                    <a target="_blank" href="https://www.facebook.com/vghaisas">
+                    <?= __('Sai Sahith Nama') ?>
+                    <a target="_blank" href="https://www.facebook.com/namasahith">
                         <img class="social-icon" src="<?= base_url() ?>static/images/fb-icon.png">
                     </a>
                 </p>
                 <p>
-                    <a target="_blank" class="underlined" href="mailto:vivek@felicity.iiit.ac.in">vivek@felicity.iiit.ac.in</a>
+                    <a target="_blank" class="underlined" href="mailto:sahith@felicity.iiit.ac.in">sahith@felicity.iiit.ac.in</a>
                 </p>
-                <p>(+91) 9581248425</p>
+                <p>(+91) 7013835827</p>
             </div>
         </div>
     </div>
 <?php if (!$is_ajax): ?>
 </article>
 <?php endif; ?>
-<?php $this->load_fragment('skeleton_template/footer'); ?>
+<?php //$this->load_fragment('skeleton_template/footer'); ?>

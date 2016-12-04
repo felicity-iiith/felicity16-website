@@ -1,6 +1,6 @@
-<?php $this->load_fragment('skeleton_template/header', ['title' => __('Sponsors')]); ?>
+<?php //$this->load_fragment('skeleton_template/header', ['title' => __('Sponsors')]); ?>
 <?php if (!$is_ajax): ?>
-<article class="page open sponsors">
+<article class="page sponsors">
 <?php endif; ?>
 <?php
 $sponsors2016 = [
@@ -43,6 +43,9 @@ $sponsors2014 = [
 ];
 ?>
     <div class="container">
+        <header>
+            <h1>Spon<span class="tabheading">sors</span></h1>
+        </header>
         <h2><?= __('Felicity 2016 Sponsors') ?></h2>
         <div class="row some-top-margin">
             <div class="col6 offset3">
@@ -150,4 +153,4 @@ $sponsors2014 = [
 <?php if (!$is_ajax): ?>
 </article>
 <?php endif; ?>
-<?php $this->load_fragment('skeleton_template/footer'); ?>
+<?php //$this->load_fragment('skeleton_template/footer'); ?>

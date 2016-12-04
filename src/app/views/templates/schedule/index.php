@@ -1,4 +1,4 @@
-<?php $this->load_fragment('skeleton_template/header', ['title' => __('Schedule')]); ?>
+<?php //$this->load_fragment('skeleton_template/header', ['title' => __('Schedule')]); ?>
 <?php if (!$is_ajax): ?>
 <article class="page open schedule">
 <?php endif; ?>
@@ -214,4 +214,4 @@
 <?php if (!$is_ajax): ?>
 </article>
 <?php endif; ?>
-<?php $this->load_fragment('skeleton_template/footer'); ?>
+<?php //$this->load_fragment('skeleton_template/footer'); ?>

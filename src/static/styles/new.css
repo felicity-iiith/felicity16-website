@@ -602,12 +602,11 @@ button {
 	color: #d92400;
 }
 
-.about .panel h1 em {
+.about .panel h1 .tabheading {
 	color: #1d1f27;
 }
 
 .about .panel p {
-	margin: 0 8% 1.2em;
 	position: relative;
 	z-index: 1;
 }
@@ -638,7 +637,7 @@ button {
 	box-sizing: border-box;
 	display: block;
 	float: left;
-	width: 25%;
+	width: 33.3%;
 }
 
 .about .linkholder .links li a {
