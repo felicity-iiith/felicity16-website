@@ -1,7 +1,4 @@
-<?php //$this->load_fragment('skeleton_template/header', ['title' => __('Sponsors')]); ?>
-<?php if (!$is_ajax): ?>
-<article class="page sponsors">
-<?php endif; ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => __('Sponsors')]); ?>
 <?php
 $sponsors2016 = [
     // ['name' => 'Progress Software', 'image' => 'progress.jpg'],
@@ -42,6 +39,7 @@ $sponsors2014 = [
     ['name' => 'Unorthodox', 'image' => 'unorthodox.jpg'],
 ];
 ?>
+<article class="page sponsors">
     <div class="container">
         <header>
             <h1>Spon<span class="tabheading">sors</span></h1>
@@ -150,7 +148,6 @@ $sponsors2014 = [
             </div>
         <?php endforeach; ?>
     </div>
-<?php if (!$is_ajax): ?>
+
 </article>
-<?php endif; ?>
-<?php //$this->load_fragment('skeleton_template/footer'); ?>
+<?php $this->load_fragment('skeleton_template/footer'); ?>

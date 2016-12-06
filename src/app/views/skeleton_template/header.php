@@ -48,14 +48,12 @@ if (empty($is_ajax)):
   <div id="fb-root"></div>
 
     <div id="container" class="wrapper">
-      <ul id="scene" class="scene unselectable"
-        data-friction-x="0.1"
-        data-friction-y="0.1"
-        data-scalar-x="25"
-        data-scalar-y="15">
-      <li class="layer" data-depth="0.00"><div class="background"></div></li>
-      <li class="layer" data-depth="0.08"><div class="mountain"></div></li>
-      <!--li class="layer" data-depth="0.15">
+      <ul style="list-style: none;">
+          <li class="layer" data-depth="0.00">
+              <div class="background"></div>
+          </li>
+      <!--<li class="layer" data-depth="0.08"><div class="mountain"></div></li>
+      <li class="layer" data-depth="0.15">
         <ul class="rope depth-10">
         <li><img src="assets/images/rope.png" alt="Rope"></li>
         <li class="hanger position-2">
@@ -81,23 +79,22 @@ if (empty($is_ajax)):
         </li>
         </ul>
       </li-->
-      <li class="layer" data-depth="0.20">
+      <!--<li class="layer" data-depth="0.20">
                 <div class="land2"></div>
             </li>
-            <!-- <li class="layer" data-depth="0.21"><div class="land3"></div></li> -->
+            <li class="layer" data-depth="0.21"><div class="land3"></div></li>
             <li class="layer" data-depth="0.23">
                 <div class="house"></div>
             </li>
             <li class="layer" data-depth="0.27">
                 <div class="land"></div>
-            </li>
+            </li> -->
             <li class="layer" data-depth="0.40">
                 <div class="wave plain depth-60"></div>
             </li>
             <li class="layer" data-depth="0.50">
                 <div class="wave paint depth-50"></div>
             </li>
-            <!-- <<<<<<< HEAD -->
             <li class="layer" data-depth="0.50">
                 <div class="boat depth-50"></div>
             </li>
@@ -107,36 +104,16 @@ if (empty($is_ajax)):
             <li class="layer" data-depth="0.70">
                 <div class="wave paint depth-30"></div>
             </li>
-      <!--li class="layer" data-depth="0.60"><div class="lighthouse depth-60"></div></li -->
-      <!--li class="layer" data-depth="0.60">
-        <ul class="rope depth-60">
-        <li><img src="assets/images/rope.png" alt="Rope"></li>
-        <li class="hanger position-3">
-          <div class="board birds swing-5"></div>
-        </li>
-        <li class="hanger position-6">
-          <div class="board cloud-2 swing-2"></div>
-        </li>
-        <li class="hanger position-8">
-          <div class="board cloud-3 swing-4"></div>
-        </li>
-        </ul>
-      </li-->
-      <!--<li class="layer" data-depth="0.08">
-        <h1 class="title">
-          <img style="display:block; margin-left:auto;margin-right:auto;width:30vw; height:auto;" src="<?= base_url() ?>static/images/logo.png">
-        </h1>
-      </li> -->
-      <li class="layer" data-depth="0.09">
+            <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
                 <!--<div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div> -->
                 <div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Sponsors</span></div>
                 <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
                 <div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Contact</span></div>
-      </li>
+            </li>
       </ul>
 
-      <section id="about" class="about hide">
+      <section id="about" class="about">
             <div class="cell">
                 <div class="cables center accelerate">
                     <div class="linkholder">
@@ -147,114 +124,5 @@ if (empty($is_ajax)):
                         </ul>
                     </div>
                     <div class="panel accelerate content-holder">
-                        <header>
-                            <h1 onclick="alert(1)">felicity<em>17</em></h1>
-                        </header>
-                    </div>
-                </div>
-            </div>
-      </section>
-      <button id="toggle" class="toggle i">
-      <div class="cross">
-        <div class="x"></div>
-        <div class="y"></div>
-      </div>
-      </button>
-      <!-- Scripts -->
-      <script src="<?= base_url() ?>static/scripts/libraries.min.js"></script>
-      <script>
-      // jQuery Selections
-      var $html = $('html'),
-      $container = $('#container'),
-      $prompt = $('#prompt'),
-      $toggle = $('#toggle'),
-      $about = $('#about'),
-      $scene = $('#scene');
 
-      // Hide browser menu.
-      (function() {
-        setTimeout(function(){window.scrollTo(0,0);},0);
-      })();
-
-      // Setup FastClick.
-      FastClick.attach(document.body);
-
-      // Add touch functionality.
-      if (Hammer.HAS_TOUCHEVENTS) {
-        $container.hammer({drag_lock_to_axis: true});
-        _.tap($html, 'a,button,[data-tap]');
-      }
-
-      // Add touch or mouse class to html element.
-      $html.addClass(Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse');
-
-      // Resize handler.
-      (resize = function() {
-        $scene[0].style.width = window.innerWidth + 'px';
-        $scene[0].style.height = window.innerHeight + 'px';
-        if (!$prompt.hasClass('hide')) {
-          if (window.innerWidth < 600) {
-            $toggle.addClass('hide');
-          } else {
-            $toggle.removeClass('hide');
-          }
-        }
-      })();
-
-      // Attach window listeners.
-      window.onresize = _.debounce(resize, 200);
-      window.onscroll = _.debounce(resize, 200);
-
-      function showDetails(type) {
-        console.log(type);
-        $about.removeClass('hide');
-        $about.slideDown();
-        $toggle.removeClass('i');
-      }
-
-      function hideDetails(type) {
-        $about.addClass('hide');
-        $about.slideUp();
-        $toggle.addClass('i');
-      }
-
-      function toggleDetails(type) {
-        showPage(type);
-        $toggle.hasClass('i') ? showDetails(type) : hideDetails(type);
-      }
-
-      function showPage(type) {
-        $.ajax({url: baseUrl + type + '/', success: function(result){
-            $(".content-holder").html(result);
-        }});
-      }
-      hideDetails();
-      showPage('about');
-      // Listen for toggle click event.
-      $toggle.on('click', function(event) {
-        $toggle.hasClass('i') ? showDetails() : hideDetails();
-      });
-
-      // Pretty simple huh?
-      //$scene.parallax();
-
-      // Check for orientation support.
-      setTimeout(function() {
-        if ($scene.data('mode') === 'cursor') {
-          $prompt.removeClass('hide');
-          if (window.innerWidth < 600) $toggle.addClass('hide');
-          $prompt.on('click', function(event) {
-            $prompt.addClass('hide');
-            if (window.innerWidth < 600) {
-              setTimeout(function() {
-                $toggle.removeClass('hide');
-              },1200);
-            }
-          });
-        }
-      },1000);
-      </script>
-
-  </body>
-</html>
 <?php endif;

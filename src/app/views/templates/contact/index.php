@@ -1,4 +1,4 @@
-<?php //$this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
+<?php $this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
 <?php if (!$is_ajax): ?>
 <article class="page contact">
 <?php endif; ?>
@@ -64,4 +64,4 @@
 <?php if (!$is_ajax): ?>
 </article>
 <?php endif; ?>
-<?php //$this->load_fragment('skeleton_template/footer'); ?>
+<?php $this->load_fragment('skeleton_template/footer'); ?>
