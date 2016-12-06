@@ -122,11 +122,11 @@ if (empty($is_ajax)):
         </li>
         </ul>
       </li-->
-      <li class="layer" data-depth="0.08">
+      <!--<li class="layer" data-depth="0.08">
         <h1 class="title">
           <img style="display:block; margin-left:auto;margin-right:auto;width:30vw; height:auto;" src="<?= base_url() ?>static/images/logo.png">
         </h1>
-      </li>
+      </li> -->
       <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
                 <!--<div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div> -->
@@ -162,7 +162,6 @@ if (empty($is_ajax)):
       </button>
       <!-- Scripts -->
       <script src="<?= base_url() ?>static/scripts/libraries.min.js"></script>
-      <script src="<?= base_url() ?>static/scripts/jquery.parallax.js"></script>
       <script>
       // jQuery Selections
       var $html = $('html'),
@@ -237,7 +236,7 @@ if (empty($is_ajax)):
       });
 
       // Pretty simple huh?
-      $scene.parallax();
+      //$scene.parallax();
 
       // Check for orientation support.
       setTimeout(function() {

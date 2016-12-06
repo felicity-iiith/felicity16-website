@@ -1,11 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Dosis:600|Roboto+Slab:100,300,400,700");
 
+@font-face {
+    font-family: felicity;
+    src: url(../fonts/GeosansLight.ttf);
+}
+
 body {
 	background: url(../images/background.png);
 	top: 40%;
 	background-size: cover;
 	text-align: center;
-	font-family: "Roboto Slab", sans-serif;
+	font-family: "felicity";
 	font-size: 15px;
 	line-height: 1.4em;
 }
@@ -108,9 +113,9 @@ body {
 }
 
 .wave {
-	-webkit-animation: wave 4s 0.1s infinite linear;
-	-moz-animation: wave 4s 0.1s infinite linear;
-	animation: wave 4s 0.1s infinite linear;
+	-webkit-animation: wave 4s 1s infinite linear;
+	-moz-animation: wave 4s 1s infinite linear;
+	animation: wave 4s 1s infinite linear;
 	background: transparent repeat-x;
 	position: absolute;
 	width: 300%;
@@ -172,36 +177,36 @@ body {
 }*/
 
 .wave.depth-30 {
-	-webkit-animation: wave 8s 0.1s infinite linear;
-	-moz-animation: wave 8s 0.1s infinite linear;
-	animation: wave 8s 0.1s infinite linear;
+	-webkit-animation: wave 8s 1s infinite linear;
+	-moz-animation: wave 8s 1s infinite linear;
+	animation: wave 8s 1s infinite linear;
 	margin: 0px 0px;
 	bottom: -10vh;
 	height: 220px;
 }
 
 .wave.depth-40 {
-	-webkit-animation: wave 6s 0.1s infinite linear;
-	-moz-animation: wave 6s 0.1s infinite linear;
-	animation: wave 6s 0.1s infinite linear;
+	-webkit-animation: wave 6s 1s infinite linear;
+	-moz-animation: wave 6s 1s infinite linear;
+	animation: wave 6s 1s infinite linear;
 	margin: 0px 0px;
 	bottom: 0vh;
 	height: 180px;
 }
 
 .wave.depth-50 {
-	-webkit-animation: wave 8s 0.1s infinite linear;
-	-moz-animation: wave 8s 0.1s infinite linear;
-	animation: wave 5s 0.1s infinite linear;
+	-webkit-animation: wave 8s 1s infinite linear;
+	-moz-animation: wave 8s 1s infinite linear;
+	animation: wave 5s 1s infinite linear;
 	height: 140px;
 	bottom: 9vh;
 	margin: 0px 0px;
 }
 
 .wave.depth-60 {
-	-webkit-animation: wave 8s 0.1s infinite linear;
-	-moz-animation: wave 8s 0.1s infinite linear;
-	animation: wave 7s 0.1s infinite linear;
+	-webkit-animation: wave 8s 1s infinite linear;
+	-moz-animation: wave 8s 1s infinite linear;
+	animation: wave 7s 1s infinite linear;
 	margin: 0px 0px;
 	bottom: 18vh;
 	height: 100px;
@@ -211,9 +216,9 @@ body {
 	-webkit-transform-origin: 50% 90%;
 	-moz-transform-origin: 50% 90%;
 	transform-origin: 50% 90%;
-	-webkit-animation: bob 6s 0.1s infinite alternate linear;
-	-moz-animation: bob 6s 0.1s infinite alternate linear;
-	animation: bob 5s 0.1s infinite alternate linear;
+	-webkit-animation: bob 6s 1s infinite alternate linear;
+	-moz-animation: bob 6s 1s infinite alternate linear;
+	animation: bob 5s 1s infinite alternate linear;
 	/*margin: 0px -64px;*/
 	background-size: 128px 224px;
 	height: 374px;
@@ -413,15 +418,16 @@ body {
 	background-image: url(../images/cloud-1.png);
 	background-size: cover;
 	position: absolute;
-	height: 14.3vh;
-	width: 25.4vh;
+	height: 15vh;
+	width: 25vh;
 	color: black;
 	cursor: pointer;
 }
 
 .cloud span{
   position: relative;
-  top: 50%;
+  top: 45%;
+	font-size: 1.9em;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
