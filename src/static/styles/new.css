@@ -123,7 +123,7 @@ body {
 }
 
 .feli-board #feli-board-img {
-        height: 33vh;
+        height: 35vh;
 }
 
 .wave {
@@ -1032,17 +1032,16 @@ html.touch .links a.tap {
 #feli-board-img {
         list-style: none;
         color: #fff;
-        height: 12em;
+        height: 35em;
         line-height: 2em;
         margin: 0;
         padding: 0 0.5em;
         overflow: hidden;
-        width: 18em;
         font-size:50px;
 }
 
 #feli-board-img.show {
-        height: 12em;
+        height: 35vh;
         margin: 2px 0;
 }
 .swing {
@@ -1057,7 +1056,7 @@ html.touch .links a.tap {
 
 .swing #feli-board-img.show {
         opacity: 1;
-        transform: rotateX(-1deg);
+        transform: rotateX(-2deg);
         transform-origin: 0% 0;
         transition: all 1.5s cubic-bezier(.67,.01,.62,.62);
 }
