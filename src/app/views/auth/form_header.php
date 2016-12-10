@@ -3,7 +3,7 @@
 <div id="register-div">
 <?php endif; ?>
 <div class="container text-center">
-    <h2><?= $heading ?></h2>
+    <h1><?= $heading ?></h1>
     <div class="text-left container-inline-block">
         <?php
             if (!empty($error)) {
