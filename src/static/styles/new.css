@@ -112,6 +112,20 @@ body {
 	top: 16%;
 }
 
+.feli-board {
+    position: absolute;
+	height: 100%;
+    width: 100%;
+	top: 0px;
+    left: 0px;
+    text-align:center;
+    padding: 0px;
+}
+
+.feli-board #feli-board-img {
+    height: 33vh;
+}
+
 .wave {
 	-webkit-animation: wave 4s 1s infinite linear;
 	-moz-animation: wave 4s 1s infinite linear;
