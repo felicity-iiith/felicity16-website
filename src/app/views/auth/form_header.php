@@ -1,6 +1,6 @@
 <?php $this->load_fragment('skeleton_template/header', ['title' => $heading]); ?>
 <?php if (empty($is_ajax)): ?>
-<article class="page open full">
+<div id="register-div">
 <?php endif; ?>
 <div class="container text-center">
     <h2><?= $heading ?></h2>

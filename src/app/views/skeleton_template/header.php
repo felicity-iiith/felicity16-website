@@ -32,6 +32,7 @@ if (empty($is_ajax)):
     <title><?= isset($title) ? $title . ' · ' : '' ?><?= __('Felicity') ?> · <?= __('IIIT-Hyderabad') ?></title>
 
     <link rel="icon" href="<?= base_url() ?>favicon.ico">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/new.css">
     <script type="text/javascript">

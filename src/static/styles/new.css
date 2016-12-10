@@ -1003,3 +1003,8 @@ html.touch .links a.tap {
     left: -200%
   }
 }
+
+#register-div {
+    font-size: large;
+    padding-top: 3rem;
+}

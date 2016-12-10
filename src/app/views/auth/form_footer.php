@@ -1,6 +1,6 @@
         </div>
     </div>
 <?php if (empty($is_ajax)): ?>
-</article>
+</div>
 <?php endif; ?>
 <?php $this->load_fragment('skeleton_template/footer'); ?>
