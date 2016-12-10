@@ -77,6 +77,28 @@ if (empty($is_ajax)):
         history.pushState(newUrl, null, newUrl);
     }
 </script>
+<script>
+    var x = document.getElementById('feli-board-img');
+    function setIntervalAndExecute(fn, t) {
+        fn();
+        return(setInterval(fn, t));
+    }
+    if (x) {
+        setIntervalAndExecute(function() {
+            console.log('bad');
+            x.className = "";
+            setTimeout(function() {
+                x.className = x.className + " show";
+            }, 0);
+            setTimeout(function() {
+                x.className = x.className + " showA";
+            }, 1650);
+            setTimeout(function() {
+                x.className = x.className + " showB";
+            }, 4500);
+        }, 5000);
+    }
+</script>
 <?php $this->load_fragment('google_analytics'); ?>
     </body>
 </html>

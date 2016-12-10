@@ -49,7 +49,7 @@ if (empty($is_ajax)):
   <div id="fb-root"></div>
 
     <div id="container" class="wrapper">
-      <div class="feli-board"><img id="feli-board-img" src="static/images/feli-board.png" /></div>
+      <div class="feli-board swing"><img id="feli-board-img" src="static/images/feli-board.png" /></div>
       <ul style="list-style: none;">
           <li class="layer" data-depth="0.00">
               <div class="background"></div>
@@ -113,10 +113,12 @@ if (empty($is_ajax)):
             </li>
             <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
-                <!--<div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div> -->
-                <div onclick="toggleDetails('sponsors')" class="cloud cloud-2"><span>Sponsors</span></div>
+                <div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div>
+                <div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Events</span></div>
                 <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
-                <div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Contact</span></div>
+                <div onclick="toggleDetails('contact')" class="cloud cloud-4"><span>Sponsors</span></div>
+                <div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Team</span></div>
+                <div onclick="toggleDetails('contact')" class="cloud cloud-6"><span>Contact</span></div>
             </li>
       </ul>
       <section id="about" class="about">
