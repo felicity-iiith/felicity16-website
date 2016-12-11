@@ -49,7 +49,7 @@ if (empty($is_ajax)):
   <div id="fb-root"></div>
 
     <div id="container" class="wrapper">
-      <div class="feli-board swing"><img id="feli-board-img" src="static/images/feli-board.png" /></div>
+      <div class="feli-board swing"><img id="feli-board-img" src="<?= base_url() ?>static/images/feli-board.png" /></div>
       <ul style="list-style: none;">
           <li class="layer" data-depth="0.00">
               <div class="background"></div>
