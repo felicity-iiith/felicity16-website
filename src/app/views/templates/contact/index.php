@@ -1,7 +1,5 @@
 <?php $this->load_fragment('skeleton_template/header', ['title' => __('Contact Us')]); ?>
-<?php if (!$is_ajax): ?>
 <article class="page contact">
-<?php endif; ?>
     <div class="container">
         <header>
             <h1>Contact<span class="tabheading"> Us</span></h1>
@@ -22,6 +20,7 @@
         <p>
             <?= __('Or bug our coordinators') ?>
         </p>
+        <br/><br/>
         <div class="row text-center">
             <div class="col4">
                 <p>
@@ -61,7 +60,5 @@
             </div>
         </div>
     </div>
-<?php if (!$is_ajax): ?>
 </article>
-<?php endif; ?>
 <?php $this->load_fragment('skeleton_template/footer'); ?>

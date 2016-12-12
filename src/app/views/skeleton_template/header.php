@@ -35,6 +35,7 @@ if (empty($is_ajax)):
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/new.css">
+    <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js"></script>
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';
         var localeBaseUrl = '<?= locale_base_url() ?>';
@@ -49,7 +50,9 @@ if (empty($is_ajax)):
   <div id="fb-root"></div>
 
     <div id="container" class="wrapper">
-      <div class="feli-board swing"><img id="feli-board-img" src="<?= base_url() ?>static/images/feli-board.png" /></div>
+      <div id="loaderswing">
+        <img class="loaderhoverslow" src="<?= base_url() ?>static/images/feli-board.png" />
+      </div>
       <ul style="list-style: none;">
           <li class="layer" data-depth="0.00">
               <div class="background"></div>
@@ -114,10 +117,10 @@ if (empty($is_ajax)):
             <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
                 <div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div>
-                <div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Events</span></div>
-                <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
-                <div onclick="toggleDetails('contact')" class="cloud cloud-4"><span>Sponsors</span></div>
-                <div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Team</span></div>
+                <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Events</span></div>
+                <div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
+                <div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div>
+                <!--<div onclick="toggleDetails('contact')" class="cloud cloud-5"><span>Team</span></div> -->
                 <div onclick="toggleDetails('contact')" class="cloud cloud-6"><span>Contact</span></div>
             </li>
       </ul>
@@ -127,6 +130,7 @@ if (empty($is_ajax)):
                     <div class="linkholder">
                         <ul class="links">
                             <li><a onclick="showPage('about')">About US</a></li>
+                            <li><a onclick="showPage('gallery')">Gallery</a></li>
                             <li><a onclick="showPage('sponsors')">Sponsors</a></li>
                             <li><a onclick="showPage('contact')">Contact Us</a></li>
                         </ul>

@@ -669,6 +669,16 @@ article {
     }
 }
 
+.page.contact {
+    p {
+        font-size: 1.1em;
+        line-height: 2em;
+        text-align: center;
+        max-width: 36em;
+        margin: auto;
+    }
+}
+
 .page.gallery {
     padding-top: 0;
     padding-bottom: $ball-height / 2;
@@ -708,7 +718,7 @@ article {
         position: fixed;
         left: 15%;
         bottom: 0;
-        top: 5em;
+        top: 10em;
         width: 70%;
         animation: $page-open-animation-timeout 1 appear;
         animation-fill-mode: forwards;
