@@ -6,7 +6,7 @@ var $about = $('#about');
     $toggle.on('click', function(event) {
         $toggle.hasClass('i') ? showDetails() : hideDetails();
     });
-    if (window.location.pathname === '/') {
+    if (window.location.href === baseUrl) {
         $about.css('display', 'none');
         $toggle.css('display', 'none');
     } else {
