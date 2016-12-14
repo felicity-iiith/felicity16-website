@@ -47,8 +47,19 @@ if (empty($is_ajax)):
     }
 ?>
 <body  style="overflow: hidden;">
-  <div id="fb-root"></div>
-
+  <?php if (isset($is_authenticated)): ?>
+    <div class="auth-quick-links">
+        <?php if ($is_authenticated): ?>
+            <?php if (!empty($user_nick)): ?>
+                <div class="nick"><?= sprintf(__('Hello, %s'), $user_nick) ?> <a href="<?= locale_base_url() . "auth/logout/" ?>"><?= __('Logout') ?></a></div>
+            <?php else: ?>
+                <div><a href="<?= locale_base_url() . "auth/logout/" ?>" class="pure-button btn"><?= __('Logout') ?></a></div>
+            <?php endif; ?>
+        <?php else: ?>
+            <div><a href="<?= locale_base_url() . "auth/login/" ?>" class="pure-button btn"><?= __('Login / Register') ?></a></div>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
     <div id="container" class="wrapper">
       <div id="loaderswing">
         <img class="loaderhoverslow" src="<?= base_url() ?>static/images/feli-board.png" />
