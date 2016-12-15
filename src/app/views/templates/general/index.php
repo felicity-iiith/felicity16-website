@@ -8,3 +8,11 @@
 </article>
 <?php endif; ?>
 <?php $this->load_fragment('skeleton_template/footer'); ?>
+<?php if (!$is_ajax): ?>
+<script>
+    (function() {
+        $('#toggle').removeClass('i');
+        $('.toggle-contact').css('display', 'none');
+    })();
+</script>
+<?php endif; ?>
