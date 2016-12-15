@@ -4,6 +4,7 @@
 <?php if ($sent): ?>
     <div class="success"><?= __('Mail sent!') ?></div>
 <?php else: ?>
+<p><?= __('Please enter your email address.') ?></p>
 <form action="" method="post" class="pure-form pure-form-stacked">
     <fieldset>
         <label for="email"><?= __('Email:') ?></label>

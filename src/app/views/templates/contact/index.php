@@ -20,7 +20,7 @@
         <p>
             <?= __('Or bug our coordinators') ?>
         </p>
-        <br/><br/>
+        <br/>
         <div class="row text-center">
             <div class="col4">
                 <p>

@@ -1,4 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Dosis:600|Roboto+Slab:100,300,400,700");
+@font-face {
+    font-family: Dosis;
+    src: url(../fonts/Dosis-Regular.ttf);
+}
+
 @font-face {
     font-family: felicity;
     src: url(../fonts/GeosansLight.ttf);
@@ -10,23 +14,11 @@ body {
     background-size: cover;
     text-align: center;
     font-family: "felicity";
-    font-size: 15px;
     line-height: 1.4em;
 }
 
-#frame {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /*background-color: red;*/
-    z-index: 10000;
-    margin: 0px;
-    padding: 0px;
-    left: 0px;
-    top: 0px;
-    -moz-box-shadow: inset 0 0 300px #000000;
-    -webkit-box-shadow: inset 0 0 300px #000000;
-    box-shadow: inset 0 0 300px #000000;
+p {
+    font-size: 1.4em;
 }
 
 .layer {
@@ -801,260 +793,6 @@ button:hover {
     color: white;
 }
 
-html.mouse a:hover, html.mouse button:hover {
-    -webkit-transition: color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    -moz-transition: color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    transition: color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-html.mouse a:hover {
-    color: #ff755a;
-}
-
-html.mouse button:hover {
-    background-color: #d92400;
-    color: white;
-}
-
-html.mouse .toggle:hover .x, html.mouse .toggle:hover .y {
-    background-color: white;
-}
-
-html.mouse .links a:hover {
-    background-color: #d92400;
-    color: white;
-}
-
-html.touch a.tap, html.touch button.tap {
-    -webkit-transition: color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    -moz-transition: color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transition: color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-html.touch a.tap {
-    color: #ff755a;
-}
-
-html.touch button.tap {
-    background-color: #d92400;
-    color: white;
-}
-
-html.touch .toggle.tap .x, html.touch .toggle.tap .y {
-    background-color: white;
-}
-
-html.touch .links a.tap {
-    background-color: #d92400;
-    color: white;
-}
-
-.sky {
-    height: 480px;
-    background: #007fd5;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    -webkit-animation: sky_background 50s ease-out infinite;
-    -moz-animation: sky_background 50s ease-out infinite;
-    -o-animation: sky_background 50s ease-out infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0)
-}
-
-.moon {
-    background: url("http://montanaflynn.me/lab/css-clouds/../images/moon.png");
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 300%;
-    -webkit-animation: moon 50s linear infinite;
-    -moz-animation: moon 50s linear infinite;
-    -o-animation: moon 50s linear infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0)
-}
-
-.clouds_one {
-    background: url("http://montanaflynn.me/lab/css-clouds/../images/cloud_one.png");
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 300%;
-    -webkit-animation: cloud_one 50s linear infinite;
-    -moz-animation: cloud_one 50s linear infinite;
-    -o-animation: cloud_one 50s linear infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0)
-}
-
-.clouds_two {
-    background: url("http://montanaflynn.me/lab/css-clouds/../images/cloud_two.png");
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 300%;
-    -webkit-animation: cloud_two 75s linear infinite;
-    -moz-animation: cloud_two 75s linear infinite;
-    -o-animation: cloud_two 75s linear infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0)
-}
-
-.clouds_three {
-    background: url("http://montanaflynn.me/lab/css-clouds/../images/cloud_three.png");
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 300%;
-    -webkit-animation: cloud_three 100s linear infinite;
-    -moz-animation: cloud_three 100s linear infinite;
-    -o-animation: cloud_three 100s linear infinite;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0)
-}
-
-@-webkit-keyframes sky_background {
-    0% {
-        background: #007fd5;
-        color: #007fd5
-    }
-    50% {
-        background: #000;
-        color: #a3d9ff
-    }
-    100% {
-        background: #007fd5;
-        color: #007fd5
-    }
-}
-
-@-webkit-keyframes moon {
-    0% {
-        opacity: 0;
-        left: -200%;
-        -moz-transform: scale(0.5);
-        -webkit-transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        -moz-transform: scale(1);
-        left: 0%;
-        bottom: 250px;
-        -webkit-transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        bottom: 500px;
-        -moz-transform: scale(0.5);
-        -webkit-transform: scale(0.5);
-    }
-}
-
-@-webkit-keyframes cloud_one {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-@-webkit-keyframes cloud_two {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-@-webkit-keyframes cloud_three {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-@-moz-keyframes sky_background {
-    0% {
-        background: #007fd5;
-        color: #007fd5
-    }
-    50% {
-        background: #000;
-        color: #a3d9ff
-    }
-    100% {
-        background: #007fd5;
-        color: #007fd5
-    }
-}
-
-@-moz-keyframes moon {
-    0% {
-        opacity: 0;
-        left: -200%;
-        -moz-transform: scale(0.5);
-        -webkit-transform: scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        -moz-transform: scale(1);
-        left: 0%;
-        bottom: 250px;
-        -webkit-transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        bottom: 500px;
-        -moz-transform: scale(0.5);
-        -webkit-transform: scale(0.5);
-    }
-}
-
-@-moz-keyframes cloud_one {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-@-moz-keyframes cloud_two {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-@-moz-keyframes cloud_three {
-    0% {
-        left: 0
-    }
-    100% {
-        left: -200%
-    }
-}
-
-#register-div {
-    font-size: large;
-}
-
 #loaderswing {
     -webkit-perspective: 500px;
     -moz-perspective: 500px;
@@ -1075,7 +813,7 @@ html.touch .links a.tap {
     z-index: 0;
 }
 
-#loaderswing > img {
+#loaderswing>img {
     position: relative;
     z-index: 1;
     width: 100%;
