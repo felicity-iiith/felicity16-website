@@ -3,9 +3,7 @@
       <header>
           <h1>About<span class="tabheading"> Us</span></h1>
       </header>
-      <p class="page about-content">
-          <?= __($about_us) ?>
-      </p>
+      <?= __($about_us) ?>
     </div>
 <?php $this->load_fragment('skeleton_template/footer'); ?>
 <?php if (!$is_ajax): ?>

@@ -14,6 +14,7 @@ body {
     text-align: center;
     font-family: "felicity";
     line-height: 1.4em;
+    color: black;
 }
 
 p {
@@ -520,7 +521,7 @@ button {
 
 .about {
     perspective: 1000px;
-    color: #666666;
+    color: #2C2C2C;
     min-height: 460px;
     position: absolute;
     overflow: hidden;
@@ -891,4 +892,26 @@ button:hover {
 
 ::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 0.4);
+}
+
+blockquote {
+  border-left: 10px solid #ccc;
+  quotes: "\201C""\201D""\2018""\2019";
+  text-align: center;
+  max-width: 50em;
+  margin: auto;
+}
+
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+
+}
+
+blockquote p {
+  display: inline;
 }
