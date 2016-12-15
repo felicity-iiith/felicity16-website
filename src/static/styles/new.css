@@ -605,6 +605,12 @@ button {
     color: #d92400;
 }
 
+.about .panel h2 {
+    font-size: 2em;
+    font-weight: 100;
+    color: #d92400;
+}
+
 .about .panel h1 .tabheading {
     color: #1d1f27;
 }
