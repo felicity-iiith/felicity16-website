@@ -570,6 +570,7 @@ button {
     border-radius: 0 0 6px 0;
     background-clip: padding-box;
     background: transparent url(../images/compass.png) 0 0 no-repeat;
+    z-index: -1;
     background-size: 224px 224px;
     position: absolute;
     display: block;
