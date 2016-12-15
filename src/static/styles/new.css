@@ -703,29 +703,35 @@ button {
 
 .fb-btn {
     left: 45%;
-}
-
-.fb-btn:hover {
     background-color: #3b5998;
     color: white;
 }
 
-.youtube-btn {
-    left: 50%;
+.fb-btn:hover {
+    background-color: #fff;
+    color: #555;
 }
 
-.youtube-btn:hover {
+.youtube-btn {
+    left: 50%;
     background-color: #d92400;
     color: white;
 }
 
+.youtube-btn:hover {
+    background-color: #fff;
+    color: #555;
+}
+
 .instagram-btn {
+    background-color: black;
     left: 55%;
+    color: white;
 }
 
 .instagram-btn:hover {
-    background-color: black;
-    color: white;
+    background-color: #fff;
+    color: #555;
 }
 
 .toggle.i .cross {
@@ -864,20 +870,25 @@ button:hover {
     width: 12px;
 }
 
+
 /* Track */
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 16px;
     border-radius: 16px;
 }
 
+
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 16px;
     border-radius: 16px;
-    background: rgba(255,0,0,0.8);
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    background: rgba(255, 0, 0, 0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
+
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255,0,0,0.4);
+    background: rgba(255, 0, 0, 0.4);
 }
