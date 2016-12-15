@@ -208,11 +208,11 @@ class auth extends Controller {
             "verify_link" => $verify_link
         ];
         if ($action == "reset_password") {
-            $subject = "Password reset link - Felicity '16";
+            $subject = "Password reset link - Felicity '17";
         } elseif ($action == "verify_email") {
-            $subject = "Please verify your email - Felicity '16";
+            $subject = "Please verify your email - Felicity '17";
         } elseif ($action == "create_user") {
-            $subject = "Please verify your email - Felicity '16";
+            $subject = "Please verify your email - Felicity '17";
         }
 
         $this->load_library("email_lib");
