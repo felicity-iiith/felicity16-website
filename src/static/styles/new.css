@@ -696,6 +696,41 @@ button {
     left: 50%;
 }
 
+.toggle-contact {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    margin: -28px;
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+}
+
+.fb-btn {
+    left: 45%;
+}
+
+.fb-btn:hover {
+    background-color: #3b5998;
+    color: white;
+}
+
+.youtube-btn {
+    left: 50%;
+}
+
+.youtube-btn:hover {
+    background-color: #d92400;
+    color: white;
+}
+
+.instagram-btn {
+    left: 55%;
+}
+
+.instagram-btn:hover {
+    background-color: black;
+    color: white;
+}
+
 .toggle.i .cross {
     transform: rotateZ(0deg);
 }

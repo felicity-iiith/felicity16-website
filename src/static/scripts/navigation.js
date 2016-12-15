@@ -11,6 +11,7 @@ var $about = $('#about');
         $toggle.css('display', 'none');
     } else {
         $toggle.removeClass('i');
+        $('.toggle-contact').css('display', 'none');
     }
 })();
 
@@ -19,6 +20,7 @@ function showDetails() {
     $toggle.css('display', 'block');
     $about.removeClass('hide');
     $toggle.removeClass('i');
+    $('.toggle-contact').css('display', 'none');
     $about.css('display', 'table');
 }
 
@@ -29,6 +31,7 @@ function hideDetails() {
         $about.css('display', 'none');
     }, 500);
     $toggle.addClass('i');
+    $('.toggle-contact').css('display', 'block');
     history.pushState(localeBaseUrl, null, localeBaseUrl);
 }
 

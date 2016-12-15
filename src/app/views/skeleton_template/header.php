@@ -35,6 +35,7 @@ if (empty($is_ajax)):
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/vendor/pure-forms-tables-buttons.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/core.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/new.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>static/styles/vendor/felicons.css">
     <script src="<?= base_url() ?>static/scripts/vendor/jquery.min.js"></script>
     <script type="text/javascript">
         var baseUrl = '<?= base_url() ?>';

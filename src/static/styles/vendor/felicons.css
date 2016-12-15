@@ -54,29 +54,12 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-code:before { content: '\e800'; } /* '' */
-.icon-doc:before { content: '\e801'; } /* '' */
-.icon-pencil:before { content: '\e802'; } /* '' */
-.icon-child:before { content: '\e803'; } /* '' */
-.icon-megaphone:before { content: '\e804'; } /* '' */
-.icon-language:before { content: '\e805'; } /* '' */
-.icon-soccer-ball:before { content: '\e806'; } /* '' */
-.icon-music:before { content: '\e807'; } /* '' */
-.icon-shuffle:before { content: '\e808'; } /* '' */
-.icon-facebook-squared:before { content: '\e809'; } /* '' */
-.icon-twitter:before { content: '\e80a'; } /* '' */
-.icon-magic:before { content: '\e80b'; } /* '' */
-.icon-rupee:before { content: '\e80c'; } /* '' */
-.icon-gamepad:before { content: '\e80d'; } /* '' */
-.icon-heart:before { content: '\e80e'; } /* '' */
-.icon-heart-empty:before { content: '\e80f'; } /* '' */
-.icon-star:before { content: '\e810'; } /* '' */
-.icon-star-empty:before { content: '\e811'; } /* '' */
-.icon-user-secret:before { content: '\e812'; } /* '' */
-.icon-art-gallery:before { content: '\e813'; } /* '' */
-.icon-school:before { content: '\e814'; } /* '' */
-.icon-signal:before { content: '\e815'; } /* '' */
-.icon-monitor:before { content: '\e816'; } /* '' */
-.icon-link-ext:before { content: '\e817'; } /* '' */
-.icon-keyboard:before { content: '\e818'; } /* '' */
-.icon-fast-food:before { content: '\e819'; } /* '' */
+.icon-facebook:before {
+  content: "\ea90";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-youtube:before {
+  content: "\ea9d";
+}
