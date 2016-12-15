@@ -47,6 +47,13 @@ class email_lib extends Library {
         $mail->isHTML(true);
         $mail->Encoding   = 'quoted-printable';
         $mail->CharSet    = 'UTF-8';
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
 
         if (!empty($from['reply_to'])) {
             $reply_to_name = '';
