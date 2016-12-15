@@ -24,7 +24,9 @@ function hideDetails() {
         $about.css('display', 'none');
     }, 500);
     $toggle.addClass('i');
-    $('.toggle-contact').css('display', 'block');
+    setTimeout(function() {
+        $('.toggle-contact').fadeIn().css('display', 'block');
+    }, 200);
     history.pushState(localeBaseUrl, null, localeBaseUrl);
 }
 
