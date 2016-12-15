@@ -69,48 +69,6 @@ if (empty($is_ajax)):
           <li class="layer" data-depth="0.00">
               <div class="background"></div>
           </li>
-      <!--<li class="layer" data-depth="0.08"><div class="mountain"></div></li>
-      <li class="layer" data-depth="0.15">
-        <ul class="rope depth-10">
-        <li><img src="assets/images/rope.png" alt="Rope"></li>
-        <li class="hanger position-2">
-          <div class="board cloud-2 swing-1"></div>
-        </li>
-        <li class="hanger position-4">
-          <div class="board cloud-1 swing-3"></div>
-        </li>
-        <li class="hanger position-8">
-          <div class="board birds swing-5"></div>
-        </li>
-        </ul>
-      </li>
-      <li class="layer" data-depth="0.20"><h1 class="title"><b>felicity<em>17</em></b></h1></li>
-      <li class="layer" data-depth="0.30">
-        <ul class="rope depth-30">
-        <li><img src="assets/images/rope.png" alt="Rope"></li>
-        <li class="hanger position-1">
-          <div class="board cloud-1 swing-3"></div>
-        </li>
-        <li class="hanger position-5">
-          <div class="board cloud-4 swing-1"></div>
-        </li>
-        </ul>
-      </li-->
-      <!--<li class="layer" data-depth="0.20">
-                <div class="land2"></div>
-            </li>
-            <li class="layer" data-depth="0.21"><div class="land3"></div></li>
-            <li class="layer" data-depth="0.23">
-                <div class="house"></div>
-            </li>
-            <li class="layer" data-depth="0.27">
-                <div class="land"></div>
-            </li> -->
-   <!--   <li class="layer" data-depth="0.95">
-            <h1 class="title"><b>felicity<em>17</em></b></h1>
-            <img class="title feli-board" src="static/images/feli-board.png" alt="felicity17" />
-      </li>
--->
             <li class="layer" data-depth="0.40">
                 <div class="wave plain depth-60"></div>
             </li>
@@ -128,7 +86,7 @@ if (empty($is_ajax)):
             </li>
             <li class="layer" data-depth="0.09">
                 <div onclick="toggleDetails('about')" class="cloud cloud-1"><span>About</span></div>
-                <div onclick="toggleDetails('gallery')" class="cloud cloud-2"><span>Gallery</span></div>
+                <div onclick="window.open('https://felicity.iiit.ac.in/sap/')" class="cloud cloud-2"><span>SAP</span></div>
                 <!--<div onclick="toggleDetails('sponsors')" class="cloud cloud-3"><span>Events</span></div>
                 <div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div> -->
                 <div onclick="toggleDetails('sponsors')" class="cloud cloud-4"><span>Sponsors</span></div>
@@ -142,7 +100,6 @@ if (empty($is_ajax)):
                     <div class="linkholder">
                         <ul class="links">
                             <li><a onclick="showPage('about')">About US</a></li>
-                            <li><a onclick="showPage('gallery')">Gallery</a></li>
                             <li><a onclick="showPage('sponsors')">Sponsors</a></li>
                             <li><a onclick="showPage('contact')">Contact Us</a></li>
                         </ul>
