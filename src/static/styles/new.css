@@ -9,9 +9,8 @@
 }
 
 body {
-    background: url(../images/background.png);
+    background: url(../images/background.png) no-repeat center center;
     top: 40%;
-    background-size: cover;
     text-align: center;
     font-family: "felicity";
     line-height: 1.4em;
