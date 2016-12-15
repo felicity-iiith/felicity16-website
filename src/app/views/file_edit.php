@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $slug ?> - Felicity'16 Jugaad</title>
+        <title><?= $slug ?> - Felicity'17 Jugaad</title>
         <script src="<?= base_url() ?>static/scripts/vendor/marked.min.js"></script>
         <script src="<?= base_url() ?>static/scripts/common.js"></script>
         <script src="<?= base_url() ?>static/scripts/common_edit.js"></script>

@@ -37,7 +37,7 @@
             <p><?= $message_details ?></p>
         <?php endif; ?>
     </div>
-    <p><a href="<?= locale_base_url() ?>">&lt;&lt; <?= __('Felicity ʼ16 Home') ?></a></p>
+    <p><a href="<?= locale_base_url() ?>">&lt;&lt; <?= __('Felicity ʼ17 Home') ?></a></p>
     <p><a href="javascript:history.back()">&lt;&lt; <?= __('Back') ?></a></p>
     </div>
 </body>

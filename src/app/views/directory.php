@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $slug ?> - Felicity'16 Jugaad</title>
+        <title><?= $slug ?> - Felicity'17 Jugaad</title>
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/vendor/thoda.min.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/common.css">
         <link rel="stylesheet" href="<?= base_url() ?>static/styles/directory.css">
