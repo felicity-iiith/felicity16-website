@@ -2,6 +2,8 @@
 [![Build Status](https://travis-ci.org/felicity-iiith/felicity16-website.svg?branch=master)](https://travis-ci.org/felicity-iiith/felicity16-website)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/felicity-iiith/felicity16-website/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/felicity-iiith/felicity16-website/?branch=master)
 
+Glue test 1.
+
 This is the repository for the Felicity '16 website.
 
 ## Fork and Clone
