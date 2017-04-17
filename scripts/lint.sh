@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 echo "Running jshint..."
-jshint src/static/scripts gulpfile.js --reporter=node_modules/jshint-stylish
+jshint src/static/scripts gulpfile.js src/app/views/ --reporter=node_modules/jshint-stylish --extract=auto --extra-ext ".php,.html"
+
 JSHINT_STATUS=$?
 
 echo "Running scss-lint..."
