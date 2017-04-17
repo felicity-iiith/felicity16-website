@@ -41,6 +41,14 @@ class jugaad extends Controller {
                 $template_meta = $this->template_model->get_meta($file["template"]);
                 $orig_data = $this->jugaad_model->get_file_data($file_id, $template_meta, $this->user, false);
 
+                foreach ($template_meta as $name => $metadata) {
+                    if ($metadata['type'] === 'list') {
+                        if ($data[$name] === '') {
+                            $data[$name] = [];
+                        }
+                    }
+                }
+
                 // Clean data
                 foreach ($data as $key => $value) {
                     if (array_key_exists($key, $orig_data)) {
