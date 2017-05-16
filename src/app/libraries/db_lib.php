@@ -8,11 +8,11 @@ class db_lib extends Library {
     private function bind_params($stmt, $datatypes, $data) {
         if (!empty($datatypes) && !empty($data)) {
             // Convert to references
+            $data = array_merge([$datatypes], $data);
             foreach ($data as $key => $value) {
                 $data[$key] = &$data[$key];
             }
-
-            if (!call_user_func_array(array($stmt, "bind_param"), array_merge([$datatypes], $data))) {
+            if (!call_user_func_array(array($stmt, "bind_param"), $data)) {
                 return false;
             }
         }

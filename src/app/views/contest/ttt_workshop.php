@@ -32,11 +32,11 @@ $text_input = function ($name, $large_text=false) use ($errors) {
         </h1>
         <?php if ($user_details): ?>
             <?php if ($user_details['payment_status'] == 'success'): ?>
-                <p class="success">You have successfully paid </p>
+                <p class="success"><?= __('You are successfully registered for the workshop') ?></p>
             <?php else: ?>
                 <div class="text-center">
                     <?php if ($user_details['payment_status'] == 'failed'): ?>
-                        <p class="error">Payment was unsuccessfull </p>
+                        <p class="error"><?= __('Payment was unsuccessful') ?></p>
                     <?php endif; ?>
 
                     <a href="<?= $payment_url ?>" class="pure-button pure-button-primary some-top-margin">
@@ -56,8 +56,7 @@ $text_input = function ($name, $large_text=false) use ($errors) {
 
                     <label><?= __('Contact number') ?></label>
                     <?php $text_input('contact_number') ?>
-                    <button type="submit" class="pure-button pure-button-primary some-top-margin"><?= __('Proceed to payment ₹100') ?></button>
-
+                    <button type="submit" class="pure-button pure-button-primary some-top-margin"><?= __('Proceed to pay ₹100') ?></button>
                 </fieldset>
             </form>
         <?php endif; ?>

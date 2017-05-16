@@ -73,8 +73,7 @@ class page extends Controller {
                 "page_data" => $data
             ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
         } else {
-            $header = getallheaders();
-            $is_ajax = isset($header["X-Ajax-Request"]) && $header["X-Ajax-Request"];
+            $is_ajax = isset($_SERVER["HTTP_X_AJAX_REQUEST"]) && $_SERVER["HTTP_X_AJAX_REQUEST"];
 
             if ($is_ajax) {
                 foreach ($template_meta as $name => $meta) {
